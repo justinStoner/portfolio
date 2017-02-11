@@ -1,0 +1,27 @@
+$body-bgcolor: #fff;
+
+body{
+  background-color: $body-bgcolor ;
+}
+nav .brand-logo,
+.brand-logo{
+  margin-left: 15px;
+  font-size: 18px;
+}
+[md-tabs] .waves-effect {
+  position: static;
+}
+.showcase-tabs{
+   border-bottom: 1px solid rgba(160,160,160,0.2);
+  .indicator{
+    background: #2196f3 !important;
+  }
+  li{
+    a.active{
+      color: #2196f3 !important;
+    }
+    a{
+      color:#343434 !important;
+    }
+  }
+}

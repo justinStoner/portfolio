@@ -1,0 +1,39 @@
+<template>
+  <require from="../components/sound-wave"></require>
+  <require from="./styles/sequencer.css"></require>
+  <section class="au-animate col m5">
+
+    <div class="card" id="sequencer">
+      <sound-wave ab.bind='ab' canvas-id.bind='canvas' style=""></sound-wave>
+      <div class="card-content">
+        <a class="waves-effect waves-${!muted?'blue':'red'} btn-flat center-align" style="margin-bottom:20px;padding:0;" click.delegate='handlePlay()'>
+          <template if.bind='!playing'>
+            <i class="material-icons blue-text" style="vertical-align:sub;font-size:2.3rem">play_arrow</i>
+          </template>
+          <template if.bind='playing'>
+            <i class="material-icons red-text" style="vertical-align:sub;font-size:2.3rem" >stop</i>
+          </template>
+        </a>
+        <div class="input-field inline" style="margin-top:0;">
+          <button class="btn waves-effect waves-light blue" style="display:inline-block;width:36px;padding:0;margin-right:5px;" click.delegate="changeTempo(false)"><i class="material-icons">remove</i></button>
+          <input style="width:40px;" type="number" value.bind="tempo">
+          <button class="btn waves-effect waves-light blue" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
+        </div>
+        <table>
+          <tbody>
+              <tr>
+                <td style="width:5.88%"></td>
+                <td repeat.for="i of 16" style="width:5.88%">
+                  <div class="${notePlaying-1==i?'blue':'grey'} lighten-2" style="height:5px;"></div>
+                </td>
+              </tr>
+              <tr repeat.for="drum of drums">
+                <td style="width:5.88%;cursor:pointer" class="blue-text" click.delegate="playSample(drum.sound)">${drum.name}</td>
+                <td repeat.for="i of 16" style="width:5.88%"><a md-waves class="waves-effect waves-light btn green accent-3" style="width:100%;padding:0rem;" click.delegate="addNote($event, $parent.$index, i)"></a></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</template>

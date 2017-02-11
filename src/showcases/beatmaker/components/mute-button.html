@@ -1,0 +1,12 @@
+<template>
+
+    <a class="waves-effect waves-${!muted?'blue':'red'} btn-flat center-align" style="width:100%;margin-top:3px;" click.delegate='muted=!muted'>
+      <template if.bind='muted'>
+        <i class="material-icons blue-text" style="vertical-align:sub">volume_up</i>
+      </template>
+      <template if.bind='!muted'>
+        <i class="material-icons red-text" style="vertical-align:sub">volume_off</i>
+      </template>
+    </a>
+
+</template>

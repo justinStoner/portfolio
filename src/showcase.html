@@ -1,0 +1,7 @@
+<template>
+  <ul md-tabs class="showcase-tabs" style="top:3px;">
+      <li md-waves="color: primary;" repeat.for="row of router.navigation"><a class="${row.isActive?'active':''}" href="#tab_${$index+1}">${row.title}</a></li>
+      <li md-waves><a href="#tab2" class="disabled">More coming soon...</a></li>
+    </ul>
+    <router-view></router-view>
+</template>
