@@ -8,10 +8,10 @@
       <div class="card" id="piano">
         <sound-wave ab.bind='ab' canvas-id.bind='canvas' style=""></sound-wave>
         <div class="card-content" style="padding-top:0" >
-          <md-card class="grey lighten-3">
-            <div id="oscillator">
-            <div class="row">
-              <form class="col m4">
+          <div id="oscillator">
+          <div class="row">
+            <form class="col m4 ">
+              <div class="grey lighten-3 z-depth-1 b-radius-card row">
                 <p>Oscillator 1</p>
                  <div class="input-field inline col m3">
                    <knob min="0" max="100" label="Volume 1" val.two-way="vol1"></knob>
@@ -32,8 +32,10 @@
                  <div class="input-field inline col m3" >
                    <mute-button muted.two-way='mute1'></mute-button>
                  </div>
-                </form>
-                <form class="col m4">
+              </div>
+              </form>
+              <form class="col m4">
+                <div class="grey lighten-3 z-depth-1 b-radius-card row">
                   <p>Oscillator 2</p>
                     <div class="input-field inline col m3">
                       <knob min="0" max="100" label="Volume 2" val.two-way="vol2"></knob>
@@ -54,32 +56,34 @@
                      <div class="input-field inline col m3">
                        <mute-button muted.two-way='mute2'></mute-button>
                      </div>
-                   </form>
-                   <form class="col m4">
-                     <p>Oscillator 3</p>
-                     <div class="input-field inline col m3">
-                       <knob min="0" max="100" label="Volume 3" val.two-way="vol3"></knob>
-                     </div>
-                     <div class="col m3">
-                       <button class="waves-effect waves-light btn ${w3=='sine'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="w3='sine'">Sine</button>
-                       <button class="waves-effect waves-light btn ${w3=='square'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="w3='square'">Sqr</button>
-                        <br>
-                       <button class="waves-effect waves-light btn ${w3=='triangle'?'green accent-3':'blue'} wave-shape" click.delegate="w3='triangle'">Tri</button>
-                       <button class="waves-effect waves-light btn ${w3=='sawtooth'?'green accent-3':'blue'} wave-shape" click.delegate="w3='sawtooth'">Saw</button>
-                     </div>
-                      <div class="input-field inline col m3">
-                        <select md-select value.bind="octave3">
-                          <option repeat.for="o of octaves" value.bind="o" >${o}</option>
-                        </select>
-                        <label>Octave 3</label>
-                     </div>
-                     <div class="input-field inline col m3">
-                       <mute-button muted.two-way='mute3'></mute-button>
-                     </div>
-                   </form>
                 </div>
+              </form>
+               <form class="col m4">
+                 <div class="row grey lighten-3 z-depth-1 b-radius-card">
+                   <p>Oscillator 3</p>
+                   <div class="input-field inline col m3">
+                     <knob min="0" max="100" label="Volume 3" val.two-way="vol3"></knob>
+                   </div>
+                   <div class="col m3">
+                     <button class="waves-effect waves-light btn ${w3=='sine'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="w3='sine'">Sine</button>
+                     <button class="waves-effect waves-light btn ${w3=='square'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="w3='square'">Sqr</button>
+                      <br>
+                     <button class="waves-effect waves-light btn ${w3=='triangle'?'green accent-3':'blue'} wave-shape" click.delegate="w3='triangle'">Tri</button>
+                     <button class="waves-effect waves-light btn ${w3=='sawtooth'?'green accent-3':'blue'} wave-shape" click.delegate="w3='sawtooth'">Saw</button>
+                   </div>
+                    <div class="input-field inline col m3">
+                      <select md-select value.bind="octave3">
+                        <option repeat.for="o of octaves" value.bind="o" >${o}</option>
+                      </select>
+                      <label>Octave 3</label>
+                   </div>
+                   <div class="input-field inline col m3">
+                     <mute-button muted.two-way='mute3'></mute-button>
+                   </div>
+                 </div>
+               </form>
             </div>
-          </md-card>
+          </div>
           <md-card class="grey lighten-3">
             <div id="delay" class="">
               <div style="display:inline-block;"><knob min="-40" max="40" label="EQ1" val.two-way="eq1"></knob></div>
