@@ -8,26 +8,35 @@ section{
   display:inline-block;
   font-size:12px;
   transition: box-shadow .25s;
-  margin-right: 2px;
+  margin-right: 0px;
   outline: none;
+  padding:0;
 }
-.key > h1{
-  text-align: center;
-  margin: 0;
-  font-size: 2.2rem;
+.key{
+  h1{
+    text-align: center;
+    margin: 0;
+    font-size: 2.2rem;
+  }
+  div{
+    padding: 0 2px;
+  }
 }
+
 .key.white{
   background-color: #fff;
   height: 220px;
   /*float:left;*/
   position: relative;
+  h1{
+   color:#000;
+   padding-top: 11rem;
+ }
 }
 .key.white.play{
-  background: rgb(221, 221, 221)
-}
-.key.white> h1{
-  color:#000;
-  padding-top: 11rem;
+  div{
+    background: rgb(221, 221, 221)
+  }
 }
 .key.black{
   background-color: #000;
@@ -36,6 +45,10 @@ section{
   /*top:0;*/
   z-index: 2;
   margin-left: -4%;
+  h1{
+    color:#fff;
+    padding-top: 6rem
+  }
 
 }
 .dial{
@@ -44,10 +57,7 @@ section{
 .key.black.play{
   background:rgb(113, 113, 113)
 }
-.key.black > h1{
-  color:#fff;
-  padding-top: 6rem
-}
+.key.black >
 .key-info{
   list-style: none;
   margin:0px;
