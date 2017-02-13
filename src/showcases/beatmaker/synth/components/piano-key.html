@@ -1,5 +1,5 @@
 <template>
-  <div class="col s1 key ${key.color===true?'white':'black'} ${isPlaying?'play z-depth-1':'z-depth-2'}" md-waves="block:true;color:blue" tabindex="0" mousedown.delegate="playKey()" mouseup.delegate="stopKey()">
+  <div class="col s1 key ${key.color===true?'white':'black'} ${isPlaying?'play z-depth-1':'z-depth-2'}" md-waves="block:true;color:blue" tabindex="0" mousedown.delegate="play()" mouseup.delegate="stop()">
     <div>
       <h1>${key.key}</h1>
     </div>

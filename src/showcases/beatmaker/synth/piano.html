@@ -96,23 +96,28 @@
                  </div>
                </form>
             </div>
+            <div class="row">
+
+              <form class="col m2">
+                <!-- <div id="delay" class="">
+                  <div style="display:inline-block;"><knob min="-40" max="40" label="EQ1" val.two-way="eq1"></knob></div>
+                  <div style="display:inline-block;"><knob min="-40" max="40" label="EQ2" val.two-way="eq2"></knob></div>
+                  <div style="display:inline-block;"><knob min="-40" max="40" label="EQ3" val.two-way="eq3"></knob></div>
+                  <div style="display:inline-block;"><knob min="-40" max="40" label="EQ4" val.two-way="eq4"></knob></div>
+                  <div style="display:inline-block;"><knob min="-40" max="40" label="EQ5" val.two-way="eq5"></knob></div>
+                </div> -->
+                <div id="filter" class="row grey lighten-3 z-depth-1 b-radius-card">
+                  <p>Filter</p>
+                  <!-- <knob min="0" max="100" label="Delay Time" val.two-way="dTime" style="display:inline-block;"></knob>
+                  <knob min="0" max="100" label="Feedback" val.two-way="dFeed" style="display:inline-block;"></knob>
+                  <knob min="0" max="100" label="Wet/Dry" val.two-way="dWet" style="display:inline-block;"></knob> -->
+                  <knob min="0" max="100" label="Attack" val.two-way="attack" style="display:inline-block;"></knob>
+                  <knob min="0" max="100" label="Release" val.two-way="release" style="display:inline-block;"></knob>
+                </div>
+              </form>
+            </div>
           </div>
-          <md-card class="grey lighten-3">
-            <div id="delay" class="">
-              <div style="display:inline-block;"><knob min="-40" max="40" label="EQ1" val.two-way="eq1"></knob></div>
-              <div style="display:inline-block;"><knob min="-40" max="40" label="EQ2" val.two-way="eq2"></knob></div>
-              <div style="display:inline-block;"><knob min="-40" max="40" label="EQ3" val.two-way="eq3"></knob></div>
-              <div style="display:inline-block;"><knob min="-40" max="40" label="EQ4" val.two-way="eq4"></knob></div>
-              <div style="display:inline-block;"><knob min="-40" max="40" label="EQ5" val.two-way="eq5"></knob></div>
-            </div>
-            <div id="filter" class="">
-              <knob min="0" max="100" label="Delay Time" val.two-way="dTime" style="display:inline-block;"></knob>
-              <knob min="0" max="100" label="Feedback" val.two-way="dFeed" style="display:inline-block;"></knob>
-              <knob min="0" max="100" label="Wet/Dry" val.two-way="dWet" style="display:inline-block;"></knob>
-              <knob min="0" max="100" label="Attack" val.two-way="attack" style="display:inline-block;"></knob>
-              <knob min="0" max="100" label="Release" val.two-way="release" style="display:inline-block;"></knob>
-            </div>
-          </md-card>
+
           <div class="row" style="margin-bottom:0;">
             <div class="col s12" id='right' style="padding:0;height:90%">
               <div class="col s1" style="padding:0;margin-right: 0px;">
@@ -128,7 +133,7 @@
                   <input type="range" style="">
                 </div>
               </div>
-              <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of notes" num.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
+              <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of notes" index.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
             </div>
           </div>
         </div>
