@@ -5,7 +5,7 @@
   <div class="navbar-fixed">
     <md-navbar>
       <a href="#/samples/navbar" class="brand-logo"><span>Justin Stoner</span></a>
-      <ul class="hide-on-med-and-down right">
+      <ul class="right">
         <li md-waves repeat.for="row of router.navigation" class="${row.isActive?'active':''}"><a href="${row.href}">${row.title}</a></li>
       </ul>
     </md-navbar>
