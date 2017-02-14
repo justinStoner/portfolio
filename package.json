@@ -19,7 +19,8 @@
     "jquery-knob": "^1.2.11",
     "materialize-css": "git+https://github.com/Dogfalo/materialize.git",
     "requirejs": "^2.3.2",
-    "text": "github:requirejs/text#latest"
+    "text": "github:requirejs/text#latest",
+    "whatwg-fetch": "^2.0.2"
   },
   "peerDependencies": {},
   "devDependencies": {

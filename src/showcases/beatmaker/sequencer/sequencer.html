@@ -4,7 +4,7 @@
   <section class="au-animate col m12 l5">
 
     <div class="card" id="sequencer">
-      <sound-wave ab.bind='ab' canvas-id.bind='canvas' style=""></sound-wave>
+      <sound-wave ab.bind='ab' canvas-id='sequencer' style=""></sound-wave>
       <div class="card-content">
         <a class="waves-effect waves-${!muted?'blue':'red'} btn-flat center-align" style="margin-bottom:20px;padding:0;" click.delegate='handlePlay()'>
           <template if.bind='!playing'>

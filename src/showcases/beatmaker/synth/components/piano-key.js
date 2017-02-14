@@ -16,10 +16,11 @@ export class PianoKeyCustomElement{
 
    }
    play(){
-     this.ea.publish('play-note', {index:this.index});
+     console.log(this.index);
+     this.ea.publish('play-key', {index:this.index});
    }
    stop(){
-     this.ea.publish('stop-note', {index:this.index});
+     this.ea.publish('stop-key', {index:this.index});
    }
 
 }

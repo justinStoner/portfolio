@@ -17,6 +17,7 @@ nav .brand-logo,
 .b-radius-card{
   border-radius: 0 0 2px 2px;
 }
+
 .showcase-tabs{
    border-bottom: 1px solid rgba(160,160,160,0.2);
   .indicator{
@@ -29,5 +30,12 @@ nav .brand-logo,
     a{
       color:#343434 !important;
     }
+  }
+}
+@media only screen and (max-width: 992px){
+  nav .brand-logo {
+      left: initial !important;
+      -webkit-transform: none !important;
+      transform: none !important;
   }
 }

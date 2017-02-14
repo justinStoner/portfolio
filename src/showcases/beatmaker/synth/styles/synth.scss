@@ -4,13 +4,8 @@ section{
 .key{
   box-sizing: border-box;
   width:7.9%;
-  border-radius: 0px 0px 5px 5px;
   display:inline-block;
-  font-size:12px;
-  transition: box-shadow .25s;
-  margin-right: 0px;
-  outline: none;
-  padding:0;
+  padding:0 !important;overflow: visible;
 }
 .key{
   h1{
@@ -19,12 +14,18 @@ section{
     font-size: 2.2rem;
   }
   div{
-    padding: 0 2px;
+    margin: 0 0.25rem;
+    height: 100%;
+    border-radius: 0px 0px 5px 5px;
+
+    font-size:12px;
+    transition: box-shadow .25s;
+
   }
 }
 
 .key.white{
-  background-color: #fff;
+
   height: 220px;
   /*float:left;*/
   position: relative;
@@ -32,32 +33,46 @@ section{
    color:#000;
    padding-top: 11rem;
  }
+ div{
+   background-color: #fff;
+ }
 }
 .key.white.play{
   div{
     background: rgb(221, 221, 221)
   }
 }
-.key.black{
-  background-color: #000;
+.key.black-key{
+
   height:148px;
   position: absolute;
-  /*top:0;*/
   z-index: 2;
-  margin-left: -4%;
+  text-align: center;
+  background: transparent !important;
+  margin-left: 3.5% !important;
+  padding: 0 4px !important;
+  div{
+      display: inline-block;
+      margin: 0 0.25rem;
+      outline: none;
+      background-color: #000;
+      width: 100%;
+
+    }
   h1{
     color:#fff;
     padding-top: 6rem
   }
 
+
 }
 .dial{
   // padding-right: 2px !important;
 }
-.key.black.play{
+.key.black-key.play{
   background:rgb(113, 113, 113)
 }
-.key.black >
+.key.black-key >
 .key-info{
   list-style: none;
   margin:0px;
@@ -88,4 +103,9 @@ form.col.m2{
 }
 form.col.m4:last-child{
   padding-right: 0;
+}
+@media only screen and (max-width: 600px){
+  form.col.m4{
+    padding: 0;
+  }
 }

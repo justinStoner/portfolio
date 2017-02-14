@@ -11,10 +11,10 @@ export class SoundWave{
 
     this.ea.subscribe('resize', ()=>{
       if(this.background){
-        this.canvas.width=$('.page-host').width();
-        this.canvas.height=$('.page-host').height();
+        this.canvas.width=$(`#${this.canvasId}`).width();
+        this.canvas.height=$(`#${this.canvasId}`).height();
       }else{
-        this.canvas.width=$('#'+this.canvasId).width();
+        this.canvas.width=$(`#${this.canvasId}`).width();
       }
     });
   }
@@ -31,10 +31,10 @@ export class SoundWave{
     this.canvasCtx = this.canvas.getContext('2d');
 
     if(this.background){
-      this.canvas.width=$('.page-host').width();
-      this.canvas.height=$('.page-host').height();
+      this.canvas.width=$(`#${this.canvasId}`).width();
+      this.canvas.height=$(`#${this.canvasId}`).height();
     }else{
-      this.canvas.width=$('#'+this.canvasId).width();
+      this.canvas.width=$(`#${this.canvasId}`).width();
     }
     this.draw();
   }

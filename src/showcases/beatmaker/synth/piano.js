@@ -75,6 +75,7 @@ export class Piano{
     window.addEventListener('keyup', this.stop.bind(this));
 
     this.ea.subscribe('play-key', msg=>{
+      console.log(msg);
       this.playKey(msg.index);
     });
 
