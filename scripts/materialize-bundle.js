@@ -10219,6 +10219,7290 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
+define('aurelia-materialize-bridge/index',['exports', './exports', './config-builder', './scrollfire/scrollfire-patch', './common/polyfills'], function (exports, _exports, _configBuilder, _scrollfirePatch, _polyfills) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.configure = configure;
+  Object.keys(_exports).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _exports[key];
+      }
+    });
+  });
+
+
+  function applyPolyfills() {
+    (0, _polyfills.polyfillElementClosest)();
+  }
+
+  function configure(aurelia, configCallback) {
+    applyPolyfills();
+    var builder = new _configBuilder.ConfigBuilder();
+
+    if (configCallback !== undefined && typeof configCallback === 'function') {
+      configCallback(builder);
+    }
+
+    if (builder.useGlobalResources) {
+      aurelia.globalResources(builder.globalResources);
+    }
+    if (builder.useScrollfirePatch) {
+      new _scrollfirePatch.ScrollfirePatch().patch();
+    }
+  }
+});;define('aurelia-materialize-bridge', ['aurelia-materialize-bridge/index'], function (main) { return main; });
+
+define('aurelia-materialize-bridge/exports',['exports', './autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './dropdown/dropdown-fix', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (exports, _autocomplete, _badge, _box, _breadcrumbs, _instructionFilter, _button, _card, _carouselItem, _carousel, _charCounter, _checkbox, _chip, _chips, _collapsible, _collectionHeader, _collectionItem, _collection, _mdCollectionSelector, _colorValueConverters, _mdColors, _attributeManager, _attributes, _constants, _events, _datepickerDefaultParser, _datepicker, _dropdownElement, _dropdown, _dropdownFix, _fab, _file, _footer, _inputPrefix, _inputUpdateService, _input, _modal, _modalTrigger, _navbar, _pagination, _parallax, _progress, _pushpin, _radio, _range, _scrollfirePatch, _scrollfireTarget, _scrollfire, _scrollspy, _select, _sidenavCollapse, _sidenav, _slider, _switch, _tabs, _toastService, _tooltip, _fadeinImage, _staggeredList, _validationRenderer, _waves) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  Object.keys(_autocomplete).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _autocomplete[key];
+      }
+    });
+  });
+  Object.keys(_badge).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _badge[key];
+      }
+    });
+  });
+  Object.keys(_box).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _box[key];
+      }
+    });
+  });
+  Object.keys(_breadcrumbs).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _breadcrumbs[key];
+      }
+    });
+  });
+  Object.keys(_instructionFilter).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _instructionFilter[key];
+      }
+    });
+  });
+  Object.keys(_button).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _button[key];
+      }
+    });
+  });
+  Object.keys(_card).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _card[key];
+      }
+    });
+  });
+  Object.keys(_carouselItem).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _carouselItem[key];
+      }
+    });
+  });
+  Object.keys(_carousel).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _carousel[key];
+      }
+    });
+  });
+  Object.keys(_charCounter).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _charCounter[key];
+      }
+    });
+  });
+  Object.keys(_checkbox).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _checkbox[key];
+      }
+    });
+  });
+  Object.keys(_chip).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _chip[key];
+      }
+    });
+  });
+  Object.keys(_chips).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _chips[key];
+      }
+    });
+  });
+  Object.keys(_collapsible).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _collapsible[key];
+      }
+    });
+  });
+  Object.keys(_collectionHeader).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _collectionHeader[key];
+      }
+    });
+  });
+  Object.keys(_collectionItem).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _collectionItem[key];
+      }
+    });
+  });
+  Object.keys(_collection).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _collection[key];
+      }
+    });
+  });
+  Object.keys(_mdCollectionSelector).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _mdCollectionSelector[key];
+      }
+    });
+  });
+  Object.keys(_colorValueConverters).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _colorValueConverters[key];
+      }
+    });
+  });
+  Object.keys(_mdColors).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _mdColors[key];
+      }
+    });
+  });
+  Object.keys(_attributeManager).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _attributeManager[key];
+      }
+    });
+  });
+  Object.keys(_attributes).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _attributes[key];
+      }
+    });
+  });
+  Object.keys(_constants).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _constants[key];
+      }
+    });
+  });
+  Object.keys(_events).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _events[key];
+      }
+    });
+  });
+  Object.keys(_datepickerDefaultParser).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _datepickerDefaultParser[key];
+      }
+    });
+  });
+  Object.keys(_datepicker).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _datepicker[key];
+      }
+    });
+  });
+  Object.keys(_dropdownElement).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _dropdownElement[key];
+      }
+    });
+  });
+  Object.keys(_dropdown).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _dropdown[key];
+      }
+    });
+  });
+  Object.keys(_dropdownFix).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _dropdownFix[key];
+      }
+    });
+  });
+  Object.keys(_fab).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _fab[key];
+      }
+    });
+  });
+  Object.keys(_file).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _file[key];
+      }
+    });
+  });
+  Object.keys(_footer).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _footer[key];
+      }
+    });
+  });
+  Object.keys(_inputPrefix).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _inputPrefix[key];
+      }
+    });
+  });
+  Object.keys(_inputUpdateService).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _inputUpdateService[key];
+      }
+    });
+  });
+  Object.keys(_input).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _input[key];
+      }
+    });
+  });
+  Object.keys(_modal).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _modal[key];
+      }
+    });
+  });
+  Object.keys(_modalTrigger).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _modalTrigger[key];
+      }
+    });
+  });
+  Object.keys(_navbar).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _navbar[key];
+      }
+    });
+  });
+  Object.keys(_pagination).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _pagination[key];
+      }
+    });
+  });
+  Object.keys(_parallax).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _parallax[key];
+      }
+    });
+  });
+  Object.keys(_progress).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _progress[key];
+      }
+    });
+  });
+  Object.keys(_pushpin).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _pushpin[key];
+      }
+    });
+  });
+  Object.keys(_radio).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _radio[key];
+      }
+    });
+  });
+  Object.keys(_range).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _range[key];
+      }
+    });
+  });
+  Object.keys(_scrollfirePatch).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _scrollfirePatch[key];
+      }
+    });
+  });
+  Object.keys(_scrollfireTarget).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _scrollfireTarget[key];
+      }
+    });
+  });
+  Object.keys(_scrollfire).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _scrollfire[key];
+      }
+    });
+  });
+  Object.keys(_scrollspy).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _scrollspy[key];
+      }
+    });
+  });
+  Object.keys(_select).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _select[key];
+      }
+    });
+  });
+  Object.keys(_sidenavCollapse).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _sidenavCollapse[key];
+      }
+    });
+  });
+  Object.keys(_sidenav).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _sidenav[key];
+      }
+    });
+  });
+  Object.keys(_slider).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _slider[key];
+      }
+    });
+  });
+  Object.keys(_switch).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _switch[key];
+      }
+    });
+  });
+  Object.keys(_tabs).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _tabs[key];
+      }
+    });
+  });
+  Object.keys(_toastService).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _toastService[key];
+      }
+    });
+  });
+  Object.keys(_tooltip).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _tooltip[key];
+      }
+    });
+  });
+  Object.keys(_fadeinImage).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _fadeinImage[key];
+      }
+    });
+  });
+  Object.keys(_staggeredList).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _staggeredList[key];
+      }
+    });
+  });
+  Object.keys(_validationRenderer).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _validationRenderer[key];
+      }
+    });
+  });
+  Object.keys(_waves).forEach(function (key) {
+    if (key === "default" || key === "__esModule") return;
+    Object.defineProperty(exports, key, {
+      enumerable: true,
+      get: function () {
+        return _waves[key];
+      }
+    });
+  });
+});
+define('aurelia-materialize-bridge/autocomplete/autocomplete',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdAutoComplete = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdAutoComplete = exports.MdAutoComplete = (_dec = (0, _aureliaTemplating.customAttribute)('md-autocomplete'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdAutoComplete(element) {
+      _classCallCheck(this, MdAutoComplete);
+
+      this.input = null;
+
+      _initDefineProp(this, 'values', _descriptor, this);
+
+      this.element = element;
+    }
+
+    MdAutoComplete.prototype.attached = function attached() {
+      if (this.element.tagName.toLowerCase() === 'input') {
+        this.input = this.element;
+      } else if (this.element.tagName.toLowerCase() === 'md-input') {
+        this.input = this.element.au.controller.viewModel.input;
+      } else {
+        throw new Error('md-autocomplete must be attached to either an input or md-input element');
+      }
+      this.refresh();
+    };
+
+    MdAutoComplete.prototype.detached = function detached() {
+      $(this.input).siblings('.autocomplete-content').off('click');
+      $(this.input).siblings('.autocomplete-content').remove();
+    };
+
+    MdAutoComplete.prototype.refresh = function refresh() {
+      var _this = this;
+
+      this.detached();
+      $(this.input).autocomplete({
+        data: this.values
+      });
+
+      $(this.input).siblings('.autocomplete-content').on('click', function () {
+        (0, _events.fireEvent)(_this.input, 'change');
+      });
+    };
+
+    MdAutoComplete.prototype.valuesChanged = function valuesChanged(newValue) {
+      this.refresh();
+    };
+
+    return MdAutoComplete;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'values', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return {};
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/common/events',['exports', './constants'], function (exports, _constants) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.fireEvent = fireEvent;
+  exports.fireMaterializeEvent = fireMaterializeEvent;
+  function fireEvent(element, name) {
+    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    var event = new CustomEvent(name, {
+      detail: data,
+      bubbles: true
+    });
+    element.dispatchEvent(event);
+
+    return event;
+  }
+
+  function fireMaterializeEvent(element, name) {
+    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+    return fireEvent(element, '' + _constants.constants.eventPrefix + name, data);
+  }
+});
+define('aurelia-materialize-bridge/common/constants',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  var constants = exports.constants = {
+    eventPrefix: 'md-on-',
+    bindablePrefix: 'md-'
+  };
+});
+define('aurelia-materialize-bridge/badge/badge',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdBadge = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+  var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)('md-badge'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdBadge(element) {
+      _classCallCheck(this, MdBadge);
+
+      _initDefineProp(this, 'isNew', _descriptor, this);
+
+      _initDefineProp(this, 'caption', _descriptor2, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdBadge.prototype.attached = function attached() {
+      var classes = ['badge'];
+
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.isNew)) {
+        classes.push('new');
+      }
+
+      if (this.caption !== null) {
+        this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
+      }
+
+      this.attributeManager.addClasses(classes);
+    };
+
+    MdBadge.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['badge', 'new']);
+      this.attributeManager.removeAttributes(['data-badge-caption']);
+    };
+
+    MdBadge.prototype.newChanged = function newChanged(newValue) {
+      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
+        this.attributeManager.addClasses('new');
+      } else {
+        this.attributeManager.removeClasses('new');
+      }
+    };
+
+    MdBadge.prototype.captionChanged = function captionChanged(newValue) {
+      if (newValue !== null) {
+        this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
+      } else {
+        this.attributeManager.removeAttributes(['data-badge-caption']);
+      }
+    };
+
+    return MdBadge;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'isNew', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/common/attributeManager',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var AttributeManager = exports.AttributeManager = function () {
+    function AttributeManager(element) {
+      _classCallCheck(this, AttributeManager);
+
+      this._colorClasses = ['accent', 'primary'];
+      this.addedClasses = [];
+      this.addedAttributes = {};
+
+      this.element = element;
+    }
+
+    AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
+      var _this = this;
+
+      var keys = Object.keys(attrs);
+      keys.forEach(function (k) {
+        if (!_this.element.getAttribute(k)) {
+          _this.addedAttributes[k] = attrs[k];
+          _this.element.setAttribute(k, attrs[k]);
+        } else if (_this.element.getAttribute(k) !== attrs[k]) {
+          _this.element.setAttribute(k, attrs[k]);
+        }
+      });
+    };
+
+    AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
+      var _this2 = this;
+
+      if (typeof attrs === 'string') {
+        attrs = [attrs];
+      }
+      attrs.forEach(function (a) {
+        if (_this2.element.getAttribute(a) && !!_this2.addedAttributes[a]) {
+          _this2.element.removeAttribute(a);
+          _this2.addedAttributes[a] = null;
+          delete _this2.addedAttributes[a];
+        }
+      });
+    };
+
+    AttributeManager.prototype.addClasses = function addClasses(classes) {
+      var _this3 = this;
+
+      if (typeof classes === 'string') {
+        classes = [classes];
+      }
+      classes.forEach(function (c) {
+        var classListHasColor = _this3._colorClasses.filter(function (cc) {
+          return _this3.element.classList.contains(cc);
+        }).length > 0;
+        if (_this3._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
+          if (!_this3.element.classList.contains(c)) {
+            _this3.addedClasses.push(c);
+            _this3.element.classList.add(c);
+          }
+        }
+      });
+    };
+
+    AttributeManager.prototype.removeClasses = function removeClasses(classes) {
+      var _this4 = this;
+
+      if (typeof classes === 'string') {
+        classes = [classes];
+      }
+      classes.forEach(function (c) {
+        if (_this4.element.classList.contains(c) && _this4.addedClasses.indexOf(c) > -1) {
+          _this4.element.classList.remove(c);
+          _this4.addedClasses.splice(_this4.addedClasses.indexOf(c), 1);
+        }
+      });
+    };
+
+    return AttributeManager;
+  }();
+});
+define('aurelia-materialize-bridge/common/attributes',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
+  function getBooleanFromAttributeValue(value) {
+    return value === true || value === 'true';
+  }
+});
+define('aurelia-materialize-bridge/box/box',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdBox = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdBox = exports.MdBox = (_dec = (0, _aureliaTemplating.customAttribute)('md-box'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdBox(element) {
+      _classCallCheck(this, MdBox);
+
+      _initDefineProp(this, 'caption', _descriptor, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdBox.prototype.attached = function attached() {
+      this.attributeManager.addClasses('materialboxed');
+      if (this.caption) {
+        this.attributeManager.addAttributes({ 'data-caption': this.caption });
+      }
+
+      $(this.element).materialbox();
+    };
+
+    MdBox.prototype.detached = function detached() {
+      this.attributeManager.removeAttributes('data-caption');
+      this.attributeManager.removeClasses('materialboxed');
+    };
+
+    return MdBox;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/breadcrumbs/breadcrumbs',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaRouter) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdBreadcrumbs = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdBreadcrumbs = exports.MdBreadcrumbs = (_dec = (0, _aureliaTemplating.customElement)('md-breadcrumbs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaRouter.Router), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdBreadcrumbs(element, router) {
+      _classCallCheck(this, MdBreadcrumbs);
+
+      _initDefineProp(this, 'router', _descriptor, this);
+
+      this.element = element;
+      this.aureliaRouter = router;
+    }
+
+    MdBreadcrumbs.prototype.bind = function bind() {
+      if (!this.router) {
+        this.router = this.aureliaRouter;
+      }
+      var router = this.router;
+      this._childRouter = router;
+      while (router.parent) {
+        router = router.parent;
+      }
+      this.router = router;
+    };
+
+    MdBreadcrumbs.prototype.routerChanged = function routerChanged() {};
+
+    MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
+      this._childRouter.navigateToRoute(navigationInstruction.config.name);
+    };
+
+    return MdBreadcrumbs;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'router', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/breadcrumbs/instructionFilter',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var InstructionFilterValueConverter = exports.InstructionFilterValueConverter = function () {
+    function InstructionFilterValueConverter() {
+      _classCallCheck(this, InstructionFilterValueConverter);
+    }
+
+    InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
+      return navigationInstructions.filter(function (i) {
+        var result = false;
+        if (i.config.title) {
+          result = true;
+        }
+        return result;
+      });
+    };
+
+    return InstructionFilterValueConverter;
+  }();
+});
+define('aurelia-materialize-bridge/button/button',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdButton = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdButton = exports.MdButton = (_dec = (0, _aureliaTemplating.customAttribute)('md-button'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdButton(element) {
+      _classCallCheck(this, MdButton);
+
+      _initDefineProp(this, 'disabled', _descriptor, this);
+
+      _initDefineProp(this, 'flat', _descriptor2, this);
+
+      _initDefineProp(this, 'floating', _descriptor3, this);
+
+      _initDefineProp(this, 'large', _descriptor4, this);
+
+      this.attributeManager = new _attributeManager.AttributeManager(element);
+    }
+
+    MdButton.prototype.attached = function attached() {
+      var classes = [];
+
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.flat)) {
+        classes.push('btn-flat');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.floating)) {
+        classes.push('btn-floating');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.large)) {
+        classes.push('btn-large');
+      }
+
+      if (classes.length === 0) {
+        classes.push('btn');
+      }
+
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.disabled)) {
+        classes.push('disabled');
+      }
+
+      if (!(0, _attributes.getBooleanFromAttributeValue)(this.flat)) {
+        classes.push('accent');
+      }
+      this.attributeManager.addClasses(classes);
+    };
+
+    MdButton.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
+    };
+
+    MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
+      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
+        this.attributeManager.addClasses('disabled');
+      } else {
+        this.attributeManager.removeClasses('disabled');
+      }
+    };
+
+    MdButton.prototype.flatChanged = function flatChanged(newValue) {
+      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
+        this.attributeManager.removeClasses(['btn', 'accent']);
+        this.attributeManager.addClasses('btn-flat');
+      } else {
+        this.attributeManager.removeClasses('btn-flat');
+        this.attributeManager.addClasses(['btn', 'accent']);
+      }
+    };
+
+    return MdButton;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'flat', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'floating', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'large', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/card/card',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaBinding, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCard = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+  var MdCard = exports.MdCard = (_dec = (0, _aureliaTemplating.customElement)('md-card'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdCard(element) {
+      _classCallCheck(this, MdCard);
+
+      _initDefineProp(this, 'mdHorizontal', _descriptor, this);
+
+      _initDefineProp(this, 'mdImage', _descriptor2, this);
+
+      _initDefineProp(this, 'mdReveal', _descriptor3, this);
+
+      _initDefineProp(this, 'mdSize', _descriptor4, this);
+
+      _initDefineProp(this, 'mdTitle', _descriptor5, this);
+
+      this.element = element;
+    }
+
+    MdCard.prototype.attached = function attached() {
+      this.mdHorizontal = (0, _attributes.getBooleanFromAttributeValue)(this.mdHorizontal);
+      this.mdReveal = (0, _attributes.getBooleanFromAttributeValue)(this.mdReveal);
+    };
+
+    return MdCard;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHorizontal', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdReveal', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec7], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/carousel/carousel-item',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCarouselItem = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+  var MdCarouselItem = exports.MdCarouselItem = (_dec = (0, _aureliaTemplating.customElement)('md-carousel-item'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdCarouselItem(element) {
+      _classCallCheck(this, MdCarouselItem);
+
+      _initDefineProp(this, 'mdHref', _descriptor, this);
+
+      _initDefineProp(this, 'mdImage', _descriptor2, this);
+
+      this.element = element;
+    }
+
+    MdCarouselItem.prototype.attached = function attached() {};
+
+    return MdCarouselItem;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHref', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/carousel/carousel',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCarousel = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+  var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.children)('md-carousel-item'), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdCarousel(element, taskQueue) {
+      _classCallCheck(this, MdCarousel);
+
+      _initDefineProp(this, 'mdIndicators', _descriptor, this);
+
+      _initDefineProp(this, 'mdSlider', _descriptor2, this);
+
+      _initDefineProp(this, 'items', _descriptor3, this);
+
+      this.element = element;
+      this.taskQueue = taskQueue;
+    }
+
+    MdCarousel.prototype.attached = function attached() {
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdSlider)) {
+        this.element.classList.add('carousel-slider');
+      }
+
+      this.refresh();
+    };
+
+    MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
+      this.refresh();
+    };
+
+    MdCarousel.prototype.refresh = function refresh() {
+      var _this = this;
+
+      if (this.items.length > 0) {
+        (function () {
+          var options = {
+            full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
+            fullWidth: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
+            indicators: _this.mdIndicators
+          };
+
+          _this.taskQueue.queueTask(function () {
+            $(_this.element).carousel(options);
+          });
+        })();
+      }
+    };
+
+    return MdCarousel;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'items', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/char-counter/char-counter',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCharCounter = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdCharCounter = exports.MdCharCounter = (_dec = (0, _aureliaTemplating.customAttribute)('md-char-counter'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdCharCounter(element) {
+      _classCallCheck(this, MdCharCounter);
+
+      _initDefineProp(this, 'length', _descriptor, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdCharCounter.prototype.attached = function attached() {
+      var _this = this;
+
+      this.length = parseInt(this.length, 10);
+
+      if (this.element.tagName.toUpperCase() === 'INPUT') {
+        this.attributeManager.addAttributes({ 'length': this.length });
+        $(this.element).characterCounter();
+      } else {
+        $(this.element).find('input').each(function (i, el) {
+          $(el).attr('length', _this.length);
+        });
+        $(this.element).find('input').characterCounter();
+      }
+    };
+
+    MdCharCounter.prototype.detached = function detached() {
+      this.attributeManager.removeAttributes(['length']);
+    };
+
+    return MdCharCounter;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'length', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 120;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/checkbox/checkbox',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCheckbox = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _class3, _temp;
+
+  var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customElement)('md-checkbox'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdCheckbox(element) {
+      _classCallCheck(this, MdCheckbox);
+
+      _initDefineProp(this, 'mdChecked', _descriptor, this);
+
+      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
+
+      _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
+
+      _initDefineProp(this, 'mdMatcher', _descriptor4, this);
+
+      _initDefineProp(this, 'mdModel', _descriptor5, this);
+
+      this.element = element;
+      this.controlId = 'md-checkbox-' + MdCheckbox.id++;
+    }
+
+    MdCheckbox.prototype.attached = function attached() {
+      this.attributeManager = new _attributeManager.AttributeManager(this.checkbox);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFilledIn)) {
+        this.attributeManager.addClasses('filled-in');
+      }
+      if (this.mdChecked === null) {
+        this.checkbox.indeterminate = true;
+      } else {
+        this.checkbox.indeterminate = false;
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
+        this.checkbox.disabled = true;
+      }
+    };
+
+    MdCheckbox.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['filled-in', 'disabled']);
+    };
+
+    MdCheckbox.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+      if (this.checkbox) {
+        this.checkbox.disabled = !!newValue;
+      }
+    };
+
+    return MdCheckbox;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdMatcher', [_dec6], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec7], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/chip/chip',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdChip = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdChip = exports.MdChip = (_dec = (0, _aureliaTemplating.customElement)('md-chip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdChip(element) {
+      _classCallCheck(this, MdChip);
+
+      _initDefineProp(this, 'mdClose', _descriptor, this);
+
+      this.element = element;
+    }
+
+    MdChip.prototype.attached = function attached() {
+      this.mdClose = (0, _attributes.getBooleanFromAttributeValue)(this.mdClose);
+    };
+
+    MdChip.prototype.close = function close() {
+      this.element.parentElement.removeChild(this.element);
+    };
+
+    return MdChip;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdClose', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/chip/chips',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdChips = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)('md-chips'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdChips(element) {
+      _classCallCheck(this, MdChips);
+
+      _initDefineProp(this, 'autocompleteData', _descriptor, this);
+
+      _initDefineProp(this, 'data', _descriptor2, this);
+
+      _initDefineProp(this, 'placeholder', _descriptor3, this);
+
+      _initDefineProp(this, 'secondaryPlaceholder', _descriptor4, this);
+
+      this.element = element;
+      this.log = (0, _aureliaLogging.getLogger)('md-chips');
+
+      this.onChipAdd = this.onChipAdd.bind(this);
+      this.onChipDelete = this.onChipDelete.bind(this);
+      this.onChipSelect = this.onChipSelect.bind(this);
+    }
+
+    MdChips.prototype.attached = function attached() {
+      var options = {
+        autocompleteData: this.autocompleteData,
+        data: this.data,
+        placeholder: this.placeholder,
+        secondaryPlaceholder: this.secondaryPlaceholder
+      };
+      $(this.element).material_chip(options);
+      $(this.element).on('chip.add', this.onChipAdd);
+      $(this.element).on('chip.delete', this.onChipDelete);
+      $(this.element).on('chip.select', this.onChipSelect);
+    };
+
+    MdChips.prototype.detached = function detached() {};
+
+    MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
+      this.data = $(this.element).material_chip('data');
+      (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: this.data });
+    };
+
+    MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
+      this.data = $(this.element).material_chip('data');
+      (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
+    };
+
+    MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
+      (0, _events.fireEvent)(this.element, 'selected', { target: chip });
+    };
+
+    return MdChips;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteData', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return {};
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/collapsible/collapsible',['exports', 'aurelia-event-aggregator', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaEventAggregator, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollapsible = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
+
+  var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
+    function MdCollapsible(element, eventAggregator) {
+      _classCallCheck(this, MdCollapsible);
+
+      this.element = element;
+      this.eventAggregator = eventAggregator;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdCollapsible.prototype.attached = function attached() {
+      this.attributeManager.addClasses('collapsible');
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.popout)) {
+        this.attributeManager.addClasses('popout');
+      }
+      this.refresh();
+    };
+
+    MdCollapsible.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['collapsible', 'popout']);
+      this.attributeManager.removeAttributes(['data-collapsible']);
+    };
+
+    MdCollapsible.prototype.refresh = function refresh() {
+      var accordion = (0, _attributes.getBooleanFromAttributeValue)(this.accordion);
+      var dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
+
+      this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
+
+      $(this.element).collapsible({
+        accordion: accordion,
+        onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
+        onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
+      });
+    };
+
+    MdCollapsible.prototype.accordionChanged = function accordionChanged() {
+      this.refresh();
+    };
+
+    MdCollapsible.prototype.buildCollapsibleOpenCloseCallbackHandler = function buildCollapsibleOpenCloseCallbackHandler(handler) {
+      return typeof handler === 'function' ? function (targetElementJquery) {
+        var targetElement = targetElementJquery[0];
+
+        handler(targetElement);
+      } : null;
+    };
+
+    return MdCollapsible;
+  }()) || _class) || _class) || _class) || _class) || _class) || _class);
+});
+define('aurelia-materialize-bridge/collection/collection-header',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollectionHeader = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdCollectionHeader = exports.MdCollectionHeader = (_dec = (0, _aureliaTemplating.customElement)('md-collection-header'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function MdCollectionHeader(element) {
+    _classCallCheck(this, MdCollectionHeader);
+
+    this.element = element;
+  }) || _class) || _class);
+});
+define('aurelia-materialize-bridge/collection/collection-item',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollectionItem = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var MdCollectionItem = exports.MdCollectionItem = (_dec = (0, _aureliaTemplating.customElement)('md-collection-item'), _dec(_class = function MdCollectionItem() {
+    _classCallCheck(this, MdCollectionItem);
+  }) || _class);
+});
+define('aurelia-materialize-bridge/collection/collection',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdCollection = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdCollection = exports.MdCollection = (_dec = (0, _aureliaTemplating.customElement)('md-collection'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdCollection(element) {
+      _classCallCheck(this, MdCollection);
+
+      this.element = element;
+    }
+
+    MdCollection.prototype.attached = function attached() {
+      var header = this.element.querySelector('md-collection-header');
+      if (header) {
+        this.anchor.classList.add('with-header');
+      }
+    };
+
+    MdCollection.prototype.getSelected = function getSelected() {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      return items.filter(function (i) {
+        return i.au['md-collection-selector'].viewModel.isSelected;
+      }).map(function (i) {
+        return i.au['md-collection-selector'].viewModel.item;
+      });
+    };
+
+    MdCollection.prototype.clearSelection = function clearSelection() {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      items.forEach(function (i) {
+        return i.au['md-collection-selector'].viewModel.isSelected = false;
+      });
+    };
+
+    MdCollection.prototype.selectAll = function selectAll() {
+      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
+      items.forEach(function (i) {
+        var vm = i.au['md-collection-selector'].viewModel;
+        vm.isSelected = !vm.mdDisabled;
+      });
+    };
+
+    return MdCollection;
+  }()) || _class) || _class);
+});
+define('aurelia-materialize-bridge/collection/md-collection-selector',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaBinding, _events, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdlListSelector = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+  var MdlListSelector = exports.MdlListSelector = (_dec = (0, _aureliaTemplating.customElement)('md-collection-selector'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaBinding.observable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdlListSelector(element) {
+      _classCallCheck(this, MdlListSelector);
+
+      _initDefineProp(this, 'item', _descriptor, this);
+
+      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
+
+      _initDefineProp(this, 'isSelected', _descriptor3, this);
+
+      this.element = element;
+    }
+
+    MdlListSelector.prototype.isSelectedChanged = function isSelectedChanged(newValue) {
+      (0, _events.fireMaterializeEvent)(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
+    };
+
+    MdlListSelector.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+      this.mdDisabled = (0, _attributes.getBooleanFromAttributeValue)(newValue);
+    };
+
+    return MdlListSelector;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'item', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'isSelected', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/colors/colorValueConverters',["exports"], function (exports) {
+    "use strict";
+
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+
+    function _classCallCheck(instance, Constructor) {
+        if (!(instance instanceof Constructor)) {
+            throw new TypeError("Cannot call a class as a function");
+        }
+    }
+
+    function shadeBlendConvert(p, from, to) {
+        if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
+        var sbcRip = function sbcRip(d) {
+            var l = d.length,
+                RGB = new Object();
+            if (l > 9) {
+                d = d.split(",");
+                if (d.length < 3 || d.length > 4) return null;
+                RGB[0] = i(d[0].slice(4)), RGB[1] = i(d[1]), RGB[2] = i(d[2]), RGB[3] = d[3] ? parseFloat(d[3]) : -1;
+            } else {
+                switch (l) {case 8:case 6:case 3:case 2:case 1:
+                        return null;}
+                if (l < 6) d = "#" + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (l > 4 ? d[4] + "" + d[4] : "");
+                d = i(d.slice(1), 16), RGB[0] = d >> 16 & 255, RGB[1] = d >> 8 & 255, RGB[2] = d & 255, RGB[3] = l == 9 || l == 5 ? r((d >> 24 & 255) / 255 * 10000) / 10000 : -1;
+            }
+            return RGB;
+        };
+        var i = parseInt,
+            r = Math.round,
+            h = from.length > 9,
+            h = typeof to == "string" ? to.length > 9 ? true : to == "c" ? !h : false : h,
+            b = p < 0,
+            p = b ? p * -1 : p,
+            to = to && to != "c" ? to : b ? "#000000" : "#FFFFFF",
+            f = sbcRip(from),
+            t = sbcRip(to);
+        if (!f || !t) return null;
+        if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
+    }
+
+    var DarkenValueConverter = exports.DarkenValueConverter = function () {
+        function DarkenValueConverter() {
+            _classCallCheck(this, DarkenValueConverter);
+        }
+
+        DarkenValueConverter.prototype.toView = function toView(value, steps) {
+            return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
+        };
+
+        return DarkenValueConverter;
+    }();
+
+    var LightenValueConverter = exports.LightenValueConverter = function () {
+        function LightenValueConverter() {
+            _classCallCheck(this, LightenValueConverter);
+        }
+
+        LightenValueConverter.prototype.toView = function toView(value, steps) {
+            return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
+        };
+
+        return LightenValueConverter;
+    }();
+});
+define('aurelia-materialize-bridge/colors/md-colors',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdColors = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdColors = exports.MdColors = (_dec = (0, _aureliaTemplating.bindable)(), _dec2 = (0, _aureliaTemplating.bindable)(), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), (_class = function MdColors() {
+    _classCallCheck(this, MdColors);
+
+    _initDefineProp(this, 'mdPrimaryColor', _descriptor, this);
+
+    _initDefineProp(this, 'mdAccentColor', _descriptor2, this);
+
+    _initDefineProp(this, 'mdErrorColor', _descriptor3, this);
+
+    _initDefineProp(this, 'mdSuccessColor', _descriptor4, this);
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'mdPrimaryColor', [_dec], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'mdAccentColor', [_dec2], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'mdErrorColor', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '#F44336';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'mdSuccessColor', [_dec4], {
+    enumerable: true,
+    initializer: null
+  })), _class));
+});
+define('aurelia-materialize-bridge/datepicker/datepicker-default-parser',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var DatePickerDefaultParser = exports.DatePickerDefaultParser = function () {
+    function DatePickerDefaultParser() {
+      _classCallCheck(this, DatePickerDefaultParser);
+    }
+
+    DatePickerDefaultParser.prototype.canParse = function canParse(value) {
+      if (value) {
+        return true;
+      }
+      return false;
+    };
+
+    DatePickerDefaultParser.prototype.parse = function parse(value) {
+      if (value) {
+        var result = value.split('/').join('-');
+        result = new Date(result);
+        return isNaN(result) ? null : result;
+      }
+      return null;
+    };
+
+    return DatePickerDefaultParser;
+  }();
+});
+define('aurelia-materialize-bridge/datepicker/datepicker',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging, _attributes, _datepickerDefaultParser, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdDatePicker = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
+
+  var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _datepickerDefaultParser.DatePickerDefaultParser), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec6 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec9 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec10 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdDatePicker(element, taskQueue, defaultParser) {
+      _classCallCheck(this, MdDatePicker);
+
+      _initDefineProp(this, 'container', _descriptor, this);
+
+      _initDefineProp(this, 'translation', _descriptor2, this);
+
+      _initDefineProp(this, 'value', _descriptor3, this);
+
+      _initDefineProp(this, 'parsers', _descriptor4, this);
+
+      _initDefineProp(this, 'selectMonths', _descriptor5, this);
+
+      _initDefineProp(this, 'selectYears', _descriptor6, this);
+
+      _initDefineProp(this, 'options', _descriptor7, this);
+
+      _initDefineProp(this, 'showErrortext', _descriptor8, this);
+
+      this.element = element;
+      this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
+      this.taskQueue = taskQueue;
+      this.parsers.push(defaultParser);
+    }
+
+    MdDatePicker.prototype.bind = function bind() {
+      var _this = this;
+
+      this.selectMonths = (0, _attributes.getBooleanFromAttributeValue)(this.selectMonths);
+      this.selectYears = parseInt(this.selectYears, 10);
+      this.element.classList.add('date-picker');
+
+      var options = {
+        selectMonths: this.selectMonths,
+        selectYears: this.selectYears,
+        onClose: function onClose() {
+          $(document.activeElement).blur();
+        }
+      };
+      var i18n = {};
+
+      Object.assign(options, i18n);
+
+      if (this.options) {
+        Object.assign(options, this.options);
+
+        if (this.options.onClose) {
+          options.onClose = function () {
+            this.options.onClose();
+            $(document.activeElement).blur();
+          };
+        }
+      }
+      if (this.container) {
+        options.container = this.container;
+      }
+      this.picker = $(this.element).pickadate(options).pickadate('picker');
+      this.picker.on({
+        'close': this.onClose.bind(this),
+        'set': this.onSet.bind(this)
+      });
+
+      if (this.value) {
+        this.picker.set('select', this.value);
+      }
+      if (this.options && this.options.editable) {
+        $(this.element).on('keydown', function (e) {
+          if (e.keyCode === 13 || e.keyCode === 9) {
+            if (_this.parseDate($(_this.element).val())) {
+              _this.closeDatePicker();
+            } else {
+              _this.openDatePicker();
+            }
+          } else {
+            _this.value = null;
+          }
+        });
+      } else {
+        $(this.element).on('focusin', function () {
+          _this.openDatePicker();
+        });
+      }
+      if (this.options.showIcon) {
+        this.element.classList.add('left');
+        var calendarIcon = document.createElement('i');
+        calendarIcon.classList.add('right');
+        calendarIcon.classList.add('material-icons');
+        calendarIcon.textContent = 'today';
+        this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
+        $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
+
+        options.iconClass = options.iconClass || 'std-icon-fixup';
+        calendarIcon.classList.add(options.iconClass);
+      }
+
+      this.movePickerCloserToSrc();
+      this.setErrorTextAttribute();
+    };
+
+    MdDatePicker.prototype.parseDate = function parseDate(value) {
+      if (this.parsers && this.parsers.length && this.parsers.length > 0) {
+        for (var _iterator = this.parsers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+          var _ref;
+
+          if (_isArray) {
+            if (_i >= _iterator.length) break;
+            _ref = _iterator[_i++];
+          } else {
+            _i = _iterator.next();
+            if (_i.done) break;
+            _ref = _i.value;
+          }
+
+          var parser = _ref;
+
+          if (parser.canParse(value)) {
+            var parsedDate = parser.parse(value);
+            if (parsedDate !== null) {
+              this.picker.set('select', parsedDate);
+              return true;
+            }
+          }
+        }
+      }
+      return false;
+    };
+
+    MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {
+      $(this.picker.$root).appendTo($(this.element).parent());
+    };
+
+    MdDatePicker.prototype.detached = function detached() {
+      if (this.picker) {
+        this.picker.stop();
+      }
+    };
+
+    MdDatePicker.prototype.openDatePicker = function openDatePicker() {
+      $(this.element).pickadate('open');
+    };
+
+    MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
+      $(this.element).pickadate('close');
+    };
+
+    MdDatePicker.prototype.onClose = function onClose() {
+      var selected = this.picker.get('select');
+      this.value = selected ? selected.obj : null;
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
+    MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
+      event.stopPropagation();
+      this.openDatePicker();
+    };
+
+    MdDatePicker.prototype.onSet = function onSet(value) {
+      if (this.options && this.options.closeOnSelect && value.select) {
+        this.value = value.select;
+        this.picker.close();
+      }
+    };
+
+    MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
+      if (this.options.max && newValue > this.options.max) {
+        this.value = this.options.max;
+      }
+      this.log.debug('selectedChanged', this.value);
+
+      this.picker.set('select', this.value);
+    };
+
+    MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
+      this.setErrorTextAttribute();
+    };
+
+    MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
+      var element = this.element;
+      if (!element) return;
+      this.log.debug('showErrortextChanged: ' + this.showErrortext);
+      element.setAttribute('data-show-errortext', (0, _attributes.getBooleanFromAttributeValue)(this.showErrortext));
+    };
+
+    return MdDatePicker;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'container', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'translation', [_dec4], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec5], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'parsers', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'selectMonths', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'selectYears', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 15;
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'options', [_dec9], {
+    enumerable: true,
+    initializer: function initializer() {
+      return {};
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec10], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/dropdown/dropdown-element',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdDropdownElement = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _class3, _temp;
+
+  var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplating.customElement)('md-dropdown'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec8 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec9 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec10 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdDropdownElement(element) {
+      _classCallCheck(this, MdDropdownElement);
+
+      _initDefineProp(this, 'alignment', _descriptor, this);
+
+      _initDefineProp(this, 'belowOrigin', _descriptor2, this);
+
+      _initDefineProp(this, 'constrainWidth', _descriptor3, this);
+
+      _initDefineProp(this, 'gutter', _descriptor4, this);
+
+      _initDefineProp(this, 'hover', _descriptor5, this);
+
+      _initDefineProp(this, 'mdTitle', _descriptor6, this);
+
+      _initDefineProp(this, 'inDuration', _descriptor7, this);
+
+      _initDefineProp(this, 'outDuration', _descriptor8, this);
+
+      this.element = element;
+      this.controlId = 'md-dropdown-' + MdDropdown.id++;
+    }
+
+    MdDropdownElement.prototype.attached = function attached() {
+      $(this.element).dropdown({
+        alignment: this.alignment,
+        belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
+        constrain_width: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
+        gutter: parseInt(this.gutter, 10),
+        hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
+        inDuration: parseInt(this.inDuration, 10),
+        outDuration: parseInt(this.outDuration, 10)
+      });
+    };
+
+    return MdDropdownElement;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'left';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec8], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec9], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 300;
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec10], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 225;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/dropdown/dropdown',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdDropdown = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
+
+  var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttribute)('md-dropdown'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec8 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec9 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec10 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec11 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec12 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdDropdown(element) {
+      _classCallCheck(this, MdDropdown);
+
+      _initDefineProp(this, 'activates', _descriptor, this);
+
+      _initDefineProp(this, 'ref', _descriptor2, this);
+
+      _initDefineProp(this, 'alignment', _descriptor3, this);
+
+      _initDefineProp(this, 'belowOrigin', _descriptor4, this);
+
+      _initDefineProp(this, 'constrainWidth', _descriptor5, this);
+
+      _initDefineProp(this, 'gutter', _descriptor6, this);
+
+      _initDefineProp(this, 'hover', _descriptor7, this);
+
+      _initDefineProp(this, 'mdTitle', _descriptor8, this);
+
+      _initDefineProp(this, 'inDuration', _descriptor9, this);
+
+      _initDefineProp(this, 'outDuration', _descriptor10, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdDropdown.prototype.attached = function attached() {
+      this.handleActivateElement();
+      this.contentAttributeManager = new _attributeManager.AttributeManager(document.getElementById(this.activates));
+
+      this.attributeManager.addClasses('dropdown-button');
+      this.contentAttributeManager.addClasses('dropdown-content');
+
+
+      $(this.element).dropdown({
+        alignment: this.alignment,
+        belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
+        constrain_width: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
+        constrainWidth: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
+        gutter: parseInt(this.gutter, 10),
+        hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
+        inDuration: parseInt(this.inDuration, 10),
+        outDuration: parseInt(this.outDuration, 10)
+      });
+    };
+
+    MdDropdown.prototype.detached = function detached() {
+      this.attributeManager.removeAttributes('data-activates');
+      this.attributeManager.removeClasses('dropdown-button');
+      this.contentAttributeManager.removeClasses('dropdown-content');
+    };
+
+    MdDropdown.prototype.handleActivateElement = function handleActivateElement() {
+      if (this.ref) {
+        var id = this.ref.getAttribute('id');
+        if (!id) {
+          id = 'md-dropdown-' + MdDropdown.elementId++;
+          this.ref.setAttribute('id', id);
+          this.activates = id;
+        }
+        this.id = MdDropdown.elementId++;
+      }
+      this.attributeManager.addAttributes({ 'data-activates': this.activates });
+    };
+
+    return MdDropdown;
+  }(), _class3.elementId = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'activates', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'left';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec9], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec10], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec11], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 300;
+    }
+  }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec12], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 225;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/dropdown/dropdown-fix',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.applyMaterializeDropdownFix = applyMaterializeDropdownFix;
+  function applyMaterializeDropdownFix() {
+    $.fn.dropdown = function (options) {
+      var defaults = {
+        inDuration: 300,
+        outDuration: 225,
+        constrain_width: true,
+        hover: false,
+        gutter: 0,
+        belowOrigin: false,
+        alignment: 'left',
+        stopPropagation: false
+      };
+
+      if (options === 'open') {
+        this.each(function () {
+          $(this).trigger('open');
+        });
+        return false;
+      }
+
+      if (options === 'close') {
+        this.each(function () {
+          $(this).trigger('close');
+        });
+        return false;
+      }
+
+      this.each(function () {
+        var origin = $(this);
+        var currentOptions = $.extend({}, defaults, options);
+        var isFocused = false;
+
+        var activates = $('#' + origin.attr('data-activates'));
+
+        function updateOptions() {
+          if (origin.data('induration') !== undefined) {
+            currentOptions.inDuration = origin.data('induration');
+          }
+          if (origin.data('outduration') !== undefined) {
+            currentOptions.outDuration = origin.data('outduration');
+          }
+          if (origin.data('constrainwidth') !== undefined) {
+            currentOptions.constrain_width = origin.data('constrainwidth');
+          }
+          if (origin.data('hover') !== undefined) {
+            currentOptions.hover = origin.data('hover');
+          }
+          if (origin.data('gutter') !== undefined) {
+            currentOptions.gutter = origin.data('gutter');
+          }
+          if (origin.data('beloworigin') !== undefined) {
+            currentOptions.belowOrigin = origin.data('beloworigin');
+          }
+          if (origin.data('alignment') !== undefined) {
+            currentOptions.alignment = origin.data('alignment');
+          }
+          if (origin.data('stoppropagation') !== undefined) {
+            currentOptions.stopPropagation = origin.data('stoppropagation');
+          }
+        }
+
+        updateOptions();
+
+        origin.after(activates);
+
+        function placeDropdown(eventType) {
+          if (eventType === 'focus') {
+            isFocused = true;
+          }
+
+          updateOptions();
+
+          activates.addClass('active');
+          origin.addClass('active');
+
+          if (currentOptions.constrain_width === true) {
+            activates.css('width', origin.outerWidth());
+          } else {
+            activates.css('white-space', 'nowrap');
+          }
+
+          var windowHeight = window.innerHeight;
+          var originHeight = origin.innerHeight();
+          var offsetLeft = origin.offset().left;
+          var offsetTop = origin.offset().top - $(window).scrollTop();
+          var currAlignment = currentOptions.alignment;
+          var gutterSpacing = 0;
+          var leftPosition = 0;
+
+          var verticalOffset = 0;
+          if (currentOptions.belowOrigin === true) {
+            verticalOffset = originHeight;
+          }
+
+          var scrollYOffset = 0;
+          var scrollXOffset = 0;
+          var wrapper = origin.parent();
+          if (!wrapper.is('body')) {
+            if (wrapper[0].scrollHeight > wrapper[0].clientHeight) {
+              scrollYOffset = wrapper[0].scrollTop;
+            }
+            if (wrapper[0].scrollWidth > wrapper[0].clientWidth) {
+              scrollXOffset = wrapper[0].scrollLeft;
+            }
+          }
+
+          if (offsetLeft + activates.innerWidth() > $(window).width()) {
+            currAlignment = 'right';
+          } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
+            currAlignment = 'left';
+          }
+
+          if (offsetTop + activates.innerHeight() > windowHeight) {
+            if (offsetTop + originHeight - activates.innerHeight() < 0) {
+              var adjustedHeight = windowHeight - offsetTop - verticalOffset;
+              activates.css('max-height', adjustedHeight);
+            } else {
+              if (!verticalOffset) {
+                verticalOffset += originHeight;
+              }
+              verticalOffset -= activates.innerHeight();
+            }
+          }
+
+          if (currAlignment === 'left') {
+            gutterSpacing = currentOptions.gutter;
+            leftPosition = origin.position().left + gutterSpacing;
+          } else if (currAlignment === 'right') {
+            var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
+            gutterSpacing = -currentOptions.gutter;
+            leftPosition = offsetRight + gutterSpacing;
+          }
+
+          activates.css({
+            position: 'absolute',
+            top: origin.position().top + verticalOffset + scrollYOffset,
+            left: leftPosition + scrollXOffset
+          });
+
+          activates.stop(true, true).css('opacity', 0).slideDown({
+            queue: false,
+            duration: currentOptions.inDuration,
+            easing: 'easeOutCubic',
+            complete: function complete() {
+              $(this).css('height', '');
+            }
+          }).animate({ opacity: 1 }, { queue: false, duration: currentOptions.inDuration, easing: 'easeOutSine' });
+        }
+
+        function hideDropdown() {
+          isFocused = false;
+          activates.fadeOut(currentOptions.outDuration);
+          activates.removeClass('active');
+          origin.removeClass('active');
+          setTimeout(function () {
+            activates.css('max-height', '');
+          }, currentOptions.outDuration);
+        }
+
+        if (currentOptions.hover) {
+          (function () {
+            var open = false;
+            origin.unbind('click.' + origin.attr('id'));
+
+            origin.on('mouseenter', function (e) {
+              if (open === false) {
+                placeDropdown();
+                open = true;
+              }
+            });
+            origin.on('mouseleave', function (e) {
+              var toEl = e.toElement || e.relatedTarget;
+              if (!$(toEl).closest('.dropdown-content').is(activates)) {
+                activates.stop(true, true);
+                hideDropdown();
+                open = false;
+              }
+            });
+
+            activates.on('mouseleave', function (e) {
+              var toEl = e.toElement || e.relatedTarget;
+              if (!$(toEl).closest('.dropdown-button').is(origin)) {
+                activates.stop(true, true);
+                hideDropdown();
+                open = false;
+              }
+            });
+          })();
+        } else {
+          origin.unbind('click.' + origin.attr('id'));
+          origin.bind('click.' + origin.attr('id'), function (e) {
+            if (!isFocused) {
+              if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
+                e.preventDefault();
+                if (currentOptions.stopPropagation) {
+                  e.stopPropagation();
+                }
+                placeDropdown('click');
+              } else if (origin.hasClass('active')) {
+                hideDropdown();
+                $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+              }
+
+              if (activates.hasClass('active')) {
+                $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
+                  if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
+                    hideDropdown();
+                    $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
+                  }
+                });
+              }
+            }
+          });
+        }
+        origin.on('open', function (e, eventType) {
+          placeDropdown(eventType);
+        });
+        origin.on('close', hideDropdown);
+      });
+    };
+
+    $(document).ready(function () {
+      $('.dropdown-button').dropdown();
+    });
+  }
+});
+define('aurelia-materialize-bridge/fab/fab',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdFab = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+  var MdFab = exports.MdFab = (_dec = (0, _aureliaTemplating.customElement)('md-fab'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdFab(element) {
+      _classCallCheck(this, MdFab);
+
+      _initDefineProp(this, 'mdFixed', _descriptor, this);
+
+      _initDefineProp(this, 'mdLarge', _descriptor2, this);
+
+      this.element = element;
+    }
+
+    MdFab.prototype.attached = function attached() {
+      this.mdFixed = (0, _attributes.getBooleanFromAttributeValue)(this.mdFixed);
+      this.mdLarge = (0, _attributes.getBooleanFromAttributeValue)(this.mdLarge);
+    };
+
+    return MdFab;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdLarge', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/file/file',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _events, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdFileInput = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdFileInput = exports.MdFileInput = (_dec = (0, _aureliaTemplating.customElement)('md-file'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdFileInput(element) {
+      _classCallCheck(this, MdFileInput);
+
+      _initDefineProp(this, 'mdCaption', _descriptor, this);
+
+      _initDefineProp(this, 'mdMultiple', _descriptor2, this);
+
+      _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
+
+      _initDefineProp(this, 'disabled', _descriptor4, this);
+
+      this.files = [];
+      this._suspendUpdate = false;
+
+      this.element = element;
+      this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
+    }
+
+    MdFileInput.prototype.attached = function attached() {
+      this.mdMultiple = (0, _attributes.getBooleanFromAttributeValue)(this.mdMultiple);
+      $(this.filePath).on('change', this.handleChangeFromNativeInput);
+    };
+
+    MdFileInput.prototype.detached = function detached() {
+      $(this.element).off('change', this.handleChangeFromNativeInput);
+    };
+
+    MdFileInput.prototype.handleChangeFromNativeInput = function handleChangeFromNativeInput() {
+      if (!this._suspendUpdate) {
+        this._suspendUpdate = true;
+        (0, _events.fireEvent)(this.filePath, 'change', { files: this.files });
+        (0, _events.fireMaterializeEvent)(this.filePath, 'change', { files: this.files });
+        this._suspendUpdate = false;
+      }
+    };
+
+    return MdFileInput;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdCaption', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'File';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMultiple', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelValue', [_dec5], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/footer/footer',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdFooter = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdFooter = exports.MdFooter = (_dec = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdFooter(element) {
+      _classCallCheck(this, MdFooter);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdFooter.prototype.bind = function bind() {
+      this.attributeManager.addClasses('page-footer');
+    };
+
+    MdFooter.prototype.unbind = function unbind() {
+      this.attributeManager.removeClasses('page-footer');
+    };
+
+    return MdFooter;
+  }()) || _class) || _class);
+});
+define('aurelia-materialize-bridge/input/input-prefix',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdPrefix = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdPrefix = exports.MdPrefix = (_dec = (0, _aureliaTemplating.customAttribute)('md-prefix'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdPrefix(element) {
+      _classCallCheck(this, MdPrefix);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdPrefix.prototype.bind = function bind() {
+      this.attributeManager.addClasses('prefix');
+    };
+
+    MdPrefix.prototype.unbind = function unbind() {
+      this.attributeManager.removeClasses('prefix');
+    };
+
+    return MdPrefix;
+  }()) || _class) || _class);
+});
+define('aurelia-materialize-bridge/input/input-update-service',['exports', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdInputUpdateService = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var MdInputUpdateService = exports.MdInputUpdateService = (_dec = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue), _dec(_class = function () {
+    function MdInputUpdateService(taskQueue) {
+      _classCallCheck(this, MdInputUpdateService);
+
+      this._updateCalled = false;
+
+      this.log = (0, _aureliaLogging.getLogger)('MdInputUpdateService');
+      this.taskQueue = taskQueue;
+    }
+
+    MdInputUpdateService.prototype.materializeUpdate = function materializeUpdate() {
+      this.log.debug('executing Materialize.updateTextFields');
+      Materialize.updateTextFields();
+      this._updateCalled = false;
+    };
+
+    MdInputUpdateService.prototype.update = function update() {
+      this.log.debug('update called');
+      if (!this._updateCalled) {
+        this._updateCalled = true;
+        this.taskQueue.queueTask(this.materializeUpdate.bind(this));
+      }
+    };
+
+    return MdInputUpdateService;
+  }()) || _class);
+});
+define('aurelia-materialize-bridge/input/input',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdInput = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _class3, _temp;
+
+  var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('md-input'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _inputUpdateService.MdInputUpdateService), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec8 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec9 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec10 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec11 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec12 = (0, _aureliaTemplating.bindable)(), _dec13 = (0, _aureliaTemplating.bindable)(), _dec14 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdInput(element, taskQueue, updateService) {
+      _classCallCheck(this, MdInput);
+
+      _initDefineProp(this, 'mdLabel', _descriptor, this);
+
+      _initDefineProp(this, 'mdBlurOnEnter', _descriptor2, this);
+
+      _initDefineProp(this, 'mdDisabled', _descriptor3, this);
+
+      _initDefineProp(this, 'mdPlaceholder', _descriptor4, this);
+
+      _initDefineProp(this, 'mdTextArea', _descriptor5, this);
+
+      _initDefineProp(this, 'mdType', _descriptor6, this);
+
+      _initDefineProp(this, 'mdStep', _descriptor7, this);
+
+      _initDefineProp(this, 'mdValidate', _descriptor8, this);
+
+      _initDefineProp(this, 'mdShowErrortext', _descriptor9, this);
+
+      _initDefineProp(this, 'mdValidateError', _descriptor10, this);
+
+      _initDefineProp(this, 'mdValidateSuccess', _descriptor11, this);
+
+      _initDefineProp(this, 'mdValue', _descriptor12, this);
+
+      this._suspendUpdate = false;
+
+      this.element = element;
+      this.taskQueue = taskQueue;
+      this.controlId = 'md-input-' + MdInput.id++;
+      this.updateService = updateService;
+      this.blurOnEnter = this.blurOnEnter.bind(this);
+    }
+
+    MdInput.prototype.bind = function bind() {
+      this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
+      this.mdShowErrortext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowErrortext);
+      this.mdBlurOnEnter = (0, _attributes.getBooleanFromAttributeValue)(this.mdBlurOnEnter);
+    };
+
+    MdInput.prototype.attached = function attached() {
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdValidate)) {
+        this.input.classList.add('validate');
+      }
+      if (this.mdValidateError) {
+        this.label.setAttribute('data-error', this.mdValidateError);
+      }
+      if (this.mdValidateSuccess) {
+        this.label.setAttribute('data-success', this.mdValidateSuccess);
+      }
+      if (this.mdPlaceholder) {
+        this.input.setAttribute('placeholder', this.mdPlaceholder);
+      }
+      if (this.mdShowErrortext) {
+        this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
+      }
+      this.updateService.update();
+
+      if (this.mdType === 'time') {
+        $(this.input).siblings('label').addClass('active');
+      }
+      this.attachEventHandlers();
+    };
+
+    MdInput.prototype.detached = function detached() {
+      this.detachEventHandlers();
+    };
+
+    MdInput.prototype.blur = function blur() {
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
+    MdInput.prototype.focus = function focus() {
+      (0, _events.fireEvent)(this.element, 'focus');
+    };
+
+    MdInput.prototype.mdValueChanged = function mdValueChanged() {
+      if (!$(this.input).is(':focus')) {
+        this.updateService.update();
+      }
+      if (this.mdTextArea) {
+        $(this.input).trigger('autoresize');
+      }
+    };
+
+    MdInput.prototype.attachEventHandlers = function attachEventHandlers() {
+      if (this.mdBlurOnEnter) {
+        this.element.addEventListener('keyup', this.blurOnEnter);
+      }
+    };
+
+    MdInput.prototype.detachEventHandlers = function detachEventHandlers() {
+      if (this.mdBlurOnEnter) {
+        this.element.removeEventListener('keyup', this.blurOnEnter);
+      }
+    };
+
+    MdInput.prototype.blurOnEnter = function blurOnEnter(e) {
+      if (e.keyCode && e.keyCode === 13) {
+        this.input.blur();
+      }
+    };
+
+    return MdInput;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdLabel', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdBlurOnEnter', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdPlaceholder', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTextArea', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'text';
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec9], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'any';
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidate', [_dec10], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowErrortext', [_dec11], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec12], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec13], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec14], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/modal/modal',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdModal = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdModal(element) {
+      _classCallCheck(this, MdModal);
+
+      _initDefineProp(this, 'dismissible', _descriptor, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+      this.onComplete = this.onComplete.bind(this);
+      this.onReady = this.onReady.bind(this);
+    }
+
+    MdModal.prototype.attached = function attached() {
+      this.attributeManager.addClasses('modal');
+      $(this.element).modal({
+        complete: this.onComplete,
+        dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible),
+        ready: this.onReady
+      });
+    };
+
+    MdModal.prototype.detached = function detached() {
+      this.attributeManager.removeClasses('modal');
+    };
+
+    MdModal.prototype.onComplete = function onComplete() {
+      (0, _events.fireMaterializeEvent)(this.element, 'modal-complete');
+    };
+
+    MdModal.prototype.onReady = function onReady(modal, trigger) {
+      (0, _events.fireMaterializeEvent)(this.element, 'modal-ready', { modal: modal, trigger: trigger });
+    };
+
+    MdModal.prototype.open = function open() {
+      $(this.element).modal('open');
+    };
+
+    MdModal.prototype.close = function close() {
+      $(this.element).modal('close');
+    };
+
+    return MdModal;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dismissible', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/modal/modal-trigger',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdModalTrigger = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdModalTrigger = exports.MdModalTrigger = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal-trigger'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdModalTrigger(element) {
+      _classCallCheck(this, MdModalTrigger);
+
+      _initDefineProp(this, 'dismissible', _descriptor, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+      this.onComplete = this.onComplete.bind(this);
+    }
+
+    MdModalTrigger.prototype.attached = function attached() {
+      this.attributeManager.addClasses('modal-trigger');
+      $(this.element).leanModal({
+        complete: this.onComplete,
+        dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible)
+      });
+    };
+
+    MdModalTrigger.prototype.detached = function detached() {
+      this.attributeManager.removeClasses('modal-trigger');
+    };
+
+    MdModalTrigger.prototype.onComplete = function onComplete() {
+      (0, _events.fireMaterializeEvent)(this.element, 'modal-complete');
+    };
+
+    return MdModalTrigger;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dismissible', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/navbar/navbar',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _attributeManager) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdNavbar = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+  var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)('md-navbar'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdNavbar(element) {
+      _classCallCheck(this, MdNavbar);
+
+      _initDefineProp(this, 'mdFixed', _descriptor, this);
+
+      _initDefineProp(this, 'mdAutoHeight', _descriptor2, this);
+
+      this.element = element;
+    }
+
+    MdNavbar.prototype.attached = function attached() {
+      this.fixedAttributeManager = new _attributeManager.AttributeManager(this.fixedAnchor);
+      this.navAttributeManager = new _attributeManager.AttributeManager(this.nav);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
+        this.fixedAttributeManager.addClasses('navbar-fixed');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
+        this.navAttributeManager.addClasses('md-auto-height');
+      }
+    };
+
+    MdNavbar.prototype.detached = function detached() {
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
+        this.fixedAttributeManager.removeClasses('navbar-fixed');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
+        this.navAttributeManager.addClasses('md-auto-height');
+      }
+    };
+
+    return MdNavbar;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec4], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/pagination/pagination',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _events, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdPagination = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
+
+  var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customElement)('md-pagination'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
+  }), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec9 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdPagination(element) {
+      _classCallCheck(this, MdPagination);
+
+      _initDefineProp(this, 'mdActivePage', _descriptor, this);
+
+      _initDefineProp(this, 'mdPages', _descriptor2, this);
+
+      _initDefineProp(this, 'mdVisiblePageLinks', _descriptor3, this);
+
+      _initDefineProp(this, 'mdPageLinks', _descriptor4, this);
+
+      _initDefineProp(this, 'mdShowFirstLast', _descriptor5, this);
+
+      _initDefineProp(this, 'mdShowPrevNext', _descriptor6, this);
+
+      _initDefineProp(this, 'mdShowPageLinks', _descriptor7, this);
+
+      this.numberOfLinks = 15;
+      this.pages = 5;
+
+      this.element = element;
+    }
+
+    MdPagination.prototype.bind = function bind() {
+      this.pages = parseInt(this.mdPages, 10);
+
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+      this.mdShowFirstLast = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowFirstLast);
+      this.mdShowPrevNext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowPrevNext);
+      this.mdPageLinks = this.generatePageLinks();
+    };
+
+    MdPagination.prototype.setActivePage = function setActivePage(page) {
+      this.mdActivePage = parseInt(page, 10);
+      this.mdPageLinks = this.generatePageLinks();
+      (0, _events.fireMaterializeEvent)(this.element, 'page-changed', this.mdActivePage);
+    };
+
+    MdPagination.prototype.setFirstPage = function setFirstPage() {
+      if (this.mdActivePage > 1) {
+        this.setActivePage(1);
+      }
+    };
+
+    MdPagination.prototype.setLastPage = function setLastPage() {
+      if (this.mdActivePage < this.pages) {
+        this.setActivePage(this.pages);
+      }
+    };
+
+    MdPagination.prototype.setPreviousPage = function setPreviousPage() {
+      if (this.mdActivePage > 1) {
+        this.setActivePage(this.mdActivePage - 1);
+      }
+    };
+
+    MdPagination.prototype.setNextPage = function setNextPage() {
+      if (this.mdActivePage < this.pages) {
+        this.setActivePage(this.mdActivePage + 1);
+      }
+    };
+
+    MdPagination.prototype.mdPagesChanged = function mdPagesChanged() {
+      this.pages = parseInt(this.mdPages, 10);
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+      this.setActivePage(1);
+    };
+
+    MdPagination.prototype.mdVisiblePageLinksChanged = function mdVisiblePageLinksChanged() {
+      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
+      this.mdPageLinks = this.generatePageLinks();
+    };
+
+    MdPagination.prototype.generatePageLinks = function generatePageLinks() {
+      var midPoint = parseInt(this.numberOfLinks / 2, 10);
+      var start = Math.max(this.mdActivePage - midPoint, 0);
+
+      if (start + midPoint * 2 > this.pages) start = this.pages - midPoint * 2;
+      var end = Math.min(start + this.numberOfLinks, this.pages);
+
+      var list = [];
+      for (var i = start; i < end; i++) {
+        list.push(i);
+      }
+
+      return list;
+    };
+
+    return MdPagination;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdActivePage', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 1;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPages', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 5;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdVisiblePageLinks', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 15;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdPageLinks', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowFirstLast', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPrevNext', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPageLinks', [_dec9], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/parallax/parallax',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdParallax = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdParallax = exports.MdParallax = (_dec = (0, _aureliaTemplating.customAttribute)('md-parallax'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdParallax(element) {
+      _classCallCheck(this, MdParallax);
+
+      this.element = element;
+    }
+
+    MdParallax.prototype.attached = function attached() {
+      $(this.element).parallax();
+    };
+
+    MdParallax.prototype.detached = function detached() {};
+
+    return MdParallax;
+  }()) || _class) || _class);
+});
+define('aurelia-materialize-bridge/progress/progress',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdProgress = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+  var MdProgress = exports.MdProgress = (_dec = (0, _aureliaTemplating.customElement)('md-progress'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec7 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdProgress(element) {
+      _classCallCheck(this, MdProgress);
+
+      _initDefineProp(this, 'mdColor', _descriptor, this);
+
+      _initDefineProp(this, 'mdPixelSize', _descriptor2, this);
+
+      _initDefineProp(this, 'mdSize', _descriptor3, this);
+
+      _initDefineProp(this, 'mdType', _descriptor4, this);
+
+      _initDefineProp(this, 'mdValue', _descriptor5, this);
+
+      this.element = element;
+    }
+
+    MdProgress.prototype.bind = function bind() {};
+
+    MdProgress.prototype.attached = function attached() {
+      this.mdPixelSizeChanged(this.mdPixelSize);
+    };
+
+    MdProgress.prototype.mdSizeChanged = function mdSizeChanged(newValue) {
+      this.mdPixelSize = null;
+    };
+
+    MdProgress.prototype.mdPixelSizeChanged = function mdPixelSizeChanged(newValue) {
+      if (this.wrapper) {
+        newValue = newValue === null || newValue === '' || isNaN(newValue) ? '' : newValue + 'px';
+        this.wrapper.style.height = newValue;
+        this.wrapper.style.width = newValue;
+      }
+    };
+
+    return MdProgress;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdColor', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPixelSize', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'big';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'linear';
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/pushpin/pushpin',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdPushpin = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+  var MdPushpin = exports.MdPushpin = (_dec = (0, _aureliaTemplating.customAttribute)('md-pushpin'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdPushpin(element) {
+      _classCallCheck(this, MdPushpin);
+
+      _initDefineProp(this, 'bottom', _descriptor, this);
+
+      _initDefineProp(this, 'offset', _descriptor2, this);
+
+      _initDefineProp(this, 'top', _descriptor3, this);
+
+      this.element = element;
+    }
+
+    MdPushpin.prototype.attached = function attached() {
+      $(this.element).pushpin({
+        bottom: this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10),
+        offset: parseInt(this.offset, 10),
+        top: parseInt(this.top, 10)
+      });
+    };
+
+    MdPushpin.prototype.detached = function detached() {};
+
+    return MdPushpin;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'bottom', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return Infinity;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'offset', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'top', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/radio/radio',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdRadio = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _class3, _temp;
+
+  var MdRadio = exports.MdRadio = (_dec = (0, _aureliaTemplating.customElement)('md-radio'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdRadio(element) {
+      _classCallCheck(this, MdRadio);
+
+      _initDefineProp(this, 'mdChecked', _descriptor, this);
+
+      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
+
+      _initDefineProp(this, 'mdGap', _descriptor3, this);
+
+      _initDefineProp(this, 'mdModel', _descriptor4, this);
+
+      _initDefineProp(this, 'mdName', _descriptor5, this);
+
+      _initDefineProp(this, 'mdValue', _descriptor6, this);
+
+      this.element = element;
+      this.controlId = 'md-radio-' + MdRadio.id++;
+    }
+
+    MdRadio.prototype.attached = function attached() {
+      this.attributeManager = new _attributeManager.AttributeManager(this.radio);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdGap)) {
+        this.attributeManager.addClasses('with-gap');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
+        this.radio.disabled = true;
+      }
+    };
+
+    MdRadio.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['with-gap', 'disabled']);
+    };
+
+    MdRadio.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+      if (this.radio) {
+        this.radio.disabled = !!newValue;
+      }
+    };
+
+    return MdRadio;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdGap', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec6], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdName', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/range/range',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdRange = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdRange = exports.MdRange = (_dec = (0, _aureliaTemplating.customElement)('md-range'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec6 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec(_class = _dec2(_class = (_class2 = function MdRange(element) {
+    _classCallCheck(this, MdRange);
+
+    _initDefineProp(this, 'mdMin', _descriptor, this);
+
+    _initDefineProp(this, 'mdMax', _descriptor2, this);
+
+    _initDefineProp(this, 'mdStep', _descriptor3, this);
+
+    _initDefineProp(this, 'mdValue', _descriptor4, this);
+
+    this.element = element;
+    this.log = (0, _aureliaLogging.getLogger)('md-range');
+  }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdMin', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMax', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 100;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 1;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/scrollfire/scrollfire-patch',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _class, _temp;
+
+  var ScrollfirePatch = exports.ScrollfirePatch = (_temp = _class = function () {
+    function ScrollfirePatch() {
+      _classCallCheck(this, ScrollfirePatch);
+    }
+
+    ScrollfirePatch.prototype.patch = function patch() {
+      if (!ScrollfirePatch.patched) {
+        ScrollfirePatch.patched = true;
+
+        window.Materialize.scrollFire = function (options) {
+          var didScroll = false;
+          window.addEventListener('scroll', function () {
+            didScroll = true;
+          });
+
+          setInterval(function () {
+            if (didScroll) {
+              didScroll = false;
+
+              var windowScroll = window.pageYOffset + window.innerHeight;
+              for (var i = 0; i < options.length; i++) {
+                var value = options[i];
+                var selector = value.selector;
+                var offset = value.offset;
+                var callback = value.callback;
+
+                var currentElement = document.querySelector(selector);
+                if (currentElement !== null) {
+                  var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
+
+                  if (windowScroll > elementOffset + offset) {
+                    if (value.done !== true) {
+                      if (typeof callback === 'string') {
+                        var callbackFunc = new Function(callback);
+                        callbackFunc();
+                      } else if (typeof callback === 'function') {
+                        callback();
+                      }
+                      value.done = true;
+                    }
+                  }
+                }
+              }
+            }
+          }, 100);
+        };
+      }
+    };
+
+    return ScrollfirePatch;
+  }(), _class.patched = false, _temp);
+});
+define('aurelia-materialize-bridge/scrollfire/scrollfire-target',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdScrollfireTarget = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
+
+  var MdScrollfireTarget = exports.MdScrollfireTarget = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire-target'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function MdScrollfireTarget(element) {
+    _classCallCheck(this, MdScrollfireTarget);
+
+    _initDefineProp(this, 'callback', _descriptor, this);
+
+    _initDefineProp(this, 'offset', _descriptor2, this);
+
+    this.element = element;
+  }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'callback', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'offset', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/scrollfire/scrollfire',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdScrollfire = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _dec2, _class;
+
+  var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
+    function MdScrollfire(element) {
+      _classCallCheck(this, MdScrollfire);
+
+      this.targetId = 0;
+
+      this.element = element;
+      this.log = (0, _aureliaLogging.getLogger)('md-scrollfire');
+    }
+
+    MdScrollfire.prototype.attached = function attached() {
+      var _this = this;
+
+      var targets = $('[md-scrollfire-target]', this.element);
+      if (targets.length > 0) {
+        (function () {
+          _this.log.debug('targets', targets);
+          var self = _this;
+          var options = [];
+          targets.each(function (i, el) {
+            var target = $(el);
+            if (!target.attr('id')) {
+              target.attr('id', 'md-scrollfire-target-' + self.targetId++);
+            }
+            options.push({
+              selector: '#' + target.attr('id'),
+              callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
+              offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
+            });
+          });
+          if (options.length > 0) {
+            _this.log.debug('configuring scrollFire with these options:', options);
+            Materialize.scrollFire(options);
+          }
+        })();
+      }
+    };
+
+    return MdScrollfire;
+  }()) || _class) || _class);
+});
+define('aurelia-materialize-bridge/scrollspy/scrollspy',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdScrollSpy = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdScrollSpy = exports.MdScrollSpy = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollspy'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdScrollSpy(element) {
+      _classCallCheck(this, MdScrollSpy);
+
+      _initDefineProp(this, 'target', _descriptor, this);
+
+      this.element = element;
+    }
+
+    MdScrollSpy.prototype.attached = function attached() {
+      $(this.target, this.element).scrollSpy();
+    };
+
+    MdScrollSpy.prototype.detached = function detached() {};
+
+    return MdScrollSpy;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'target', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/select/select',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events', '../common/attributes', 'aurelia-pal'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _aureliaLogging, _events, _attributes, _aureliaPal) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSelect = undefined;
+
+  var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+  function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
+      return obj;
+    } else {
+      var newObj = {};
+
+      if (obj != null) {
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+        }
+      }
+
+      newObj.default = obj;
+      return newObj;
+    }
+  }
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdSelect(element, logManager, bindingEngine, taskQueue) {
+      _classCallCheck(this, MdSelect);
+
+      _initDefineProp(this, 'disabled', _descriptor, this);
+
+      _initDefineProp(this, 'label', _descriptor2, this);
+
+      _initDefineProp(this, 'showErrortext', _descriptor3, this);
+
+      this._suspendUpdate = false;
+      this.subscriptions = [];
+      this.input = null;
+      this.dropdownMutationObserver = null;
+      this._taskqueueRunning = false;
+
+      this.element = element;
+      this.taskQueue = taskQueue;
+      this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
+      this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
+      this.handleBlur = this.handleBlur.bind(this);
+      this.log = LogManager.getLogger('md-select');
+      this.bindingEngine = bindingEngine;
+    }
+
+    MdSelect.prototype.attached = function attached() {
+      var _this = this;
+
+      this.taskQueue.queueTask(function () {
+        _this.createMaterialSelect(false);
+
+        if (_this.label) {
+          var wrapper = $(_this.element).parent('.select-wrapper');
+          var div = $('<div class="input-field"></div>');
+          var va = _this.element.attributes.getNamedItem('validate');
+          if (va) {
+            div.attr(va.name, va.label);
+          }
+          wrapper.wrap(div);
+          $('<label>' + _this.label + '</label>').insertAfter(wrapper);
+        }
+      });
+      this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
+
+
+      $(this.element).on('change', this.handleChangeFromNativeSelect);
+    };
+
+    MdSelect.prototype.detached = function detached() {
+      $(this.element).off('change', this.handleChangeFromNativeSelect);
+      this.observeVisibleDropdownContent(false);
+      this.dropdownMutationObserver = null;
+      $(this.element).material_select('destroy');
+      this.subscriptions.forEach(function (sub) {
+        return sub.dispose();
+      });
+    };
+
+    MdSelect.prototype.refresh = function refresh() {
+      var _this2 = this;
+
+      this.taskQueue.queueTask(function () {
+        _this2.createMaterialSelect(true);
+      });
+    };
+
+    MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
+      this.toggleControl(newValue);
+    };
+
+    MdSelect.prototype.showErrortextChanged = function showErrortextChanged() {
+      this.setErrorTextAttribute();
+    };
+
+    MdSelect.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
+      var input = this.element.parentElement.querySelector('input.select-dropdown');
+      if (!input) return;
+      this.log.debug('showErrortextChanged: ' + this.showErrortext);
+      input.setAttribute('data-show-errortext', (0, _attributes.getBooleanFromAttributeValue)(this.showErrortext));
+    };
+
+    MdSelect.prototype.notifyBindingEngine = function notifyBindingEngine() {
+      this.log.debug('selectedOptions changed', arguments);
+    };
+
+    MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
+      if (!this._suspendUpdate) {
+        this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
+        this._suspendUpdate = true;
+        (0, _events.fireEvent)(this.element, 'change');
+        this._suspendUpdate = false;
+      }
+    };
+
+    MdSelect.prototype.handleChangeFromViewModel = function handleChangeFromViewModel(newValue) {
+      this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
+      if (!this._suspendUpdate) {
+        this.createMaterialSelect(false);
+      }
+    };
+
+    MdSelect.prototype.toggleControl = function toggleControl(disable) {
+      var $wrapper = $(this.element).parent('.select-wrapper');
+      if ($wrapper.length > 0) {
+        if (disable) {
+          $('.caret', $wrapper).addClass('disabled');
+          $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
+          $wrapper.attr('disabled', 'disabled');
+        } else {
+          $('.caret', $wrapper).removeClass('disabled');
+          $('input.select-dropdown', $wrapper).attr('disabled', null);
+          $wrapper.attr('disabled', null);
+          $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
+        }
+      }
+    };
+
+    MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
+      this.observeVisibleDropdownContent(false);
+      if (destroy) {
+        $(this.element).material_select('destroy');
+      }
+      $(this.element).material_select();
+      this.toggleControl(this.disabled);
+      this.observeVisibleDropdownContent(true);
+      this.setErrorTextAttribute();
+    };
+
+    MdSelect.prototype.observeVisibleDropdownContent = function observeVisibleDropdownContent(attach) {
+      var _this3 = this;
+
+      if (attach) {
+        if (!this.dropdownMutationObserver) {
+          this.dropdownMutationObserver = _aureliaPal.DOM.createMutationObserver(function (mutations) {
+            var isHidden = false;
+            for (var _iterator = mutations, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+              var _ref;
+
+              if (_isArray) {
+                if (_i >= _iterator.length) break;
+                _ref = _iterator[_i++];
+              } else {
+                _i = _iterator.next();
+                if (_i.done) break;
+                _ref = _i.value;
+              }
+
+              var mutation = _ref;
+
+              if (window.getComputedStyle(mutation.target).getPropertyValue('display') === 'none') {
+                isHidden = true;
+              }
+            }
+            if (isHidden) {
+              _this3.dropdownMutationObserver.takeRecords();
+              _this3.handleBlur();
+            }
+          });
+        }
+        this.dropdownMutationObserver.observe(this.element.parentElement.querySelector('.dropdown-content'), {
+          attributes: true,
+          attributeFilter: ['style']
+        });
+      } else {
+        if (this.dropdownMutationObserver) {
+          this.dropdownMutationObserver.disconnect();
+          this.dropdownMutationObserver.takeRecords();
+        }
+      }
+    };
+
+    MdSelect.prototype.handleBlur = function handleBlur() {
+      var _this4 = this;
+
+      if (this._taskqueueRunning) return;
+      this._taskqueueRunning = true;
+      this.taskQueue.queueTask(function () {
+        _this4.log.debug('fire blur event');
+        (0, _events.fireEvent)(_this4.element, 'blur');
+        _this4._taskqueueRunning = false;
+      });
+    };
+
+    return MdSelect;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/sidenav/sidenav-collapse',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSidenavCollapse = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdSidenavCollapse(element, observerLocator) {
+      _classCallCheck(this, MdSidenavCollapse);
+
+      _initDefineProp(this, 'ref', _descriptor, this);
+
+      this.element = element;
+      this.observerLocator = observerLocator;
+      this.log = (0, _aureliaLogging.getLogger)('md-sidenav-collapse');
+    }
+
+    MdSidenavCollapse.prototype.attached = function attached() {
+      var _this = this;
+
+      this.ref.whenAttached.then(function () {
+
+        var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
+
+        _this.element.setAttribute('data-activates', _this.ref.controlId);
+        var sideNavConfig = {
+          edge: _this.ref.mdEdge || 'left',
+
+          closeOnClick: closeOnClick,
+          menuWidth: parseInt(_this.ref.mdWidth, 10)
+        };
+
+        $(_this.element).sideNav(sideNavConfig);
+      });
+    };
+
+    MdSidenavCollapse.prototype.detached = function detached() {};
+
+    MdSidenavCollapse.prototype.show = function show() {
+      $(this.element).sideNav('show');
+    };
+
+    MdSidenavCollapse.prototype.hide = function hide() {
+      $(this.element).sideNav('hide');
+    };
+
+    return MdSidenavCollapse;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/sidenav/sidenav',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSidenav = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _class3, _temp;
+
+  var MdSidenav = exports.MdSidenav = (_dec = (0, _aureliaTemplating.customElement)('md-sidenav'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
+    function MdSidenav(element) {
+      var _this = this;
+
+      _classCallCheck(this, MdSidenav);
+
+      _initDefineProp(this, 'mdCloseOnClick', _descriptor, this);
+
+      _initDefineProp(this, 'mdEdge', _descriptor2, this);
+
+      _initDefineProp(this, 'mdFixed', _descriptor3, this);
+
+      _initDefineProp(this, 'mdWidth', _descriptor4, this);
+
+      this.element = element;
+      this.controlId = 'md-sidenav-' + MdSidenav.id++;
+      this.log = (0, _aureliaLogging.getLogger)('md-sidenav');
+      this.whenAttached = new Promise(function (resolve, reject) {
+        _this.attachedResolver = resolve;
+      });
+    }
+
+    MdSidenav.prototype.attached = function attached() {
+      this.attributeManager = new _attributeManager.AttributeManager(this.sidenav);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
+        this.attributeManager.addClasses('fixed');
+        if (this.mdEdge === 'right') {
+          this.attributeManager.addClasses('right-aligned');
+        }
+      }
+
+      this.attachedResolver();
+    };
+
+    MdSidenav.prototype.detached = function detached() {
+      this.attributeManager.removeClasses(['fixed', 'right-aligned']);
+    };
+
+    MdSidenav.prototype.mdFixedChanged = function mdFixedChanged(newValue) {
+      if (this.attributeManager) {
+        if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
+          this.attributeManager.addClasses('fixed');
+        } else {
+          this.attributeManager.removeClasses('fixed');
+        }
+      }
+    };
+
+    return MdSidenav;
+  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdCloseOnClick', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdEdge', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'left';
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdWidth', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 300;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/slider/slider',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSlider = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+  var MdSlider = exports.MdSlider = (_dec = (0, _aureliaTemplating.customElement)('md-slider'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.inlineView)('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+    function MdSlider(element) {
+      _classCallCheck(this, MdSlider);
+
+      _initDefineProp(this, 'mdFillContainer', _descriptor, this);
+
+      _initDefineProp(this, 'mdHeight', _descriptor2, this);
+
+      _initDefineProp(this, 'mdIndicators', _descriptor3, this);
+
+      _initDefineProp(this, 'mdInterval', _descriptor4, this);
+
+      _initDefineProp(this, 'mdTransition', _descriptor5, this);
+
+      this.element = element;
+      this.log = (0, _aureliaLogging.getLogger)('md-slider');
+    }
+
+    MdSlider.prototype.attached = function attached() {
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFillContainer)) {
+        this.element.classList.add('fullscreen');
+      }
+      this.refresh();
+    };
+
+    MdSlider.prototype.pause = function pause() {
+      $(this.element).slider('pause');
+    };
+
+    MdSlider.prototype.start = function start() {
+      $(this.element).slider('start');
+    };
+
+    MdSlider.prototype.next = function next() {
+      $(this.element).slider('next');
+    };
+
+    MdSlider.prototype.prev = function prev() {
+      $(this.element).slider('prev');
+    };
+
+    MdSlider.prototype.refresh = function refresh() {
+      var options = {
+        height: parseInt(this.mdHeight, 10),
+        indicators: (0, _attributes.getBooleanFromAttributeValue)(this.mdIndicators),
+        interval: parseInt(this.mdInterval, 10),
+        transition: parseInt(this.mdTransition, 10)
+      };
+      this.log.debug('refreshing slider, params:', options);
+      $(this.element).slider(options);
+    };
+
+    MdSlider.prototype.mdIndicatorsChanged = function mdIndicatorsChanged() {
+      this.refresh();
+    };
+
+    return MdSlider;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFillContainer', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdHeight', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 400;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return true;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdInterval', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 6000;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTransition', [_dec8], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 500;
+    }
+  })), _class2)) || _class) || _class) || _class);
+});
+define('aurelia-materialize-bridge/switch/switch',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _events) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdSwitch = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdSwitch = exports.MdSwitch = (_dec = (0, _aureliaTemplating.customElement)('md-switch'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
+  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdSwitch(element) {
+      _classCallCheck(this, MdSwitch);
+
+      _initDefineProp(this, 'mdChecked', _descriptor, this);
+
+      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
+
+      _initDefineProp(this, 'mdLabelOff', _descriptor3, this);
+
+      _initDefineProp(this, 'mdLabelOn', _descriptor4, this);
+
+      this.element = element;
+      this.handleChange = this.handleChange.bind(this);
+    }
+
+    MdSwitch.prototype.attached = function attached() {
+      this.checkbox.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
+        this.checkbox.disabled = true;
+      }
+      this.checkbox.addEventListener('change', this.handleChange);
+    };
+
+    MdSwitch.prototype.detached = function detached() {
+      this.checkbox.removeEventListener('change', this.handleChange);
+    };
+
+    MdSwitch.prototype.handleChange = function handleChange() {
+      this.mdChecked = this.checkbox.checked;
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
+    MdSwitch.prototype.blur = function blur() {
+      (0, _events.fireEvent)(this.element, 'blur');
+    };
+
+    MdSwitch.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {
+      if (this.checkbox) {
+        this.checkbox.checked = !!newValue;
+      }
+    };
+
+    MdSwitch.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
+      if (this.checkbox) {
+        this.checkbox.disabled = !!newValue;
+      }
+    };
+
+    return MdSwitch;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelOff', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'Off';
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelOn', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'On';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/tabs/tabs',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaTaskQueue, _events, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdTabs = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _createClass = function () {
+    function defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+
+    return function (Constructor, protoProps, staticProps) {
+      if (protoProps) defineProperties(Constructor.prototype, protoProps);
+      if (staticProps) defineProperties(Constructor, staticProps);
+      return Constructor;
+    };
+  }();
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+
+  var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdTabs(element, taskQueue) {
+      _classCallCheck(this, MdTabs);
+
+      _initDefineProp(this, 'fixed', _descriptor, this);
+
+      _initDefineProp(this, 'onShow', _descriptor2, this);
+
+      _initDefineProp(this, 'responsiveThreshold', _descriptor3, this);
+
+      _initDefineProp(this, 'swipeable', _descriptor4, this);
+
+      _initDefineProp(this, 'transparent', _descriptor5, this);
+
+      this.element = element;
+      this.taskQueue = taskQueue;
+      this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+      this.tabAttributeManagers = [];
+    }
+
+    MdTabs.prototype.attached = function attached() {
+      var _this = this;
+
+      this.attributeManager.addClasses('tabs');
+
+      var children = this.element.querySelectorAll('li');
+      [].forEach.call(children, function (child) {
+        var setter = new _attributeManager.AttributeManager(child);
+        setter.addClasses(['tab', 'primary-text']);
+        _this.tabAttributeManagers.push(setter);
+      });
+
+      var self = this;
+      $(this.element).tabs({
+        onShow: function onShow(jQueryElement) {
+          if (self.onShow) {
+            self.onShow({ element: jQueryElement });
+          }
+        },
+        swipeable: (0, _attributes.getBooleanFromAttributeValue)(this.swipeable),
+        responsiveThreshold: this.responsiveThreshold
+      });
+      var childAnchors = this.element.querySelectorAll('li a');
+      [].forEach.call(childAnchors, function (a) {
+        a.addEventListener('click', _this.fireTabSelectedEvent);
+      });
+    };
+
+    MdTabs.prototype.detached = function detached() {
+      var _this2 = this;
+
+      this.attributeManager.removeClasses('tabs');
+
+      this.tabAttributeManagers.forEach(function (setter) {
+        setter.removeClasses('tab');
+      });
+      this.tabAttributeManagers = [];
+      var childAnchors = this.element.querySelectorAll('li a');
+      [].forEach.call(childAnchors, function (a) {
+        a.removeEventListener('click', _this2.fireTabSelectedEvent);
+      });
+    };
+
+    MdTabs.prototype.refresh = function refresh() {
+      var _this3 = this;
+
+      this.taskQueue.queueTask(function () {
+        var hrefs = [];
+        $('li a', _this3.element).each(function (i, tab) {
+          $(tab).parent().addClass('tab');
+          hrefs.push($(tab).attr('href'));
+        });
+        $(hrefs).each(function (i, tab) {
+          if (_this3.selectedTab.index != i) {
+            $(tab).hide();
+          }
+        });
+        _this3.taskQueue.queueTask(function () {
+          $(window).trigger('resize');
+        });
+      });
+    };
+
+    MdTabs.prototype.fixedChanged = function fixedChanged(newValue) {
+      if (newValue) {
+        this.attributeManager.addClasses('tabs-fixed-width');
+      } else {
+        this.attributeManager.removeClasses('tabs-fixed-width');
+      }
+    };
+
+    MdTabs.prototype.transparentChanged = function transparentChanged(newValue) {
+      if (newValue) {
+        this.attributeManager.addClasses('tabs-transparent');
+      } else {
+        this.attributeManager.removeClasses('tabs-transparent');
+      }
+    };
+
+    MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
+      var href = e.target.getAttribute('href');
+      (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
+    };
+
+    MdTabs.prototype.selectTab = function selectTab(id) {
+      $(this.element).tabs('select_tab', id);
+      this.fireTabSelectedEvent({
+        target: { getAttribute: function getAttribute() {
+            return '#' + id;
+          } }
+      });
+    };
+
+    _createClass(MdTabs, [{
+      key: 'selectedTab',
+      get: function get() {
+        var children = this.element.querySelectorAll('li.tab a');
+        var index = -1;
+        var href = null;
+        [].forEach.call(children, function (a, i) {
+          if (a.classList.contains('active')) {
+            index = i;
+            href = a.href;
+            return;
+          }
+        });
+        return { href: href, index: index };
+      }
+    }]);
+
+    return MdTabs;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'fixed', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'responsiveThreshold', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return Infinity;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'swipeable', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'transparent', [_dec7], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/toast/toastService',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var MdToastService = exports.MdToastService = function () {
+    function MdToastService() {
+      _classCallCheck(this, MdToastService);
+    }
+
+    MdToastService.prototype.show = function show(message, displayLength, className) {
+      return new Promise(function (resolve, reject) {
+        Materialize.toast(message, displayLength, className, function () {
+          resolve();
+        });
+      });
+    };
+
+    return MdToastService;
+  }();
+});
+define('aurelia-materialize-bridge/tooltip/tooltip',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdTooltip = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var MdTooltip = exports.MdTooltip = (_dec = (0, _aureliaTemplating.customAttribute)('md-tooltip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdTooltip(element) {
+      _classCallCheck(this, MdTooltip);
+
+      _initDefineProp(this, 'position', _descriptor, this);
+
+      _initDefineProp(this, 'delay', _descriptor2, this);
+
+      _initDefineProp(this, 'html', _descriptor3, this);
+
+      _initDefineProp(this, 'text', _descriptor4, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdTooltip.prototype.bind = function bind() {
+      this.html = (0, _attributes.getBooleanFromAttributeValue)(this.html);
+    };
+
+    MdTooltip.prototype.attached = function attached() {
+      this.attributeManager.addClasses('tooltipped');
+      this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
+      this.initTooltip();
+    };
+
+    MdTooltip.prototype.detached = function detached() {
+      $(this.element).tooltip('remove');
+      this.attributeManager.removeClasses('tooltipped');
+      this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
+    };
+
+    MdTooltip.prototype.textChanged = function textChanged() {
+      this.attributeManager.addAttributes({ 'data-tooltip': this.text });
+      this.initTooltip();
+    };
+
+    MdTooltip.prototype.initTooltip = function initTooltip() {
+      $(this.element).tooltip('remove');
+      $(this.element).tooltip({
+        delay: parseInt(this.delay, 10),
+        html: this.html
+      });
+    };
+
+    return MdTooltip;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'position', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 'bottom';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'delay', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return 50;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'html', [_dec5], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'text', [_dec6], {
+    enumerable: true,
+    initializer: function initializer() {
+      return '';
+    }
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/transitions/fadein-image',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdFadeinImage = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdFadeinImage = exports.MdFadeinImage = (_dec = (0, _aureliaTemplating.customAttribute)('md-fadein-image'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdFadeinImage(element) {
+      _classCallCheck(this, MdFadeinImage);
+
+      _initDefineProp(this, 'ref', _descriptor, this);
+
+      this.element = element;
+      this.fadeInImage = this.fadeInImage.bind(this);
+      this.log = (0, _aureliaLogging.getLogger)('md-fadein-image');
+    }
+
+    MdFadeinImage.prototype.attached = function attached() {
+      this.element.addEventListener('click', this.fadeInImage);
+      this.ensureOpacity();
+    };
+
+    MdFadeinImage.prototype.detached = function detached() {
+      this.element.removeEventListener('click', this.fadeInImage);
+    };
+
+    MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
+      Materialize.fadeInImage($(this.ref));
+    };
+
+    MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {
+      var opacity = window.getComputedStyle(this.ref).opacity;
+      if (opacity !== 0) {
+        this.ref.style.opacity = 0;
+      }
+    };
+
+    return MdFadeinImage;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/transitions/staggered-list',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdStaggeredList = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
+
+  var MdStaggeredList = exports.MdStaggeredList = (_dec = (0, _aureliaTemplating.customAttribute)('md-staggered-list'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdStaggeredList(element) {
+      _classCallCheck(this, MdStaggeredList);
+
+      _initDefineProp(this, 'ref', _descriptor, this);
+
+      this.element = element;
+      this.staggerList = this.staggerList.bind(this);
+      this.log = (0, _aureliaLogging.getLogger)('md-staggered-list');
+    }
+
+    MdStaggeredList.prototype.attached = function attached() {
+      this.element.addEventListener('click', this.staggerList);
+      this.ensureOpacity();
+    };
+
+    MdStaggeredList.prototype.detached = function detached() {
+      this.element.removeEventListener('click', this.staggerList);
+    };
+
+    MdStaggeredList.prototype.staggerList = function staggerList() {
+      Materialize.showStaggeredList($(this.ref));
+    };
+
+    MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
+      var items = this.ref.querySelectorAll('li');
+      [].forEach.call(items, function (item) {
+        var opacity = window.getComputedStyle(item).opacity;
+        if (opacity !== 0) {
+          item.style.opacity = 0;
+        }
+      });
+    };
+
+    return MdStaggeredList;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/validation/validationRenderer',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRenderer = function () {
+    function MaterializeFormValidationRenderer() {
+      _classCallCheck(this, MaterializeFormValidationRenderer);
+
+      this.className = 'md-input-validation';
+      this.classNameFirst = 'md-input-validation-first';
+    }
+
+    MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
+      var _this = this;
+
+      var allElements = new Array();
+      for (var _iterator = instruction.unrender, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+        var _ref2;
+
+        if (_isArray) {
+          if (_i >= _iterator.length) break;
+          _ref2 = _iterator[_i++];
+        } else {
+          _i = _iterator.next();
+          if (_i.done) break;
+          _ref2 = _i.value;
+        }
+
+        var _ref5 = _ref2;
+        var result = _ref5.result,
+            elements = _ref5.elements;
+
+        for (var _iterator3 = elements, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+          var _ref6;
+
+          if (_isArray3) {
+            if (_i3 >= _iterator3.length) break;
+            _ref6 = _iterator3[_i3++];
+          } else {
+            _i3 = _iterator3.next();
+            if (_i3.done) break;
+            _ref6 = _i3.value;
+          }
+
+          var element = _ref6;
+
+          this.remove(element, result);
+          if (allElements.indexOf(element) == -1) {
+            allElements.push(element);
+          }
+        }
+      }
+      for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+        var _ref4;
+
+        if (_isArray2) {
+          if (_i2 >= _iterator2.length) break;
+          _ref4 = _iterator2[_i2++];
+        } else {
+          _i2 = _iterator2.next();
+          if (_i2.done) break;
+          _ref4 = _i2.value;
+        }
+
+        var _ref7 = _ref4;
+        var result = _ref7.result,
+            elements = _ref7.elements;
+
+        for (var _iterator4 = elements, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
+          var _ref8;
+
+          if (_isArray4) {
+            if (_i4 >= _iterator4.length) break;
+            _ref8 = _iterator4[_i4++];
+          } else {
+            _i4 = _iterator4.next();
+            if (_i4.done) break;
+            _ref8 = _i4.value;
+          }
+
+          var _element = _ref8;
+
+          this.add(_element, result);
+          if (allElements.indexOf(_element) == -1) {
+            allElements.push(_element);
+          }
+        }
+      }
+      allElements.forEach(function (e) {
+        return _this.underlineInput(e);
+      });
+    };
+
+    MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element) {
+      var input = void 0;
+      switch (element.tagName) {
+        case 'MD-INPUT':
+          {
+            input = element.querySelector('input') || element.querySelector('textarea');
+            break;
+          }
+        case 'SELECT':
+          {
+            var selectWrapper = element.closest('.select-wrapper');
+            if (selectWrapper) {
+              input = selectWrapper.querySelector('input');
+            }
+            break;
+          }
+        case 'INPUT':
+          {
+            input = element;
+            break;
+          }
+        default:
+          break;
+      }
+      if (input) {
+        if (element.querySelectorAll('.' + this.className).length === 0) {
+          input.classList.remove('invalid');
+          input.classList.add('valid');
+        } else {
+          input.classList.remove('valid');
+          input.classList.add('invalid');
+        }
+      }
+    };
+
+    MaterializeFormValidationRenderer.prototype.add = function add(element, result) {
+      if (result.valid) {
+        return;
+      }
+      switch (element.tagName) {
+        case 'MD-INPUT':
+          {
+            var label = element.querySelector('label');
+            var input = element.querySelector('input') || element.querySelector('textarea');
+            if (label) {
+              label.removeAttribute('data-error');
+            }
+            if (input) {
+              result.target = input;
+              if (input.hasAttribute('data-show-errortext')) {
+                this.addMessage(element, result);
+              }
+            }
+            break;
+          }
+        case 'SELECT':
+          {
+            var selectWrapper = element.closest('.select-wrapper');
+            if (!selectWrapper) {
+              return;
+            }
+            var _input = selectWrapper.querySelector('input');
+            if (_input) {
+              result.target = _input;
+              if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
+                this.addMessage(selectWrapper, result);
+              }
+            }
+            break;
+          }
+        case 'INPUT':
+          {
+            if (element.hasAttribute('md-datepicker')) {
+              if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
+                this.addMessage(element.parentNode, result);
+              }
+            }
+            break;
+          }
+        default:
+          break;
+      }
+    };
+
+    MaterializeFormValidationRenderer.prototype.remove = function remove(element, result) {
+      if (result.valid) {
+        return;
+      }
+      switch (element.tagName) {
+        case 'MD-INPUT':
+          {
+            this.removeMessage(element, result);
+            break;
+          }
+        case 'SELECT':
+          {
+            var selectWrapper = element.closest('.select-wrapper');
+            if (!selectWrapper) {
+              return;
+            }
+
+            if ($(selectWrapper.parentElement).children().hasClass('md-input-validation')) {
+              this.removeMessage(selectWrapper.parentElement, result);
+            } else {
+              this.removeMessage(selectWrapper, result);
+            }
+            break;
+          }
+        case 'INPUT':
+          {
+            if (element.hasAttribute('md-datepicker')) {
+              this.removeMessage(element.parentNode, result);
+            }
+            break;
+          }
+        default:
+          break;
+      }
+    };
+
+    MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, result) {
+      var message = document.createElement('div');
+      message.id = 'md-input-validation-' + result.id;
+      message.textContent = result.message;
+      message.className = this.className;
+      if (element.querySelectorAll('.' + this.className).length === 0) {
+        message.className += ' ' + this.classNameFirst;
+      }
+      message.style.opacity = 0;
+      element.appendChild(message, element.nextSibling);
+      window.getComputedStyle(message).opacity;
+      message.style.opacity = 1;
+    };
+
+    MaterializeFormValidationRenderer.prototype.removeMessage = function removeMessage(element, result) {
+      var message = element.querySelector('#md-input-validation-' + result.id);
+      if (message) {
+        element.removeChild(message);
+      }
+    };
+
+    return MaterializeFormValidationRenderer;
+  }();
+});
+define('aurelia-materialize-bridge/waves/waves',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MdWaves = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+
+  var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec4 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec5 = (0, _aureliaTemplating.bindable)({
+    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
+  }), _dec(_class = _dec2(_class = (_class2 = function () {
+    function MdWaves(element) {
+      _classCallCheck(this, MdWaves);
+
+      _initDefineProp(this, 'block', _descriptor, this);
+
+      _initDefineProp(this, 'circle', _descriptor2, this);
+
+      _initDefineProp(this, 'color', _descriptor3, this);
+
+      this.element = element;
+      this.attributeManager = new _attributeManager.AttributeManager(this.element);
+    }
+
+    MdWaves.prototype.attached = function attached() {
+      var classes = ['waves-effect'];
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.block)) {
+        classes.push('waves-block');
+      }
+      if ((0, _attributes.getBooleanFromAttributeValue)(this.circle)) {
+        classes.push('waves-circle');
+      }
+      if (this.color) {
+        classes.push('waves-' + this.color);
+      }
+
+      this.attributeManager.addClasses(classes);
+      Waves.attach(this.element);
+    };
+
+    MdWaves.prototype.detached = function detached() {
+      var classes = ['waves-effect', 'waves-block'];
+      if (this.color) {
+        classes.push('waves-' + this.color);
+      }
+
+      this.attributeManager.removeClasses(classes);
+    };
+
+    return MdWaves;
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'block', [_dec3], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'circle', [_dec4], {
+    enumerable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'color', [_dec5], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class) || _class);
+});
+define('aurelia-materialize-bridge/config-builder',['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.ConfigBuilder = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var ConfigBuilder = exports.ConfigBuilder = function () {
+    function ConfigBuilder() {
+      _classCallCheck(this, ConfigBuilder);
+
+      this.useGlobalResources = true;
+      this.useScrollfirePatch = false;
+      this.globalResources = [];
+    }
+
+    ConfigBuilder.prototype.useAll = function useAll() {
+      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
+    };
+
+    ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
+      this.globalResources.push('./autocomplete/autocomplete');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useBadge = function useBadge() {
+      this.globalResources.push('./badge/badge');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useBox = function useBox() {
+      this.globalResources.push('./box/box');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
+      this.globalResources.push('./breadcrumbs/breadcrumbs');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useButton = function useButton() {
+      this.globalResources.push('./button/button');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCarousel = function useCarousel() {
+      this.globalResources.push('./carousel/carousel');
+      this.globalResources.push('./carousel/carousel-item');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
+      this.globalResources.push('./char-counter/char-counter');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCard = function useCard() {
+      this.globalResources.push('./card/card');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
+      this.globalResources.push('./checkbox/checkbox');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useChip = function useChip() {
+      this.globalResources.push('./chip/chip');
+      this.globalResources.push('./chip/chips');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useClickCounter = function useClickCounter() {
+      this.globalResources.push('./click-counter');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
+      this.globalResources.push('./collapsible/collapsible');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useCollection = function useCollection() {
+      this.globalResources.push('./collection/collection');
+      this.globalResources.push('./collection/collection-item');
+      this.globalResources.push('./collection/collection-header');
+      this.globalResources.push('./collection/md-collection-selector');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useColors = function useColors() {
+      this.globalResources.push('./colors/md-colors');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useDatePicker = function useDatePicker() {
+      this.globalResources.push('./datepicker/datepicker');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useDropdown = function useDropdown() {
+      this.globalResources.push('./dropdown/dropdown');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
+      (0, _dropdownFix.applyMaterializeDropdownFix)();
+      return this;
+    };
+
+    ConfigBuilder.prototype.useFab = function useFab() {
+      this.globalResources.push('./fab/fab');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useFile = function useFile() {
+      this.globalResources.push('./file/file');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useFooter = function useFooter() {
+      this.globalResources.push('./footer/footer');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useInput = function useInput() {
+      this.globalResources.push('./input/input');
+      this.globalResources.push('./input/input-prefix');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useModal = function useModal() {
+      this.globalResources.push('./modal/modal');
+      this.globalResources.push('./modal/modal-trigger');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useNavbar = function useNavbar() {
+      this.globalResources.push('./navbar/navbar');
+      return this;
+    };
+
+    ConfigBuilder.prototype.usePagination = function usePagination() {
+      this.globalResources.push('./pagination/pagination');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useParallax = function useParallax() {
+      this.globalResources.push('./parallax/parallax');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useProgress = function useProgress() {
+      this.globalResources.push('./progress/progress');
+      return this;
+    };
+
+    ConfigBuilder.prototype.usePushpin = function usePushpin() {
+      this.globalResources.push('./pushpin/pushpin');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useRadio = function useRadio() {
+      this.globalResources.push('./radio/radio');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useRange = function useRange() {
+      this.globalResources.push('./range/range');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollfire = function useScrollfire() {
+      this.globalResources.push('./scrollfire/scrollfire');
+      this.globalResources.push('./scrollfire/scrollfire-target');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useScrollSpy = function useScrollSpy() {
+      this.globalResources.push('./scrollspy/scrollspy');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSelect = function useSelect() {
+      this.globalResources.push('./select/select');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSidenav = function useSidenav() {
+      this.globalResources.push('./sidenav/sidenav');
+      this.globalResources.push('./sidenav/sidenav-collapse');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSlider = function useSlider() {
+      this.globalResources.push('./slider/slider');
+
+      return this;
+    };
+
+    ConfigBuilder.prototype.useSwitch = function useSwitch() {
+      this.globalResources.push('./switch/switch');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTabs = function useTabs() {
+      this.globalResources.push('./tabs/tabs');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTooltip = function useTooltip() {
+      this.globalResources.push('./tooltip/tooltip');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useTransitions = function useTransitions() {
+      this.globalResources.push('./transitions/fadein-image');
+      this.globalResources.push('./transitions/staggered-list');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useWaves = function useWaves() {
+      this.globalResources.push('./waves/waves');
+      return this;
+    };
+
+    ConfigBuilder.prototype.useWell = function useWell() {
+      this.globalResources.push('./well/md-well.html');
+      return this;
+    };
+
+    ConfigBuilder.prototype.withoutGlobalResources = function withoutGlobalResources() {
+      this.useGlobalResources = false;
+      return this;
+    };
+
+    ConfigBuilder.prototype.withScrollfirePatch = function withScrollfirePatch() {
+      this.useScrollfirePatch = true;
+      return this;
+    };
+
+    return ConfigBuilder;
+  }();
+});
+define('aurelia-materialize-bridge/common/polyfills',['exports'], function (exports) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.polyfillElementClosest = polyfillElementClosest;
+  function polyfillElementClosest() {
+    if (typeof Element.prototype.matches !== 'function') {
+      Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || function matches(selector) {
+        var element = this;
+        var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
+        var index = 0;
+
+        while (elements[index] && elements[index] !== element) {
+          ++index;
+        }
+        return Boolean(elements[index]);
+      };
+    }
+
+    if (typeof Element.prototype.closest !== 'function') {
+      Element.prototype.closest = function closest(selector) {
+        var element = this;
+
+        while (element && element.nodeType === 1) {
+          if (element.matches(selector)) {
+            return element;
+          }
+
+          element = element.parentNode;
+        }
+        return null;
+      };
+    }
+  }
+});
+define('text!aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css', ['module'], function(module) { module.exports = "md-breadcrumbs a {\n  cursor: pointer;\n}\n"; });
+define('text!aurelia-materialize-bridge/breadcrumbs/breadcrumbs.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./breadcrumbs.css\"></require>\n  <require from=\"./instructionFilter\"></require>\n  <nav class=\"primary\">\n    <div class=\"nav-wrapper\">\n      <div class=\"col s12\">\n        <template repeat.for=\"instruction of router.currentInstruction.getAllInstructions() | instructionFilter\">\n          <a click.delegate=\"navigate(instruction)\" class=\"breadcrumb\">\n            ${instruction.config.title}\n          </a>\n        </template>\n      </div>\n    </div>\n  </nav>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/card/card.css', ['module'], function(module) { module.exports = "md-card {\n  display: block;\n}\n"; });
+define('text!aurelia-materialize-bridge/card/card.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./card.css\"></require>\n  <div class=\"card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' }\">\n    <div if.bind=\"mdImage !== null\" md-waves=\"color: light; block: true;\" class=\"card-image\">\n      <img class=\"${ mdReveal === true ? 'activator' : '' }\" src.bind=\"mdImage\" />\n      <span if.bind=\"mdReveal === false\" class=\"card-title\">${mdTitle}</span>\n    </div>\n\n    <!-- <div class=\"${ mdHorizontal ? 'card-stacked' : ''}\">\n\n    </div> -->\n    <div class=\"card-content\">\n      <span if.bind=\"mdReveal === true\" class=\"card-title activator\">\n        ${mdTitle}\n        <i class=\"material-icons right\">more_vert</i>\n      </span>\n      <span if.bind=\"mdImage === null\" class=\"card-title\">${mdTitle}</span>\n      <slot></slot>\n    </div>\n\n    <div show.bind=\"mdReveal\" class=\"${ mdReveal ? 'card-reveal' : '' }\">\n      <span class=\"card-title ${ mdReveal ? 'activator' : '' }\">\n        ${mdTitle}\n        <i class=\"material-icons right\">close</i>\n      </span>\n      <slot name=\"reveal-text\"></slot>\n    </div>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/carousel/carousel-item.html', ['module'], function(module) { module.exports = "<template class=\"carousel-item\">\n  <a if.bind=\"mdHref\" href.bind=\"mdHref\">\n    <img if.bind=\"mdImage\" src.bind=\"mdImage\" />\n  </a>\n  <img if.bind=\"!mdHref && mdImage\" src.bind=\"mdImage\" />\n  <slot></slot>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/carousel/carousel.css', ['module'], function(module) { module.exports = "md-carousel {\r\n  display: block;\r\n}\r\n"; });
+define('text!aurelia-materialize-bridge/carousel/carousel.html', ['module'], function(module) { module.exports = "<template class=\"carousel\">\n  <require from=\"./carousel.css\"></require>\n  <slot></slot>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/checkbox/checkbox.html', ['module'], function(module) { module.exports = "<template>\n  <input type=\"checkbox\" id=\"${controlId}\" checked.bind=\"mdChecked\" matcher.bind=\"mdMatcher\" model.bind=\"mdModel\" ref=\"checkbox\" />\n  <label for=\"${controlId}\">\n    <slot></slot>\n  </label>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/chip/chip.css', ['module'], function(module) { module.exports = "md-chip i.material-icons {\n  float: right;\n  line-height: 32px;\n  font-size: 16px;\n  cursor: pointer;\n}\n"; });
+define('text!aurelia-materialize-bridge/chip/chip.html', ['module'], function(module) { module.exports = "<template class=\"chip\">\n  <require from=\"./chip.css\"></require>\n  <slot></slot>\n  <i show.bind=\"mdClose\" class=\"material-icons\" click.delegate=\"close()\">close</i>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/collection/collection-header.css', ['module'], function(module) { module.exports = "md-collection-header {\n  display: block;\n}\n"; });
+define('text!aurelia-materialize-bridge/collection/collection-header.html', ['module'], function(module) { module.exports = "<template class=\"collection-header\">\n  <require from=\"./collection-header.css\"></require>\n  <slot></slot>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/collection/collection-item.css', ['module'], function(module) { module.exports = "md-collection-item {\n  display: block;\n}\n\nmd-collection-item.collection-item:not(.active):hover {\n  background-color: #ddd;\n}\n"; });
+define('text!aurelia-materialize-bridge/collection/collection-item.html', ['module'], function(module) { module.exports = "<template class=\"collection-item\">\n  <require from=\"./collection-item.css\"></require>\n  <slot></slot>\n  <!-- <content select=\".secondary-content\"></content> -->\n</template>\n"; });
+define('text!aurelia-materialize-bridge/collection/collection.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"collection\" ref=\"anchor\">\n    <!-- <content select=\"md-collection-header\"></content>\n    <content select=\"md-collection-item\"></content> -->\n    <slot></slot>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/collection/md-collection-selector.css', ['module'], function(module) { module.exports = "md-collection-selector .md-collection-selector__hover {\n  display: inline-block;\n}\nmd-collection-selector:hover .md-collection-selector__hover, md-collection-item.selected md-collection-selector .md-collection-selector__hover {\n  display: none !important;\n}\nmd-collection-selector .md-collection-selector__checkbox div {\n  margin-left: 5px;\n  display: inline-block;\n  position: absolute;\n  left: 20px;\n  top: 20px;\n  margin-right: 11px;\n  height: 42px;\n  width: 42px;\n  line-height: 42px;\n  text-align: center;\n}\nmd-collection-selector .md-collection-selector__checkbox .md-collection-selector__hover ~ div {\n  display: none;\n}\n\nmd-collection-selector:hover .md-collection-selector__checkbox .md-collection-selector__hover ~ div, md-collection-item.selected md-collection-selector .md-collection-selector__checkbox .md-collection-selector__hover ~ div {\n  display: inline-block;\n}\n\nmd-collection-item.selected {\n  background-color: #eee;\n}\n\nmd-collection-selector md-checkbox {\n  display: inline-block;\n}\nmd-collection-selector md-collection md-checkbox .md-checkbox.is-upgraded {\n  padding-left: 16px;\n}\n"; });
+define('text!aurelia-materialize-bridge/collection/md-collection-selector.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./md-collection-selector.css\"></require>\n  <div class=\"md-collection-selector__checkbox\">\n    <!-- <content select=\".md-collection-selector__hover\"></content> -->\n    <slot></slot>\n    <div>\n      <md-checkbox md-checked.two-way=\"isSelected\" md-disabled.bind=\"mdDisabled\"></md-checkbox>\n    </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/colors/md-colors.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./colorValueConverters\"></require>\n\n  <!--\n    According to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)\n    and using Materialize terminology (darken/lighten instead of hue numbers)\n    the used palettes here consist of:\n    Primary - lighten-1 (400), lighten-2 (300), lighten-3 (200)\n    Accent  - lighten-1 (400), lighten-3 (200)\n\n    These should optionally be defined by the user. At the moment, they are\n    calculated and even not exact (but close).\n\n    Focused elements are an exception, these use \"lighten-0.5\" which is\n    not specified anywhere.\n  -->\n\n  <style>\n  .primary {\n    background-color: ${mdPrimaryColor};\n    color: white;\n  }\n\n  .primary-text {\n    /*background-color: white;*/\n    color: ${mdPrimaryColor};\n  }\n\n  .waves-effect.waves-primary .waves-ripple {\n    background-color: ${mdPrimaryColor};\n  }\n\n  .waves-effect.waves-accent .waves-ripple {\n    background-color: ${mdAccentColor};\n  }\n\n  .accent {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  .accent-text {\n    /*background-color: white;*/\n    color: ${mdAccentColor};\n  }\n\n  .error {\n    background-color: ${mdErrorColor};\n  }\n\n  .error-text {\n    color: ${mdErrorColor}\n  }\n\n  .success {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  .success-text {\n    color: ${mdAccentColor};\n  }\n\n  /* buttons */\n  .btn.primary, .btn-flat.primary, .btn-large.primary {\n    transition: .2s ease-out;\n  }\n  .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {\n    background-color: ${mdPrimaryColor | lighten:1};\n    transition: .2s ease-out;\n  }\n  .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {\n    background-color: ${mdPrimaryColor | lighten:0.5};\n    transition: .2s ease-out;\n  }\n  .btn-flat:not(.disabled):hover {\n    /*background-color: ${mdAccentColor | lighten:3};*/\n    background-color: rgba(50, 50, 50, .15);\n    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\n    border: none;\n    box-shadow: none;\n    transition: .2s ease-out;\n  }\n  .btn-flat:focus {\n    /*background-color: ${mdAccentColor | lighten:2};*/\n    background-color: transparent;\n    border: none;\n    box-shadow: none;\n    transition: .2s ease-out;\n  }\n\n  .btn.accent, .btn-flat.accent, .btn-large.accent {\n    transition: .2s ease-out;\n  }\n  .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {\n    background-color: ${mdAccentColor | lighten:1};\n    transition: .2s ease-out;\n  }\n  .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {\n    background-color: ${mdAccentColor | lighten:0.5};\n    transition: .2s ease-out;\n  }\n\n  /* checkbox */\n  [type=\"checkbox\"]:checked + label:before {\n    border-right-color: ${mdAccentColor};\n    border-bottom-color: ${mdAccentColor};\n  }\n\n  [type=\"checkbox\"].filled-in:checked + label:after {\n    border-color: ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n\n  [type=\"checkbox\"]:indeterminate + label:before {\n    border-right-color: ${mdAccentColor};\n  }\n\n  /* collection */\n  md-collection .collection md-collection-item.collection-item.active {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  md-collection .collection md-collection-item.collection-item .secondary-content {\n    color: ${mdAccentColor};\n  }\n\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary {\n    background-color: ${mdPrimaryColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent {\n    background-color: ${mdAccentColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.error {\n    background-color: ${mdErrorColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.success {\n    background-color: ${mdAccentColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {\n    color: ${mdPrimaryColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {\n    color: ${mdAccentColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {\n    color: ${mdErrorColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {\n    color: ${mdAccentColor};\n    background-color: transparent;\n  }   \n\n\n  /* datepicker */\n  .picker__date-display {\n    background-color: ${mdAccentColor};\n  }\n  .picker__weekday-display {\n    background-color: ${mdAccentColor | darken:1};\n  }\n  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {\n    background-color: ${mdAccentColor};\n  }\n  .picker__day.picker__day--today {\n    color: ${mdAccentColor}\n  }\n  .picker__footer button:not(.picker__clear) {\n    color: ${mdAccentColor}\n  }\n  .picker__footer button:focus {\n    background-color: ${mdAccentColor | lighten:2};\n  }\n  [md-datepicker] + i.material-icons.std-icon-fixup {\n    margin-left: -24px;\n    line-height: 1;\n    margin-top: 12px;\n    cursor: pointer;\n  }\n\n  /* text input */\n  md-input .input-field label {\n    left: 0;\n  }\n  md-input .input-field input[type=text]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=text]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field input[type=email]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=email]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field input[type=password]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=password]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field .prefix.active {\n    color: ${mdAccentColor};\n  }\n  md-input textarea.materialize-textarea:focus:not([readonly]) {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input textarea.materialize-textarea:focus:not([readonly]) + label {\n    color: ${mdAccentColor}\n  }\n\n  md-input input:not([type]).invalid + label:after,\n  md-input input:not([type]):focus.invalid + label:after,\n  md-input input[type=text].invalid + label:after,\n  md-input input[type=text]:focus.invalid + label:after,\n  md-input input[type=password].invalid + label:after,\n  md-input input[type=password]:focus.invalid + label:after,\n  md-input input[type=email].invalid + label:after,\n  md-input input[type=email]:focus.invalid + label:after,\n  md-input input[type=url].invalid + label:after,\n  md-input input[type=url]:focus.invalid + label:after,\n  md-input input[type=time].invalid + label:after,\n  md-input input[type=time]:focus.invalid + label:after,\n  md-input input[type=date].invalid + label:after,\n  md-input input[type=date]:focus.invalid + label:after,\n  md-input input[type=datetime].invalid + label:after,\n  md-input input[type=datetime]:focus.invalid + label:after,\n  md-input input[type=datetime-local].invalid + label:after,\n  md-input input[type=datetime-local]:focus.invalid + label:after,\n  md-input input[type=tel].invalid + label:after,\n  md-input input[type=tel]:focus.invalid + label:after,\n  md-input input[type=number].invalid + label:after,\n  md-input input[type=number]:focus.invalid + label:after,\n  md-input input[type=search].invalid + label:after,\n  md-input input[type=search]:focus.invalid + label:after,\n  md-input textarea.materialize-textarea.invalid + label:after,\n  md-input textarea.materialize-textarea:focus.invalid + label:after\n  {\n    color: ${mdErrorColor}\n  }\n\n  /* text input aurelia-validation messages */\n  .md-input-validation {\n    left: 0;\n    /*color: #f44336;*/\n    color: ${mdErrorColor};\n    font-size: 0.8rem;\n    transition: opacity .2s ease-out;\n    margin-top: -4px;\n    margin-bottom: 0;\n  }\n  @media only screen and (min-width: 0) {\n    .md-input-validation-first {\n      margin-top: -14px;\n      margin-bottom: -2px;\n    }\n  }\n  @media only screen and (min-width: 992px) {\n    .md-input-validation-first {\n      margin-top: -18px;\n      padding-bottom: 3px;\n    }\n  }\n  @media only screen and (min-width: 1200px) {\n    .md-input-validation-first {\n      margin-top: -19px;\n    }\n  }\n\n  /* pagination */\n  md-pagination .pagination li.active {\n    background-color: ${mdPrimaryColor}\n  }\n\n  /* progress */\n  md-progress .progress {\n    background-color: ${mdAccentColor | lighten:2};\n  }\n\n  md-progress .progress .determinate, md-progress .progress .indeterminate {\n    background-color: ${mdAccentColor};\n  }\n\n  /* radio input */\n  md-radio input[type=\"radio\"]:checked + label:after {\n    border: 2px solid ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n  md-radio [type=\"radio\"].with-gap:checked + label:before {\n    border: 2px solid ${mdAccentColor};\n  }\n  md-radio [type=\"radio\"].with-gap:checked + label:after {\n    border: 2px solid ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n\n  /* range */\n  md-range .range-field input[type=\"range\"]::-webkit-slider-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range .range-field input[type=\"range\"]::-moz-range-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range .range-field input[type=\"range\"]::-ms-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range input[type=\"range\"] + .thumb {\n    background-color: ${mdAccentColor} !important;\n  }\n\n  /* select */\n  .dropdown-content li > a, .dropdown-content li > span {\n    color: ${mdAccentColor};\n  }\n\n  .select-wrapper input.select-dropdown {\n    -webkit-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    -o-user-select:none;\n    user-select:none;\n  }\n\n  /* side-nav */\n  md-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {\n    background-color: ${mdPrimaryColor};\n  }\n\n  .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {\n    background-color: ${mdPrimaryColor};\n  }\n\n  /* slider */\n  .slider .indicators .indicator-item.active {\n    background-color: ${mdAccentColor};\n  }\n\n  /* switch */\n  md-switch.switch label input[type=checkbox]:checked + .lever {\n    background-color: ${mdAccentColor | lighten:1};\n  }\n  md-switch.switch label input[type=checkbox]:checked + .lever:after {\n    background-color: ${mdAccentColor};\n  }\n\n  /* tabs */\n\n  .tab.primary-text a {\n    color: ${mdPrimaryColor};\n  }\n  .tab.primary-text a.active {\n    color: ${mdPrimaryColor};\n  }\n  .tab.waves-effect {\n    position: static;\n  }\n  .tab.primary-text a:hover {\n    color: ${mdPrimaryColor | lighten:2};\n  }\n  .tabs .indicator {\n    background-color: ${mdPrimaryColor | lighten:2};\n  }\n\n  /* well */\n  md-well li.active {\n    border-right: 2px solid ${mdPrimaryColor};\n    background-color: ${mdPrimaryColor | lighten:3};\n  }\n\n  /* footer */\n  footer.page-footer {\n    background-color: ${mdPrimaryColor};\n  }\n\n  /* md-select label */\n  .select-wrapper input {\n    /* make input fit in div */\n    display: inline-block !important;\n    /* fix validation border thickness */\n    border-bottom: 1px solid #4CAF50;\n  }\n\n  .select-wrapper input.invalid {\n    border-bottom: 1px solid ${mdErrorColor};\n  }\n\n  .select-wrapper + label {\n    color: ${mdAccentColor};\n    width: 100%;\n  }\n  /* position validation label */\n  .select-wrapper + label:after {\n    display: block;\n    content: \"\";\n    position: absolute;\n    top: 60px;\n    opacity: 0;\n    transition: .2s opacity ease-out, .2s color ease-out;\n    transform: translateY(0) !important;\n  }\n  /* set validation text */\n  .select-wrapper.invalid + label:after {\n    content: attr(data-error);\n    color: ${mdErrorColor};\n    opacity: 1;\n  }\n\n  </style>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/dropdown/dropdown-element.html', ['module'], function(module) { module.exports = "<template md-button class=\"dropdown-button\" data-activates=\"${ controlId }\">\n  ${mdTitle}\n  <div id=\"${ controlId }\" class='dropdown-content'>\n    <slot></slot>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/fab/fab.html', ['module'], function(module) { module.exports = "<template>\n  <a if.bind=\"mdFixed === false\" md-button=\"large.bind: mdLarge;\" md-waves=\"color: light;\" class=\"btn-floating\">\n    <slot></slot>\n  </a>\n\n  <div if.bind=\"mdFixed === true\" class=\"fixed-action-btn\" style=\"bottom: 45px; right: 24px;\">\n    <a md-button=\"large: true;\" md-waves=\"color: light;\" class=\"btn-floating\">\n      <slot></slot>\n    </a>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/file/file.html', ['module'], function(module) { module.exports = "<template>\n    <div class=\"file-field input-field\">\n        <div disabled.bind=\"disabled\" class=\"btn accent ${disabled ? 'disabled' : ''}\">\n            <span>${mdCaption}</span>\n            <input disabled.bind=\"disabled\" type=\"file\" multiple.bind=\"mdMultiple\" files.bind=\"files\" />\n        </div>\n        <div class=\"file-path-wrapper\">\n            <input disabled.bind=\"disabled\" class=\"file-path validate\" type=\"text\" value.bind=\"mdLabelValue\" ref=\"filePath\" />\n        </div>\n    </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/input/input.css', ['module'], function(module) { module.exports = "/*md-input .input-field label {\n  transform: translateX(-11px);\n}\nmd-input .input-field label.active {\n  transform: translateX(-11px) translateY(-140%);\n}*/\n\nmd-input .input-field label.active {\n  width: 100%;\n}\n"; });
+define('text!aurelia-materialize-bridge/input/input.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./input.css\"></require>\n  <div class=\"input-field\">\n    <!-- <content select=\"[md-prefix]\"></content> -->\n    <slot></slot>\n    <input if.bind=\"mdTextArea === false\" id=\"${controlId}\" type.bind=\"mdType\" step.bind=\"mdStep\" ref=\"input\" value.bind=\"mdValue\" disabled.bind=\"mdDisabled\" blur.trigger=\"blur()\" focus.trigger=\"focus()\" />\n    <textarea if.bind=\"mdTextArea === true\" id=\"${controlId}\" ref=\"input\" value.bind=\"mdValue\" class=\"materialize-textarea\" disabled.bind=\"mdDisabled\" blur.trigger=\"blur()\" focus.trigger=\"focus()\"></textarea>\n    <label for=\"${controlId}\" ref=\"label\">${mdLabel}</label>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/navbar/navbar.css', ['module'], function(module) { module.exports = "md-navbar .primary {\n  transition: all .3s ease-out;\n}\n\nmd-navbar .primary.md-auto-height {\n  height: auto;\n}\n"; });
+define('text!aurelia-materialize-bridge/navbar/navbar.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./navbar.css\"></require>\n  <div ref=\"fixedAnchor\">\n    <nav class=\"primary\" ref=\"nav\">\n      <div class=\"nav-wrapper\">\n        <slot></slot>\n      </div>\n    </nav>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/pagination/pagination.html', ['module'], function(module) { module.exports = "<template>\n  <ul class=\"pagination\">\n    <template if.bind=\"mdShowFirstLast\">\n      <li md-waves click.delegate=\"setFirstPage()\" class=\"${ mdActivePage === 1 ? 'disabled' : '' }\"><a><i class=\"material-icons\">first_page</i></a></li>\n    </template>\n    <template if.bind=\"mdShowPrevNext\">\n      <li md-waves click.delegate=\"setPreviousPage()\" class=\"${ mdActivePage === 1 ? 'disabled' : '' }\"><a><i class=\"material-icons\">chevron_left</i></a></li>\n    </template>\n    <template if.bind=\"mdShowPageLinks\">\n      <template repeat.for=\"p of mdPageLinks\">\n        <li md-waves click.delegate=\"setActivePage(p+1)\"><span if.bind=\"$first && p > 0\"><a>...</a></span></li>\n        <li md-waves click.delegate=\"setActivePage(p+1)\" class=\"${ p+1 === mdActivePage ? 'active' : ''}\">\n          <a>${p+1}</a>\n        </li>\n        <li md-waves click.delegate=\"setActivePage(p+1)\"><span if.bind=\"$last && p < pages - 1\"><a>...</a></span></li>\n      </template>\n    </template>\n    <template if.bind=\"mdShowPrevNext\">\n      <li md-waves click.delegate=\"setNextPage()\" class=\"${ mdActivePage == pages ? 'disabled' : '' }\"><a><i class=\"material-icons\">chevron_right</i></a></li>\n    </template>\n    <template if.bind=\"mdShowFirstLast\">\n      <li md-waves click.delegate=\"setLastPage()\" class=\"${ mdActivePage == pages ? 'disabled' : '' }\"><a><i class=\"material-icons\">last_page</i></a></li>\n    </template>\n  </ul>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/progress/progress.html', ['module'], function(module) { module.exports = "<template>\n  <template if.bind=\"mdType === 'linear'\">\n    <div class=\"progress\">\n      <div class=\"${ mdValue === null ? 'indeterminate' : 'determinate' }\" css=\"width: ${ mdValue ? mdValue : 0 }%\"></div>\n  </div>\n  </template>\n  <template if.bind=\"mdType === 'circular' && mdColor !== 'flashing'\">\n    <div class=\"preloader-wrapper ${mdSize} active\" ref=\"wrapper\">\n      <div class=\"spinner-layer spinner-${mdColor}-only\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n    </div>\n  </template>\n  <template if.bind=\"mdType === 'circular' && mdColor === 'flashing'\">\n    <div class=\"preloader-wrapper ${mdSize} active\" ref=\"wrapper\">\n      <div class=\"spinner-layer spinner-blue\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-red\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-yellow\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-green\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n    </div>\n  </template>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/radio/radio.html', ['module'], function(module) { module.exports = "<template>\n  <input if.bind=\"!mdModel\" type=\"radio\" name=\"${mdName}\" value.bind=\"mdValue\" id=\"${controlId}\" checked.bind=\"mdChecked\" ref=\"radio\" />\n  <input if.bind=\"!!mdModel\" type=\"radio\" name=\"${mdName}\" model.bind=\"mdModel\" id=\"${controlId}\" checked.bind=\"mdChecked\" ref=\"radio\" />\n  <label for=\"${controlId}\">\n    <slot></slot>\n  </label>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/range/range.css', ['module'], function(module) { module.exports = "md-range input[type=\"range\"]::-ms-tooltip {\r\n  display: none;\r\n}\r\n"; });
+define('text!aurelia-materialize-bridge/range/range.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./range.css\"></require>\n  <p class=\"range-field\">\n    <input type=\"range\" min.one-way=\"mdMin\" max.one-way=\"mdMax\" step.one-way=\"mdStep\" value.bind=\"mdValue\" ref=\"input\" />\n  </p>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/sidenav/sidenav.css', ['module'], function(module) { module.exports = "md-sidenav li[md-waves] {\n  display: block;\n}\nmd-sidenav li a:hover {\n  background-color: transparent;\n  display: inline-block;\n  width: 100%;\n}\n"; });
+define('text!aurelia-materialize-bridge/sidenav/sidenav.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./sidenav.css\"></require>\n  <div id=\"${ controlId }\" class=\"side-nav\" ref=\"sidenav\">\n    <slot></slot>\n  </div>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/slider/slider.css', ['module'], function(module) { module.exports = "md-slider {\n  display: block;\n}\n\nmd-slide {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: inherit;\n    overflow: hidden;\n}\n"; });
+define('text!aurelia-materialize-bridge/switch/switch.css', ['module'], function(module) { module.exports = "md-switch {\n  display: block;\n}\n"; });
+define('text!aurelia-materialize-bridge/switch/switch.html', ['module'], function(module) { module.exports = "<template class=\"switch\">\n  <require from=\"./switch.css\"></require>\n  <label>\n    ${mdLabelOff}\n    <input type=\"checkbox\" ref=\"checkbox\" blur.trigger=\"blur()\">\n    <span class=\"lever\"></span>\n    ${mdLabelOn}\n  </label>\n</template>\n"; });
+define('text!aurelia-materialize-bridge/well/md-well.html', ['module'], function(module) { module.exports = "<template bindable=\"router\">\n<style>\n  md-well li[md-waves] {\n    display: block;\n  }\n  md-well li a {\n    padding: 5px;\n    display: inline-block;\n    width: 100%;\n  }\n  /*md-well li.active {\n    border-right: 2px solid #ea4a4f;\n    background-color: #ffebee;\n  }*/\n</style>\n  <ul class=\"z-depth-1\">\n      <li md-waves=\"color: primary;\" repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\n          <a href.bind=\"row.href\">${row.title}</a>\n      </li>\n  </ul>\n</template>\n"; });
 // Required for Meteor package, the use of window prevents export by Meteor
 (function(window){
   if(window.Package){
@@ -18405,7287 +25689,3 @@ define("materialize-css/js/materialize.amd", ["jquery"], (function (global) {
 ;define('materialize-css', ['materialize-css/js/materialize.amd'], function (main) { return main; });
 
 define('text!materialize-css/css/materialize.css', ['module'], function(module) { module.exports = "/*!\r\n * Materialize v0.98.0 (http://materializecss.com)\r\n * Copyright 2014-2015 Materialize\r\n * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)\r\n */\r\n.materialize-red {\r\n  background-color: #e51c23 !important;\r\n}\r\n\r\n.materialize-red-text {\r\n  color: #e51c23 !important;\r\n}\r\n\r\n.materialize-red.lighten-5 {\r\n  background-color: #fdeaeb !important;\r\n}\r\n\r\n.materialize-red-text.text-lighten-5 {\r\n  color: #fdeaeb !important;\r\n}\r\n\r\n.materialize-red.lighten-4 {\r\n  background-color: #f8c1c3 !important;\r\n}\r\n\r\n.materialize-red-text.text-lighten-4 {\r\n  color: #f8c1c3 !important;\r\n}\r\n\r\n.materialize-red.lighten-3 {\r\n  background-color: #f3989b !important;\r\n}\r\n\r\n.materialize-red-text.text-lighten-3 {\r\n  color: #f3989b !important;\r\n}\r\n\r\n.materialize-red.lighten-2 {\r\n  background-color: #ee6e73 !important;\r\n}\r\n\r\n.materialize-red-text.text-lighten-2 {\r\n  color: #ee6e73 !important;\r\n}\r\n\r\n.materialize-red.lighten-1 {\r\n  background-color: #ea454b !important;\r\n}\r\n\r\n.materialize-red-text.text-lighten-1 {\r\n  color: #ea454b !important;\r\n}\r\n\r\n.materialize-red.darken-1 {\r\n  background-color: #d0181e !important;\r\n}\r\n\r\n.materialize-red-text.text-darken-1 {\r\n  color: #d0181e !important;\r\n}\r\n\r\n.materialize-red.darken-2 {\r\n  background-color: #b9151b !important;\r\n}\r\n\r\n.materialize-red-text.text-darken-2 {\r\n  color: #b9151b !important;\r\n}\r\n\r\n.materialize-red.darken-3 {\r\n  background-color: #a21318 !important;\r\n}\r\n\r\n.materialize-red-text.text-darken-3 {\r\n  color: #a21318 !important;\r\n}\r\n\r\n.materialize-red.darken-4 {\r\n  background-color: #8b1014 !important;\r\n}\r\n\r\n.materialize-red-text.text-darken-4 {\r\n  color: #8b1014 !important;\r\n}\r\n\r\n.red {\r\n  background-color: #F44336 !important;\r\n}\r\n\r\n.red-text {\r\n  color: #F44336 !important;\r\n}\r\n\r\n.red.lighten-5 {\r\n  background-color: #FFEBEE !important;\r\n}\r\n\r\n.red-text.text-lighten-5 {\r\n  color: #FFEBEE !important;\r\n}\r\n\r\n.red.lighten-4 {\r\n  background-color: #FFCDD2 !important;\r\n}\r\n\r\n.red-text.text-lighten-4 {\r\n  color: #FFCDD2 !important;\r\n}\r\n\r\n.red.lighten-3 {\r\n  background-color: #EF9A9A !important;\r\n}\r\n\r\n.red-text.text-lighten-3 {\r\n  color: #EF9A9A !important;\r\n}\r\n\r\n.red.lighten-2 {\r\n  background-color: #E57373 !important;\r\n}\r\n\r\n.red-text.text-lighten-2 {\r\n  color: #E57373 !important;\r\n}\r\n\r\n.red.lighten-1 {\r\n  background-color: #EF5350 !important;\r\n}\r\n\r\n.red-text.text-lighten-1 {\r\n  color: #EF5350 !important;\r\n}\r\n\r\n.red.darken-1 {\r\n  background-color: #E53935 !important;\r\n}\r\n\r\n.red-text.text-darken-1 {\r\n  color: #E53935 !important;\r\n}\r\n\r\n.red.darken-2 {\r\n  background-color: #D32F2F !important;\r\n}\r\n\r\n.red-text.text-darken-2 {\r\n  color: #D32F2F !important;\r\n}\r\n\r\n.red.darken-3 {\r\n  background-color: #C62828 !important;\r\n}\r\n\r\n.red-text.text-darken-3 {\r\n  color: #C62828 !important;\r\n}\r\n\r\n.red.darken-4 {\r\n  background-color: #B71C1C !important;\r\n}\r\n\r\n.red-text.text-darken-4 {\r\n  color: #B71C1C !important;\r\n}\r\n\r\n.red.accent-1 {\r\n  background-color: #FF8A80 !important;\r\n}\r\n\r\n.red-text.text-accent-1 {\r\n  color: #FF8A80 !important;\r\n}\r\n\r\n.red.accent-2 {\r\n  background-color: #FF5252 !important;\r\n}\r\n\r\n.red-text.text-accent-2 {\r\n  color: #FF5252 !important;\r\n}\r\n\r\n.red.accent-3 {\r\n  background-color: #FF1744 !important;\r\n}\r\n\r\n.red-text.text-accent-3 {\r\n  color: #FF1744 !important;\r\n}\r\n\r\n.red.accent-4 {\r\n  background-color: #D50000 !important;\r\n}\r\n\r\n.red-text.text-accent-4 {\r\n  color: #D50000 !important;\r\n}\r\n\r\n.pink {\r\n  background-color: #e91e63 !important;\r\n}\r\n\r\n.pink-text {\r\n  color: #e91e63 !important;\r\n}\r\n\r\n.pink.lighten-5 {\r\n  background-color: #fce4ec !important;\r\n}\r\n\r\n.pink-text.text-lighten-5 {\r\n  color: #fce4ec !important;\r\n}\r\n\r\n.pink.lighten-4 {\r\n  background-color: #f8bbd0 !important;\r\n}\r\n\r\n.pink-text.text-lighten-4 {\r\n  color: #f8bbd0 !important;\r\n}\r\n\r\n.pink.lighten-3 {\r\n  background-color: #f48fb1 !important;\r\n}\r\n\r\n.pink-text.text-lighten-3 {\r\n  color: #f48fb1 !important;\r\n}\r\n\r\n.pink.lighten-2 {\r\n  background-color: #f06292 !important;\r\n}\r\n\r\n.pink-text.text-lighten-2 {\r\n  color: #f06292 !important;\r\n}\r\n\r\n.pink.lighten-1 {\r\n  background-color: #ec407a !important;\r\n}\r\n\r\n.pink-text.text-lighten-1 {\r\n  color: #ec407a !important;\r\n}\r\n\r\n.pink.darken-1 {\r\n  background-color: #d81b60 !important;\r\n}\r\n\r\n.pink-text.text-darken-1 {\r\n  color: #d81b60 !important;\r\n}\r\n\r\n.pink.darken-2 {\r\n  background-color: #c2185b !important;\r\n}\r\n\r\n.pink-text.text-darken-2 {\r\n  color: #c2185b !important;\r\n}\r\n\r\n.pink.darken-3 {\r\n  background-color: #ad1457 !important;\r\n}\r\n\r\n.pink-text.text-darken-3 {\r\n  color: #ad1457 !important;\r\n}\r\n\r\n.pink.darken-4 {\r\n  background-color: #880e4f !important;\r\n}\r\n\r\n.pink-text.text-darken-4 {\r\n  color: #880e4f !important;\r\n}\r\n\r\n.pink.accent-1 {\r\n  background-color: #ff80ab !important;\r\n}\r\n\r\n.pink-text.text-accent-1 {\r\n  color: #ff80ab !important;\r\n}\r\n\r\n.pink.accent-2 {\r\n  background-color: #ff4081 !important;\r\n}\r\n\r\n.pink-text.text-accent-2 {\r\n  color: #ff4081 !important;\r\n}\r\n\r\n.pink.accent-3 {\r\n  background-color: #f50057 !important;\r\n}\r\n\r\n.pink-text.text-accent-3 {\r\n  color: #f50057 !important;\r\n}\r\n\r\n.pink.accent-4 {\r\n  background-color: #c51162 !important;\r\n}\r\n\r\n.pink-text.text-accent-4 {\r\n  color: #c51162 !important;\r\n}\r\n\r\n.purple {\r\n  background-color: #9c27b0 !important;\r\n}\r\n\r\n.purple-text {\r\n  color: #9c27b0 !important;\r\n}\r\n\r\n.purple.lighten-5 {\r\n  background-color: #f3e5f5 !important;\r\n}\r\n\r\n.purple-text.text-lighten-5 {\r\n  color: #f3e5f5 !important;\r\n}\r\n\r\n.purple.lighten-4 {\r\n  background-color: #e1bee7 !important;\r\n}\r\n\r\n.purple-text.text-lighten-4 {\r\n  color: #e1bee7 !important;\r\n}\r\n\r\n.purple.lighten-3 {\r\n  background-color: #ce93d8 !important;\r\n}\r\n\r\n.purple-text.text-lighten-3 {\r\n  color: #ce93d8 !important;\r\n}\r\n\r\n.purple.lighten-2 {\r\n  background-color: #ba68c8 !important;\r\n}\r\n\r\n.purple-text.text-lighten-2 {\r\n  color: #ba68c8 !important;\r\n}\r\n\r\n.purple.lighten-1 {\r\n  background-color: #ab47bc !important;\r\n}\r\n\r\n.purple-text.text-lighten-1 {\r\n  color: #ab47bc !important;\r\n}\r\n\r\n.purple.darken-1 {\r\n  background-color: #8e24aa !important;\r\n}\r\n\r\n.purple-text.text-darken-1 {\r\n  color: #8e24aa !important;\r\n}\r\n\r\n.purple.darken-2 {\r\n  background-color: #7b1fa2 !important;\r\n}\r\n\r\n.purple-text.text-darken-2 {\r\n  color: #7b1fa2 !important;\r\n}\r\n\r\n.purple.darken-3 {\r\n  background-color: #6a1b9a !important;\r\n}\r\n\r\n.purple-text.text-darken-3 {\r\n  color: #6a1b9a !important;\r\n}\r\n\r\n.purple.darken-4 {\r\n  background-color: #4a148c !important;\r\n}\r\n\r\n.purple-text.text-darken-4 {\r\n  color: #4a148c !important;\r\n}\r\n\r\n.purple.accent-1 {\r\n  background-color: #ea80fc !important;\r\n}\r\n\r\n.purple-text.text-accent-1 {\r\n  color: #ea80fc !important;\r\n}\r\n\r\n.purple.accent-2 {\r\n  background-color: #e040fb !important;\r\n}\r\n\r\n.purple-text.text-accent-2 {\r\n  color: #e040fb !important;\r\n}\r\n\r\n.purple.accent-3 {\r\n  background-color: #d500f9 !important;\r\n}\r\n\r\n.purple-text.text-accent-3 {\r\n  color: #d500f9 !important;\r\n}\r\n\r\n.purple.accent-4 {\r\n  background-color: #aa00ff !important;\r\n}\r\n\r\n.purple-text.text-accent-4 {\r\n  color: #aa00ff !important;\r\n}\r\n\r\n.deep-purple {\r\n  background-color: #673ab7 !important;\r\n}\r\n\r\n.deep-purple-text {\r\n  color: #673ab7 !important;\r\n}\r\n\r\n.deep-purple.lighten-5 {\r\n  background-color: #ede7f6 !important;\r\n}\r\n\r\n.deep-purple-text.text-lighten-5 {\r\n  color: #ede7f6 !important;\r\n}\r\n\r\n.deep-purple.lighten-4 {\r\n  background-color: #d1c4e9 !important;\r\n}\r\n\r\n.deep-purple-text.text-lighten-4 {\r\n  color: #d1c4e9 !important;\r\n}\r\n\r\n.deep-purple.lighten-3 {\r\n  background-color: #b39ddb !important;\r\n}\r\n\r\n.deep-purple-text.text-lighten-3 {\r\n  color: #b39ddb !important;\r\n}\r\n\r\n.deep-purple.lighten-2 {\r\n  background-color: #9575cd !important;\r\n}\r\n\r\n.deep-purple-text.text-lighten-2 {\r\n  color: #9575cd !important;\r\n}\r\n\r\n.deep-purple.lighten-1 {\r\n  background-color: #7e57c2 !important;\r\n}\r\n\r\n.deep-purple-text.text-lighten-1 {\r\n  color: #7e57c2 !important;\r\n}\r\n\r\n.deep-purple.darken-1 {\r\n  background-color: #5e35b1 !important;\r\n}\r\n\r\n.deep-purple-text.text-darken-1 {\r\n  color: #5e35b1 !important;\r\n}\r\n\r\n.deep-purple.darken-2 {\r\n  background-color: #512da8 !important;\r\n}\r\n\r\n.deep-purple-text.text-darken-2 {\r\n  color: #512da8 !important;\r\n}\r\n\r\n.deep-purple.darken-3 {\r\n  background-color: #4527a0 !important;\r\n}\r\n\r\n.deep-purple-text.text-darken-3 {\r\n  color: #4527a0 !important;\r\n}\r\n\r\n.deep-purple.darken-4 {\r\n  background-color: #311b92 !important;\r\n}\r\n\r\n.deep-purple-text.text-darken-4 {\r\n  color: #311b92 !important;\r\n}\r\n\r\n.deep-purple.accent-1 {\r\n  background-color: #b388ff !important;\r\n}\r\n\r\n.deep-purple-text.text-accent-1 {\r\n  color: #b388ff !important;\r\n}\r\n\r\n.deep-purple.accent-2 {\r\n  background-color: #7c4dff !important;\r\n}\r\n\r\n.deep-purple-text.text-accent-2 {\r\n  color: #7c4dff !important;\r\n}\r\n\r\n.deep-purple.accent-3 {\r\n  background-color: #651fff !important;\r\n}\r\n\r\n.deep-purple-text.text-accent-3 {\r\n  color: #651fff !important;\r\n}\r\n\r\n.deep-purple.accent-4 {\r\n  background-color: #6200ea !important;\r\n}\r\n\r\n.deep-purple-text.text-accent-4 {\r\n  color: #6200ea !important;\r\n}\r\n\r\n.indigo {\r\n  background-color: #3f51b5 !important;\r\n}\r\n\r\n.indigo-text {\r\n  color: #3f51b5 !important;\r\n}\r\n\r\n.indigo.lighten-5 {\r\n  background-color: #e8eaf6 !important;\r\n}\r\n\r\n.indigo-text.text-lighten-5 {\r\n  color: #e8eaf6 !important;\r\n}\r\n\r\n.indigo.lighten-4 {\r\n  background-color: #c5cae9 !important;\r\n}\r\n\r\n.indigo-text.text-lighten-4 {\r\n  color: #c5cae9 !important;\r\n}\r\n\r\n.indigo.lighten-3 {\r\n  background-color: #9fa8da !important;\r\n}\r\n\r\n.indigo-text.text-lighten-3 {\r\n  color: #9fa8da !important;\r\n}\r\n\r\n.indigo.lighten-2 {\r\n  background-color: #7986cb !important;\r\n}\r\n\r\n.indigo-text.text-lighten-2 {\r\n  color: #7986cb !important;\r\n}\r\n\r\n.indigo.lighten-1 {\r\n  background-color: #5c6bc0 !important;\r\n}\r\n\r\n.indigo-text.text-lighten-1 {\r\n  color: #5c6bc0 !important;\r\n}\r\n\r\n.indigo.darken-1 {\r\n  background-color: #3949ab !important;\r\n}\r\n\r\n.indigo-text.text-darken-1 {\r\n  color: #3949ab !important;\r\n}\r\n\r\n.indigo.darken-2 {\r\n  background-color: #303f9f !important;\r\n}\r\n\r\n.indigo-text.text-darken-2 {\r\n  color: #303f9f !important;\r\n}\r\n\r\n.indigo.darken-3 {\r\n  background-color: #283593 !important;\r\n}\r\n\r\n.indigo-text.text-darken-3 {\r\n  color: #283593 !important;\r\n}\r\n\r\n.indigo.darken-4 {\r\n  background-color: #1a237e !important;\r\n}\r\n\r\n.indigo-text.text-darken-4 {\r\n  color: #1a237e !important;\r\n}\r\n\r\n.indigo.accent-1 {\r\n  background-color: #8c9eff !important;\r\n}\r\n\r\n.indigo-text.text-accent-1 {\r\n  color: #8c9eff !important;\r\n}\r\n\r\n.indigo.accent-2 {\r\n  background-color: #536dfe !important;\r\n}\r\n\r\n.indigo-text.text-accent-2 {\r\n  color: #536dfe !important;\r\n}\r\n\r\n.indigo.accent-3 {\r\n  background-color: #3d5afe !important;\r\n}\r\n\r\n.indigo-text.text-accent-3 {\r\n  color: #3d5afe !important;\r\n}\r\n\r\n.indigo.accent-4 {\r\n  background-color: #304ffe !important;\r\n}\r\n\r\n.indigo-text.text-accent-4 {\r\n  color: #304ffe !important;\r\n}\r\n\r\n.blue {\r\n  background-color: #2196F3 !important;\r\n}\r\n\r\n.blue-text {\r\n  color: #2196F3 !important;\r\n}\r\n\r\n.blue.lighten-5 {\r\n  background-color: #E3F2FD !important;\r\n}\r\n\r\n.blue-text.text-lighten-5 {\r\n  color: #E3F2FD !important;\r\n}\r\n\r\n.blue.lighten-4 {\r\n  background-color: #BBDEFB !important;\r\n}\r\n\r\n.blue-text.text-lighten-4 {\r\n  color: #BBDEFB !important;\r\n}\r\n\r\n.blue.lighten-3 {\r\n  background-color: #90CAF9 !important;\r\n}\r\n\r\n.blue-text.text-lighten-3 {\r\n  color: #90CAF9 !important;\r\n}\r\n\r\n.blue.lighten-2 {\r\n  background-color: #64B5F6 !important;\r\n}\r\n\r\n.blue-text.text-lighten-2 {\r\n  color: #64B5F6 !important;\r\n}\r\n\r\n.blue.lighten-1 {\r\n  background-color: #42A5F5 !important;\r\n}\r\n\r\n.blue-text.text-lighten-1 {\r\n  color: #42A5F5 !important;\r\n}\r\n\r\n.blue.darken-1 {\r\n  background-color: #1E88E5 !important;\r\n}\r\n\r\n.blue-text.text-darken-1 {\r\n  color: #1E88E5 !important;\r\n}\r\n\r\n.blue.darken-2 {\r\n  background-color: #1976D2 !important;\r\n}\r\n\r\n.blue-text.text-darken-2 {\r\n  color: #1976D2 !important;\r\n}\r\n\r\n.blue.darken-3 {\r\n  background-color: #1565C0 !important;\r\n}\r\n\r\n.blue-text.text-darken-3 {\r\n  color: #1565C0 !important;\r\n}\r\n\r\n.blue.darken-4 {\r\n  background-color: #0D47A1 !important;\r\n}\r\n\r\n.blue-text.text-darken-4 {\r\n  color: #0D47A1 !important;\r\n}\r\n\r\n.blue.accent-1 {\r\n  background-color: #82B1FF !important;\r\n}\r\n\r\n.blue-text.text-accent-1 {\r\n  color: #82B1FF !important;\r\n}\r\n\r\n.blue.accent-2 {\r\n  background-color: #448AFF !important;\r\n}\r\n\r\n.blue-text.text-accent-2 {\r\n  color: #448AFF !important;\r\n}\r\n\r\n.blue.accent-3 {\r\n  background-color: #2979FF !important;\r\n}\r\n\r\n.blue-text.text-accent-3 {\r\n  color: #2979FF !important;\r\n}\r\n\r\n.blue.accent-4 {\r\n  background-color: #2962FF !important;\r\n}\r\n\r\n.blue-text.text-accent-4 {\r\n  color: #2962FF !important;\r\n}\r\n\r\n.light-blue {\r\n  background-color: #03a9f4 !important;\r\n}\r\n\r\n.light-blue-text {\r\n  color: #03a9f4 !important;\r\n}\r\n\r\n.light-blue.lighten-5 {\r\n  background-color: #e1f5fe !important;\r\n}\r\n\r\n.light-blue-text.text-lighten-5 {\r\n  color: #e1f5fe !important;\r\n}\r\n\r\n.light-blue.lighten-4 {\r\n  background-color: #b3e5fc !important;\r\n}\r\n\r\n.light-blue-text.text-lighten-4 {\r\n  color: #b3e5fc !important;\r\n}\r\n\r\n.light-blue.lighten-3 {\r\n  background-color: #81d4fa !important;\r\n}\r\n\r\n.light-blue-text.text-lighten-3 {\r\n  color: #81d4fa !important;\r\n}\r\n\r\n.light-blue.lighten-2 {\r\n  background-color: #4fc3f7 !important;\r\n}\r\n\r\n.light-blue-text.text-lighten-2 {\r\n  color: #4fc3f7 !important;\r\n}\r\n\r\n.light-blue.lighten-1 {\r\n  background-color: #29b6f6 !important;\r\n}\r\n\r\n.light-blue-text.text-lighten-1 {\r\n  color: #29b6f6 !important;\r\n}\r\n\r\n.light-blue.darken-1 {\r\n  background-color: #039be5 !important;\r\n}\r\n\r\n.light-blue-text.text-darken-1 {\r\n  color: #039be5 !important;\r\n}\r\n\r\n.light-blue.darken-2 {\r\n  background-color: #0288d1 !important;\r\n}\r\n\r\n.light-blue-text.text-darken-2 {\r\n  color: #0288d1 !important;\r\n}\r\n\r\n.light-blue.darken-3 {\r\n  background-color: #0277bd !important;\r\n}\r\n\r\n.light-blue-text.text-darken-3 {\r\n  color: #0277bd !important;\r\n}\r\n\r\n.light-blue.darken-4 {\r\n  background-color: #01579b !important;\r\n}\r\n\r\n.light-blue-text.text-darken-4 {\r\n  color: #01579b !important;\r\n}\r\n\r\n.light-blue.accent-1 {\r\n  background-color: #80d8ff !important;\r\n}\r\n\r\n.light-blue-text.text-accent-1 {\r\n  color: #80d8ff !important;\r\n}\r\n\r\n.light-blue.accent-2 {\r\n  background-color: #40c4ff !important;\r\n}\r\n\r\n.light-blue-text.text-accent-2 {\r\n  color: #40c4ff !important;\r\n}\r\n\r\n.light-blue.accent-3 {\r\n  background-color: #00b0ff !important;\r\n}\r\n\r\n.light-blue-text.text-accent-3 {\r\n  color: #00b0ff !important;\r\n}\r\n\r\n.light-blue.accent-4 {\r\n  background-color: #0091ea !important;\r\n}\r\n\r\n.light-blue-text.text-accent-4 {\r\n  color: #0091ea !important;\r\n}\r\n\r\n.cyan {\r\n  background-color: #00bcd4 !important;\r\n}\r\n\r\n.cyan-text {\r\n  color: #00bcd4 !important;\r\n}\r\n\r\n.cyan.lighten-5 {\r\n  background-color: #e0f7fa !important;\r\n}\r\n\r\n.cyan-text.text-lighten-5 {\r\n  color: #e0f7fa !important;\r\n}\r\n\r\n.cyan.lighten-4 {\r\n  background-color: #b2ebf2 !important;\r\n}\r\n\r\n.cyan-text.text-lighten-4 {\r\n  color: #b2ebf2 !important;\r\n}\r\n\r\n.cyan.lighten-3 {\r\n  background-color: #80deea !important;\r\n}\r\n\r\n.cyan-text.text-lighten-3 {\r\n  color: #80deea !important;\r\n}\r\n\r\n.cyan.lighten-2 {\r\n  background-color: #4dd0e1 !important;\r\n}\r\n\r\n.cyan-text.text-lighten-2 {\r\n  color: #4dd0e1 !important;\r\n}\r\n\r\n.cyan.lighten-1 {\r\n  background-color: #26c6da !important;\r\n}\r\n\r\n.cyan-text.text-lighten-1 {\r\n  color: #26c6da !important;\r\n}\r\n\r\n.cyan.darken-1 {\r\n  background-color: #00acc1 !important;\r\n}\r\n\r\n.cyan-text.text-darken-1 {\r\n  color: #00acc1 !important;\r\n}\r\n\r\n.cyan.darken-2 {\r\n  background-color: #0097a7 !important;\r\n}\r\n\r\n.cyan-text.text-darken-2 {\r\n  color: #0097a7 !important;\r\n}\r\n\r\n.cyan.darken-3 {\r\n  background-color: #00838f !important;\r\n}\r\n\r\n.cyan-text.text-darken-3 {\r\n  color: #00838f !important;\r\n}\r\n\r\n.cyan.darken-4 {\r\n  background-color: #006064 !important;\r\n}\r\n\r\n.cyan-text.text-darken-4 {\r\n  color: #006064 !important;\r\n}\r\n\r\n.cyan.accent-1 {\r\n  background-color: #84ffff !important;\r\n}\r\n\r\n.cyan-text.text-accent-1 {\r\n  color: #84ffff !important;\r\n}\r\n\r\n.cyan.accent-2 {\r\n  background-color: #18ffff !important;\r\n}\r\n\r\n.cyan-text.text-accent-2 {\r\n  color: #18ffff !important;\r\n}\r\n\r\n.cyan.accent-3 {\r\n  background-color: #00e5ff !important;\r\n}\r\n\r\n.cyan-text.text-accent-3 {\r\n  color: #00e5ff !important;\r\n}\r\n\r\n.cyan.accent-4 {\r\n  background-color: #00b8d4 !important;\r\n}\r\n\r\n.cyan-text.text-accent-4 {\r\n  color: #00b8d4 !important;\r\n}\r\n\r\n.teal {\r\n  background-color: #009688 !important;\r\n}\r\n\r\n.teal-text {\r\n  color: #009688 !important;\r\n}\r\n\r\n.teal.lighten-5 {\r\n  background-color: #e0f2f1 !important;\r\n}\r\n\r\n.teal-text.text-lighten-5 {\r\n  color: #e0f2f1 !important;\r\n}\r\n\r\n.teal.lighten-4 {\r\n  background-color: #b2dfdb !important;\r\n}\r\n\r\n.teal-text.text-lighten-4 {\r\n  color: #b2dfdb !important;\r\n}\r\n\r\n.teal.lighten-3 {\r\n  background-color: #80cbc4 !important;\r\n}\r\n\r\n.teal-text.text-lighten-3 {\r\n  color: #80cbc4 !important;\r\n}\r\n\r\n.teal.lighten-2 {\r\n  background-color: #4db6ac !important;\r\n}\r\n\r\n.teal-text.text-lighten-2 {\r\n  color: #4db6ac !important;\r\n}\r\n\r\n.teal.lighten-1 {\r\n  background-color: #26a69a !important;\r\n}\r\n\r\n.teal-text.text-lighten-1 {\r\n  color: #26a69a !important;\r\n}\r\n\r\n.teal.darken-1 {\r\n  background-color: #00897b !important;\r\n}\r\n\r\n.teal-text.text-darken-1 {\r\n  color: #00897b !important;\r\n}\r\n\r\n.teal.darken-2 {\r\n  background-color: #00796b !important;\r\n}\r\n\r\n.teal-text.text-darken-2 {\r\n  color: #00796b !important;\r\n}\r\n\r\n.teal.darken-3 {\r\n  background-color: #00695c !important;\r\n}\r\n\r\n.teal-text.text-darken-3 {\r\n  color: #00695c !important;\r\n}\r\n\r\n.teal.darken-4 {\r\n  background-color: #004d40 !important;\r\n}\r\n\r\n.teal-text.text-darken-4 {\r\n  color: #004d40 !important;\r\n}\r\n\r\n.teal.accent-1 {\r\n  background-color: #a7ffeb !important;\r\n}\r\n\r\n.teal-text.text-accent-1 {\r\n  color: #a7ffeb !important;\r\n}\r\n\r\n.teal.accent-2 {\r\n  background-color: #64ffda !important;\r\n}\r\n\r\n.teal-text.text-accent-2 {\r\n  color: #64ffda !important;\r\n}\r\n\r\n.teal.accent-3 {\r\n  background-color: #1de9b6 !important;\r\n}\r\n\r\n.teal-text.text-accent-3 {\r\n  color: #1de9b6 !important;\r\n}\r\n\r\n.teal.accent-4 {\r\n  background-color: #00bfa5 !important;\r\n}\r\n\r\n.teal-text.text-accent-4 {\r\n  color: #00bfa5 !important;\r\n}\r\n\r\n.green {\r\n  background-color: #4CAF50 !important;\r\n}\r\n\r\n.green-text {\r\n  color: #4CAF50 !important;\r\n}\r\n\r\n.green.lighten-5 {\r\n  background-color: #E8F5E9 !important;\r\n}\r\n\r\n.green-text.text-lighten-5 {\r\n  color: #E8F5E9 !important;\r\n}\r\n\r\n.green.lighten-4 {\r\n  background-color: #C8E6C9 !important;\r\n}\r\n\r\n.green-text.text-lighten-4 {\r\n  color: #C8E6C9 !important;\r\n}\r\n\r\n.green.lighten-3 {\r\n  background-color: #A5D6A7 !important;\r\n}\r\n\r\n.green-text.text-lighten-3 {\r\n  color: #A5D6A7 !important;\r\n}\r\n\r\n.green.lighten-2 {\r\n  background-color: #81C784 !important;\r\n}\r\n\r\n.green-text.text-lighten-2 {\r\n  color: #81C784 !important;\r\n}\r\n\r\n.green.lighten-1 {\r\n  background-color: #66BB6A !important;\r\n}\r\n\r\n.green-text.text-lighten-1 {\r\n  color: #66BB6A !important;\r\n}\r\n\r\n.green.darken-1 {\r\n  background-color: #43A047 !important;\r\n}\r\n\r\n.green-text.text-darken-1 {\r\n  color: #43A047 !important;\r\n}\r\n\r\n.green.darken-2 {\r\n  background-color: #388E3C !important;\r\n}\r\n\r\n.green-text.text-darken-2 {\r\n  color: #388E3C !important;\r\n}\r\n\r\n.green.darken-3 {\r\n  background-color: #2E7D32 !important;\r\n}\r\n\r\n.green-text.text-darken-3 {\r\n  color: #2E7D32 !important;\r\n}\r\n\r\n.green.darken-4 {\r\n  background-color: #1B5E20 !important;\r\n}\r\n\r\n.green-text.text-darken-4 {\r\n  color: #1B5E20 !important;\r\n}\r\n\r\n.green.accent-1 {\r\n  background-color: #B9F6CA !important;\r\n}\r\n\r\n.green-text.text-accent-1 {\r\n  color: #B9F6CA !important;\r\n}\r\n\r\n.green.accent-2 {\r\n  background-color: #69F0AE !important;\r\n}\r\n\r\n.green-text.text-accent-2 {\r\n  color: #69F0AE !important;\r\n}\r\n\r\n.green.accent-3 {\r\n  background-color: #00E676 !important;\r\n}\r\n\r\n.green-text.text-accent-3 {\r\n  color: #00E676 !important;\r\n}\r\n\r\n.green.accent-4 {\r\n  background-color: #00C853 !important;\r\n}\r\n\r\n.green-text.text-accent-4 {\r\n  color: #00C853 !important;\r\n}\r\n\r\n.light-green {\r\n  background-color: #8bc34a !important;\r\n}\r\n\r\n.light-green-text {\r\n  color: #8bc34a !important;\r\n}\r\n\r\n.light-green.lighten-5 {\r\n  background-color: #f1f8e9 !important;\r\n}\r\n\r\n.light-green-text.text-lighten-5 {\r\n  color: #f1f8e9 !important;\r\n}\r\n\r\n.light-green.lighten-4 {\r\n  background-color: #dcedc8 !important;\r\n}\r\n\r\n.light-green-text.text-lighten-4 {\r\n  color: #dcedc8 !important;\r\n}\r\n\r\n.light-green.lighten-3 {\r\n  background-color: #c5e1a5 !important;\r\n}\r\n\r\n.light-green-text.text-lighten-3 {\r\n  color: #c5e1a5 !important;\r\n}\r\n\r\n.light-green.lighten-2 {\r\n  background-color: #aed581 !important;\r\n}\r\n\r\n.light-green-text.text-lighten-2 {\r\n  color: #aed581 !important;\r\n}\r\n\r\n.light-green.lighten-1 {\r\n  background-color: #9ccc65 !important;\r\n}\r\n\r\n.light-green-text.text-lighten-1 {\r\n  color: #9ccc65 !important;\r\n}\r\n\r\n.light-green.darken-1 {\r\n  background-color: #7cb342 !important;\r\n}\r\n\r\n.light-green-text.text-darken-1 {\r\n  color: #7cb342 !important;\r\n}\r\n\r\n.light-green.darken-2 {\r\n  background-color: #689f38 !important;\r\n}\r\n\r\n.light-green-text.text-darken-2 {\r\n  color: #689f38 !important;\r\n}\r\n\r\n.light-green.darken-3 {\r\n  background-color: #558b2f !important;\r\n}\r\n\r\n.light-green-text.text-darken-3 {\r\n  color: #558b2f !important;\r\n}\r\n\r\n.light-green.darken-4 {\r\n  background-color: #33691e !important;\r\n}\r\n\r\n.light-green-text.text-darken-4 {\r\n  color: #33691e !important;\r\n}\r\n\r\n.light-green.accent-1 {\r\n  background-color: #ccff90 !important;\r\n}\r\n\r\n.light-green-text.text-accent-1 {\r\n  color: #ccff90 !important;\r\n}\r\n\r\n.light-green.accent-2 {\r\n  background-color: #b2ff59 !important;\r\n}\r\n\r\n.light-green-text.text-accent-2 {\r\n  color: #b2ff59 !important;\r\n}\r\n\r\n.light-green.accent-3 {\r\n  background-color: #76ff03 !important;\r\n}\r\n\r\n.light-green-text.text-accent-3 {\r\n  color: #76ff03 !important;\r\n}\r\n\r\n.light-green.accent-4 {\r\n  background-color: #64dd17 !important;\r\n}\r\n\r\n.light-green-text.text-accent-4 {\r\n  color: #64dd17 !important;\r\n}\r\n\r\n.lime {\r\n  background-color: #cddc39 !important;\r\n}\r\n\r\n.lime-text {\r\n  color: #cddc39 !important;\r\n}\r\n\r\n.lime.lighten-5 {\r\n  background-color: #f9fbe7 !important;\r\n}\r\n\r\n.lime-text.text-lighten-5 {\r\n  color: #f9fbe7 !important;\r\n}\r\n\r\n.lime.lighten-4 {\r\n  background-color: #f0f4c3 !important;\r\n}\r\n\r\n.lime-text.text-lighten-4 {\r\n  color: #f0f4c3 !important;\r\n}\r\n\r\n.lime.lighten-3 {\r\n  background-color: #e6ee9c !important;\r\n}\r\n\r\n.lime-text.text-lighten-3 {\r\n  color: #e6ee9c !important;\r\n}\r\n\r\n.lime.lighten-2 {\r\n  background-color: #dce775 !important;\r\n}\r\n\r\n.lime-text.text-lighten-2 {\r\n  color: #dce775 !important;\r\n}\r\n\r\n.lime.lighten-1 {\r\n  background-color: #d4e157 !important;\r\n}\r\n\r\n.lime-text.text-lighten-1 {\r\n  color: #d4e157 !important;\r\n}\r\n\r\n.lime.darken-1 {\r\n  background-color: #c0ca33 !important;\r\n}\r\n\r\n.lime-text.text-darken-1 {\r\n  color: #c0ca33 !important;\r\n}\r\n\r\n.lime.darken-2 {\r\n  background-color: #afb42b !important;\r\n}\r\n\r\n.lime-text.text-darken-2 {\r\n  color: #afb42b !important;\r\n}\r\n\r\n.lime.darken-3 {\r\n  background-color: #9e9d24 !important;\r\n}\r\n\r\n.lime-text.text-darken-3 {\r\n  color: #9e9d24 !important;\r\n}\r\n\r\n.lime.darken-4 {\r\n  background-color: #827717 !important;\r\n}\r\n\r\n.lime-text.text-darken-4 {\r\n  color: #827717 !important;\r\n}\r\n\r\n.lime.accent-1 {\r\n  background-color: #f4ff81 !important;\r\n}\r\n\r\n.lime-text.text-accent-1 {\r\n  color: #f4ff81 !important;\r\n}\r\n\r\n.lime.accent-2 {\r\n  background-color: #eeff41 !important;\r\n}\r\n\r\n.lime-text.text-accent-2 {\r\n  color: #eeff41 !important;\r\n}\r\n\r\n.lime.accent-3 {\r\n  background-color: #c6ff00 !important;\r\n}\r\n\r\n.lime-text.text-accent-3 {\r\n  color: #c6ff00 !important;\r\n}\r\n\r\n.lime.accent-4 {\r\n  background-color: #aeea00 !important;\r\n}\r\n\r\n.lime-text.text-accent-4 {\r\n  color: #aeea00 !important;\r\n}\r\n\r\n.yellow {\r\n  background-color: #ffeb3b !important;\r\n}\r\n\r\n.yellow-text {\r\n  color: #ffeb3b !important;\r\n}\r\n\r\n.yellow.lighten-5 {\r\n  background-color: #fffde7 !important;\r\n}\r\n\r\n.yellow-text.text-lighten-5 {\r\n  color: #fffde7 !important;\r\n}\r\n\r\n.yellow.lighten-4 {\r\n  background-color: #fff9c4 !important;\r\n}\r\n\r\n.yellow-text.text-lighten-4 {\r\n  color: #fff9c4 !important;\r\n}\r\n\r\n.yellow.lighten-3 {\r\n  background-color: #fff59d !important;\r\n}\r\n\r\n.yellow-text.text-lighten-3 {\r\n  color: #fff59d !important;\r\n}\r\n\r\n.yellow.lighten-2 {\r\n  background-color: #fff176 !important;\r\n}\r\n\r\n.yellow-text.text-lighten-2 {\r\n  color: #fff176 !important;\r\n}\r\n\r\n.yellow.lighten-1 {\r\n  background-color: #ffee58 !important;\r\n}\r\n\r\n.yellow-text.text-lighten-1 {\r\n  color: #ffee58 !important;\r\n}\r\n\r\n.yellow.darken-1 {\r\n  background-color: #fdd835 !important;\r\n}\r\n\r\n.yellow-text.text-darken-1 {\r\n  color: #fdd835 !important;\r\n}\r\n\r\n.yellow.darken-2 {\r\n  background-color: #fbc02d !important;\r\n}\r\n\r\n.yellow-text.text-darken-2 {\r\n  color: #fbc02d !important;\r\n}\r\n\r\n.yellow.darken-3 {\r\n  background-color: #f9a825 !important;\r\n}\r\n\r\n.yellow-text.text-darken-3 {\r\n  color: #f9a825 !important;\r\n}\r\n\r\n.yellow.darken-4 {\r\n  background-color: #f57f17 !important;\r\n}\r\n\r\n.yellow-text.text-darken-4 {\r\n  color: #f57f17 !important;\r\n}\r\n\r\n.yellow.accent-1 {\r\n  background-color: #ffff8d !important;\r\n}\r\n\r\n.yellow-text.text-accent-1 {\r\n  color: #ffff8d !important;\r\n}\r\n\r\n.yellow.accent-2 {\r\n  background-color: #ffff00 !important;\r\n}\r\n\r\n.yellow-text.text-accent-2 {\r\n  color: #ffff00 !important;\r\n}\r\n\r\n.yellow.accent-3 {\r\n  background-color: #ffea00 !important;\r\n}\r\n\r\n.yellow-text.text-accent-3 {\r\n  color: #ffea00 !important;\r\n}\r\n\r\n.yellow.accent-4 {\r\n  background-color: #ffd600 !important;\r\n}\r\n\r\n.yellow-text.text-accent-4 {\r\n  color: #ffd600 !important;\r\n}\r\n\r\n.amber {\r\n  background-color: #ffc107 !important;\r\n}\r\n\r\n.amber-text {\r\n  color: #ffc107 !important;\r\n}\r\n\r\n.amber.lighten-5 {\r\n  background-color: #fff8e1 !important;\r\n}\r\n\r\n.amber-text.text-lighten-5 {\r\n  color: #fff8e1 !important;\r\n}\r\n\r\n.amber.lighten-4 {\r\n  background-color: #ffecb3 !important;\r\n}\r\n\r\n.amber-text.text-lighten-4 {\r\n  color: #ffecb3 !important;\r\n}\r\n\r\n.amber.lighten-3 {\r\n  background-color: #ffe082 !important;\r\n}\r\n\r\n.amber-text.text-lighten-3 {\r\n  color: #ffe082 !important;\r\n}\r\n\r\n.amber.lighten-2 {\r\n  background-color: #ffd54f !important;\r\n}\r\n\r\n.amber-text.text-lighten-2 {\r\n  color: #ffd54f !important;\r\n}\r\n\r\n.amber.lighten-1 {\r\n  background-color: #ffca28 !important;\r\n}\r\n\r\n.amber-text.text-lighten-1 {\r\n  color: #ffca28 !important;\r\n}\r\n\r\n.amber.darken-1 {\r\n  background-color: #ffb300 !important;\r\n}\r\n\r\n.amber-text.text-darken-1 {\r\n  color: #ffb300 !important;\r\n}\r\n\r\n.amber.darken-2 {\r\n  background-color: #ffa000 !important;\r\n}\r\n\r\n.amber-text.text-darken-2 {\r\n  color: #ffa000 !important;\r\n}\r\n\r\n.amber.darken-3 {\r\n  background-color: #ff8f00 !important;\r\n}\r\n\r\n.amber-text.text-darken-3 {\r\n  color: #ff8f00 !important;\r\n}\r\n\r\n.amber.darken-4 {\r\n  background-color: #ff6f00 !important;\r\n}\r\n\r\n.amber-text.text-darken-4 {\r\n  color: #ff6f00 !important;\r\n}\r\n\r\n.amber.accent-1 {\r\n  background-color: #ffe57f !important;\r\n}\r\n\r\n.amber-text.text-accent-1 {\r\n  color: #ffe57f !important;\r\n}\r\n\r\n.amber.accent-2 {\r\n  background-color: #ffd740 !important;\r\n}\r\n\r\n.amber-text.text-accent-2 {\r\n  color: #ffd740 !important;\r\n}\r\n\r\n.amber.accent-3 {\r\n  background-color: #ffc400 !important;\r\n}\r\n\r\n.amber-text.text-accent-3 {\r\n  color: #ffc400 !important;\r\n}\r\n\r\n.amber.accent-4 {\r\n  background-color: #ffab00 !important;\r\n}\r\n\r\n.amber-text.text-accent-4 {\r\n  color: #ffab00 !important;\r\n}\r\n\r\n.orange {\r\n  background-color: #ff9800 !important;\r\n}\r\n\r\n.orange-text {\r\n  color: #ff9800 !important;\r\n}\r\n\r\n.orange.lighten-5 {\r\n  background-color: #fff3e0 !important;\r\n}\r\n\r\n.orange-text.text-lighten-5 {\r\n  color: #fff3e0 !important;\r\n}\r\n\r\n.orange.lighten-4 {\r\n  background-color: #ffe0b2 !important;\r\n}\r\n\r\n.orange-text.text-lighten-4 {\r\n  color: #ffe0b2 !important;\r\n}\r\n\r\n.orange.lighten-3 {\r\n  background-color: #ffcc80 !important;\r\n}\r\n\r\n.orange-text.text-lighten-3 {\r\n  color: #ffcc80 !important;\r\n}\r\n\r\n.orange.lighten-2 {\r\n  background-color: #ffb74d !important;\r\n}\r\n\r\n.orange-text.text-lighten-2 {\r\n  color: #ffb74d !important;\r\n}\r\n\r\n.orange.lighten-1 {\r\n  background-color: #ffa726 !important;\r\n}\r\n\r\n.orange-text.text-lighten-1 {\r\n  color: #ffa726 !important;\r\n}\r\n\r\n.orange.darken-1 {\r\n  background-color: #fb8c00 !important;\r\n}\r\n\r\n.orange-text.text-darken-1 {\r\n  color: #fb8c00 !important;\r\n}\r\n\r\n.orange.darken-2 {\r\n  background-color: #f57c00 !important;\r\n}\r\n\r\n.orange-text.text-darken-2 {\r\n  color: #f57c00 !important;\r\n}\r\n\r\n.orange.darken-3 {\r\n  background-color: #ef6c00 !important;\r\n}\r\n\r\n.orange-text.text-darken-3 {\r\n  color: #ef6c00 !important;\r\n}\r\n\r\n.orange.darken-4 {\r\n  background-color: #e65100 !important;\r\n}\r\n\r\n.orange-text.text-darken-4 {\r\n  color: #e65100 !important;\r\n}\r\n\r\n.orange.accent-1 {\r\n  background-color: #ffd180 !important;\r\n}\r\n\r\n.orange-text.text-accent-1 {\r\n  color: #ffd180 !important;\r\n}\r\n\r\n.orange.accent-2 {\r\n  background-color: #ffab40 !important;\r\n}\r\n\r\n.orange-text.text-accent-2 {\r\n  color: #ffab40 !important;\r\n}\r\n\r\n.orange.accent-3 {\r\n  background-color: #ff9100 !important;\r\n}\r\n\r\n.orange-text.text-accent-3 {\r\n  color: #ff9100 !important;\r\n}\r\n\r\n.orange.accent-4 {\r\n  background-color: #ff6d00 !important;\r\n}\r\n\r\n.orange-text.text-accent-4 {\r\n  color: #ff6d00 !important;\r\n}\r\n\r\n.deep-orange {\r\n  background-color: #ff5722 !important;\r\n}\r\n\r\n.deep-orange-text {\r\n  color: #ff5722 !important;\r\n}\r\n\r\n.deep-orange.lighten-5 {\r\n  background-color: #fbe9e7 !important;\r\n}\r\n\r\n.deep-orange-text.text-lighten-5 {\r\n  color: #fbe9e7 !important;\r\n}\r\n\r\n.deep-orange.lighten-4 {\r\n  background-color: #ffccbc !important;\r\n}\r\n\r\n.deep-orange-text.text-lighten-4 {\r\n  color: #ffccbc !important;\r\n}\r\n\r\n.deep-orange.lighten-3 {\r\n  background-color: #ffab91 !important;\r\n}\r\n\r\n.deep-orange-text.text-lighten-3 {\r\n  color: #ffab91 !important;\r\n}\r\n\r\n.deep-orange.lighten-2 {\r\n  background-color: #ff8a65 !important;\r\n}\r\n\r\n.deep-orange-text.text-lighten-2 {\r\n  color: #ff8a65 !important;\r\n}\r\n\r\n.deep-orange.lighten-1 {\r\n  background-color: #ff7043 !important;\r\n}\r\n\r\n.deep-orange-text.text-lighten-1 {\r\n  color: #ff7043 !important;\r\n}\r\n\r\n.deep-orange.darken-1 {\r\n  background-color: #f4511e !important;\r\n}\r\n\r\n.deep-orange-text.text-darken-1 {\r\n  color: #f4511e !important;\r\n}\r\n\r\n.deep-orange.darken-2 {\r\n  background-color: #e64a19 !important;\r\n}\r\n\r\n.deep-orange-text.text-darken-2 {\r\n  color: #e64a19 !important;\r\n}\r\n\r\n.deep-orange.darken-3 {\r\n  background-color: #d84315 !important;\r\n}\r\n\r\n.deep-orange-text.text-darken-3 {\r\n  color: #d84315 !important;\r\n}\r\n\r\n.deep-orange.darken-4 {\r\n  background-color: #bf360c !important;\r\n}\r\n\r\n.deep-orange-text.text-darken-4 {\r\n  color: #bf360c !important;\r\n}\r\n\r\n.deep-orange.accent-1 {\r\n  background-color: #ff9e80 !important;\r\n}\r\n\r\n.deep-orange-text.text-accent-1 {\r\n  color: #ff9e80 !important;\r\n}\r\n\r\n.deep-orange.accent-2 {\r\n  background-color: #ff6e40 !important;\r\n}\r\n\r\n.deep-orange-text.text-accent-2 {\r\n  color: #ff6e40 !important;\r\n}\r\n\r\n.deep-orange.accent-3 {\r\n  background-color: #ff3d00 !important;\r\n}\r\n\r\n.deep-orange-text.text-accent-3 {\r\n  color: #ff3d00 !important;\r\n}\r\n\r\n.deep-orange.accent-4 {\r\n  background-color: #dd2c00 !important;\r\n}\r\n\r\n.deep-orange-text.text-accent-4 {\r\n  color: #dd2c00 !important;\r\n}\r\n\r\n.brown {\r\n  background-color: #795548 !important;\r\n}\r\n\r\n.brown-text {\r\n  color: #795548 !important;\r\n}\r\n\r\n.brown.lighten-5 {\r\n  background-color: #efebe9 !important;\r\n}\r\n\r\n.brown-text.text-lighten-5 {\r\n  color: #efebe9 !important;\r\n}\r\n\r\n.brown.lighten-4 {\r\n  background-color: #d7ccc8 !important;\r\n}\r\n\r\n.brown-text.text-lighten-4 {\r\n  color: #d7ccc8 !important;\r\n}\r\n\r\n.brown.lighten-3 {\r\n  background-color: #bcaaa4 !important;\r\n}\r\n\r\n.brown-text.text-lighten-3 {\r\n  color: #bcaaa4 !important;\r\n}\r\n\r\n.brown.lighten-2 {\r\n  background-color: #a1887f !important;\r\n}\r\n\r\n.brown-text.text-lighten-2 {\r\n  color: #a1887f !important;\r\n}\r\n\r\n.brown.lighten-1 {\r\n  background-color: #8d6e63 !important;\r\n}\r\n\r\n.brown-text.text-lighten-1 {\r\n  color: #8d6e63 !important;\r\n}\r\n\r\n.brown.darken-1 {\r\n  background-color: #6d4c41 !important;\r\n}\r\n\r\n.brown-text.text-darken-1 {\r\n  color: #6d4c41 !important;\r\n}\r\n\r\n.brown.darken-2 {\r\n  background-color: #5d4037 !important;\r\n}\r\n\r\n.brown-text.text-darken-2 {\r\n  color: #5d4037 !important;\r\n}\r\n\r\n.brown.darken-3 {\r\n  background-color: #4e342e !important;\r\n}\r\n\r\n.brown-text.text-darken-3 {\r\n  color: #4e342e !important;\r\n}\r\n\r\n.brown.darken-4 {\r\n  background-color: #3e2723 !important;\r\n}\r\n\r\n.brown-text.text-darken-4 {\r\n  color: #3e2723 !important;\r\n}\r\n\r\n.blue-grey {\r\n  background-color: #607d8b !important;\r\n}\r\n\r\n.blue-grey-text {\r\n  color: #607d8b !important;\r\n}\r\n\r\n.blue-grey.lighten-5 {\r\n  background-color: #eceff1 !important;\r\n}\r\n\r\n.blue-grey-text.text-lighten-5 {\r\n  color: #eceff1 !important;\r\n}\r\n\r\n.blue-grey.lighten-4 {\r\n  background-color: #cfd8dc !important;\r\n}\r\n\r\n.blue-grey-text.text-lighten-4 {\r\n  color: #cfd8dc !important;\r\n}\r\n\r\n.blue-grey.lighten-3 {\r\n  background-color: #b0bec5 !important;\r\n}\r\n\r\n.blue-grey-text.text-lighten-3 {\r\n  color: #b0bec5 !important;\r\n}\r\n\r\n.blue-grey.lighten-2 {\r\n  background-color: #90a4ae !important;\r\n}\r\n\r\n.blue-grey-text.text-lighten-2 {\r\n  color: #90a4ae !important;\r\n}\r\n\r\n.blue-grey.lighten-1 {\r\n  background-color: #78909c !important;\r\n}\r\n\r\n.blue-grey-text.text-lighten-1 {\r\n  color: #78909c !important;\r\n}\r\n\r\n.blue-grey.darken-1 {\r\n  background-color: #546e7a !important;\r\n}\r\n\r\n.blue-grey-text.text-darken-1 {\r\n  color: #546e7a !important;\r\n}\r\n\r\n.blue-grey.darken-2 {\r\n  background-color: #455a64 !important;\r\n}\r\n\r\n.blue-grey-text.text-darken-2 {\r\n  color: #455a64 !important;\r\n}\r\n\r\n.blue-grey.darken-3 {\r\n  background-color: #37474f !important;\r\n}\r\n\r\n.blue-grey-text.text-darken-3 {\r\n  color: #37474f !important;\r\n}\r\n\r\n.blue-grey.darken-4 {\r\n  background-color: #263238 !important;\r\n}\r\n\r\n.blue-grey-text.text-darken-4 {\r\n  color: #263238 !important;\r\n}\r\n\r\n.grey {\r\n  background-color: #9e9e9e !important;\r\n}\r\n\r\n.grey-text {\r\n  color: #9e9e9e !important;\r\n}\r\n\r\n.grey.lighten-5 {\r\n  background-color: #fafafa !important;\r\n}\r\n\r\n.grey-text.text-lighten-5 {\r\n  color: #fafafa !important;\r\n}\r\n\r\n.grey.lighten-4 {\r\n  background-color: #f5f5f5 !important;\r\n}\r\n\r\n.grey-text.text-lighten-4 {\r\n  color: #f5f5f5 !important;\r\n}\r\n\r\n.grey.lighten-3 {\r\n  background-color: #eeeeee !important;\r\n}\r\n\r\n.grey-text.text-lighten-3 {\r\n  color: #eeeeee !important;\r\n}\r\n\r\n.grey.lighten-2 {\r\n  background-color: #e0e0e0 !important;\r\n}\r\n\r\n.grey-text.text-lighten-2 {\r\n  color: #e0e0e0 !important;\r\n}\r\n\r\n.grey.lighten-1 {\r\n  background-color: #bdbdbd !important;\r\n}\r\n\r\n.grey-text.text-lighten-1 {\r\n  color: #bdbdbd !important;\r\n}\r\n\r\n.grey.darken-1 {\r\n  background-color: #757575 !important;\r\n}\r\n\r\n.grey-text.text-darken-1 {\r\n  color: #757575 !important;\r\n}\r\n\r\n.grey.darken-2 {\r\n  background-color: #616161 !important;\r\n}\r\n\r\n.grey-text.text-darken-2 {\r\n  color: #616161 !important;\r\n}\r\n\r\n.grey.darken-3 {\r\n  background-color: #424242 !important;\r\n}\r\n\r\n.grey-text.text-darken-3 {\r\n  color: #424242 !important;\r\n}\r\n\r\n.grey.darken-4 {\r\n  background-color: #212121 !important;\r\n}\r\n\r\n.grey-text.text-darken-4 {\r\n  color: #212121 !important;\r\n}\r\n\r\n.black {\r\n  background-color: #000000 !important;\r\n}\r\n\r\n.black-text {\r\n  color: #000000 !important;\r\n}\r\n\r\n.white {\r\n  background-color: #FFFFFF !important;\r\n}\r\n\r\n.white-text {\r\n  color: #FFFFFF !important;\r\n}\r\n\r\n.transparent {\r\n  background-color: transparent !important;\r\n}\r\n\r\n.transparent-text {\r\n  color: transparent !important;\r\n}\r\n\r\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\r\n/**\r\n * 1. Set default font family to sans-serif.\r\n * 2. Prevent iOS and IE text size adjust after device orientation change,\r\n *    without disabling user zoom.\r\n */\r\nhtml {\r\n  font-family: sans-serif;\r\n  /* 1 */\r\n  -ms-text-size-adjust: 100%;\r\n  /* 2 */\r\n  -webkit-text-size-adjust: 100%;\r\n  /* 2 */\r\n}\r\n\r\n/**\r\n * Remove default margin.\r\n */\r\nbody {\r\n  margin: 0;\r\n}\r\n\r\n/* HTML5 display definitions\r\n   ========================================================================== */\r\n/**\r\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\r\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\r\n * and Firefox.\r\n * Correct `block` display not defined for `main` in IE 11.\r\n */\r\narticle,\r\naside,\r\ndetails,\r\nfigcaption,\r\nfigure,\r\nfooter,\r\nheader,\r\nhgroup,\r\nmain,\r\nmenu,\r\nnav,\r\nsection,\r\nsummary {\r\n  display: block;\r\n}\r\n\r\n/**\r\n * 1. Correct `inline-block` display not defined in IE 8/9.\r\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\r\n */\r\naudio,\r\ncanvas,\r\nprogress,\r\nvideo {\r\n  display: inline-block;\r\n  /* 1 */\r\n  vertical-align: baseline;\r\n  /* 2 */\r\n}\r\n\r\n/**\r\n * Prevent modern browsers from displaying `audio` without controls.\r\n * Remove excess height in iOS 5 devices.\r\n */\r\naudio:not([controls]) {\r\n  display: none;\r\n  height: 0;\r\n}\r\n\r\n/**\r\n * Address `[hidden]` styling not present in IE 8/9/10.\r\n * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.\r\n */\r\n[hidden],\r\ntemplate {\r\n  display: none;\r\n}\r\n\r\n/* Links\r\n   ========================================================================== */\r\n/**\r\n * Remove the gray background color from active links in IE 10.\r\n */\r\na {\r\n  background-color: transparent;\r\n}\r\n\r\n/**\r\n * Improve readability of focused elements when they are also in an\r\n * active/hover state.\r\n */\r\na:active,\r\na:hover {\r\n  outline: 0;\r\n}\r\n\r\n/* Text-level semantics\r\n   ========================================================================== */\r\n/**\r\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\r\n */\r\nabbr[title] {\r\n  border-bottom: 1px dotted;\r\n}\r\n\r\n/**\r\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\r\n */\r\nb,\r\nstrong {\r\n  font-weight: bold;\r\n}\r\n\r\n/**\r\n * Address styling not present in Safari and Chrome.\r\n */\r\ndfn {\r\n  font-style: italic;\r\n}\r\n\r\n/**\r\n * Address variable `h1` font-size and margin within `section` and `article`\r\n * contexts in Firefox 4+, Safari, and Chrome.\r\n */\r\nh1 {\r\n  font-size: 2em;\r\n  margin: 0.67em 0;\r\n}\r\n\r\n/**\r\n * Address styling not present in IE 8/9.\r\n */\r\nmark {\r\n  background: #ff0;\r\n  color: #000;\r\n}\r\n\r\n/**\r\n * Address inconsistent and variable font size in all browsers.\r\n */\r\nsmall {\r\n  font-size: 80%;\r\n}\r\n\r\n/**\r\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\r\n */\r\nsub,\r\nsup {\r\n  font-size: 75%;\r\n  line-height: 0;\r\n  position: relative;\r\n  vertical-align: baseline;\r\n}\r\n\r\nsup {\r\n  top: -0.5em;\r\n}\r\n\r\nsub {\r\n  bottom: -0.25em;\r\n}\r\n\r\n/* Embedded content\r\n   ========================================================================== */\r\n/**\r\n * Remove border when inside `a` element in IE 8/9/10.\r\n */\r\nimg {\r\n  border: 0;\r\n}\r\n\r\n/**\r\n * Correct overflow not hidden in IE 9/10/11.\r\n */\r\nsvg:not(:root) {\r\n  overflow: hidden;\r\n}\r\n\r\n/* Grouping content\r\n   ========================================================================== */\r\n/**\r\n * Address margin not present in IE 8/9 and Safari.\r\n */\r\nfigure {\r\n  margin: 1em 40px;\r\n}\r\n\r\n/**\r\n * Address differences between Firefox and other browsers.\r\n */\r\nhr {\r\n  box-sizing: content-box;\r\n  height: 0;\r\n}\r\n\r\n/**\r\n * Contain overflow in all browsers.\r\n */\r\npre {\r\n  overflow: auto;\r\n}\r\n\r\n/**\r\n * Address odd `em`-unit font size rendering in all browsers.\r\n */\r\ncode,\r\nkbd,\r\npre,\r\nsamp {\r\n  font-family: monospace, monospace;\r\n  font-size: 1em;\r\n}\r\n\r\n/* Forms\r\n   ========================================================================== */\r\n/**\r\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\r\n * styling of `select`, unless a `border` property is set.\r\n */\r\n/**\r\n * 1. Correct color not being inherited.\r\n *    Known issue: affects color of disabled elements.\r\n * 2. Correct font properties not being inherited.\r\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\r\n */\r\nbutton,\r\ninput,\r\noptgroup,\r\nselect,\r\ntextarea {\r\n  color: inherit;\r\n  /* 1 */\r\n  font: inherit;\r\n  /* 2 */\r\n  margin: 0;\r\n  /* 3 */\r\n}\r\n\r\n/**\r\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\r\n */\r\nbutton {\r\n  overflow: visible;\r\n}\r\n\r\n/**\r\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\r\n * All other form control elements do not inherit `text-transform` values.\r\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\r\n * Correct `select` style inheritance in Firefox.\r\n */\r\nbutton,\r\nselect {\r\n  text-transform: none;\r\n}\r\n\r\n/**\r\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\r\n *    and `video` controls.\r\n * 2. Correct inability to style clickable `input` types in iOS.\r\n * 3. Improve usability and consistency of cursor style between image-type\r\n *    `input` and others.\r\n */\r\nbutton,\r\nhtml input[type=\"button\"],\r\ninput[type=\"reset\"],\r\ninput[type=\"submit\"] {\r\n  -webkit-appearance: button;\r\n  /* 2 */\r\n  cursor: pointer;\r\n  /* 3 */\r\n}\r\n\r\n/**\r\n * Re-set default cursor for disabled elements.\r\n */\r\nbutton[disabled],\r\nhtml input[disabled] {\r\n  cursor: default;\r\n}\r\n\r\n/**\r\n * Remove inner padding and border in Firefox 4+.\r\n */\r\nbutton::-moz-focus-inner,\r\ninput::-moz-focus-inner {\r\n  border: 0;\r\n  padding: 0;\r\n}\r\n\r\n/**\r\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\r\n * the UA stylesheet.\r\n */\r\ninput {\r\n  line-height: normal;\r\n}\r\n\r\n/**\r\n * It's recommended that you don't attempt to style these elements.\r\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\r\n *\r\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\r\n * 2. Remove excess padding in IE 8/9/10.\r\n */\r\ninput[type=\"checkbox\"],\r\ninput[type=\"radio\"] {\r\n  box-sizing: border-box;\r\n  /* 1 */\r\n  padding: 0;\r\n  /* 2 */\r\n}\r\n\r\n/**\r\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\r\n * `font-size` values of the `input`, it causes the cursor style of the\r\n * decrement button to change from `default` to `text`.\r\n */\r\ninput[type=\"number\"]::-webkit-inner-spin-button,\r\ninput[type=\"number\"]::-webkit-outer-spin-button {\r\n  height: auto;\r\n}\r\n\r\n/**\r\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\r\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.\r\n */\r\ninput[type=\"search\"] {\r\n  -webkit-appearance: textfield;\r\n  /* 1 */\r\n  box-sizing: content-box;\r\n  /* 2 */\r\n}\r\n\r\n/**\r\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\r\n * Safari (but not Chrome) clips the cancel button when the search input has\r\n * padding (and `textfield` appearance).\r\n */\r\ninput[type=\"search\"]::-webkit-search-cancel-button,\r\ninput[type=\"search\"]::-webkit-search-decoration {\r\n  -webkit-appearance: none;\r\n}\r\n\r\n/**\r\n * Define consistent border, margin, and padding.\r\n */\r\nfieldset {\r\n  border: 1px solid #c0c0c0;\r\n  margin: 0 2px;\r\n  padding: 0.35em 0.625em 0.75em;\r\n}\r\n\r\n/**\r\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\r\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\r\n */\r\nlegend {\r\n  border: 0;\r\n  /* 1 */\r\n  padding: 0;\r\n  /* 2 */\r\n}\r\n\r\n/**\r\n * Remove default vertical scrollbar in IE 8/9/10/11.\r\n */\r\ntextarea {\r\n  overflow: auto;\r\n}\r\n\r\n/**\r\n * Don't inherit the `font-weight` (applied by a rule above).\r\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\r\n */\r\noptgroup {\r\n  font-weight: bold;\r\n}\r\n\r\n/* Tables\r\n   ========================================================================== */\r\n/**\r\n * Remove most spacing between table cells.\r\n */\r\ntable {\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n}\r\n\r\ntd,\r\nth {\r\n  padding: 0;\r\n}\r\n\r\nhtml {\r\n  box-sizing: border-box;\r\n}\r\n\r\n*, *:before, *:after {\r\n  box-sizing: inherit;\r\n}\r\n\r\nul:not(.browser-default) {\r\n  padding-left: 0;\r\n  list-style-type: none;\r\n}\r\n\r\nul:not(.browser-default) li {\r\n  list-style-type: none;\r\n}\r\n\r\na {\r\n  color: #039be5;\r\n  text-decoration: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.valign-wrapper {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n}\r\n\r\n.valign-wrapper .valign {\r\n  display: block;\r\n}\r\n\r\n.clearfix {\r\n  clear: both;\r\n}\r\n\r\n.z-depth-0 {\r\n  box-shadow: none !important;\r\n}\r\n\r\n.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.z-depth-1-half, .btn:hover, .btn-large:hover, .btn-floating:hover {\r\n  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.z-depth-2 {\r\n  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.z-depth-3 {\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.z-depth-4, .modal {\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.z-depth-5 {\r\n  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.hoverable {\r\n  transition: box-shadow .25s;\r\n  box-shadow: 0;\r\n}\r\n\r\n.hoverable:hover {\r\n  transition: box-shadow .25s;\r\n  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);\r\n}\r\n\r\n.divider {\r\n  height: 1px;\r\n  overflow: hidden;\r\n  background-color: #e0e0e0;\r\n}\r\n\r\nblockquote {\r\n  margin: 20px 0;\r\n  padding-left: 1.5rem;\r\n  border-left: 5px solid #ee6e73;\r\n}\r\n\r\ni {\r\n  line-height: inherit;\r\n}\r\n\r\ni.left {\r\n  float: left;\r\n  margin-right: 15px;\r\n}\r\n\r\ni.right {\r\n  float: right;\r\n  margin-left: 15px;\r\n}\r\n\r\ni.tiny {\r\n  font-size: 1rem;\r\n}\r\n\r\ni.small {\r\n  font-size: 2rem;\r\n}\r\n\r\ni.medium {\r\n  font-size: 4rem;\r\n}\r\n\r\ni.large {\r\n  font-size: 6rem;\r\n}\r\n\r\nimg.responsive-img,\r\nvideo.responsive-video {\r\n  max-width: 100%;\r\n  height: auto;\r\n}\r\n\r\n.pagination li {\r\n  display: inline-block;\r\n  border-radius: 2px;\r\n  text-align: center;\r\n  vertical-align: top;\r\n  height: 30px;\r\n}\r\n\r\n.pagination li a {\r\n  color: #444;\r\n  display: inline-block;\r\n  font-size: 1.2rem;\r\n  padding: 0 10px;\r\n  line-height: 30px;\r\n}\r\n\r\n.pagination li.active a {\r\n  color: #fff;\r\n}\r\n\r\n.pagination li.active {\r\n  background-color: #ee6e73;\r\n}\r\n\r\n.pagination li.disabled a {\r\n  cursor: default;\r\n  color: #999;\r\n}\r\n\r\n.pagination li i {\r\n  font-size: 2rem;\r\n}\r\n\r\n.pagination li.pages ul li {\r\n  display: inline-block;\r\n  float: none;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .pagination {\r\n    width: 100%;\r\n  }\r\n  .pagination li.prev,\r\n  .pagination li.next {\r\n    width: 10%;\r\n  }\r\n  .pagination li.pages {\r\n    width: 80%;\r\n    overflow: hidden;\r\n    white-space: nowrap;\r\n  }\r\n}\r\n\r\n.breadcrumb {\r\n  font-size: 18px;\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.breadcrumb i,\r\n.breadcrumb [class^=\"mdi-\"], .breadcrumb [class*=\"mdi-\"],\r\n.breadcrumb i.material-icons {\r\n  display: inline-block;\r\n  float: left;\r\n  font-size: 24px;\r\n}\r\n\r\n.breadcrumb:before {\r\n  content: '\\E5CC';\r\n  color: rgba(255, 255, 255, 0.7);\r\n  vertical-align: top;\r\n  display: inline-block;\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 25px;\r\n  margin: 0 10px 0 8px;\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\n.breadcrumb:first-child:before {\r\n  display: none;\r\n}\r\n\r\n.breadcrumb:last-child {\r\n  color: #fff;\r\n}\r\n\r\n.parallax-container {\r\n  position: relative;\r\n  overflow: hidden;\r\n  height: 500px;\r\n}\r\n\r\n.parallax {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  z-index: -1;\r\n}\r\n\r\n.parallax img {\r\n  display: none;\r\n  position: absolute;\r\n  left: 50%;\r\n  bottom: 0;\r\n  min-width: 100%;\r\n  min-height: 100%;\r\n  -webkit-transform: translate3d(0, 0, 0);\r\n  transform: translate3d(0, 0, 0);\r\n  -webkit-transform: translateX(-50%);\r\n          transform: translateX(-50%);\r\n}\r\n\r\n.pin-top, .pin-bottom {\r\n  position: relative;\r\n}\r\n\r\n.pinned {\r\n  position: fixed !important;\r\n}\r\n\r\n/*********************\r\n  Transition Classes\r\n**********************/\r\nul.staggered-list li {\r\n  opacity: 0;\r\n}\r\n\r\n.fade-in {\r\n  opacity: 0;\r\n  -webkit-transform-origin: 0 50%;\r\n          transform-origin: 0 50%;\r\n}\r\n\r\n/*********************\r\n  Media Query Classes\r\n**********************/\r\n@media only screen and (max-width: 600px) {\r\n  .hide-on-small-only, .hide-on-small-and-down {\r\n    display: none !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .hide-on-med-and-down {\r\n    display: none !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 601px) {\r\n  .hide-on-med-and-up {\r\n    display: none !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 600px) and (max-width: 992px) {\r\n  .hide-on-med-only {\r\n    display: none !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  .hide-on-large-only {\r\n    display: none !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  .show-on-large {\r\n    display: block !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 600px) and (max-width: 992px) {\r\n  .show-on-medium {\r\n    display: block !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n  .show-on-small {\r\n    display: block !important;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 601px) {\r\n  .show-on-medium-and-up {\r\n    display: block !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .show-on-medium-and-down {\r\n    display: block !important;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n  .center-on-small-only {\r\n    text-align: center;\r\n  }\r\n}\r\n\r\nfooter.page-footer {\r\n  padding-top: 20px;\r\n  background-color: #ee6e73;\r\n}\r\n\r\nfooter.page-footer .footer-copyright {\r\n  overflow: hidden;\r\n  min-height: 50px;\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  padding: 10px 0px;\r\n  color: rgba(255, 255, 255, 0.8);\r\n  background-color: rgba(51, 51, 51, 0.08);\r\n}\r\n\r\ntable, th, td {\r\n  border: none;\r\n}\r\n\r\ntable {\r\n  width: 100%;\r\n  display: table;\r\n}\r\n\r\ntable.bordered > thead > tr,\r\ntable.bordered > tbody > tr {\r\n  border-bottom: 1px solid #d0d0d0;\r\n}\r\n\r\ntable.striped > tbody > tr:nth-child(odd) {\r\n  background-color: #f2f2f2;\r\n}\r\n\r\ntable.striped > tbody > tr > td {\r\n  border-radius: 0;\r\n}\r\n\r\ntable.highlight > tbody > tr {\r\n  transition: background-color .25s ease;\r\n}\r\n\r\ntable.highlight > tbody > tr:hover {\r\n  background-color: #f2f2f2;\r\n}\r\n\r\ntable.centered thead tr th, table.centered tbody tr td {\r\n  text-align: center;\r\n}\r\n\r\nthead {\r\n  border-bottom: 1px solid #d0d0d0;\r\n}\r\n\r\ntd, th {\r\n  padding: 15px 5px;\r\n  display: table-cell;\r\n  text-align: left;\r\n  vertical-align: middle;\r\n  border-radius: 2px;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  table.responsive-table {\r\n    width: 100%;\r\n    border-collapse: collapse;\r\n    border-spacing: 0;\r\n    display: block;\r\n    position: relative;\r\n    /* sort out borders */\r\n  }\r\n  table.responsive-table td:empty:before {\r\n    content: '\\00a0';\r\n  }\r\n  table.responsive-table th,\r\n  table.responsive-table td {\r\n    margin: 0;\r\n    vertical-align: top;\r\n  }\r\n  table.responsive-table th {\r\n    text-align: left;\r\n  }\r\n  table.responsive-table thead {\r\n    display: block;\r\n    float: left;\r\n  }\r\n  table.responsive-table thead tr {\r\n    display: block;\r\n    padding: 0 10px 0 0;\r\n  }\r\n  table.responsive-table thead tr th::before {\r\n    content: \"\\00a0\";\r\n  }\r\n  table.responsive-table tbody {\r\n    display: block;\r\n    width: auto;\r\n    position: relative;\r\n    overflow-x: auto;\r\n    white-space: nowrap;\r\n  }\r\n  table.responsive-table tbody tr {\r\n    display: inline-block;\r\n    vertical-align: top;\r\n  }\r\n  table.responsive-table th {\r\n    display: block;\r\n    text-align: right;\r\n  }\r\n  table.responsive-table td {\r\n    display: block;\r\n    min-height: 1.25em;\r\n    text-align: left;\r\n  }\r\n  table.responsive-table tr {\r\n    padding: 0 10px;\r\n  }\r\n  table.responsive-table thead {\r\n    border: 0;\r\n    border-right: 1px solid #d0d0d0;\r\n  }\r\n  table.responsive-table.bordered th {\r\n    border-bottom: 0;\r\n    border-left: 0;\r\n  }\r\n  table.responsive-table.bordered td {\r\n    border-left: 0;\r\n    border-right: 0;\r\n    border-bottom: 0;\r\n  }\r\n  table.responsive-table.bordered tr {\r\n    border: 0;\r\n  }\r\n  table.responsive-table.bordered tbody tr {\r\n    border-right: 1px solid #d0d0d0;\r\n  }\r\n}\r\n\r\n.collection {\r\n  margin: 0.5rem 0 1rem 0;\r\n  border: 1px solid #e0e0e0;\r\n  border-radius: 2px;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.collection .collection-item {\r\n  background-color: #fff;\r\n  line-height: 1.5rem;\r\n  padding: 10px 20px;\r\n  margin: 0;\r\n  border-bottom: 1px solid #e0e0e0;\r\n}\r\n\r\n.collection .collection-item.avatar {\r\n  min-height: 84px;\r\n  padding-left: 72px;\r\n  position: relative;\r\n}\r\n\r\n.collection .collection-item.avatar .circle {\r\n  position: absolute;\r\n  width: 42px;\r\n  height: 42px;\r\n  overflow: hidden;\r\n  left: 15px;\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n}\r\n\r\n.collection .collection-item.avatar i.circle {\r\n  font-size: 18px;\r\n  line-height: 42px;\r\n  color: #fff;\r\n  background-color: #999;\r\n  text-align: center;\r\n}\r\n\r\n.collection .collection-item.avatar .title {\r\n  font-size: 16px;\r\n}\r\n\r\n.collection .collection-item.avatar p {\r\n  margin: 0;\r\n}\r\n\r\n.collection .collection-item.avatar .secondary-content {\r\n  position: absolute;\r\n  top: 16px;\r\n  right: 16px;\r\n}\r\n\r\n.collection .collection-item:last-child {\r\n  border-bottom: none;\r\n}\r\n\r\n.collection .collection-item.active {\r\n  background-color: #26a69a;\r\n  color: #eafaf9;\r\n}\r\n\r\n.collection .collection-item.active .secondary-content {\r\n  color: #fff;\r\n}\r\n\r\n.collection a.collection-item {\r\n  display: block;\r\n  transition: .25s;\r\n  color: #26a69a;\r\n}\r\n\r\n.collection a.collection-item:not(.active):hover {\r\n  background-color: #ddd;\r\n}\r\n\r\n.collection.with-header .collection-header {\r\n  background-color: #fff;\r\n  border-bottom: 1px solid #e0e0e0;\r\n  padding: 10px 20px;\r\n}\r\n\r\n.collection.with-header .collection-item {\r\n  padding-left: 30px;\r\n}\r\n\r\n.collection.with-header .collection-item.avatar {\r\n  padding-left: 72px;\r\n}\r\n\r\n.secondary-content {\r\n  float: right;\r\n  color: #26a69a;\r\n}\r\n\r\n.collapsible .collection {\r\n  margin: 0;\r\n  border: none;\r\n}\r\n\r\n.video-container {\r\n  position: relative;\r\n  padding-bottom: 56.25%;\r\n  height: 0;\r\n  overflow: hidden;\r\n}\r\n\r\n.video-container iframe, .video-container object, .video-container embed {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.progress {\r\n  position: relative;\r\n  height: 4px;\r\n  display: block;\r\n  width: 100%;\r\n  background-color: #acece6;\r\n  border-radius: 2px;\r\n  margin: 0.5rem 0 1rem 0;\r\n  overflow: hidden;\r\n}\r\n\r\n.progress .determinate {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  background-color: #26a69a;\r\n  transition: width .3s linear;\r\n}\r\n\r\n.progress .indeterminate {\r\n  background-color: #26a69a;\r\n}\r\n\r\n.progress .indeterminate:before {\r\n  content: '';\r\n  position: absolute;\r\n  background-color: inherit;\r\n  top: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  will-change: left, right;\r\n  -webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;\r\n          animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;\r\n}\r\n\r\n.progress .indeterminate:after {\r\n  content: '';\r\n  position: absolute;\r\n  background-color: inherit;\r\n  top: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  will-change: left, right;\r\n  -webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;\r\n          animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;\r\n  -webkit-animation-delay: 1.15s;\r\n          animation-delay: 1.15s;\r\n}\r\n\r\n@-webkit-keyframes indeterminate {\r\n  0% {\r\n    left: -35%;\r\n    right: 100%;\r\n  }\r\n  60% {\r\n    left: 100%;\r\n    right: -90%;\r\n  }\r\n  100% {\r\n    left: 100%;\r\n    right: -90%;\r\n  }\r\n}\r\n\r\n@keyframes indeterminate {\r\n  0% {\r\n    left: -35%;\r\n    right: 100%;\r\n  }\r\n  60% {\r\n    left: 100%;\r\n    right: -90%;\r\n  }\r\n  100% {\r\n    left: 100%;\r\n    right: -90%;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes indeterminate-short {\r\n  0% {\r\n    left: -200%;\r\n    right: 100%;\r\n  }\r\n  60% {\r\n    left: 107%;\r\n    right: -8%;\r\n  }\r\n  100% {\r\n    left: 107%;\r\n    right: -8%;\r\n  }\r\n}\r\n\r\n@keyframes indeterminate-short {\r\n  0% {\r\n    left: -200%;\r\n    right: 100%;\r\n  }\r\n  60% {\r\n    left: 107%;\r\n    right: -8%;\r\n  }\r\n  100% {\r\n    left: 107%;\r\n    right: -8%;\r\n  }\r\n}\r\n\r\n/*******************\r\n  Utility Classes\r\n*******************/\r\n.hide {\r\n  display: none !important;\r\n}\r\n\r\n.left-align {\r\n  text-align: left;\r\n}\r\n\r\n.right-align {\r\n  text-align: right;\r\n}\r\n\r\n.center, .center-align {\r\n  text-align: center;\r\n}\r\n\r\n.left {\r\n  float: left !important;\r\n}\r\n\r\n.right {\r\n  float: right !important;\r\n}\r\n\r\n.no-select, input[type=range],\r\ninput[type=range] + .thumb {\r\n  -webkit-touch-callout: none;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n}\r\n\r\n.circle {\r\n  border-radius: 50%;\r\n}\r\n\r\n.center-block {\r\n  display: block;\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n}\r\n\r\n.truncate {\r\n  display: block;\r\n  white-space: nowrap;\r\n  overflow: hidden;\r\n  text-overflow: ellipsis;\r\n}\r\n\r\n.no-padding {\r\n  padding: 0 !important;\r\n}\r\n\r\nspan.badge {\r\n  min-width: 3rem;\r\n  padding: 0 6px;\r\n  margin-left: 14px;\r\n  text-align: center;\r\n  font-size: 1rem;\r\n  line-height: 22px;\r\n  height: 22px;\r\n  color: #757575;\r\n  float: right;\r\n  box-sizing: border-box;\r\n}\r\n\r\nspan.badge.new {\r\n  font-weight: 300;\r\n  font-size: 0.8rem;\r\n  color: #fff;\r\n  background-color: #26a69a;\r\n  border-radius: 2px;\r\n}\r\n\r\nspan.badge.new:after {\r\n  content: \" new\";\r\n}\r\n\r\nspan.badge[data-badge-caption]::after {\r\n  content: \" \" attr(data-badge-caption);\r\n}\r\n\r\nnav ul a span.badge {\r\n  display: inline-block;\r\n  float: none;\r\n  margin-left: 4px;\r\n  line-height: 22px;\r\n  height: 22px;\r\n}\r\n\r\n.collection-item span.badge {\r\n  margin-top: calc(0.75rem - 11px);\r\n}\r\n\r\n.collapsible span.badge {\r\n  margin-top: calc(1.5rem - 11px);\r\n}\r\n\r\n.side-nav span.badge {\r\n  margin-top: calc(24px - 11px);\r\n}\r\n\r\n/* This is needed for some mobile phones to display the Google Icon font properly */\r\n.material-icons {\r\n  text-rendering: optimizeLegibility;\r\n  -webkit-font-feature-settings: 'liga';\r\n     -moz-font-feature-settings: 'liga';\r\n          font-feature-settings: 'liga';\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  max-width: 1280px;\r\n  width: 90%;\r\n}\r\n\r\n@media only screen and (min-width: 601px) {\r\n  .container {\r\n    width: 85%;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  .container {\r\n    width: 70%;\r\n  }\r\n}\r\n\r\n.container .row {\r\n  margin-left: -0.75rem;\r\n  margin-right: -0.75rem;\r\n}\r\n\r\n.section {\r\n  padding-top: 1rem;\r\n  padding-bottom: 1rem;\r\n}\r\n\r\n.section.no-pad {\r\n  padding: 0;\r\n}\r\n\r\n.section.no-pad-bot {\r\n  padding-bottom: 0;\r\n}\r\n\r\n.section.no-pad-top {\r\n  padding-top: 0;\r\n}\r\n\r\n.row {\r\n  margin-left: auto;\r\n  margin-right: auto;\r\n  margin-bottom: 20px;\r\n}\r\n\r\n.row:after {\r\n  content: \"\";\r\n  display: table;\r\n  clear: both;\r\n}\r\n\r\n.row .col {\r\n  float: left;\r\n  box-sizing: border-box;\r\n  padding: 0 0.75rem;\r\n  min-height: 1px;\r\n}\r\n\r\n.row .col[class*=\"push-\"], .row .col[class*=\"pull-\"] {\r\n  position: relative;\r\n}\r\n\r\n.row .col.s1 {\r\n  width: 8.3333333333%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s2 {\r\n  width: 16.6666666667%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s3 {\r\n  width: 25%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s4 {\r\n  width: 33.3333333333%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s5 {\r\n  width: 41.6666666667%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s6 {\r\n  width: 50%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s7 {\r\n  width: 58.3333333333%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s8 {\r\n  width: 66.6666666667%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s9 {\r\n  width: 75%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s10 {\r\n  width: 83.3333333333%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s11 {\r\n  width: 91.6666666667%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.s12 {\r\n  width: 100%;\r\n  margin-left: auto;\r\n  left: auto;\r\n  right: auto;\r\n}\r\n\r\n.row .col.offset-s1 {\r\n  margin-left: 8.3333333333%;\r\n}\r\n\r\n.row .col.pull-s1 {\r\n  right: 8.3333333333%;\r\n}\r\n\r\n.row .col.push-s1 {\r\n  left: 8.3333333333%;\r\n}\r\n\r\n.row .col.offset-s2 {\r\n  margin-left: 16.6666666667%;\r\n}\r\n\r\n.row .col.pull-s2 {\r\n  right: 16.6666666667%;\r\n}\r\n\r\n.row .col.push-s2 {\r\n  left: 16.6666666667%;\r\n}\r\n\r\n.row .col.offset-s3 {\r\n  margin-left: 25%;\r\n}\r\n\r\n.row .col.pull-s3 {\r\n  right: 25%;\r\n}\r\n\r\n.row .col.push-s3 {\r\n  left: 25%;\r\n}\r\n\r\n.row .col.offset-s4 {\r\n  margin-left: 33.3333333333%;\r\n}\r\n\r\n.row .col.pull-s4 {\r\n  right: 33.3333333333%;\r\n}\r\n\r\n.row .col.push-s4 {\r\n  left: 33.3333333333%;\r\n}\r\n\r\n.row .col.offset-s5 {\r\n  margin-left: 41.6666666667%;\r\n}\r\n\r\n.row .col.pull-s5 {\r\n  right: 41.6666666667%;\r\n}\r\n\r\n.row .col.push-s5 {\r\n  left: 41.6666666667%;\r\n}\r\n\r\n.row .col.offset-s6 {\r\n  margin-left: 50%;\r\n}\r\n\r\n.row .col.pull-s6 {\r\n  right: 50%;\r\n}\r\n\r\n.row .col.push-s6 {\r\n  left: 50%;\r\n}\r\n\r\n.row .col.offset-s7 {\r\n  margin-left: 58.3333333333%;\r\n}\r\n\r\n.row .col.pull-s7 {\r\n  right: 58.3333333333%;\r\n}\r\n\r\n.row .col.push-s7 {\r\n  left: 58.3333333333%;\r\n}\r\n\r\n.row .col.offset-s8 {\r\n  margin-left: 66.6666666667%;\r\n}\r\n\r\n.row .col.pull-s8 {\r\n  right: 66.6666666667%;\r\n}\r\n\r\n.row .col.push-s8 {\r\n  left: 66.6666666667%;\r\n}\r\n\r\n.row .col.offset-s9 {\r\n  margin-left: 75%;\r\n}\r\n\r\n.row .col.pull-s9 {\r\n  right: 75%;\r\n}\r\n\r\n.row .col.push-s9 {\r\n  left: 75%;\r\n}\r\n\r\n.row .col.offset-s10 {\r\n  margin-left: 83.3333333333%;\r\n}\r\n\r\n.row .col.pull-s10 {\r\n  right: 83.3333333333%;\r\n}\r\n\r\n.row .col.push-s10 {\r\n  left: 83.3333333333%;\r\n}\r\n\r\n.row .col.offset-s11 {\r\n  margin-left: 91.6666666667%;\r\n}\r\n\r\n.row .col.pull-s11 {\r\n  right: 91.6666666667%;\r\n}\r\n\r\n.row .col.push-s11 {\r\n  left: 91.6666666667%;\r\n}\r\n\r\n.row .col.offset-s12 {\r\n  margin-left: 100%;\r\n}\r\n\r\n.row .col.pull-s12 {\r\n  right: 100%;\r\n}\r\n\r\n.row .col.push-s12 {\r\n  left: 100%;\r\n}\r\n\r\n@media only screen and (min-width: 601px) {\r\n  .row .col.m1 {\r\n    width: 8.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m2 {\r\n    width: 16.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m3 {\r\n    width: 25%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m4 {\r\n    width: 33.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m5 {\r\n    width: 41.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m6 {\r\n    width: 50%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m7 {\r\n    width: 58.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m8 {\r\n    width: 66.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m9 {\r\n    width: 75%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m10 {\r\n    width: 83.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m11 {\r\n    width: 91.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.m12 {\r\n    width: 100%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.offset-m1 {\r\n    margin-left: 8.3333333333%;\r\n  }\r\n  .row .col.pull-m1 {\r\n    right: 8.3333333333%;\r\n  }\r\n  .row .col.push-m1 {\r\n    left: 8.3333333333%;\r\n  }\r\n  .row .col.offset-m2 {\r\n    margin-left: 16.6666666667%;\r\n  }\r\n  .row .col.pull-m2 {\r\n    right: 16.6666666667%;\r\n  }\r\n  .row .col.push-m2 {\r\n    left: 16.6666666667%;\r\n  }\r\n  .row .col.offset-m3 {\r\n    margin-left: 25%;\r\n  }\r\n  .row .col.pull-m3 {\r\n    right: 25%;\r\n  }\r\n  .row .col.push-m3 {\r\n    left: 25%;\r\n  }\r\n  .row .col.offset-m4 {\r\n    margin-left: 33.3333333333%;\r\n  }\r\n  .row .col.pull-m4 {\r\n    right: 33.3333333333%;\r\n  }\r\n  .row .col.push-m4 {\r\n    left: 33.3333333333%;\r\n  }\r\n  .row .col.offset-m5 {\r\n    margin-left: 41.6666666667%;\r\n  }\r\n  .row .col.pull-m5 {\r\n    right: 41.6666666667%;\r\n  }\r\n  .row .col.push-m5 {\r\n    left: 41.6666666667%;\r\n  }\r\n  .row .col.offset-m6 {\r\n    margin-left: 50%;\r\n  }\r\n  .row .col.pull-m6 {\r\n    right: 50%;\r\n  }\r\n  .row .col.push-m6 {\r\n    left: 50%;\r\n  }\r\n  .row .col.offset-m7 {\r\n    margin-left: 58.3333333333%;\r\n  }\r\n  .row .col.pull-m7 {\r\n    right: 58.3333333333%;\r\n  }\r\n  .row .col.push-m7 {\r\n    left: 58.3333333333%;\r\n  }\r\n  .row .col.offset-m8 {\r\n    margin-left: 66.6666666667%;\r\n  }\r\n  .row .col.pull-m8 {\r\n    right: 66.6666666667%;\r\n  }\r\n  .row .col.push-m8 {\r\n    left: 66.6666666667%;\r\n  }\r\n  .row .col.offset-m9 {\r\n    margin-left: 75%;\r\n  }\r\n  .row .col.pull-m9 {\r\n    right: 75%;\r\n  }\r\n  .row .col.push-m9 {\r\n    left: 75%;\r\n  }\r\n  .row .col.offset-m10 {\r\n    margin-left: 83.3333333333%;\r\n  }\r\n  .row .col.pull-m10 {\r\n    right: 83.3333333333%;\r\n  }\r\n  .row .col.push-m10 {\r\n    left: 83.3333333333%;\r\n  }\r\n  .row .col.offset-m11 {\r\n    margin-left: 91.6666666667%;\r\n  }\r\n  .row .col.pull-m11 {\r\n    right: 91.6666666667%;\r\n  }\r\n  .row .col.push-m11 {\r\n    left: 91.6666666667%;\r\n  }\r\n  .row .col.offset-m12 {\r\n    margin-left: 100%;\r\n  }\r\n  .row .col.pull-m12 {\r\n    right: 100%;\r\n  }\r\n  .row .col.push-m12 {\r\n    left: 100%;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  .row .col.l1 {\r\n    width: 8.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l2 {\r\n    width: 16.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l3 {\r\n    width: 25%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l4 {\r\n    width: 33.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l5 {\r\n    width: 41.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l6 {\r\n    width: 50%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l7 {\r\n    width: 58.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l8 {\r\n    width: 66.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l9 {\r\n    width: 75%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l10 {\r\n    width: 83.3333333333%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l11 {\r\n    width: 91.6666666667%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.l12 {\r\n    width: 100%;\r\n    margin-left: auto;\r\n    left: auto;\r\n    right: auto;\r\n  }\r\n  .row .col.offset-l1 {\r\n    margin-left: 8.3333333333%;\r\n  }\r\n  .row .col.pull-l1 {\r\n    right: 8.3333333333%;\r\n  }\r\n  .row .col.push-l1 {\r\n    left: 8.3333333333%;\r\n  }\r\n  .row .col.offset-l2 {\r\n    margin-left: 16.6666666667%;\r\n  }\r\n  .row .col.pull-l2 {\r\n    right: 16.6666666667%;\r\n  }\r\n  .row .col.push-l2 {\r\n    left: 16.6666666667%;\r\n  }\r\n  .row .col.offset-l3 {\r\n    margin-left: 25%;\r\n  }\r\n  .row .col.pull-l3 {\r\n    right: 25%;\r\n  }\r\n  .row .col.push-l3 {\r\n    left: 25%;\r\n  }\r\n  .row .col.offset-l4 {\r\n    margin-left: 33.3333333333%;\r\n  }\r\n  .row .col.pull-l4 {\r\n    right: 33.3333333333%;\r\n  }\r\n  .row .col.push-l4 {\r\n    left: 33.3333333333%;\r\n  }\r\n  .row .col.offset-l5 {\r\n    margin-left: 41.6666666667%;\r\n  }\r\n  .row .col.pull-l5 {\r\n    right: 41.6666666667%;\r\n  }\r\n  .row .col.push-l5 {\r\n    left: 41.6666666667%;\r\n  }\r\n  .row .col.offset-l6 {\r\n    margin-left: 50%;\r\n  }\r\n  .row .col.pull-l6 {\r\n    right: 50%;\r\n  }\r\n  .row .col.push-l6 {\r\n    left: 50%;\r\n  }\r\n  .row .col.offset-l7 {\r\n    margin-left: 58.3333333333%;\r\n  }\r\n  .row .col.pull-l7 {\r\n    right: 58.3333333333%;\r\n  }\r\n  .row .col.push-l7 {\r\n    left: 58.3333333333%;\r\n  }\r\n  .row .col.offset-l8 {\r\n    margin-left: 66.6666666667%;\r\n  }\r\n  .row .col.pull-l8 {\r\n    right: 66.6666666667%;\r\n  }\r\n  .row .col.push-l8 {\r\n    left: 66.6666666667%;\r\n  }\r\n  .row .col.offset-l9 {\r\n    margin-left: 75%;\r\n  }\r\n  .row .col.pull-l9 {\r\n    right: 75%;\r\n  }\r\n  .row .col.push-l9 {\r\n    left: 75%;\r\n  }\r\n  .row .col.offset-l10 {\r\n    margin-left: 83.3333333333%;\r\n  }\r\n  .row .col.pull-l10 {\r\n    right: 83.3333333333%;\r\n  }\r\n  .row .col.push-l10 {\r\n    left: 83.3333333333%;\r\n  }\r\n  .row .col.offset-l11 {\r\n    margin-left: 91.6666666667%;\r\n  }\r\n  .row .col.pull-l11 {\r\n    right: 91.6666666667%;\r\n  }\r\n  .row .col.push-l11 {\r\n    left: 91.6666666667%;\r\n  }\r\n  .row .col.offset-l12 {\r\n    margin-left: 100%;\r\n  }\r\n  .row .col.pull-l12 {\r\n    right: 100%;\r\n  }\r\n  .row .col.push-l12 {\r\n    left: 100%;\r\n  }\r\n}\r\n\r\nnav {\r\n  color: #fff;\r\n  background-color: #ee6e73;\r\n  width: 100%;\r\n  height: 56px;\r\n  line-height: 56px;\r\n}\r\n\r\nnav.nav-extended {\r\n  height: auto;\r\n}\r\n\r\nnav.nav-extended .nav-wrapper {\r\n  min-height: 56px;\r\n  height: auto;\r\n}\r\n\r\nnav.nav-extended .nav-content {\r\n  position: relative;\r\n  line-height: normal;\r\n}\r\n\r\nnav a {\r\n  color: #fff;\r\n}\r\n\r\nnav i,\r\nnav [class^=\"mdi-\"], nav [class*=\"mdi-\"],\r\nnav i.material-icons {\r\n  display: block;\r\n  font-size: 24px;\r\n  height: 56px;\r\n  line-height: 56px;\r\n}\r\n\r\nnav .nav-wrapper {\r\n  position: relative;\r\n  height: 100%;\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  nav a.button-collapse {\r\n    display: none;\r\n  }\r\n}\r\n\r\nnav .button-collapse {\r\n  float: left;\r\n  position: relative;\r\n  z-index: 1;\r\n  height: 56px;\r\n  margin: 0 18px;\r\n}\r\n\r\nnav .button-collapse i {\r\n  height: 56px;\r\n  line-height: 56px;\r\n}\r\n\r\nnav .brand-logo {\r\n  position: absolute;\r\n  color: #fff;\r\n  display: inline-block;\r\n  font-size: 2.1rem;\r\n  padding: 0;\r\n  white-space: nowrap;\r\n}\r\n\r\nnav .brand-logo.center {\r\n  left: 50%;\r\n  -webkit-transform: translateX(-50%);\r\n          transform: translateX(-50%);\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  nav .brand-logo {\r\n    left: 50%;\r\n    -webkit-transform: translateX(-50%);\r\n            transform: translateX(-50%);\r\n  }\r\n  nav .brand-logo.left, nav .brand-logo.right {\r\n    padding: 0;\r\n    -webkit-transform: none;\r\n            transform: none;\r\n  }\r\n  nav .brand-logo.left {\r\n    left: 0.5rem;\r\n  }\r\n  nav .brand-logo.right {\r\n    right: 0.5rem;\r\n    left: auto;\r\n  }\r\n}\r\n\r\nnav .brand-logo.right {\r\n  right: 0.5rem;\r\n  padding: 0;\r\n}\r\n\r\nnav .brand-logo i,\r\nnav .brand-logo [class^=\"mdi-\"], nav .brand-logo [class*=\"mdi-\"],\r\nnav .brand-logo i.material-icons {\r\n  float: left;\r\n  margin-right: 15px;\r\n}\r\n\r\nnav .nav-title {\r\n  display: inline-block;\r\n  font-size: 32px;\r\n  padding: 28px 0;\r\n}\r\n\r\nnav ul {\r\n  margin: 0;\r\n}\r\n\r\nnav ul li {\r\n  transition: background-color .3s;\r\n  float: left;\r\n  padding: 0;\r\n}\r\n\r\nnav ul li.active {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nnav ul a {\r\n  transition: background-color .3s;\r\n  font-size: 1rem;\r\n  color: #fff;\r\n  display: block;\r\n  padding: 0 15px;\r\n  cursor: pointer;\r\n}\r\n\r\nnav ul a.btn, nav ul a.btn-large, nav ul a.btn-large, nav ul a.btn-flat, nav ul a.btn-floating {\r\n  margin-top: -2px;\r\n  margin-left: 15px;\r\n  margin-right: 15px;\r\n}\r\n\r\nnav ul a.btn > .material-icons, nav ul a.btn-large > .material-icons, nav ul a.btn-large > .material-icons, nav ul a.btn-flat > .material-icons, nav ul a.btn-floating > .material-icons {\r\n  height: inherit;\r\n  line-height: inherit;\r\n}\r\n\r\nnav ul a:hover {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nnav ul.left {\r\n  float: left;\r\n}\r\n\r\nnav form {\r\n  height: 100%;\r\n}\r\n\r\nnav .input-field {\r\n  margin: 0;\r\n  height: 100%;\r\n}\r\n\r\nnav .input-field input {\r\n  height: 100%;\r\n  font-size: 1.2rem;\r\n  border: none;\r\n  padding-left: 2rem;\r\n}\r\n\r\nnav .input-field input:focus, nav .input-field input[type=text]:valid, nav .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, nav .input-field input[type=url]:valid, nav .input-field input[type=date]:valid {\r\n  border: none;\r\n  box-shadow: none;\r\n}\r\n\r\nnav .input-field label {\r\n  top: 0;\r\n  left: 0;\r\n}\r\n\r\nnav .input-field label i {\r\n  color: rgba(255, 255, 255, 0.7);\r\n  transition: color .3s;\r\n}\r\n\r\nnav .input-field label.active i {\r\n  color: #fff;\r\n}\r\n\r\n.navbar-fixed {\r\n  position: relative;\r\n  height: 56px;\r\n  z-index: 997;\r\n}\r\n\r\n.navbar-fixed nav {\r\n  position: fixed;\r\n}\r\n\r\n@media only screen and (min-width: 601px) {\r\n  nav.nav-extended .nav-wrapper {\r\n    min-height: 64px;\r\n  }\r\n  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {\r\n    height: 64px;\r\n    line-height: 64px;\r\n  }\r\n  .navbar-fixed {\r\n    height: 64px;\r\n  }\r\n}\r\n\r\n@font-face {\r\n  font-family: \"Roboto\";\r\n  src: local(Roboto Thin), url(\"../fonts/roboto/Roboto-Thin.eot\");\r\n  src: url(\"../fonts/roboto/Roboto-Thin.eot?#iefix\") format(\"embedded-opentype\"), url(\"../fonts/roboto/Roboto-Thin.woff2\") format(\"woff2\"), url(\"../fonts/roboto/Roboto-Thin.woff\") format(\"woff\"), url(\"../fonts/roboto/Roboto-Thin.ttf\") format(\"truetype\");\r\n  font-weight: 200;\r\n}\r\n\r\n@font-face {\r\n  font-family: \"Roboto\";\r\n  src: local(Roboto Light), url(\"../fonts/roboto/Roboto-Light.eot\");\r\n  src: url(\"../fonts/roboto/Roboto-Light.eot?#iefix\") format(\"embedded-opentype\"), url(\"../fonts/roboto/Roboto-Light.woff2\") format(\"woff2\"), url(\"../fonts/roboto/Roboto-Light.woff\") format(\"woff\"), url(\"../fonts/roboto/Roboto-Light.ttf\") format(\"truetype\");\r\n  font-weight: 300;\r\n}\r\n\r\n@font-face {\r\n  font-family: \"Roboto\";\r\n  src: local(Roboto Regular), url(\"../fonts/roboto/Roboto-Regular.eot\");\r\n  src: url(\"../fonts/roboto/Roboto-Regular.eot?#iefix\") format(\"embedded-opentype\"), url(\"../fonts/roboto/Roboto-Regular.woff2\") format(\"woff2\"), url(\"../fonts/roboto/Roboto-Regular.woff\") format(\"woff\"), url(\"../fonts/roboto/Roboto-Regular.ttf\") format(\"truetype\");\r\n  font-weight: 400;\r\n}\r\n\r\n@font-face {\r\n  font-family: \"Roboto\";\r\n  src: url(\"../fonts/roboto/Roboto-Medium.eot\");\r\n  src: url(\"../fonts/roboto/Roboto-Medium.eot?#iefix\") format(\"embedded-opentype\"), url(\"../fonts/roboto/Roboto-Medium.woff2\") format(\"woff2\"), url(\"../fonts/roboto/Roboto-Medium.woff\") format(\"woff\"), url(\"../fonts/roboto/Roboto-Medium.ttf\") format(\"truetype\");\r\n  font-weight: 500;\r\n}\r\n\r\n@font-face {\r\n  font-family: \"Roboto\";\r\n  src: url(\"../fonts/roboto/Roboto-Bold.eot\");\r\n  src: url(\"../fonts/roboto/Roboto-Bold.eot?#iefix\") format(\"embedded-opentype\"), url(\"../fonts/roboto/Roboto-Bold.woff2\") format(\"woff2\"), url(\"../fonts/roboto/Roboto-Bold.woff\") format(\"woff\"), url(\"../fonts/roboto/Roboto-Bold.ttf\") format(\"truetype\");\r\n  font-weight: 700;\r\n}\r\n\r\na {\r\n  text-decoration: none;\r\n}\r\n\r\nhtml {\r\n  line-height: 1.5;\r\n  font-family: \"Roboto\", sans-serif;\r\n  font-weight: normal;\r\n  color: rgba(0, 0, 0, 0.87);\r\n}\r\n\r\n@media only screen and (min-width: 0) {\r\n  html {\r\n    font-size: 14px;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 992px) {\r\n  html {\r\n    font-size: 14.5px;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 1200px) {\r\n  html {\r\n    font-size: 15px;\r\n  }\r\n}\r\n\r\nh1, h2, h3, h4, h5, h6 {\r\n  font-weight: 400;\r\n  line-height: 1.1;\r\n}\r\n\r\nh1 a, h2 a, h3 a, h4 a, h5 a, h6 a {\r\n  font-weight: inherit;\r\n}\r\n\r\nh1 {\r\n  font-size: 4.2rem;\r\n  line-height: 110%;\r\n  margin: 2.1rem 0 1.68rem 0;\r\n}\r\n\r\nh2 {\r\n  font-size: 3.56rem;\r\n  line-height: 110%;\r\n  margin: 1.78rem 0 1.424rem 0;\r\n}\r\n\r\nh3 {\r\n  font-size: 2.92rem;\r\n  line-height: 110%;\r\n  margin: 1.46rem 0 1.168rem 0;\r\n}\r\n\r\nh4 {\r\n  font-size: 2.28rem;\r\n  line-height: 110%;\r\n  margin: 1.14rem 0 0.912rem 0;\r\n}\r\n\r\nh5 {\r\n  font-size: 1.64rem;\r\n  line-height: 110%;\r\n  margin: 0.82rem 0 0.656rem 0;\r\n}\r\n\r\nh6 {\r\n  font-size: 1rem;\r\n  line-height: 110%;\r\n  margin: 0.5rem 0 0.4rem 0;\r\n}\r\n\r\nem {\r\n  font-style: italic;\r\n}\r\n\r\nstrong {\r\n  font-weight: 500;\r\n}\r\n\r\nsmall {\r\n  font-size: 75%;\r\n}\r\n\r\n.light, footer.page-footer .footer-copyright {\r\n  font-weight: 300;\r\n}\r\n\r\n.thin {\r\n  font-weight: 200;\r\n}\r\n\r\n.flow-text {\r\n  font-weight: 300;\r\n}\r\n\r\n@media only screen and (min-width: 360px) {\r\n  .flow-text {\r\n    font-size: 1.2rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 390px) {\r\n  .flow-text {\r\n    font-size: 1.224rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 420px) {\r\n  .flow-text {\r\n    font-size: 1.248rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 450px) {\r\n  .flow-text {\r\n    font-size: 1.272rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 480px) {\r\n  .flow-text {\r\n    font-size: 1.296rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 510px) {\r\n  .flow-text {\r\n    font-size: 1.32rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 540px) {\r\n  .flow-text {\r\n    font-size: 1.344rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 570px) {\r\n  .flow-text {\r\n    font-size: 1.368rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 600px) {\r\n  .flow-text {\r\n    font-size: 1.392rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 630px) {\r\n  .flow-text {\r\n    font-size: 1.416rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 660px) {\r\n  .flow-text {\r\n    font-size: 1.44rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 690px) {\r\n  .flow-text {\r\n    font-size: 1.464rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 720px) {\r\n  .flow-text {\r\n    font-size: 1.488rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 750px) {\r\n  .flow-text {\r\n    font-size: 1.512rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 780px) {\r\n  .flow-text {\r\n    font-size: 1.536rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 810px) {\r\n  .flow-text {\r\n    font-size: 1.56rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 840px) {\r\n  .flow-text {\r\n    font-size: 1.584rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 870px) {\r\n  .flow-text {\r\n    font-size: 1.608rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 900px) {\r\n  .flow-text {\r\n    font-size: 1.632rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 930px) {\r\n  .flow-text {\r\n    font-size: 1.656rem;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 960px) {\r\n  .flow-text {\r\n    font-size: 1.68rem;\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 360px) {\r\n  .flow-text {\r\n    font-size: 1.2rem;\r\n  }\r\n}\r\n\r\n.scale-transition {\r\n  transition: -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;\r\n  transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;\r\n  transition: transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63), -webkit-transform 0.3s cubic-bezier(0.53, 0.01, 0.36, 1.63) !important;\r\n}\r\n\r\n.scale-transition.scale-out {\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n  transition: -webkit-transform .2s !important;\r\n  transition: transform .2s !important;\r\n  transition: transform .2s, -webkit-transform .2s !important;\r\n}\r\n\r\n.scale-transition.scale-in {\r\n  -webkit-transform: scale(1);\r\n          transform: scale(1);\r\n}\r\n\r\n.card-panel {\r\n  transition: box-shadow .25s;\r\n  padding: 24px;\r\n  margin: 0.5rem 0 1rem 0;\r\n  border-radius: 2px;\r\n  background-color: #fff;\r\n}\r\n\r\n.card {\r\n  position: relative;\r\n  margin: 0.5rem 0 1rem 0;\r\n  background-color: #fff;\r\n  transition: box-shadow .25s;\r\n  border-radius: 2px;\r\n}\r\n\r\n.card .card-title {\r\n  font-size: 24px;\r\n  font-weight: 300;\r\n}\r\n\r\n.card .card-title.activator {\r\n  cursor: pointer;\r\n}\r\n\r\n.card.small, .card.medium, .card.large {\r\n  position: relative;\r\n}\r\n\r\n.card.small .card-image, .card.medium .card-image, .card.large .card-image {\r\n  max-height: 60%;\r\n  overflow: hidden;\r\n}\r\n\r\n.card.small .card-image + .card-content, .card.medium .card-image + .card-content, .card.large .card-image + .card-content {\r\n  max-height: 40%;\r\n}\r\n\r\n.card.small .card-content, .card.medium .card-content, .card.large .card-content {\r\n  max-height: 100%;\r\n  overflow: hidden;\r\n}\r\n\r\n.card.small .card-action, .card.medium .card-action, .card.large .card-action {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n}\r\n\r\n.card.small {\r\n  height: 300px;\r\n}\r\n\r\n.card.medium {\r\n  height: 400px;\r\n}\r\n\r\n.card.large {\r\n  height: 500px;\r\n}\r\n\r\n.card.horizontal {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n\r\n.card.horizontal.small .card-image, .card.horizontal.medium .card-image, .card.horizontal.large .card-image {\r\n  height: 100%;\r\n  max-height: none;\r\n  overflow: visible;\r\n}\r\n\r\n.card.horizontal.small .card-image img, .card.horizontal.medium .card-image img, .card.horizontal.large .card-image img {\r\n  height: 100%;\r\n}\r\n\r\n.card.horizontal .card-image {\r\n  max-width: 50%;\r\n}\r\n\r\n.card.horizontal .card-image img {\r\n  border-radius: 2px 0 0 2px;\r\n  max-width: 100%;\r\n  width: auto;\r\n}\r\n\r\n.card.horizontal .card-stacked {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-flex-direction: column;\r\n      -ms-flex-direction: column;\r\n          flex-direction: column;\r\n  -webkit-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  position: relative;\r\n}\r\n\r\n.card.horizontal .card-stacked .card-content {\r\n  -webkit-flex-grow: 1;\r\n      -ms-flex-positive: 1;\r\n          flex-grow: 1;\r\n}\r\n\r\n.card.sticky-action .card-action {\r\n  z-index: 2;\r\n}\r\n\r\n.card.sticky-action .card-reveal {\r\n  z-index: 1;\r\n  padding-bottom: 64px;\r\n}\r\n\r\n.card .card-image {\r\n  position: relative;\r\n}\r\n\r\n.card .card-image img {\r\n  display: block;\r\n  border-radius: 2px 2px 0 0;\r\n  position: relative;\r\n  left: 0;\r\n  right: 0;\r\n  top: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\n.card .card-image .card-title {\r\n  color: #fff;\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  max-width: 100%;\r\n  padding: 24px;\r\n}\r\n\r\n.card .card-content {\r\n  padding: 24px;\r\n  border-radius: 0 0 2px 2px;\r\n}\r\n\r\n.card .card-content p {\r\n  margin: 0;\r\n  color: inherit;\r\n}\r\n\r\n.card .card-content .card-title {\r\n  display: block;\r\n  line-height: 32px;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.card .card-content .card-title i {\r\n  line-height: 32px;\r\n}\r\n\r\n.card .card-action {\r\n  position: relative;\r\n  background-color: inherit;\r\n  border-top: 1px solid rgba(160, 160, 160, 0.2);\r\n  padding: 16px 24px;\r\n}\r\n\r\n.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {\r\n  color: #ffab40;\r\n  margin-right: 24px;\r\n  transition: color .3s ease;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {\r\n  color: #ffd8a6;\r\n}\r\n\r\n.card .card-reveal {\r\n  padding: 24px;\r\n  position: absolute;\r\n  background-color: #fff;\r\n  width: 100%;\r\n  overflow-y: auto;\r\n  left: 0;\r\n  top: 100%;\r\n  height: 100%;\r\n  z-index: 3;\r\n  display: none;\r\n}\r\n\r\n.card .card-reveal .card-title {\r\n  cursor: pointer;\r\n  display: block;\r\n}\r\n\r\n#toast-container {\r\n  display: block;\r\n  position: fixed;\r\n  z-index: 10000;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n  #toast-container {\r\n    min-width: 100%;\r\n    bottom: 0%;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 601px) and (max-width: 992px) {\r\n  #toast-container {\r\n    left: 5%;\r\n    bottom: 7%;\r\n    max-width: 90%;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  #toast-container {\r\n    top: 10%;\r\n    right: 7%;\r\n    max-width: 86%;\r\n  }\r\n}\r\n\r\n.toast {\r\n  border-radius: 2px;\r\n  top: 35px;\r\n  width: auto;\r\n  clear: both;\r\n  margin-top: 10px;\r\n  position: relative;\r\n  max-width: 100%;\r\n  height: auto;\r\n  min-height: 48px;\r\n  line-height: 1.5em;\r\n  word-break: break-all;\r\n  background-color: #323232;\r\n  padding: 10px 25px;\r\n  font-size: 1.1rem;\r\n  font-weight: 300;\r\n  color: #fff;\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-justify-content: space-between;\r\n      -ms-flex-pack: justify;\r\n          justify-content: space-between;\r\n}\r\n\r\n.toast .btn, .toast .btn-large, .toast .btn-flat {\r\n  margin: 0;\r\n  margin-left: 3rem;\r\n}\r\n\r\n.toast.rounded {\r\n  border-radius: 24px;\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n  .toast {\r\n    width: 100%;\r\n    border-radius: 0;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 601px) and (max-width: 992px) {\r\n  .toast {\r\n    float: left;\r\n  }\r\n}\r\n\r\n@media only screen and (min-width: 993px) {\r\n  .toast {\r\n    float: right;\r\n  }\r\n}\r\n\r\n.tabs {\r\n  position: relative;\r\n  overflow-x: auto;\r\n  overflow-y: hidden;\r\n  height: 48px;\r\n  width: 100%;\r\n  background-color: #fff;\r\n  margin: 0 auto;\r\n  white-space: nowrap;\r\n}\r\n\r\n.tabs.tabs-transparent {\r\n  background-color: transparent;\r\n}\r\n\r\n.tabs.tabs-transparent .tab a,\r\n.tabs.tabs-transparent .tab.disabled a,\r\n.tabs.tabs-transparent .tab.disabled a:hover {\r\n  color: rgba(255, 255, 255, 0.7);\r\n}\r\n\r\n.tabs.tabs-transparent .tab a:hover,\r\n.tabs.tabs-transparent .tab a.active {\r\n  color: #fff;\r\n}\r\n\r\n.tabs.tabs-transparent .indicator {\r\n  background-color: #fff;\r\n}\r\n\r\n.tabs.tabs-fixed-width {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n\r\n.tabs.tabs-fixed-width .tab {\r\n  -webkit-flex-grow: 1;\r\n  -ms-flex-positive: 1;\r\n  flex-grow: 1;\r\n}\r\n\r\n.tabs .tab {\r\n  display: inline-block;\r\n  text-align: center;\r\n  line-height: 48px;\r\n  height: 48px;\r\n  padding: 0;\r\n  margin: 0;\r\n  text-transform: uppercase;\r\n}\r\n\r\n.tabs .tab a {\r\n  color: rgba(238, 110, 115, 0.7);\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n  padding: 0 24px;\r\n  font-size: 14px;\r\n  text-overflow: ellipsis;\r\n  overflow: hidden;\r\n  transition: color .28s ease;\r\n}\r\n\r\n.tabs .tab a:hover, .tabs .tab a.active {\r\n  background-color: transparent;\r\n  color: #ee6e73;\r\n}\r\n\r\n.tabs .tab.disabled a,\r\n.tabs .tab.disabled a:hover {\r\n  color: rgba(238, 110, 115, 0.7);\r\n  cursor: default;\r\n}\r\n\r\n.tabs .indicator {\r\n  position: absolute;\r\n  bottom: 0;\r\n  height: 2px;\r\n  background-color: #f6b2b5;\r\n  will-change: left, right;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .tabs {\r\n    display: -webkit-flex;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n  }\r\n  .tabs .tab {\r\n    -webkit-flex-grow: 1;\r\n    -ms-flex-positive: 1;\r\n    flex-grow: 1;\r\n  }\r\n  .tabs .tab a {\r\n    padding: 0 12px;\r\n  }\r\n}\r\n\r\n.material-tooltip {\r\n  padding: 10px 8px;\r\n  font-size: 1rem;\r\n  z-index: 2000;\r\n  background-color: transparent;\r\n  border-radius: 2px;\r\n  color: #fff;\r\n  min-height: 36px;\r\n  line-height: 120%;\r\n  opacity: 0;\r\n  position: absolute;\r\n  text-align: center;\r\n  max-width: calc(100% - 4px);\r\n  overflow: hidden;\r\n  left: 0;\r\n  top: 0;\r\n  pointer-events: none;\r\n  visibility: hidden;\r\n}\r\n\r\n.backdrop {\r\n  position: absolute;\r\n  opacity: 0;\r\n  height: 7px;\r\n  width: 14px;\r\n  border-radius: 0 0 50% 50%;\r\n  background-color: #323232;\r\n  z-index: -1;\r\n  -webkit-transform-origin: 50% 0%;\r\n          transform-origin: 50% 0%;\r\n  visibility: hidden;\r\n}\r\n\r\n.btn, .btn-large,\r\n.btn-flat {\r\n  border: none;\r\n  border-radius: 2px;\r\n  display: inline-block;\r\n  height: 36px;\r\n  line-height: 36px;\r\n  padding: 0 2rem;\r\n  text-transform: uppercase;\r\n  vertical-align: middle;\r\n  -webkit-tap-highlight-color: transparent;\r\n}\r\n\r\n.btn.disabled, .disabled.btn-large,\r\n.btn-floating.disabled,\r\n.btn-large.disabled,\r\n.btn-flat.disabled,\r\n.btn:disabled,\r\n.btn-large:disabled,\r\n.btn-floating:disabled,\r\n.btn-large:disabled,\r\n.btn-flat:disabled,\r\n.btn[disabled],\r\n[disabled].btn-large,\r\n.btn-floating[disabled],\r\n.btn-large[disabled],\r\n.btn-flat[disabled] {\r\n  pointer-events: none;\r\n  background-color: #DFDFDF !important;\r\n  box-shadow: none;\r\n  color: #9F9F9F !important;\r\n  cursor: default;\r\n}\r\n\r\n.btn.disabled:hover, .disabled.btn-large:hover,\r\n.btn-floating.disabled:hover,\r\n.btn-large.disabled:hover,\r\n.btn-flat.disabled:hover,\r\n.btn:disabled:hover,\r\n.btn-large:disabled:hover,\r\n.btn-floating:disabled:hover,\r\n.btn-large:disabled:hover,\r\n.btn-flat:disabled:hover,\r\n.btn[disabled]:hover,\r\n[disabled].btn-large:hover,\r\n.btn-floating[disabled]:hover,\r\n.btn-large[disabled]:hover,\r\n.btn-flat[disabled]:hover {\r\n  background-color: #DFDFDF !important;\r\n  color: #9F9F9F !important;\r\n}\r\n\r\n.btn, .btn-large,\r\n.btn-floating,\r\n.btn-large,\r\n.btn-flat {\r\n  outline: 0;\r\n}\r\n\r\n.btn i, .btn-large i,\r\n.btn-floating i,\r\n.btn-large i,\r\n.btn-flat i {\r\n  font-size: 1.3rem;\r\n  line-height: inherit;\r\n}\r\n\r\n.btn:focus, .btn-large:focus,\r\n.btn-floating:focus {\r\n  background-color: #1d7d74;\r\n}\r\n\r\n.btn, .btn-large {\r\n  text-decoration: none;\r\n  color: #fff;\r\n  background-color: #26a69a;\r\n  text-align: center;\r\n  letter-spacing: .5px;\r\n  transition: .2s ease-out;\r\n  cursor: pointer;\r\n}\r\n\r\n.btn:hover, .btn-large:hover {\r\n  background-color: #2bbbad;\r\n}\r\n\r\n.btn-floating {\r\n  display: inline-block;\r\n  color: #fff;\r\n  position: relative;\r\n  overflow: hidden;\r\n  z-index: 1;\r\n  width: 40px;\r\n  height: 40px;\r\n  line-height: 40px;\r\n  padding: 0;\r\n  background-color: #26a69a;\r\n  border-radius: 50%;\r\n  transition: .3s;\r\n  cursor: pointer;\r\n  vertical-align: middle;\r\n}\r\n\r\n.btn-floating:hover {\r\n  background-color: #26a69a;\r\n}\r\n\r\n.btn-floating:before {\r\n  border-radius: 0;\r\n}\r\n\r\n.btn-floating.btn-large {\r\n  width: 56px;\r\n  height: 56px;\r\n}\r\n\r\n.btn-floating.btn-large i {\r\n  line-height: 56px;\r\n}\r\n\r\n.btn-floating.halfway-fab {\r\n  position: absolute;\r\n  right: 24px;\r\n  bottom: 0;\r\n  -webkit-transform: translateY(50%);\r\n          transform: translateY(50%);\r\n}\r\n\r\n.btn-floating.halfway-fab.left {\r\n  right: auto;\r\n  left: 24px;\r\n}\r\n\r\n.btn-floating i {\r\n  width: inherit;\r\n  display: inline-block;\r\n  text-align: center;\r\n  color: #fff;\r\n  font-size: 1.6rem;\r\n  line-height: 40px;\r\n}\r\n\r\nbutton.btn-floating {\r\n  border: none;\r\n}\r\n\r\n.fixed-action-btn {\r\n  position: fixed;\r\n  right: 23px;\r\n  bottom: 23px;\r\n  padding-top: 15px;\r\n  margin-bottom: 0;\r\n  z-index: 998;\r\n}\r\n\r\n.fixed-action-btn.active ul {\r\n  visibility: visible;\r\n}\r\n\r\n.fixed-action-btn.horizontal {\r\n  padding: 0 0 0 15px;\r\n}\r\n\r\n.fixed-action-btn.horizontal ul {\r\n  text-align: right;\r\n  right: 64px;\r\n  top: 50%;\r\n  -webkit-transform: translateY(-50%);\r\n          transform: translateY(-50%);\r\n  height: 100%;\r\n  left: auto;\r\n  width: 500px;\r\n  /*width 100% only goes to width of button container */\r\n}\r\n\r\n.fixed-action-btn.horizontal ul li {\r\n  display: inline-block;\r\n  margin: 15px 15px 0 0;\r\n}\r\n\r\n.fixed-action-btn.toolbar {\r\n  padding: 0;\r\n  height: 56px;\r\n}\r\n\r\n.fixed-action-btn.toolbar.active > a i {\r\n  opacity: 0;\r\n}\r\n\r\n.fixed-action-btn.toolbar ul {\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  top: 0;\r\n  bottom: 0;\r\n}\r\n\r\n.fixed-action-btn.toolbar ul li {\r\n  -webkit-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  display: inline-block;\r\n  margin: 0;\r\n  height: 100%;\r\n  transition: none;\r\n}\r\n\r\n.fixed-action-btn.toolbar ul li a {\r\n  display: block;\r\n  overflow: hidden;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: transparent;\r\n  box-shadow: none;\r\n  color: #fff;\r\n  line-height: 56px;\r\n  z-index: 1;\r\n}\r\n\r\n.fixed-action-btn.toolbar ul li a i {\r\n  line-height: inherit;\r\n}\r\n\r\n.fixed-action-btn ul {\r\n  left: 0;\r\n  right: 0;\r\n  text-align: center;\r\n  position: absolute;\r\n  bottom: 64px;\r\n  margin: 0;\r\n  visibility: hidden;\r\n}\r\n\r\n.fixed-action-btn ul li {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.fixed-action-btn ul a.btn-floating {\r\n  opacity: 0;\r\n}\r\n\r\n.fixed-action-btn .fab-backdrop {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: -1;\r\n  width: 40px;\r\n  height: 40px;\r\n  background-color: #26a69a;\r\n  border-radius: 50%;\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n}\r\n\r\n.btn-flat {\r\n  box-shadow: none;\r\n  background-color: transparent;\r\n  color: #343434;\r\n  cursor: pointer;\r\n  transition: background-color .2s;\r\n}\r\n\r\n.btn-flat:focus, .btn-flat:active {\r\n  background-color: transparent;\r\n}\r\n\r\n.btn-flat:focus, .btn-flat:hover {\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n  box-shadow: none;\r\n}\r\n\r\n.btn-flat:active {\r\n  background-color: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.btn-flat.disabled {\r\n  background-color: transparent !important;\r\n  color: #b3b3b3 !important;\r\n  cursor: default;\r\n}\r\n\r\n.btn-large {\r\n  height: 54px;\r\n  line-height: 54px;\r\n}\r\n\r\n.btn-large i {\r\n  font-size: 1.6rem;\r\n}\r\n\r\n.btn-block {\r\n  display: block;\r\n}\r\n\r\n.dropdown-content {\r\n  background-color: #fff;\r\n  margin: 0;\r\n  display: none;\r\n  min-width: 100px;\r\n  max-height: 650px;\r\n  overflow-y: auto;\r\n  opacity: 0;\r\n  position: absolute;\r\n  z-index: 999;\r\n  will-change: width, height;\r\n}\r\n\r\n.dropdown-content li {\r\n  clear: both;\r\n  color: rgba(0, 0, 0, 0.87);\r\n  cursor: pointer;\r\n  min-height: 50px;\r\n  line-height: 1.5rem;\r\n  width: 100%;\r\n  text-align: left;\r\n  text-transform: none;\r\n}\r\n\r\n.dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {\r\n  background-color: #eee;\r\n}\r\n\r\n.dropdown-content li.active.selected {\r\n  background-color: #e1e1e1;\r\n}\r\n\r\n.dropdown-content li.divider {\r\n  min-height: 0;\r\n  height: 1px;\r\n}\r\n\r\n.dropdown-content li > a, .dropdown-content li > span {\r\n  font-size: 16px;\r\n  color: #26a69a;\r\n  display: block;\r\n  line-height: 22px;\r\n  padding: 14px 16px;\r\n}\r\n\r\n.dropdown-content li > span > label {\r\n  top: 1px;\r\n  left: 0;\r\n  height: 18px;\r\n}\r\n\r\n.dropdown-content li > a > i {\r\n  height: inherit;\r\n  line-height: inherit;\r\n}\r\n\r\n.input-field.col .dropdown-content [type=\"checkbox\"] + label {\r\n  top: 1px;\r\n  left: 0;\r\n  height: 18px;\r\n}\r\n\r\n/*!\r\n * Waves v0.6.0\r\n * http://fian.my.id/Waves\r\n *\r\n * Copyright 2014 Alfiana E. Sibuea and other contributors\r\n * Released under the MIT license\r\n * https://github.com/fians/Waves/blob/master/LICENSE\r\n */\r\n.waves-effect {\r\n  position: relative;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  overflow: hidden;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  -webkit-tap-highlight-color: transparent;\r\n  vertical-align: middle;\r\n  z-index: 1;\r\n  transition: .3s ease-out;\r\n}\r\n\r\n.waves-effect .waves-ripple {\r\n  position: absolute;\r\n  border-radius: 50%;\r\n  width: 20px;\r\n  height: 20px;\r\n  margin-top: -10px;\r\n  margin-left: -10px;\r\n  opacity: 0;\r\n  background: rgba(0, 0, 0, 0.2);\r\n  transition: all 0.7s ease-out;\r\n  transition-property: opacity, -webkit-transform;\r\n  transition-property: transform, opacity;\r\n  transition-property: transform, opacity, -webkit-transform;\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n  pointer-events: none;\r\n}\r\n\r\n.waves-effect.waves-light .waves-ripple {\r\n  background-color: rgba(255, 255, 255, 0.45);\r\n}\r\n\r\n.waves-effect.waves-red .waves-ripple {\r\n  background-color: rgba(244, 67, 54, 0.7);\r\n}\r\n\r\n.waves-effect.waves-yellow .waves-ripple {\r\n  background-color: rgba(255, 235, 59, 0.7);\r\n}\r\n\r\n.waves-effect.waves-orange .waves-ripple {\r\n  background-color: rgba(255, 152, 0, 0.7);\r\n}\r\n\r\n.waves-effect.waves-purple .waves-ripple {\r\n  background-color: rgba(156, 39, 176, 0.7);\r\n}\r\n\r\n.waves-effect.waves-green .waves-ripple {\r\n  background-color: rgba(76, 175, 80, 0.7);\r\n}\r\n\r\n.waves-effect.waves-teal .waves-ripple {\r\n  background-color: rgba(0, 150, 136, 0.7);\r\n}\r\n\r\n.waves-effect input[type=\"button\"], .waves-effect input[type=\"reset\"], .waves-effect input[type=\"submit\"] {\r\n  border: 0;\r\n  font-style: normal;\r\n  font-size: inherit;\r\n  text-transform: inherit;\r\n  background: none;\r\n}\r\n\r\n.waves-effect img {\r\n  position: relative;\r\n  z-index: -1;\r\n}\r\n\r\n.waves-notransition {\r\n  transition: none !important;\r\n}\r\n\r\n.waves-circle {\r\n  -webkit-transform: translateZ(0);\r\n          transform: translateZ(0);\r\n  -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);\r\n}\r\n\r\n.waves-input-wrapper {\r\n  border-radius: 0.2em;\r\n  vertical-align: bottom;\r\n}\r\n\r\n.waves-input-wrapper .waves-button-input {\r\n  position: relative;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 1;\r\n}\r\n\r\n.waves-circle {\r\n  text-align: center;\r\n  width: 2.5em;\r\n  height: 2.5em;\r\n  line-height: 2.5em;\r\n  border-radius: 50%;\r\n  -webkit-mask-image: none;\r\n}\r\n\r\n.waves-block {\r\n  display: block;\r\n}\r\n\r\n/* Firefox Bug: link not triggered */\r\n.waves-effect .waves-ripple {\r\n  z-index: -1;\r\n}\r\n\r\n.modal {\r\n  display: none;\r\n  position: fixed;\r\n  left: 0;\r\n  right: 0;\r\n  background-color: #fafafa;\r\n  padding: 0;\r\n  max-height: 70%;\r\n  width: 55%;\r\n  margin: auto;\r\n  overflow-y: auto;\r\n  border-radius: 2px;\r\n  will-change: top, opacity;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .modal {\r\n    width: 80%;\r\n  }\r\n}\r\n\r\n.modal h1, .modal h2, .modal h3, .modal h4 {\r\n  margin-top: 0;\r\n}\r\n\r\n.modal .modal-content {\r\n  padding: 24px;\r\n}\r\n\r\n.modal .modal-close {\r\n  cursor: pointer;\r\n}\r\n\r\n.modal .modal-footer {\r\n  border-radius: 0 0 2px 2px;\r\n  background-color: #fafafa;\r\n  padding: 4px 6px;\r\n  height: 56px;\r\n  width: 100%;\r\n}\r\n\r\n.modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {\r\n  float: right;\r\n  margin: 6px 0;\r\n}\r\n\r\n.modal-overlay {\r\n  position: fixed;\r\n  z-index: 999;\r\n  top: -100px;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  height: 125%;\r\n  width: 100%;\r\n  background: #000;\r\n  display: none;\r\n  will-change: opacity;\r\n}\r\n\r\n.modal.modal-fixed-footer {\r\n  padding: 0;\r\n  height: 70%;\r\n}\r\n\r\n.modal.modal-fixed-footer .modal-content {\r\n  position: absolute;\r\n  height: calc(100% - 56px);\r\n  max-height: 100%;\r\n  width: 100%;\r\n  overflow-y: auto;\r\n}\r\n\r\n.modal.modal-fixed-footer .modal-footer {\r\n  border-top: 1px solid rgba(0, 0, 0, 0.1);\r\n  position: absolute;\r\n  bottom: 0;\r\n}\r\n\r\n.modal.bottom-sheet {\r\n  top: auto;\r\n  bottom: -100%;\r\n  margin: 0;\r\n  width: 100%;\r\n  max-height: 45%;\r\n  border-radius: 0;\r\n  will-change: bottom, opacity;\r\n}\r\n\r\n.collapsible {\r\n  border-top: 1px solid #ddd;\r\n  border-right: 1px solid #ddd;\r\n  border-left: 1px solid #ddd;\r\n  margin: 0.5rem 0 1rem 0;\r\n}\r\n\r\n.collapsible-header {\r\n  display: block;\r\n  cursor: pointer;\r\n  min-height: 3rem;\r\n  line-height: 3rem;\r\n  padding: 0 1rem;\r\n  background-color: #fff;\r\n  border-bottom: 1px solid #ddd;\r\n}\r\n\r\n.collapsible-header i {\r\n  width: 2rem;\r\n  font-size: 1.6rem;\r\n  line-height: 3rem;\r\n  display: block;\r\n  float: left;\r\n  text-align: center;\r\n  margin-right: 1rem;\r\n}\r\n\r\n.collapsible-body {\r\n  display: none;\r\n  border-bottom: 1px solid #ddd;\r\n  box-sizing: border-box;\r\n  padding: 2rem;\r\n}\r\n\r\n.side-nav .collapsible,\r\n.side-nav.fixed .collapsible {\r\n  border: none;\r\n  box-shadow: none;\r\n}\r\n\r\n.side-nav .collapsible li,\r\n.side-nav.fixed .collapsible li {\r\n  padding: 0;\r\n}\r\n\r\n.side-nav .collapsible-header,\r\n.side-nav.fixed .collapsible-header {\r\n  background-color: transparent;\r\n  border: none;\r\n  line-height: inherit;\r\n  height: inherit;\r\n  padding: 0 16px;\r\n}\r\n\r\n.side-nav .collapsible-header:hover,\r\n.side-nav.fixed .collapsible-header:hover {\r\n  background-color: rgba(0, 0, 0, 0.05);\r\n}\r\n\r\n.side-nav .collapsible-header i,\r\n.side-nav.fixed .collapsible-header i {\r\n  line-height: inherit;\r\n}\r\n\r\n.side-nav .collapsible-body,\r\n.side-nav.fixed .collapsible-body {\r\n  border: 0;\r\n  background-color: #fff;\r\n}\r\n\r\n.side-nav .collapsible-body li a,\r\n.side-nav.fixed .collapsible-body li a {\r\n  padding: 0 23.5px 0 31px;\r\n}\r\n\r\n.collapsible.popout {\r\n  border: none;\r\n  box-shadow: none;\r\n}\r\n\r\n.collapsible.popout > li {\r\n  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);\r\n  margin: 0 24px;\r\n  transition: margin 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);\r\n}\r\n\r\n.collapsible.popout > li.active {\r\n  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\r\n  margin: 16px 0;\r\n}\r\n\r\n.chip {\r\n  display: inline-block;\r\n  height: 32px;\r\n  font-size: 13px;\r\n  font-weight: 500;\r\n  color: rgba(0, 0, 0, 0.6);\r\n  line-height: 32px;\r\n  padding: 0 12px;\r\n  border-radius: 16px;\r\n  background-color: #e4e4e4;\r\n  margin-bottom: 5px;\r\n  margin-right: 5px;\r\n}\r\n\r\n.chip img {\r\n  float: left;\r\n  margin: 0 8px 0 -12px;\r\n  height: 32px;\r\n  width: 32px;\r\n  border-radius: 50%;\r\n}\r\n\r\n.chip .close {\r\n  cursor: pointer;\r\n  float: right;\r\n  font-size: 16px;\r\n  line-height: 32px;\r\n  padding-left: 8px;\r\n}\r\n\r\n.chips {\r\n  border: none;\r\n  border-bottom: 1px solid #9e9e9e;\r\n  box-shadow: none;\r\n  margin: 0 0 20px 0;\r\n  min-height: 45px;\r\n  outline: none;\r\n  transition: all .3s;\r\n}\r\n\r\n.chips.focus {\r\n  border-bottom: 1px solid #26a69a;\r\n  box-shadow: 0 1px 0 0 #26a69a;\r\n}\r\n\r\n.chips:hover {\r\n  cursor: text;\r\n}\r\n\r\n.chips .chip.selected {\r\n  background-color: #26a69a;\r\n  color: #fff;\r\n}\r\n\r\n.chips .input {\r\n  background: none;\r\n  border: 0;\r\n  color: rgba(0, 0, 0, 0.6);\r\n  display: inline-block;\r\n  font-size: 1rem;\r\n  height: 3rem;\r\n  line-height: 32px;\r\n  outline: 0;\r\n  margin: 0;\r\n  padding: 0 !important;\r\n  width: 120px !important;\r\n}\r\n\r\n.chips .input:focus {\r\n  border: 0 !important;\r\n  box-shadow: none !important;\r\n}\r\n\r\n.prefix ~ .chips {\r\n  margin-left: 3rem;\r\n  width: 92%;\r\n  width: calc(100% - 3rem);\r\n}\r\n\r\n.chips:empty ~ label {\r\n  font-size: 0.8rem;\r\n  -webkit-transform: translateY(-140%);\r\n          transform: translateY(-140%);\r\n}\r\n\r\n.materialboxed {\r\n  display: block;\r\n  cursor: -webkit-zoom-in;\r\n  cursor: zoom-in;\r\n  position: relative;\r\n  transition: opacity .4s;\r\n  -webkit-backface-visibility: hidden;\r\n}\r\n\r\n.materialboxed:hover:not(.active) {\r\n  opacity: .8;\r\n}\r\n\r\n.materialboxed.active {\r\n  cursor: -webkit-zoom-out;\r\n  cursor: zoom-out;\r\n}\r\n\r\n#materialbox-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  background-color: #292929;\r\n  z-index: 1000;\r\n  will-change: opacity;\r\n}\r\n\r\n.materialbox-caption {\r\n  position: fixed;\r\n  display: none;\r\n  color: #fff;\r\n  line-height: 50px;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  text-align: center;\r\n  padding: 0% 15%;\r\n  height: 50px;\r\n  z-index: 1000;\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n\r\nselect:focus {\r\n  outline: 1px solid #c9f3ef;\r\n}\r\n\r\nbutton:focus {\r\n  outline: none;\r\n  background-color: #2ab7a9;\r\n}\r\n\r\nlabel {\r\n  font-size: 0.8rem;\r\n  color: #9e9e9e;\r\n}\r\n\r\n/* Text Inputs + Textarea\r\n   ========================================================================== */\r\n/* Style Placeholders */\r\n::-webkit-input-placeholder {\r\n  color: #d1d1d1;\r\n}\r\n\r\n:-moz-placeholder {\r\n  /* Firefox 18- */\r\n  color: #d1d1d1;\r\n}\r\n\r\n::-moz-placeholder {\r\n  /* Firefox 19+ */\r\n  color: #d1d1d1;\r\n}\r\n\r\n:-ms-input-placeholder {\r\n  color: #d1d1d1;\r\n}\r\n\r\n/* Text inputs */\r\ninput:not([type]),\r\ninput[type=text],\r\ninput[type=password],\r\ninput[type=email],\r\ninput[type=url],\r\ninput[type=time],\r\ninput[type=date],\r\ninput[type=datetime],\r\ninput[type=datetime-local],\r\ninput[type=tel],\r\ninput[type=number],\r\ninput[type=search],\r\ntextarea.materialize-textarea {\r\n  background-color: transparent;\r\n  border: none;\r\n  border-bottom: 1px solid #9e9e9e;\r\n  border-radius: 0;\r\n  outline: none;\r\n  height: 3rem;\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  margin: 0 0 20px 0;\r\n  padding: 0;\r\n  box-shadow: none;\r\n  box-sizing: content-box;\r\n  transition: all 0.3s;\r\n}\r\n\r\ninput:not([type]):disabled, input:not([type])[readonly=\"readonly\"],\r\ninput[type=text]:disabled,\r\ninput[type=text][readonly=\"readonly\"],\r\ninput[type=password]:disabled,\r\ninput[type=password][readonly=\"readonly\"],\r\ninput[type=email]:disabled,\r\ninput[type=email][readonly=\"readonly\"],\r\ninput[type=url]:disabled,\r\ninput[type=url][readonly=\"readonly\"],\r\ninput[type=time]:disabled,\r\ninput[type=time][readonly=\"readonly\"],\r\ninput[type=date]:disabled,\r\ninput[type=date][readonly=\"readonly\"],\r\ninput[type=datetime]:disabled,\r\ninput[type=datetime][readonly=\"readonly\"],\r\ninput[type=datetime-local]:disabled,\r\ninput[type=datetime-local][readonly=\"readonly\"],\r\ninput[type=tel]:disabled,\r\ninput[type=tel][readonly=\"readonly\"],\r\ninput[type=number]:disabled,\r\ninput[type=number][readonly=\"readonly\"],\r\ninput[type=search]:disabled,\r\ninput[type=search][readonly=\"readonly\"],\r\ntextarea.materialize-textarea:disabled,\r\ntextarea.materialize-textarea[readonly=\"readonly\"] {\r\n  color: rgba(0, 0, 0, 0.26);\r\n  border-bottom: 1px dotted rgba(0, 0, 0, 0.26);\r\n}\r\n\r\ninput:not([type]):disabled + label,\r\ninput:not([type])[readonly=\"readonly\"] + label,\r\ninput[type=text]:disabled + label,\r\ninput[type=text][readonly=\"readonly\"] + label,\r\ninput[type=password]:disabled + label,\r\ninput[type=password][readonly=\"readonly\"] + label,\r\ninput[type=email]:disabled + label,\r\ninput[type=email][readonly=\"readonly\"] + label,\r\ninput[type=url]:disabled + label,\r\ninput[type=url][readonly=\"readonly\"] + label,\r\ninput[type=time]:disabled + label,\r\ninput[type=time][readonly=\"readonly\"] + label,\r\ninput[type=date]:disabled + label,\r\ninput[type=date][readonly=\"readonly\"] + label,\r\ninput[type=datetime]:disabled + label,\r\ninput[type=datetime][readonly=\"readonly\"] + label,\r\ninput[type=datetime-local]:disabled + label,\r\ninput[type=datetime-local][readonly=\"readonly\"] + label,\r\ninput[type=tel]:disabled + label,\r\ninput[type=tel][readonly=\"readonly\"] + label,\r\ninput[type=number]:disabled + label,\r\ninput[type=number][readonly=\"readonly\"] + label,\r\ninput[type=search]:disabled + label,\r\ninput[type=search][readonly=\"readonly\"] + label,\r\ntextarea.materialize-textarea:disabled + label,\r\ntextarea.materialize-textarea[readonly=\"readonly\"] + label {\r\n  color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\ninput:not([type]):focus:not([readonly]),\r\ninput[type=text]:focus:not([readonly]),\r\ninput[type=password]:focus:not([readonly]),\r\ninput[type=email]:focus:not([readonly]),\r\ninput[type=url]:focus:not([readonly]),\r\ninput[type=time]:focus:not([readonly]),\r\ninput[type=date]:focus:not([readonly]),\r\ninput[type=datetime]:focus:not([readonly]),\r\ninput[type=datetime-local]:focus:not([readonly]),\r\ninput[type=tel]:focus:not([readonly]),\r\ninput[type=number]:focus:not([readonly]),\r\ninput[type=search]:focus:not([readonly]),\r\ntextarea.materialize-textarea:focus:not([readonly]) {\r\n  border-bottom: 1px solid #26a69a;\r\n  box-shadow: 0 1px 0 0 #26a69a;\r\n}\r\n\r\ninput:not([type]):focus:not([readonly]) + label,\r\ninput[type=text]:focus:not([readonly]) + label,\r\ninput[type=password]:focus:not([readonly]) + label,\r\ninput[type=email]:focus:not([readonly]) + label,\r\ninput[type=url]:focus:not([readonly]) + label,\r\ninput[type=time]:focus:not([readonly]) + label,\r\ninput[type=date]:focus:not([readonly]) + label,\r\ninput[type=datetime]:focus:not([readonly]) + label,\r\ninput[type=datetime-local]:focus:not([readonly]) + label,\r\ninput[type=tel]:focus:not([readonly]) + label,\r\ninput[type=number]:focus:not([readonly]) + label,\r\ninput[type=search]:focus:not([readonly]) + label,\r\ntextarea.materialize-textarea:focus:not([readonly]) + label {\r\n  color: #26a69a;\r\n}\r\n\r\ninput:not([type]).valid, input:not([type]):focus.valid,\r\ninput[type=text].valid,\r\ninput[type=text]:focus.valid,\r\ninput[type=password].valid,\r\ninput[type=password]:focus.valid,\r\ninput[type=email].valid,\r\ninput[type=email]:focus.valid,\r\ninput[type=url].valid,\r\ninput[type=url]:focus.valid,\r\ninput[type=time].valid,\r\ninput[type=time]:focus.valid,\r\ninput[type=date].valid,\r\ninput[type=date]:focus.valid,\r\ninput[type=datetime].valid,\r\ninput[type=datetime]:focus.valid,\r\ninput[type=datetime-local].valid,\r\ninput[type=datetime-local]:focus.valid,\r\ninput[type=tel].valid,\r\ninput[type=tel]:focus.valid,\r\ninput[type=number].valid,\r\ninput[type=number]:focus.valid,\r\ninput[type=search].valid,\r\ninput[type=search]:focus.valid,\r\ntextarea.materialize-textarea.valid,\r\ntextarea.materialize-textarea:focus.valid {\r\n  border-bottom: 1px solid #4CAF50;\r\n  box-shadow: 0 1px 0 0 #4CAF50;\r\n}\r\n\r\ninput:not([type]).valid + label:after,\r\ninput:not([type]):focus.valid + label:after,\r\ninput[type=text].valid + label:after,\r\ninput[type=text]:focus.valid + label:after,\r\ninput[type=password].valid + label:after,\r\ninput[type=password]:focus.valid + label:after,\r\ninput[type=email].valid + label:after,\r\ninput[type=email]:focus.valid + label:after,\r\ninput[type=url].valid + label:after,\r\ninput[type=url]:focus.valid + label:after,\r\ninput[type=time].valid + label:after,\r\ninput[type=time]:focus.valid + label:after,\r\ninput[type=date].valid + label:after,\r\ninput[type=date]:focus.valid + label:after,\r\ninput[type=datetime].valid + label:after,\r\ninput[type=datetime]:focus.valid + label:after,\r\ninput[type=datetime-local].valid + label:after,\r\ninput[type=datetime-local]:focus.valid + label:after,\r\ninput[type=tel].valid + label:after,\r\ninput[type=tel]:focus.valid + label:after,\r\ninput[type=number].valid + label:after,\r\ninput[type=number]:focus.valid + label:after,\r\ninput[type=search].valid + label:after,\r\ninput[type=search]:focus.valid + label:after,\r\ntextarea.materialize-textarea.valid + label:after,\r\ntextarea.materialize-textarea:focus.valid + label:after {\r\n  content: attr(data-success);\r\n  color: #4CAF50;\r\n  opacity: 1;\r\n}\r\n\r\ninput:not([type]).invalid, input:not([type]):focus.invalid,\r\ninput[type=text].invalid,\r\ninput[type=text]:focus.invalid,\r\ninput[type=password].invalid,\r\ninput[type=password]:focus.invalid,\r\ninput[type=email].invalid,\r\ninput[type=email]:focus.invalid,\r\ninput[type=url].invalid,\r\ninput[type=url]:focus.invalid,\r\ninput[type=time].invalid,\r\ninput[type=time]:focus.invalid,\r\ninput[type=date].invalid,\r\ninput[type=date]:focus.invalid,\r\ninput[type=datetime].invalid,\r\ninput[type=datetime]:focus.invalid,\r\ninput[type=datetime-local].invalid,\r\ninput[type=datetime-local]:focus.invalid,\r\ninput[type=tel].invalid,\r\ninput[type=tel]:focus.invalid,\r\ninput[type=number].invalid,\r\ninput[type=number]:focus.invalid,\r\ninput[type=search].invalid,\r\ninput[type=search]:focus.invalid,\r\ntextarea.materialize-textarea.invalid,\r\ntextarea.materialize-textarea:focus.invalid {\r\n  border-bottom: 1px solid #F44336;\r\n  box-shadow: 0 1px 0 0 #F44336;\r\n}\r\n\r\ninput:not([type]).invalid + label:after,\r\ninput:not([type]):focus.invalid + label:after,\r\ninput[type=text].invalid + label:after,\r\ninput[type=text]:focus.invalid + label:after,\r\ninput[type=password].invalid + label:after,\r\ninput[type=password]:focus.invalid + label:after,\r\ninput[type=email].invalid + label:after,\r\ninput[type=email]:focus.invalid + label:after,\r\ninput[type=url].invalid + label:after,\r\ninput[type=url]:focus.invalid + label:after,\r\ninput[type=time].invalid + label:after,\r\ninput[type=time]:focus.invalid + label:after,\r\ninput[type=date].invalid + label:after,\r\ninput[type=date]:focus.invalid + label:after,\r\ninput[type=datetime].invalid + label:after,\r\ninput[type=datetime]:focus.invalid + label:after,\r\ninput[type=datetime-local].invalid + label:after,\r\ninput[type=datetime-local]:focus.invalid + label:after,\r\ninput[type=tel].invalid + label:after,\r\ninput[type=tel]:focus.invalid + label:after,\r\ninput[type=number].invalid + label:after,\r\ninput[type=number]:focus.invalid + label:after,\r\ninput[type=search].invalid + label:after,\r\ninput[type=search]:focus.invalid + label:after,\r\ntextarea.materialize-textarea.invalid + label:after,\r\ntextarea.materialize-textarea:focus.invalid + label:after {\r\n  content: attr(data-error);\r\n  color: #F44336;\r\n  opacity: 1;\r\n}\r\n\r\ninput:not([type]).validate + label,\r\ninput[type=text].validate + label,\r\ninput[type=password].validate + label,\r\ninput[type=email].validate + label,\r\ninput[type=url].validate + label,\r\ninput[type=time].validate + label,\r\ninput[type=date].validate + label,\r\ninput[type=datetime].validate + label,\r\ninput[type=datetime-local].validate + label,\r\ninput[type=tel].validate + label,\r\ninput[type=number].validate + label,\r\ninput[type=search].validate + label,\r\ntextarea.materialize-textarea.validate + label {\r\n  width: 100%;\r\n  pointer-events: none;\r\n}\r\n\r\ninput:not([type]) + label:after,\r\ninput[type=text] + label:after,\r\ninput[type=password] + label:after,\r\ninput[type=email] + label:after,\r\ninput[type=url] + label:after,\r\ninput[type=time] + label:after,\r\ninput[type=date] + label:after,\r\ninput[type=datetime] + label:after,\r\ninput[type=datetime-local] + label:after,\r\ninput[type=tel] + label:after,\r\ninput[type=number] + label:after,\r\ninput[type=search] + label:after,\r\ntextarea.materialize-textarea + label:after {\r\n  display: block;\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 60px;\r\n  opacity: 0;\r\n  transition: .2s opacity ease-out, .2s color ease-out;\r\n}\r\n\r\n.input-field {\r\n  position: relative;\r\n  margin-top: 1rem;\r\n}\r\n\r\n.input-field.inline {\r\n  display: inline-block;\r\n  vertical-align: middle;\r\n  margin-left: 5px;\r\n}\r\n\r\n.input-field.inline input,\r\n.input-field.inline .select-dropdown {\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.input-field.col label {\r\n  left: 0.75rem;\r\n}\r\n\r\n.input-field.col .prefix ~ label,\r\n.input-field.col .prefix ~ .validate ~ label {\r\n  width: calc(100% - 3rem - 1.5rem);\r\n}\r\n\r\n.input-field label {\r\n  color: #9e9e9e;\r\n  position: absolute;\r\n  top: 0.8rem;\r\n  left: 0;\r\n  font-size: 1rem;\r\n  cursor: text;\r\n  transition: .2s ease-out;\r\n}\r\n\r\n.input-field label:not(.label-icon).active {\r\n  font-size: 0.8rem;\r\n  -webkit-transform: translateY(-140%);\r\n          transform: translateY(-140%);\r\n}\r\n\r\n.input-field .prefix {\r\n  position: absolute;\r\n  width: 3rem;\r\n  font-size: 2rem;\r\n  transition: color .2s;\r\n}\r\n\r\n.input-field .prefix.active {\r\n  color: #26a69a;\r\n}\r\n\r\n.input-field .prefix ~ input,\r\n.input-field .prefix ~ textarea,\r\n.input-field .prefix ~ label,\r\n.input-field .prefix ~ .validate ~ label,\r\n.input-field .prefix ~ .autocomplete-content {\r\n  margin-left: 3rem;\r\n  width: 92%;\r\n  width: calc(100% - 3rem);\r\n}\r\n\r\n.input-field .prefix ~ label {\r\n  margin-left: 3rem;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .input-field .prefix ~ input {\r\n    width: 86%;\r\n    width: calc(100% - 3rem);\r\n  }\r\n}\r\n\r\n@media only screen and (max-width: 600px) {\r\n  .input-field .prefix ~ input {\r\n    width: 80%;\r\n    width: calc(100% - 3rem);\r\n  }\r\n}\r\n\r\n/* Search Field */\r\n.input-field input[type=search] {\r\n  display: block;\r\n  line-height: inherit;\r\n  padding-left: 4rem;\r\n  width: calc(100% - 4rem);\r\n}\r\n\r\n.input-field input[type=search]:focus {\r\n  background-color: #fff;\r\n  border: 0;\r\n  box-shadow: none;\r\n  color: #444;\r\n}\r\n\r\n.input-field input[type=search]:focus + label i,\r\n.input-field input[type=search]:focus ~ .mdi-navigation-close,\r\n.input-field input[type=search]:focus ~ .material-icons {\r\n  color: #444;\r\n}\r\n\r\n.input-field input[type=search] + label {\r\n  left: 1rem;\r\n}\r\n\r\n.input-field input[type=search] ~ .mdi-navigation-close,\r\n.input-field input[type=search] ~ .material-icons {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 1rem;\r\n  color: transparent;\r\n  cursor: pointer;\r\n  font-size: 2rem;\r\n  transition: .3s color;\r\n}\r\n\r\n/* Textarea */\r\ntextarea {\r\n  width: 100%;\r\n  height: 3rem;\r\n  background-color: transparent;\r\n}\r\n\r\ntextarea.materialize-textarea {\r\n  overflow-y: hidden;\r\n  /* prevents scroll bar flash */\r\n  padding: .8rem 0 1.6rem 0;\r\n  /* prevents text jump on Enter keypress */\r\n  resize: none;\r\n  min-height: 3rem;\r\n}\r\n\r\n.hiddendiv {\r\n  display: none;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n  overflow-wrap: break-word;\r\n  /* future version of deprecated 'word-wrap' */\r\n  padding-top: 1.2rem;\r\n  /* prevents text jump on Enter keypress */\r\n}\r\n\r\n/* Autocomplete */\r\n.autocomplete-content {\r\n  margin-top: -15px;\r\n  display: block;\r\n  opacity: 1;\r\n  position: static;\r\n}\r\n\r\n.autocomplete-content li .highlight {\r\n  color: #444;\r\n}\r\n\r\n.autocomplete-content li img {\r\n  height: 40px;\r\n  width: 40px;\r\n  margin: 5px 15px;\r\n}\r\n\r\n/* Radio Buttons\r\n   ========================================================================== */\r\n[type=\"radio\"]:not(:checked),\r\n[type=\"radio\"]:checked {\r\n  position: absolute;\r\n  left: -9999px;\r\n  opacity: 0;\r\n}\r\n\r\n[type=\"radio\"]:not(:checked) + label,\r\n[type=\"radio\"]:checked + label {\r\n  position: relative;\r\n  padding-left: 35px;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  height: 25px;\r\n  line-height: 25px;\r\n  font-size: 1rem;\r\n  transition: .28s ease;\r\n  /* webkit (konqueror) browsers */\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n}\r\n\r\n[type=\"radio\"] + label:before,\r\n[type=\"radio\"] + label:after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 4px;\r\n  width: 16px;\r\n  height: 16px;\r\n  z-index: 0;\r\n  transition: .28s ease;\r\n}\r\n\r\n/* Unchecked styles */\r\n[type=\"radio\"]:not(:checked) + label:before,\r\n[type=\"radio\"]:not(:checked) + label:after,\r\n[type=\"radio\"]:checked + label:before,\r\n[type=\"radio\"]:checked + label:after,\r\n[type=\"radio\"].with-gap:checked + label:before,\r\n[type=\"radio\"].with-gap:checked + label:after {\r\n  border-radius: 50%;\r\n}\r\n\r\n[type=\"radio\"]:not(:checked) + label:before,\r\n[type=\"radio\"]:not(:checked) + label:after {\r\n  border: 2px solid #5a5a5a;\r\n}\r\n\r\n[type=\"radio\"]:not(:checked) + label:after {\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n}\r\n\r\n/* Checked styles */\r\n[type=\"radio\"]:checked + label:before {\r\n  border: 2px solid transparent;\r\n}\r\n\r\n[type=\"radio\"]:checked + label:after,\r\n[type=\"radio\"].with-gap:checked + label:before,\r\n[type=\"radio\"].with-gap:checked + label:after {\r\n  border: 2px solid #26a69a;\r\n}\r\n\r\n[type=\"radio\"]:checked + label:after,\r\n[type=\"radio\"].with-gap:checked + label:after {\r\n  background-color: #26a69a;\r\n}\r\n\r\n[type=\"radio\"]:checked + label:after {\r\n  -webkit-transform: scale(1.02);\r\n          transform: scale(1.02);\r\n}\r\n\r\n/* Radio With gap */\r\n[type=\"radio\"].with-gap:checked + label:after {\r\n  -webkit-transform: scale(0.5);\r\n          transform: scale(0.5);\r\n}\r\n\r\n/* Focused styles */\r\n[type=\"radio\"].tabbed:focus + label:before {\r\n  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n/* Disabled Radio With gap */\r\n[type=\"radio\"].with-gap:disabled:checked + label:before {\r\n  border: 2px solid rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n[type=\"radio\"].with-gap:disabled:checked + label:after {\r\n  border: none;\r\n  background-color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n/* Disabled style */\r\n[type=\"radio\"]:disabled:not(:checked) + label:before,\r\n[type=\"radio\"]:disabled:checked + label:before {\r\n  background-color: transparent;\r\n  border-color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n[type=\"radio\"]:disabled + label {\r\n  color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n[type=\"radio\"]:disabled:not(:checked) + label:before {\r\n  border-color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n[type=\"radio\"]:disabled:checked + label:after {\r\n  background-color: rgba(0, 0, 0, 0.26);\r\n  border-color: #BDBDBD;\r\n}\r\n\r\n/* Checkboxes\r\n   ========================================================================== */\r\n/* CUSTOM CSS CHECKBOXES */\r\nform p {\r\n  margin-bottom: 10px;\r\n  text-align: left;\r\n}\r\n\r\nform p:last-child {\r\n  margin-bottom: 0;\r\n}\r\n\r\n/* Remove default checkbox */\r\n[type=\"checkbox\"]:not(:checked),\r\n[type=\"checkbox\"]:checked {\r\n  position: absolute;\r\n  left: -9999px;\r\n  opacity: 0;\r\n}\r\n\r\n[type=\"checkbox\"] {\r\n  /* checkbox aspect */\r\n}\r\n\r\n[type=\"checkbox\"] + label {\r\n  position: relative;\r\n  padding-left: 35px;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  height: 25px;\r\n  line-height: 25px;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n  /* webkit (safari, chrome) browsers */\r\n  -moz-user-select: none;\r\n  /* mozilla browsers */\r\n  -khtml-user-select: none;\r\n  /* webkit (konqueror) browsers */\r\n  -ms-user-select: none;\r\n  /* IE10+ */\r\n}\r\n\r\n[type=\"checkbox\"] + label:before,\r\n[type=\"checkbox\"]:not(.filled-in) + label:after {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 18px;\r\n  height: 18px;\r\n  z-index: 0;\r\n  border: 2px solid #5a5a5a;\r\n  border-radius: 1px;\r\n  margin-top: 2px;\r\n  transition: .2s;\r\n}\r\n\r\n[type=\"checkbox\"]:not(.filled-in) + label:after {\r\n  border: 0;\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n}\r\n\r\n[type=\"checkbox\"]:not(:checked):disabled + label:before {\r\n  border: none;\r\n  background-color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n[type=\"checkbox\"].tabbed:focus + label:after {\r\n  -webkit-transform: scale(1);\r\n          transform: scale(1);\r\n  border: 0;\r\n  border-radius: 50%;\r\n  box-shadow: 0 0 0 10px rgba(0, 0, 0, 0.1);\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n[type=\"checkbox\"]:checked + label:before {\r\n  top: -4px;\r\n  left: -5px;\r\n  width: 12px;\r\n  height: 22px;\r\n  border-top: 2px solid transparent;\r\n  border-left: 2px solid transparent;\r\n  border-right: 2px solid #26a69a;\r\n  border-bottom: 2px solid #26a69a;\r\n  -webkit-transform: rotate(40deg);\r\n          transform: rotate(40deg);\r\n  -webkit-backface-visibility: hidden;\r\n          backface-visibility: hidden;\r\n  -webkit-transform-origin: 100% 100%;\r\n          transform-origin: 100% 100%;\r\n}\r\n\r\n[type=\"checkbox\"]:checked:disabled + label:before {\r\n  border-right: 2px solid rgba(0, 0, 0, 0.26);\r\n  border-bottom: 2px solid rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n/* Indeterminate checkbox */\r\n[type=\"checkbox\"]:indeterminate + label:before {\r\n  top: -11px;\r\n  left: -12px;\r\n  width: 10px;\r\n  height: 22px;\r\n  border-top: none;\r\n  border-left: none;\r\n  border-right: 2px solid #26a69a;\r\n  border-bottom: none;\r\n  -webkit-transform: rotate(90deg);\r\n          transform: rotate(90deg);\r\n  -webkit-backface-visibility: hidden;\r\n          backface-visibility: hidden;\r\n  -webkit-transform-origin: 100% 100%;\r\n          transform-origin: 100% 100%;\r\n}\r\n\r\n[type=\"checkbox\"]:indeterminate:disabled + label:before {\r\n  border-right: 2px solid rgba(0, 0, 0, 0.26);\r\n  background-color: transparent;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in + label:after {\r\n  border-radius: 2px;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in + label:before,\r\n[type=\"checkbox\"].filled-in + label:after {\r\n  content: '';\r\n  left: 0;\r\n  position: absolute;\r\n  /* .1s delay is for check animation */\r\n  transition: border .25s, background-color .25s, width .20s .1s, height .20s .1s, top .20s .1s, left .20s .1s;\r\n  z-index: 1;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:not(:checked) + label:before {\r\n  width: 0;\r\n  height: 0;\r\n  border: 3px solid transparent;\r\n  left: 6px;\r\n  top: 10px;\r\n  -webkit-transform: rotateZ(37deg);\r\n  transform: rotateZ(37deg);\r\n  -webkit-transform-origin: 20% 40%;\r\n  transform-origin: 100% 100%;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:not(:checked) + label:after {\r\n  height: 20px;\r\n  width: 20px;\r\n  background-color: transparent;\r\n  border: 2px solid #5a5a5a;\r\n  top: 0px;\r\n  z-index: 0;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:checked + label:before {\r\n  top: 0;\r\n  left: 1px;\r\n  width: 8px;\r\n  height: 13px;\r\n  border-top: 2px solid transparent;\r\n  border-left: 2px solid transparent;\r\n  border-right: 2px solid #fff;\r\n  border-bottom: 2px solid #fff;\r\n  -webkit-transform: rotateZ(37deg);\r\n  transform: rotateZ(37deg);\r\n  -webkit-transform-origin: 100% 100%;\r\n  transform-origin: 100% 100%;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:checked + label:after {\r\n  top: 0;\r\n  width: 20px;\r\n  height: 20px;\r\n  border: 2px solid #26a69a;\r\n  background-color: #26a69a;\r\n  z-index: 0;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in.tabbed:focus + label:after {\r\n  border-radius: 2px;\r\n  border-color: #5a5a5a;\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\n[type=\"checkbox\"].filled-in.tabbed:checked:focus + label:after {\r\n  border-radius: 2px;\r\n  background-color: #26a69a;\r\n  border-color: #26a69a;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:disabled:not(:checked) + label:before {\r\n  background-color: transparent;\r\n  border: 2px solid transparent;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:disabled:not(:checked) + label:after {\r\n  border-color: transparent;\r\n  background-color: #BDBDBD;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:disabled:checked + label:before {\r\n  background-color: transparent;\r\n}\r\n\r\n[type=\"checkbox\"].filled-in:disabled:checked + label:after {\r\n  background-color: #BDBDBD;\r\n  border-color: #BDBDBD;\r\n}\r\n\r\n/* Switch\r\n   ========================================================================== */\r\n.switch,\r\n.switch * {\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -khtml-user-select: none;\r\n  -ms-user-select: none;\r\n}\r\n\r\n.switch label {\r\n  cursor: pointer;\r\n}\r\n\r\n.switch label input[type=checkbox] {\r\n  opacity: 0;\r\n  width: 0;\r\n  height: 0;\r\n}\r\n\r\n.switch label input[type=checkbox]:checked + .lever {\r\n  background-color: #84c7c1;\r\n}\r\n\r\n.switch label input[type=checkbox]:checked + .lever:after {\r\n  background-color: #26a69a;\r\n  left: 24px;\r\n}\r\n\r\n.switch label .lever {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: relative;\r\n  width: 40px;\r\n  height: 15px;\r\n  background-color: #818181;\r\n  border-radius: 15px;\r\n  margin-right: 10px;\r\n  transition: background 0.3s ease;\r\n  vertical-align: middle;\r\n  margin: 0 16px;\r\n}\r\n\r\n.switch label .lever:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  display: inline-block;\r\n  width: 21px;\r\n  height: 21px;\r\n  background-color: #F1F1F1;\r\n  border-radius: 21px;\r\n  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);\r\n  left: -5px;\r\n  top: -3px;\r\n  transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;\r\n}\r\n\r\ninput[type=checkbox]:checked:not(:disabled) ~ .lever:active::after,\r\ninput[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::after {\r\n  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(38, 166, 154, 0.1);\r\n}\r\n\r\ninput[type=checkbox]:not(:disabled) ~ .lever:active:after,\r\ninput[type=checkbox]:not(:disabled).tabbed:focus ~ .lever::after {\r\n  box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4), 0 0 0 15px rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n.switch input[type=checkbox][disabled] + .lever {\r\n  cursor: default;\r\n}\r\n\r\n.switch label input[type=checkbox][disabled] + .lever:after,\r\n.switch label input[type=checkbox][disabled]:checked + .lever:after {\r\n  background-color: #BDBDBD;\r\n}\r\n\r\n/* Select Field\r\n   ========================================================================== */\r\nselect {\r\n  display: none;\r\n}\r\n\r\nselect.browser-default {\r\n  display: block;\r\n}\r\n\r\nselect {\r\n  background-color: rgba(255, 255, 255, 0.9);\r\n  width: 100%;\r\n  padding: 5px;\r\n  border: 1px solid #f2f2f2;\r\n  border-radius: 2px;\r\n  height: 3rem;\r\n}\r\n\r\n.select-label {\r\n  position: absolute;\r\n}\r\n\r\n.select-wrapper {\r\n  position: relative;\r\n}\r\n\r\n.select-wrapper input.select-dropdown {\r\n  position: relative;\r\n  cursor: pointer;\r\n  background-color: transparent;\r\n  border: none;\r\n  border-bottom: 1px solid #9e9e9e;\r\n  outline: none;\r\n  height: 3rem;\r\n  line-height: 3rem;\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  margin: 0 0 20px 0;\r\n  padding: 0;\r\n  display: block;\r\n}\r\n\r\n.select-wrapper span.caret {\r\n  color: initial;\r\n  position: absolute;\r\n  right: 0;\r\n  top: 0;\r\n  bottom: 0;\r\n  height: 10px;\r\n  margin: auto 0;\r\n  font-size: 10px;\r\n  line-height: 10px;\r\n}\r\n\r\n.select-wrapper span.caret.disabled {\r\n  color: rgba(0, 0, 0, 0.26);\r\n}\r\n\r\n.select-wrapper + label {\r\n  position: absolute;\r\n  top: -14px;\r\n  font-size: 0.8rem;\r\n}\r\n\r\nselect:disabled {\r\n  color: rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.select-wrapper input.select-dropdown:disabled {\r\n  color: rgba(0, 0, 0, 0.3);\r\n  cursor: default;\r\n  -webkit-user-select: none;\r\n  /* webkit (safari, chrome) browsers */\r\n  -moz-user-select: none;\r\n  /* mozilla browsers */\r\n  -ms-user-select: none;\r\n  /* IE10+ */\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.select-wrapper i {\r\n  color: rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.select-dropdown li.disabled,\r\n.select-dropdown li.disabled > span,\r\n.select-dropdown li.optgroup {\r\n  color: rgba(0, 0, 0, 0.3);\r\n  background-color: transparent;\r\n}\r\n\r\n.prefix ~ .select-wrapper {\r\n  margin-left: 3rem;\r\n  width: 92%;\r\n  width: calc(100% - 3rem);\r\n}\r\n\r\n.prefix ~ label {\r\n  margin-left: 3rem;\r\n}\r\n\r\n.select-dropdown li img {\r\n  height: 40px;\r\n  width: 40px;\r\n  margin: 5px 15px;\r\n  float: right;\r\n}\r\n\r\n.select-dropdown li.optgroup {\r\n  border-top: 1px solid #eee;\r\n}\r\n\r\n.select-dropdown li.optgroup.selected > span {\r\n  color: rgba(0, 0, 0, 0.7);\r\n}\r\n\r\n.select-dropdown li.optgroup > span {\r\n  color: rgba(0, 0, 0, 0.4);\r\n}\r\n\r\n.select-dropdown li.optgroup ~ li.optgroup-option {\r\n  padding-left: 1rem;\r\n}\r\n\r\n/* File Input\r\n   ========================================================================== */\r\n.file-field {\r\n  position: relative;\r\n}\r\n\r\n.file-field .file-path-wrapper {\r\n  overflow: hidden;\r\n  padding-left: 10px;\r\n}\r\n\r\n.file-field input.file-path {\r\n  width: 100%;\r\n}\r\n\r\n.file-field .btn, .file-field .btn-large {\r\n  float: left;\r\n  height: 3rem;\r\n  line-height: 3rem;\r\n}\r\n\r\n.file-field span {\r\n  cursor: pointer;\r\n}\r\n\r\n.file-field input[type=file] {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  width: 100%;\r\n  margin: 0;\r\n  padding: 0;\r\n  font-size: 20px;\r\n  cursor: pointer;\r\n  opacity: 0;\r\n  filter: alpha(opacity=0);\r\n}\r\n\r\n/* Range\r\n   ========================================================================== */\r\n.range-field {\r\n  position: relative;\r\n}\r\n\r\ninput[type=range],\r\ninput[type=range] + .thumb {\r\n  cursor: pointer;\r\n}\r\n\r\ninput[type=range] {\r\n  position: relative;\r\n  background-color: transparent;\r\n  border: none;\r\n  outline: none;\r\n  width: 100%;\r\n  margin: 15px 0;\r\n  padding: 0;\r\n}\r\n\r\ninput[type=range]:focus {\r\n  outline: none;\r\n}\r\n\r\ninput[type=range] + .thumb {\r\n  position: absolute;\r\n  border: none;\r\n  height: 0;\r\n  width: 0;\r\n  border-radius: 50%;\r\n  background-color: #26a69a;\r\n  top: 10px;\r\n  margin-left: -6px;\r\n  -webkit-transform-origin: 50% 50%;\r\n          transform-origin: 50% 50%;\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\r\n}\r\n\r\ninput[type=range] + .thumb .value {\r\n  display: block;\r\n  width: 30px;\r\n  text-align: center;\r\n  color: #26a69a;\r\n  font-size: 0;\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\r\n}\r\n\r\ninput[type=range] + .thumb.active {\r\n  border-radius: 50% 50% 50% 0;\r\n}\r\n\r\ninput[type=range] + .thumb.active .value {\r\n  color: #fff;\r\n  margin-left: -1px;\r\n  margin-top: 8px;\r\n  font-size: 10px;\r\n}\r\n\r\ninput[type=range] {\r\n  -webkit-appearance: none;\r\n}\r\n\r\ninput[type=range]::-webkit-slider-runnable-track {\r\n  height: 3px;\r\n  background: #c2c0c2;\r\n  border: none;\r\n}\r\n\r\ninput[type=range]::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  border: none;\r\n  height: 14px;\r\n  width: 14px;\r\n  border-radius: 50%;\r\n  background-color: #26a69a;\r\n  -webkit-transform-origin: 50% 50%;\r\n          transform-origin: 50% 50%;\r\n  margin: -5px 0 0 0;\r\n  transition: .3s;\r\n}\r\n\r\ninput[type=range]:focus::-webkit-slider-runnable-track {\r\n  background: #ccc;\r\n}\r\n\r\ninput[type=range] {\r\n  /* fix for FF unable to apply focus style bug  */\r\n  border: 1px solid white;\r\n  /*required for proper track sizing in FF*/\r\n}\r\n\r\ninput[type=range]::-moz-range-track {\r\n  height: 3px;\r\n  background: #ddd;\r\n  border: none;\r\n}\r\n\r\ninput[type=range]::-moz-range-thumb {\r\n  border: none;\r\n  height: 14px;\r\n  width: 14px;\r\n  border-radius: 50%;\r\n  background: #26a69a;\r\n  margin-top: -5px;\r\n}\r\n\r\ninput[type=range]:-moz-focusring {\r\n  outline: 1px solid #fff;\r\n  outline-offset: -1px;\r\n}\r\n\r\ninput[type=range]:focus::-moz-range-track {\r\n  background: #ccc;\r\n}\r\n\r\ninput[type=range]::-ms-track {\r\n  height: 3px;\r\n  background: transparent;\r\n  border-color: transparent;\r\n  border-width: 6px 0;\r\n  /*remove default tick marks*/\r\n  color: transparent;\r\n}\r\n\r\ninput[type=range]::-ms-fill-lower {\r\n  background: #777;\r\n}\r\n\r\ninput[type=range]::-ms-fill-upper {\r\n  background: #ddd;\r\n}\r\n\r\ninput[type=range]::-ms-thumb {\r\n  border: none;\r\n  height: 14px;\r\n  width: 14px;\r\n  border-radius: 50%;\r\n  background: #26a69a;\r\n}\r\n\r\ninput[type=range]:focus::-ms-fill-lower {\r\n  background: #888;\r\n}\r\n\r\ninput[type=range]:focus::-ms-fill-upper {\r\n  background: #ccc;\r\n}\r\n\r\n/***************\r\n    Nav List\r\n***************/\r\n.table-of-contents.fixed {\r\n  position: fixed;\r\n}\r\n\r\n.table-of-contents li {\r\n  padding: 2px 0;\r\n}\r\n\r\n.table-of-contents a {\r\n  display: inline-block;\r\n  font-weight: 300;\r\n  color: #757575;\r\n  padding-left: 20px;\r\n  height: 1.5rem;\r\n  line-height: 1.5rem;\r\n  letter-spacing: .4;\r\n  display: inline-block;\r\n}\r\n\r\n.table-of-contents a:hover {\r\n  color: #a8a8a8;\r\n  padding-left: 19px;\r\n  border-left: 1px solid #ee6e73;\r\n}\r\n\r\n.table-of-contents a.active {\r\n  font-weight: 500;\r\n  padding-left: 18px;\r\n  border-left: 2px solid #ee6e73;\r\n}\r\n\r\n.side-nav {\r\n  position: fixed;\r\n  width: 300px;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0;\r\n  -webkit-transform: translateX(-100%);\r\n          transform: translateX(-100%);\r\n  height: 100%;\r\n  height: calc(100% + 60px);\r\n  height: -moz-calc(100%);\r\n  padding-bottom: 60px;\r\n  background-color: #fff;\r\n  z-index: 999;\r\n  overflow-y: auto;\r\n  will-change: transform;\r\n  -webkit-backface-visibility: hidden;\r\n          backface-visibility: hidden;\r\n  -webkit-transform: translateX(-105%);\r\n          transform: translateX(-105%);\r\n}\r\n\r\n.side-nav.right-aligned {\r\n  right: 0;\r\n  -webkit-transform: translateX(105%);\r\n          transform: translateX(105%);\r\n  left: auto;\r\n  -webkit-transform: translateX(100%);\r\n          transform: translateX(100%);\r\n}\r\n\r\n.side-nav .collapsible {\r\n  margin: 0;\r\n}\r\n\r\n.side-nav li {\r\n  float: none;\r\n  line-height: 48px;\r\n}\r\n\r\n.side-nav li.active {\r\n  background-color: rgba(0, 0, 0, 0.05);\r\n}\r\n\r\n.side-nav a {\r\n  color: rgba(0, 0, 0, 0.87);\r\n  display: block;\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n  height: 48px;\r\n  line-height: 48px;\r\n  padding: 0 32px;\r\n}\r\n\r\n.side-nav a:hover {\r\n  background-color: rgba(0, 0, 0, 0.05);\r\n}\r\n\r\n.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-flat, .side-nav a.btn-floating {\r\n  margin: 10px 15px;\r\n}\r\n\r\n.side-nav a.btn, .side-nav a.btn-large, .side-nav a.btn-large, .side-nav a.btn-floating {\r\n  color: #fff;\r\n}\r\n\r\n.side-nav a.btn-flat {\r\n  color: #343434;\r\n}\r\n\r\n.side-nav a.btn:hover, .side-nav a.btn-large:hover, .side-nav a.btn-large:hover {\r\n  background-color: #2bbbad;\r\n}\r\n\r\n.side-nav a.btn-floating:hover {\r\n  background-color: #26a69a;\r\n}\r\n\r\n.side-nav li > a > i,\r\n.side-nav li > a > [class^=\"mdi-\"], .side-nav li > a > [class*=\"mdi-\"],\r\n.side-nav li > a > i.material-icons {\r\n  float: left;\r\n  height: 48px;\r\n  line-height: 48px;\r\n  margin: 0 32px 0 0;\r\n  width: 24px;\r\n  color: rgba(0, 0, 0, 0.54);\r\n}\r\n\r\n.side-nav .divider {\r\n  margin: 8px 0 0 0;\r\n}\r\n\r\n.side-nav .subheader {\r\n  cursor: initial;\r\n  pointer-events: none;\r\n  color: rgba(0, 0, 0, 0.54);\r\n  font-size: 14px;\r\n  font-weight: 500;\r\n  line-height: 48px;\r\n}\r\n\r\n.side-nav .subheader:hover {\r\n  background-color: transparent;\r\n}\r\n\r\n.side-nav .userView {\r\n  position: relative;\r\n  padding: 32px 32px 0;\r\n  margin-bottom: 8px;\r\n}\r\n\r\n.side-nav .userView > a {\r\n  height: auto;\r\n  padding: 0;\r\n}\r\n\r\n.side-nav .userView > a:hover {\r\n  background-color: transparent;\r\n}\r\n\r\n.side-nav .userView .background {\r\n  overflow: hidden;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  z-index: -1;\r\n}\r\n\r\n.side-nav .userView .circle, .side-nav .userView .name, .side-nav .userView .email {\r\n  display: block;\r\n}\r\n\r\n.side-nav .userView .circle {\r\n  height: 64px;\r\n  width: 64px;\r\n}\r\n\r\n.side-nav .userView .name,\r\n.side-nav .userView .email {\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n}\r\n\r\n.side-nav .userView .name {\r\n  margin-top: 16px;\r\n  font-weight: 500;\r\n}\r\n\r\n.side-nav .userView .email {\r\n  padding-bottom: 16px;\r\n  font-weight: 400;\r\n}\r\n\r\n.drag-target {\r\n  height: 100%;\r\n  width: 10px;\r\n  position: fixed;\r\n  top: 0;\r\n  z-index: 998;\r\n}\r\n\r\n.side-nav.fixed {\r\n  left: 0;\r\n  -webkit-transform: translateX(0);\r\n          transform: translateX(0);\r\n  position: fixed;\r\n}\r\n\r\n.side-nav.fixed.right-aligned {\r\n  right: 0;\r\n  left: auto;\r\n}\r\n\r\n@media only screen and (max-width: 992px) {\r\n  .side-nav.fixed {\r\n    -webkit-transform: translateX(-105%);\r\n            transform: translateX(-105%);\r\n  }\r\n  .side-nav.fixed.right-aligned {\r\n    -webkit-transform: translateX(105%);\r\n            transform: translateX(105%);\r\n  }\r\n  .side-nav a {\r\n    padding: 0 16px;\r\n  }\r\n  .side-nav .userView {\r\n    padding: 16px 16px 0;\r\n  }\r\n}\r\n\r\n.side-nav .collapsible-body > ul:not(.collapsible) > li.active,\r\n.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {\r\n  background-color: #ee6e73;\r\n}\r\n\r\n.side-nav .collapsible-body > ul:not(.collapsible) > li.active a,\r\n.side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active a {\r\n  color: #fff;\r\n}\r\n\r\n#sidenav-overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  height: 120vh;\r\n  background-color: rgba(0, 0, 0, 0.5);\r\n  z-index: 997;\r\n  will-change: opacity;\r\n}\r\n\r\n/*\r\n    @license\r\n    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.\r\n    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt\r\n    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt\r\n    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt\r\n    Code distributed by Google as part of the polymer project is also\r\n    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt\r\n */\r\n/**************************/\r\n/* STYLES FOR THE SPINNER */\r\n/**************************/\r\n/*\r\n * Constants:\r\n *      STROKEWIDTH = 3px\r\n *      ARCSIZE     = 270 degrees (amount of circle the arc takes up)\r\n *      ARCTIME     = 1333ms (time it takes to expand and contract arc)\r\n *      ARCSTARTROT = 216 degrees (how much the start location of the arc\r\n *                                should rotate each time, 216 gives us a\r\n *                                5 pointed star shape (it's 360/5 * 3).\r\n *                                For a 7 pointed star, we might do\r\n *                                360/7 * 3 = 154.286)\r\n *      CONTAINERWIDTH = 28px\r\n *      SHRINK_TIME = 400ms\r\n */\r\n.preloader-wrapper {\r\n  display: inline-block;\r\n  position: relative;\r\n  width: 48px;\r\n  height: 48px;\r\n}\r\n\r\n.preloader-wrapper.small {\r\n  width: 36px;\r\n  height: 36px;\r\n}\r\n\r\n.preloader-wrapper.big {\r\n  width: 64px;\r\n  height: 64px;\r\n}\r\n\r\n.preloader-wrapper.active {\r\n  /* duration: 360 * ARCTIME / (ARCSTARTROT + (360-ARCSIZE)) */\r\n  -webkit-animation: container-rotate 1568ms linear infinite;\r\n  animation: container-rotate 1568ms linear infinite;\r\n}\r\n\r\n@-webkit-keyframes container-rotate {\r\n  to {\r\n    -webkit-transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n@keyframes container-rotate {\r\n  to {\r\n    -webkit-transform: rotate(360deg);\r\n            transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n.spinner-layer {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  opacity: 0;\r\n  border-color: #26a69a;\r\n}\r\n\r\n.spinner-blue,\r\n.spinner-blue-only {\r\n  border-color: #4285f4;\r\n}\r\n\r\n.spinner-red,\r\n.spinner-red-only {\r\n  border-color: #db4437;\r\n}\r\n\r\n.spinner-yellow,\r\n.spinner-yellow-only {\r\n  border-color: #f4b400;\r\n}\r\n\r\n.spinner-green,\r\n.spinner-green-only {\r\n  border-color: #0f9d58;\r\n}\r\n\r\n/**\r\n * IMPORTANT NOTE ABOUT CSS ANIMATION PROPERTIES (keanulee):\r\n *\r\n * iOS Safari (tested on iOS 8.1) does not handle animation-delay very well - it doesn't\r\n * guarantee that the animation will start _exactly_ after that value. So we avoid using\r\n * animation-delay and instead set custom keyframes for each color (as redundant as it\r\n * seems).\r\n *\r\n * We write out each animation in full (instead of separating animation-name,\r\n * animation-duration, etc.) because under the polyfill, Safari does not recognize those\r\n * specific properties properly, treats them as -webkit-animation, and overrides the\r\n * other animation rules. See https://github.com/Polymer/platform/issues/53.\r\n */\r\n.active .spinner-layer.spinner-blue {\r\n  /* durations: 4 * ARCTIME */\r\n  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, blue-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n.active .spinner-layer.spinner-red {\r\n  /* durations: 4 * ARCTIME */\r\n  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, red-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n.active .spinner-layer.spinner-yellow {\r\n  /* durations: 4 * ARCTIME */\r\n  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, yellow-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n.active .spinner-layer.spinner-green {\r\n  /* durations: 4 * ARCTIME */\r\n  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both, green-fade-in-out 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n.active .spinner-layer,\r\n.active .spinner-layer.spinner-blue-only,\r\n.active .spinner-layer.spinner-red-only,\r\n.active .spinner-layer.spinner-yellow-only,\r\n.active .spinner-layer.spinner-green-only {\r\n  /* durations: 4 * ARCTIME */\r\n  opacity: 1;\r\n  -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n@-webkit-keyframes fill-unfill-rotate {\r\n  12.5% {\r\n    -webkit-transform: rotate(135deg);\r\n  }\r\n  /* 0.5 * ARCSIZE */\r\n  25% {\r\n    -webkit-transform: rotate(270deg);\r\n  }\r\n  /* 1   * ARCSIZE */\r\n  37.5% {\r\n    -webkit-transform: rotate(405deg);\r\n  }\r\n  /* 1.5 * ARCSIZE */\r\n  50% {\r\n    -webkit-transform: rotate(540deg);\r\n  }\r\n  /* 2   * ARCSIZE */\r\n  62.5% {\r\n    -webkit-transform: rotate(675deg);\r\n  }\r\n  /* 2.5 * ARCSIZE */\r\n  75% {\r\n    -webkit-transform: rotate(810deg);\r\n  }\r\n  /* 3   * ARCSIZE */\r\n  87.5% {\r\n    -webkit-transform: rotate(945deg);\r\n  }\r\n  /* 3.5 * ARCSIZE */\r\n  to {\r\n    -webkit-transform: rotate(1080deg);\r\n  }\r\n  /* 4   * ARCSIZE */\r\n}\r\n\r\n@keyframes fill-unfill-rotate {\r\n  12.5% {\r\n    -webkit-transform: rotate(135deg);\r\n            transform: rotate(135deg);\r\n  }\r\n  /* 0.5 * ARCSIZE */\r\n  25% {\r\n    -webkit-transform: rotate(270deg);\r\n            transform: rotate(270deg);\r\n  }\r\n  /* 1   * ARCSIZE */\r\n  37.5% {\r\n    -webkit-transform: rotate(405deg);\r\n            transform: rotate(405deg);\r\n  }\r\n  /* 1.5 * ARCSIZE */\r\n  50% {\r\n    -webkit-transform: rotate(540deg);\r\n            transform: rotate(540deg);\r\n  }\r\n  /* 2   * ARCSIZE */\r\n  62.5% {\r\n    -webkit-transform: rotate(675deg);\r\n            transform: rotate(675deg);\r\n  }\r\n  /* 2.5 * ARCSIZE */\r\n  75% {\r\n    -webkit-transform: rotate(810deg);\r\n            transform: rotate(810deg);\r\n  }\r\n  /* 3   * ARCSIZE */\r\n  87.5% {\r\n    -webkit-transform: rotate(945deg);\r\n            transform: rotate(945deg);\r\n  }\r\n  /* 3.5 * ARCSIZE */\r\n  to {\r\n    -webkit-transform: rotate(1080deg);\r\n            transform: rotate(1080deg);\r\n  }\r\n  /* 4   * ARCSIZE */\r\n}\r\n\r\n@-webkit-keyframes blue-fade-in-out {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  25% {\r\n    opacity: 1;\r\n  }\r\n  26% {\r\n    opacity: 0;\r\n  }\r\n  89% {\r\n    opacity: 0;\r\n  }\r\n  90% {\r\n    opacity: 1;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes blue-fade-in-out {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  25% {\r\n    opacity: 1;\r\n  }\r\n  26% {\r\n    opacity: 0;\r\n  }\r\n  89% {\r\n    opacity: 0;\r\n  }\r\n  90% {\r\n    opacity: 1;\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes red-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  15% {\r\n    opacity: 0;\r\n  }\r\n  25% {\r\n    opacity: 1;\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n  51% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes red-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  15% {\r\n    opacity: 0;\r\n  }\r\n  25% {\r\n    opacity: 1;\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n  51% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes yellow-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  40% {\r\n    opacity: 0;\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n  75% {\r\n    opacity: 1;\r\n  }\r\n  76% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes yellow-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  40% {\r\n    opacity: 0;\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n  75% {\r\n    opacity: 1;\r\n  }\r\n  76% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@-webkit-keyframes green-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  65% {\r\n    opacity: 0;\r\n  }\r\n  75% {\r\n    opacity: 1;\r\n  }\r\n  90% {\r\n    opacity: 1;\r\n  }\r\n  100% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes green-fade-in-out {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n  65% {\r\n    opacity: 0;\r\n  }\r\n  75% {\r\n    opacity: 1;\r\n  }\r\n  90% {\r\n    opacity: 1;\r\n  }\r\n  100% {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n/**\r\n * Patch the gap that appear between the two adjacent div.circle-clipper while the\r\n * spinner is rotating (appears on Chrome 38, Safari 7.1, and IE 11).\r\n */\r\n.gap-patch {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 45%;\r\n  width: 10%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n  border-color: inherit;\r\n}\r\n\r\n.gap-patch .circle {\r\n  width: 1000%;\r\n  left: -450%;\r\n}\r\n\r\n.circle-clipper {\r\n  display: inline-block;\r\n  position: relative;\r\n  width: 50%;\r\n  height: 100%;\r\n  overflow: hidden;\r\n  border-color: inherit;\r\n}\r\n\r\n.circle-clipper .circle {\r\n  width: 200%;\r\n  height: 100%;\r\n  border-width: 3px;\r\n  /* STROKEWIDTH */\r\n  border-style: solid;\r\n  border-color: inherit;\r\n  border-bottom-color: transparent !important;\r\n  border-radius: 50%;\r\n  -webkit-animation: none;\r\n  animation: none;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n}\r\n\r\n.circle-clipper.left .circle {\r\n  left: 0;\r\n  border-right-color: transparent !important;\r\n  -webkit-transform: rotate(129deg);\r\n  transform: rotate(129deg);\r\n}\r\n\r\n.circle-clipper.right .circle {\r\n  left: -100%;\r\n  border-left-color: transparent !important;\r\n  -webkit-transform: rotate(-129deg);\r\n  transform: rotate(-129deg);\r\n}\r\n\r\n.active .circle-clipper.left .circle {\r\n  /* duration: ARCTIME */\r\n  -webkit-animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n.active .circle-clipper.right .circle {\r\n  /* duration: ARCTIME */\r\n  -webkit-animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n  animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;\r\n}\r\n\r\n@-webkit-keyframes left-spin {\r\n  from {\r\n    -webkit-transform: rotate(130deg);\r\n  }\r\n  50% {\r\n    -webkit-transform: rotate(-5deg);\r\n  }\r\n  to {\r\n    -webkit-transform: rotate(130deg);\r\n  }\r\n}\r\n\r\n@keyframes left-spin {\r\n  from {\r\n    -webkit-transform: rotate(130deg);\r\n            transform: rotate(130deg);\r\n  }\r\n  50% {\r\n    -webkit-transform: rotate(-5deg);\r\n            transform: rotate(-5deg);\r\n  }\r\n  to {\r\n    -webkit-transform: rotate(130deg);\r\n            transform: rotate(130deg);\r\n  }\r\n}\r\n\r\n@-webkit-keyframes right-spin {\r\n  from {\r\n    -webkit-transform: rotate(-130deg);\r\n  }\r\n  50% {\r\n    -webkit-transform: rotate(5deg);\r\n  }\r\n  to {\r\n    -webkit-transform: rotate(-130deg);\r\n  }\r\n}\r\n\r\n@keyframes right-spin {\r\n  from {\r\n    -webkit-transform: rotate(-130deg);\r\n            transform: rotate(-130deg);\r\n  }\r\n  50% {\r\n    -webkit-transform: rotate(5deg);\r\n            transform: rotate(5deg);\r\n  }\r\n  to {\r\n    -webkit-transform: rotate(-130deg);\r\n            transform: rotate(-130deg);\r\n  }\r\n}\r\n\r\n#spinnerContainer.cooldown {\r\n  /* duration: SHRINK_TIME */\r\n  -webkit-animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);\r\n  animation: container-rotate 1568ms linear infinite, fade-out 400ms cubic-bezier(0.4, 0, 0.2, 1);\r\n}\r\n\r\n@-webkit-keyframes fade-out {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  to {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n@keyframes fade-out {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  to {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n.slider {\r\n  position: relative;\r\n  height: 400px;\r\n  width: 100%;\r\n}\r\n\r\n.slider.fullscreen {\r\n  height: 100%;\r\n  width: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n}\r\n\r\n.slider.fullscreen ul.slides {\r\n  height: 100%;\r\n}\r\n\r\n.slider.fullscreen ul.indicators {\r\n  z-index: 2;\r\n  bottom: 30px;\r\n}\r\n\r\n.slider .slides {\r\n  background-color: #9e9e9e;\r\n  margin: 0;\r\n  height: 400px;\r\n}\r\n\r\n.slider .slides li {\r\n  opacity: 0;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: 1;\r\n  width: 100%;\r\n  height: inherit;\r\n  overflow: hidden;\r\n}\r\n\r\n.slider .slides li img {\r\n  height: 100%;\r\n  width: 100%;\r\n  background-size: cover;\r\n  background-position: center;\r\n}\r\n\r\n.slider .slides li .caption {\r\n  color: #fff;\r\n  position: absolute;\r\n  top: 15%;\r\n  left: 15%;\r\n  width: 70%;\r\n  opacity: 0;\r\n}\r\n\r\n.slider .slides li .caption p {\r\n  color: #e0e0e0;\r\n}\r\n\r\n.slider .slides li.active {\r\n  z-index: 2;\r\n}\r\n\r\n.slider .indicators {\r\n  position: absolute;\r\n  text-align: center;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  margin: 0;\r\n}\r\n\r\n.slider .indicators .indicator-item {\r\n  display: inline-block;\r\n  position: relative;\r\n  cursor: pointer;\r\n  height: 16px;\r\n  width: 16px;\r\n  margin: 0 12px;\r\n  background-color: #e0e0e0;\r\n  transition: background-color .3s;\r\n  border-radius: 50%;\r\n}\r\n\r\n.slider .indicators .indicator-item.active {\r\n  background-color: #4CAF50;\r\n}\r\n\r\n.carousel {\r\n  overflow: hidden;\r\n  position: relative;\r\n  width: 100%;\r\n  height: 400px;\r\n  -webkit-perspective: 500px;\r\n          perspective: 500px;\r\n  -webkit-transform-style: preserve-3d;\r\n          transform-style: preserve-3d;\r\n  -webkit-transform-origin: 0% 50%;\r\n          transform-origin: 0% 50%;\r\n}\r\n\r\n.carousel.carousel-slider {\r\n  top: 0;\r\n  left: 0;\r\n  height: 0;\r\n}\r\n\r\n.carousel.carousel-slider .carousel-fixed-item {\r\n  position: absolute;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 20px;\r\n  z-index: 1;\r\n}\r\n\r\n.carousel.carousel-slider .carousel-fixed-item.with-indicators {\r\n  bottom: 68px;\r\n}\r\n\r\n.carousel.carousel-slider .carousel-item {\r\n  width: 100%;\r\n  height: 100%;\r\n  min-height: 400px;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n}\r\n\r\n.carousel.carousel-slider .carousel-item h2 {\r\n  font-size: 24px;\r\n  font-weight: 500;\r\n  line-height: 32px;\r\n}\r\n\r\n.carousel.carousel-slider .carousel-item p {\r\n  font-size: 15px;\r\n}\r\n\r\n.carousel .carousel-item {\r\n  display: none;\r\n  width: 200px;\r\n  height: 200px;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n}\r\n\r\n.carousel .carousel-item img {\r\n  width: 100%;\r\n}\r\n\r\n.carousel .indicators {\r\n  position: absolute;\r\n  text-align: center;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  margin: 0;\r\n}\r\n\r\n.carousel .indicators .indicator-item {\r\n  display: inline-block;\r\n  position: relative;\r\n  cursor: pointer;\r\n  height: 8px;\r\n  width: 8px;\r\n  margin: 24px 4px;\r\n  background-color: rgba(255, 255, 255, 0.5);\r\n  transition: background-color .3s;\r\n  border-radius: 50%;\r\n}\r\n\r\n.carousel .indicators .indicator-item.active {\r\n  background-color: #fff;\r\n}\r\n\r\n/* ==========================================================================\r\n   $BASE-PICKER\r\n   ========================================================================== */\r\n/**\r\n * Note: the root picker element should *NOT* be styled more than what's here.\r\n */\r\n.picker {\r\n  font-size: 16px;\r\n  text-align: left;\r\n  line-height: 1.2;\r\n  color: #000000;\r\n  position: absolute;\r\n  z-index: 10000;\r\n  -webkit-user-select: none;\r\n  -moz-user-select: none;\r\n  -ms-user-select: none;\r\n  user-select: none;\r\n}\r\n\r\n/**\r\n * The picker input element.\r\n */\r\n.picker__input {\r\n  cursor: default;\r\n}\r\n\r\n/**\r\n * When the picker is opened, the input element is \"activated\".\r\n */\r\n.picker__input.picker__input--active {\r\n  border-color: #0089ec;\r\n}\r\n\r\n/**\r\n * The holder is the only \"scrollable\" top-level container element.\r\n */\r\n.picker__holder {\r\n  width: 100%;\r\n  overflow-y: auto;\r\n  -webkit-overflow-scrolling: touch;\r\n}\r\n\r\n/*!\r\n * Default mobile-first, responsive styling for pickadate.js\r\n * Demo: http://amsul.github.io/pickadate.js\r\n */\r\n/**\r\n * Note: the root picker element should *NOT* be styled more than what's here.\r\n */\r\n/**\r\n * Make the holder and frame fullscreen.\r\n */\r\n.picker__holder,\r\n.picker__frame {\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  top: 100%;\r\n}\r\n\r\n/**\r\n * The holder should overlay the entire screen.\r\n */\r\n.picker__holder {\r\n  position: fixed;\r\n  transition: background 0.15s ease-out, top 0s 0.15s;\r\n  -webkit-backface-visibility: hidden;\r\n}\r\n\r\n/**\r\n * The frame that bounds the box contents of the picker.\r\n */\r\n.picker__frame {\r\n  position: absolute;\r\n  margin: 0 auto;\r\n  min-width: 256px;\r\n  width: 300px;\r\n  max-height: 350px;\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)\";\r\n  filter: alpha(opacity=0);\r\n  -moz-opacity: 0;\r\n  opacity: 0;\r\n  transition: all 0.15s ease-out;\r\n}\r\n\r\n@media (min-height: 28.875em) {\r\n  .picker__frame {\r\n    overflow: visible;\r\n    top: auto;\r\n    bottom: -100%;\r\n    max-height: 80%;\r\n  }\r\n}\r\n\r\n@media (min-height: 40.125em) {\r\n  .picker__frame {\r\n    margin-bottom: 7.5%;\r\n  }\r\n}\r\n\r\n/**\r\n * The wrapper sets the stage to vertically align the box contents.\r\n */\r\n.picker__wrap {\r\n  display: table;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n@media (min-height: 28.875em) {\r\n  .picker__wrap {\r\n    display: block;\r\n  }\r\n}\r\n\r\n/**\r\n * The box contains all the picker contents.\r\n */\r\n.picker__box {\r\n  background: #ffffff;\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n}\r\n\r\n@media (min-height: 28.875em) {\r\n  .picker__box {\r\n    display: block;\r\n    border: 1px solid #777777;\r\n    border-top-color: #898989;\r\n    border-bottom-width: 0;\r\n    border-radius: 5px 5px 0 0;\r\n    box-shadow: 0 12px 36px 16px rgba(0, 0, 0, 0.24);\r\n  }\r\n}\r\n\r\n/**\r\n * When the picker opens...\r\n */\r\n.picker--opened .picker__holder {\r\n  top: 0;\r\n  background: transparent;\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.gradient(startColorstr=#1E000000,endColorstr=#1E000000)\";\r\n  zoom: 1;\r\n  background: rgba(0, 0, 0, 0.32);\r\n  transition: background 0.15s ease-out;\r\n}\r\n\r\n.picker--opened .picker__frame {\r\n  top: 0;\r\n  -ms-filter: \"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)\";\r\n  filter: alpha(opacity=100);\r\n  -moz-opacity: 1;\r\n  opacity: 1;\r\n}\r\n\r\n@media (min-height: 35.875em) {\r\n  .picker--opened .picker__frame {\r\n    top: 10%;\r\n    bottom: auto;\r\n  }\r\n}\r\n\r\n/**\r\n * For `large` screens, transform into an inline picker.\r\n */\r\n/* ==========================================================================\r\n   CUSTOM MATERIALIZE STYLES\r\n   ========================================================================== */\r\n.picker__input.picker__input--active {\r\n  border-color: #E3F2FD;\r\n}\r\n\r\n.picker__frame {\r\n  margin: 0 auto;\r\n  max-width: 325px;\r\n}\r\n\r\n@media (min-height: 38.875em) {\r\n  .picker--opened .picker__frame {\r\n    top: 10%;\r\n    bottom: auto;\r\n  }\r\n}\r\n\r\n/* ==========================================================================\r\n   $BASE-DATE-PICKER\r\n   ========================================================================== */\r\n/**\r\n * The picker box.\r\n */\r\n.picker__box {\r\n  padding: 0 1em;\r\n}\r\n\r\n/**\r\n * The header containing the month and year stuff.\r\n */\r\n.picker__header {\r\n  text-align: center;\r\n  position: relative;\r\n  margin-top: .75em;\r\n}\r\n\r\n/**\r\n * The month and year labels.\r\n */\r\n.picker__month,\r\n.picker__year {\r\n  display: inline-block;\r\n  margin-left: .25em;\r\n  margin-right: .25em;\r\n}\r\n\r\n/**\r\n * The month and year selectors.\r\n */\r\n.picker__select--month,\r\n.picker__select--year {\r\n  height: 2em;\r\n  padding: 0;\r\n  margin-left: .25em;\r\n  margin-right: .25em;\r\n}\r\n\r\n.picker__select--month.browser-default {\r\n  display: inline;\r\n  background-color: #FFFFFF;\r\n  width: 40%;\r\n}\r\n\r\n.picker__select--year.browser-default {\r\n  display: inline;\r\n  background-color: #FFFFFF;\r\n  width: 26%;\r\n}\r\n\r\n.picker__select--month:focus,\r\n.picker__select--year:focus {\r\n  border-color: rgba(0, 0, 0, 0.05);\r\n}\r\n\r\n/**\r\n * The month navigation buttons.\r\n */\r\n.picker__nav--prev,\r\n.picker__nav--next {\r\n  position: absolute;\r\n  padding: .5em 1.25em;\r\n  width: 1em;\r\n  height: 1em;\r\n  box-sizing: content-box;\r\n  top: -0.25em;\r\n}\r\n\r\n.picker__nav--prev {\r\n  left: -1em;\r\n  padding-right: 1.25em;\r\n}\r\n\r\n.picker__nav--next {\r\n  right: -1em;\r\n  padding-left: 1.25em;\r\n}\r\n\r\n.picker__nav--disabled,\r\n.picker__nav--disabled:hover,\r\n.picker__nav--disabled:before,\r\n.picker__nav--disabled:before:hover {\r\n  cursor: default;\r\n  background: none;\r\n  border-right-color: #f5f5f5;\r\n  border-left-color: #f5f5f5;\r\n}\r\n\r\n/**\r\n * The calendar table of dates\r\n */\r\n.picker__table {\r\n  text-align: center;\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n  table-layout: fixed;\r\n  font-size: 1rem;\r\n  width: 100%;\r\n  margin-top: .75em;\r\n  margin-bottom: .5em;\r\n}\r\n\r\n.picker__table th, .picker__table td {\r\n  text-align: center;\r\n}\r\n\r\n.picker__table td {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n/**\r\n * The weekday labels\r\n */\r\n.picker__weekday {\r\n  width: 14.285714286%;\r\n  font-size: .75em;\r\n  padding-bottom: .25em;\r\n  color: #999999;\r\n  font-weight: 500;\r\n  /* Increase the spacing a tad */\r\n}\r\n\r\n@media (min-height: 33.875em) {\r\n  .picker__weekday {\r\n    padding-bottom: .5em;\r\n  }\r\n}\r\n\r\n/**\r\n * The days on the calendar\r\n */\r\n.picker__day--today {\r\n  position: relative;\r\n  color: #595959;\r\n  letter-spacing: -.3;\r\n  padding: .75rem 0;\r\n  font-weight: 400;\r\n  border: 1px solid transparent;\r\n}\r\n\r\n.picker__day--disabled:before {\r\n  border-top-color: #aaaaaa;\r\n}\r\n\r\n.picker__day--infocus:hover {\r\n  cursor: pointer;\r\n  color: #000;\r\n  font-weight: 500;\r\n}\r\n\r\n.picker__day--outfocus {\r\n  display: none;\r\n  padding: .75rem 0;\r\n  color: #fff;\r\n}\r\n\r\n.picker__day--outfocus:hover {\r\n  cursor: pointer;\r\n  color: #dddddd;\r\n  font-weight: 500;\r\n}\r\n\r\n.picker__day--highlighted:hover,\r\n.picker--focused .picker__day--highlighted {\r\n  cursor: pointer;\r\n}\r\n\r\n.picker__day--selected,\r\n.picker__day--selected:hover,\r\n.picker--focused .picker__day--selected {\r\n  border-radius: 50%;\r\n  -webkit-transform: scale(0.75);\r\n          transform: scale(0.75);\r\n  background: #0089ec;\r\n  color: #ffffff;\r\n}\r\n\r\n.picker__day--disabled,\r\n.picker__day--disabled:hover,\r\n.picker--focused .picker__day--disabled {\r\n  background: #f5f5f5;\r\n  border-color: #f5f5f5;\r\n  color: #dddddd;\r\n  cursor: default;\r\n}\r\n\r\n.picker__day--highlighted.picker__day--disabled,\r\n.picker__day--highlighted.picker__day--disabled:hover {\r\n  background: #bbbbbb;\r\n}\r\n\r\n/**\r\n * The footer containing the \"today\", \"clear\", and \"close\" buttons.\r\n */\r\n.picker__footer {\r\n  text-align: center;\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-align-items: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\r\n  -webkit-justify-content: space-between;\r\n      -ms-flex-pack: justify;\r\n          justify-content: space-between;\r\n}\r\n\r\n.picker__button--today,\r\n.picker__button--clear,\r\n.picker__button--close {\r\n  border: 1px solid #ffffff;\r\n  background: #ffffff;\r\n  font-size: .8em;\r\n  padding: .66em 0;\r\n  font-weight: bold;\r\n  width: 33%;\r\n  display: inline-block;\r\n  vertical-align: bottom;\r\n}\r\n\r\n.picker__button--today:hover,\r\n.picker__button--clear:hover,\r\n.picker__button--close:hover {\r\n  cursor: pointer;\r\n  color: #000000;\r\n  background: #b1dcfb;\r\n  border-bottom-color: #b1dcfb;\r\n}\r\n\r\n.picker__button--today:focus,\r\n.picker__button--clear:focus,\r\n.picker__button--close:focus {\r\n  background: #b1dcfb;\r\n  border-color: rgba(0, 0, 0, 0.05);\r\n  outline: none;\r\n}\r\n\r\n.picker__button--today:before,\r\n.picker__button--clear:before,\r\n.picker__button--close:before {\r\n  position: relative;\r\n  display: inline-block;\r\n  height: 0;\r\n}\r\n\r\n.picker__button--today:before,\r\n.picker__button--clear:before {\r\n  content: \" \";\r\n  margin-right: .45em;\r\n}\r\n\r\n.picker__button--today:before {\r\n  top: -0.05em;\r\n  width: 0;\r\n  border-top: 0.66em solid #0059bc;\r\n  border-left: .66em solid transparent;\r\n}\r\n\r\n.picker__button--clear:before {\r\n  top: -0.25em;\r\n  width: .66em;\r\n  border-top: 3px solid #ee2200;\r\n}\r\n\r\n.picker__button--close:before {\r\n  content: \"\\D7\";\r\n  top: -0.1em;\r\n  vertical-align: top;\r\n  font-size: 1.1em;\r\n  margin-right: .35em;\r\n  color: #777777;\r\n}\r\n\r\n.picker__button--today[disabled],\r\n.picker__button--today[disabled]:hover {\r\n  background: #f5f5f5;\r\n  border-color: #f5f5f5;\r\n  color: #dddddd;\r\n  cursor: default;\r\n}\r\n\r\n.picker__button--today[disabled]:before {\r\n  border-top-color: #aaaaaa;\r\n}\r\n\r\n/* ==========================================================================\r\n   CUSTOM MATERIALIZE STYLES\r\n   ========================================================================== */\r\n.picker__box {\r\n  border-radius: 2px;\r\n  overflow: hidden;\r\n}\r\n\r\n.picker__date-display {\r\n  text-align: center;\r\n  background-color: #26a69a;\r\n  color: #fff;\r\n  padding-bottom: 15px;\r\n  font-weight: 300;\r\n}\r\n\r\n.picker__nav--prev:hover,\r\n.picker__nav--next:hover {\r\n  cursor: pointer;\r\n  color: #000000;\r\n  background: #a1ded8;\r\n}\r\n\r\n.picker__weekday-display {\r\n  background-color: #1f897f;\r\n  padding: 10px;\r\n  font-weight: 200;\r\n  letter-spacing: .5;\r\n  font-size: 1rem;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.picker__month-display {\r\n  text-transform: uppercase;\r\n  font-size: 2rem;\r\n}\r\n\r\n.picker__day-display {\r\n  font-size: 4.5rem;\r\n  font-weight: 400;\r\n}\r\n\r\n.picker__year-display {\r\n  font-size: 1.8rem;\r\n  color: rgba(255, 255, 255, 0.4);\r\n}\r\n\r\n.picker__box {\r\n  padding: 0;\r\n}\r\n\r\n.picker__calendar-container {\r\n  padding: 0 1rem;\r\n}\r\n\r\n.picker__calendar-container thead {\r\n  border: none;\r\n}\r\n\r\n.picker__table {\r\n  margin-top: 0;\r\n  margin-bottom: .5em;\r\n}\r\n\r\n.picker__day--infocus {\r\n  color: #595959;\r\n  letter-spacing: -.3;\r\n  padding: .75rem 0;\r\n  font-weight: 400;\r\n  border: 1px solid transparent;\r\n}\r\n\r\n.picker__day.picker__day--today {\r\n  color: #26a69a;\r\n}\r\n\r\n.picker__day.picker__day--today.picker__day--selected {\r\n  color: #fff;\r\n}\r\n\r\n.picker__weekday {\r\n  font-size: .9rem;\r\n}\r\n\r\n.picker__day--selected,\r\n.picker__day--selected:hover,\r\n.picker--focused .picker__day--selected {\r\n  border-radius: 50%;\r\n  -webkit-transform: scale(0.9);\r\n          transform: scale(0.9);\r\n  background-color: #26a69a;\r\n  color: #ffffff;\r\n}\r\n\r\n.picker__day--selected.picker__day--outfocus,\r\n.picker__day--selected:hover.picker__day--outfocus,\r\n.picker--focused .picker__day--selected.picker__day--outfocus {\r\n  background-color: #a1ded8;\r\n}\r\n\r\n.picker__footer {\r\n  text-align: right;\r\n  padding: 5px 10px;\r\n}\r\n\r\n.picker__close, .picker__today {\r\n  font-size: 1.1rem;\r\n  padding: 0 1rem;\r\n  color: #26a69a;\r\n}\r\n\r\n.picker__nav--prev:before,\r\n.picker__nav--next:before {\r\n  content: \" \";\r\n  border-top: .5em solid transparent;\r\n  border-bottom: .5em solid transparent;\r\n  border-right: 0.75em solid #676767;\r\n  width: 0;\r\n  height: 0;\r\n  display: block;\r\n  margin: 0 auto;\r\n}\r\n\r\n.picker__nav--next:before {\r\n  border-right: 0;\r\n  border-left: 0.75em solid #676767;\r\n}\r\n\r\nbutton.picker__today:focus, button.picker__clear:focus, button.picker__close:focus {\r\n  background-color: #a1ded8;\r\n}\r\n\r\n/* ==========================================================================\r\n   $BASE-TIME-PICKER\r\n   ========================================================================== */\r\n/**\r\n * The list of times.\r\n */\r\n.picker__list {\r\n  list-style: none;\r\n  padding: 0.75em 0 4.2em;\r\n  margin: 0;\r\n}\r\n\r\n/**\r\n * The times on the clock.\r\n */\r\n.picker__list-item {\r\n  border-bottom: 1px solid #dddddd;\r\n  border-top: 1px solid #dddddd;\r\n  margin-bottom: -1px;\r\n  position: relative;\r\n  background: #ffffff;\r\n  padding: .75em 1.25em;\r\n}\r\n\r\n@media (min-height: 46.75em) {\r\n  .picker__list-item {\r\n    padding: .5em 1em;\r\n  }\r\n}\r\n\r\n/* Hovered time */\r\n.picker__list-item:hover {\r\n  cursor: pointer;\r\n  color: #000000;\r\n  background: #b1dcfb;\r\n  border-color: #0089ec;\r\n  z-index: 10;\r\n}\r\n\r\n/* Highlighted and hovered/focused time */\r\n.picker__list-item--highlighted {\r\n  border-color: #0089ec;\r\n  z-index: 10;\r\n}\r\n\r\n.picker__list-item--highlighted:hover,\r\n.picker--focused .picker__list-item--highlighted {\r\n  cursor: pointer;\r\n  color: #000000;\r\n  background: #b1dcfb;\r\n}\r\n\r\n/* Selected and hovered/focused time */\r\n.picker__list-item--selected,\r\n.picker__list-item--selected:hover,\r\n.picker--focused .picker__list-item--selected {\r\n  background: #0089ec;\r\n  color: #ffffff;\r\n  z-index: 10;\r\n}\r\n\r\n/* Disabled time */\r\n.picker__list-item--disabled,\r\n.picker__list-item--disabled:hover,\r\n.picker--focused .picker__list-item--disabled {\r\n  background: #f5f5f5;\r\n  border-color: #f5f5f5;\r\n  color: #dddddd;\r\n  cursor: default;\r\n  border-color: #dddddd;\r\n  z-index: auto;\r\n}\r\n\r\n/**\r\n * The clear button\r\n */\r\n.picker--time .picker__button--clear {\r\n  display: block;\r\n  width: 80%;\r\n  margin: 1em auto 0;\r\n  padding: 1em 1.25em;\r\n  background: none;\r\n  border: 0;\r\n  font-weight: 500;\r\n  font-size: .67em;\r\n  text-align: center;\r\n  text-transform: uppercase;\r\n  color: #666;\r\n}\r\n\r\n.picker--time .picker__button--clear:hover,\r\n.picker--time .picker__button--clear:focus {\r\n  color: #000000;\r\n  background: #b1dcfb;\r\n  background: #ee2200;\r\n  border-color: #ee2200;\r\n  cursor: pointer;\r\n  color: #ffffff;\r\n  outline: none;\r\n}\r\n\r\n.picker--time .picker__button--clear:before {\r\n  top: -0.25em;\r\n  color: #666;\r\n  font-size: 1.25em;\r\n  font-weight: bold;\r\n}\r\n\r\n.picker--time .picker__button--clear:hover:before,\r\n.picker--time .picker__button--clear:focus:before {\r\n  color: #ffffff;\r\n}\r\n\r\n/* ==========================================================================\r\n   $DEFAULT-TIME-PICKER\r\n   ========================================================================== */\r\n/**\r\n * The frame the bounds the time picker.\r\n */\r\n.picker--time .picker__frame {\r\n  min-width: 256px;\r\n  max-width: 320px;\r\n}\r\n\r\n/**\r\n * The picker box.\r\n */\r\n.picker--time .picker__box {\r\n  font-size: 1em;\r\n  background: #f2f2f2;\r\n  padding: 0;\r\n}\r\n\r\n@media (min-height: 40.125em) {\r\n  .picker--time .picker__box {\r\n    margin-bottom: 5em;\r\n  }\r\n}\r\n"; });
-define('aurelia-materialize-bridge/index',['exports', './exports', './config-builder', './scrollfire/scrollfire-patch', './common/polyfills'], function (exports, _exports, _configBuilder, _scrollfirePatch, _polyfills) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.configure = configure;
-  Object.keys(_exports).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _exports[key];
-      }
-    });
-  });
-
-
-  function applyPolyfills() {
-    (0, _polyfills.polyfillElementClosest)();
-  }
-
-  function configure(aurelia, configCallback) {
-    applyPolyfills();
-    var builder = new _configBuilder.ConfigBuilder();
-
-    if (configCallback !== undefined && typeof configCallback === 'function') {
-      configCallback(builder);
-    }
-
-    if (builder.useGlobalResources) {
-      aurelia.globalResources(builder.globalResources);
-    }
-    if (builder.useScrollfirePatch) {
-      new _scrollfirePatch.ScrollfirePatch().patch();
-    }
-  }
-});;define('aurelia-materialize-bridge', ['aurelia-materialize-bridge/index'], function (main) { return main; });
-
-define('aurelia-materialize-bridge/exports',['exports', './autocomplete/autocomplete', './badge/badge', './box/box', './breadcrumbs/breadcrumbs', './breadcrumbs/instructionFilter', './button/button', './card/card', './carousel/carousel-item', './carousel/carousel', './char-counter/char-counter', './checkbox/checkbox', './chip/chip', './chip/chips', './collapsible/collapsible', './collection/collection-header', './collection/collection-item', './collection/collection', './collection/md-collection-selector', './colors/colorValueConverters', './colors/md-colors', './common/attributeManager', './common/attributes', './common/constants', './common/events', './datepicker/datepicker-default-parser', './datepicker/datepicker', './dropdown/dropdown-element', './dropdown/dropdown', './dropdown/dropdown-fix', './fab/fab', './file/file', './footer/footer', './input/input-prefix', './input/input-update-service', './input/input', './modal/modal', './modal/modal-trigger', './navbar/navbar', './pagination/pagination', './parallax/parallax', './progress/progress', './pushpin/pushpin', './radio/radio', './range/range', './scrollfire/scrollfire-patch', './scrollfire/scrollfire-target', './scrollfire/scrollfire', './scrollspy/scrollspy', './select/select', './sidenav/sidenav-collapse', './sidenav/sidenav', './slider/slider', './switch/switch', './tabs/tabs', './toast/toastService', './tooltip/tooltip', './transitions/fadein-image', './transitions/staggered-list', './validation/validationRenderer', './waves/waves'], function (exports, _autocomplete, _badge, _box, _breadcrumbs, _instructionFilter, _button, _card, _carouselItem, _carousel, _charCounter, _checkbox, _chip, _chips, _collapsible, _collectionHeader, _collectionItem, _collection, _mdCollectionSelector, _colorValueConverters, _mdColors, _attributeManager, _attributes, _constants, _events, _datepickerDefaultParser, _datepicker, _dropdownElement, _dropdown, _dropdownFix, _fab, _file, _footer, _inputPrefix, _inputUpdateService, _input, _modal, _modalTrigger, _navbar, _pagination, _parallax, _progress, _pushpin, _radio, _range, _scrollfirePatch, _scrollfireTarget, _scrollfire, _scrollspy, _select, _sidenavCollapse, _sidenav, _slider, _switch, _tabs, _toastService, _tooltip, _fadeinImage, _staggeredList, _validationRenderer, _waves) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  Object.keys(_autocomplete).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _autocomplete[key];
-      }
-    });
-  });
-  Object.keys(_badge).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _badge[key];
-      }
-    });
-  });
-  Object.keys(_box).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _box[key];
-      }
-    });
-  });
-  Object.keys(_breadcrumbs).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _breadcrumbs[key];
-      }
-    });
-  });
-  Object.keys(_instructionFilter).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _instructionFilter[key];
-      }
-    });
-  });
-  Object.keys(_button).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _button[key];
-      }
-    });
-  });
-  Object.keys(_card).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _card[key];
-      }
-    });
-  });
-  Object.keys(_carouselItem).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _carouselItem[key];
-      }
-    });
-  });
-  Object.keys(_carousel).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _carousel[key];
-      }
-    });
-  });
-  Object.keys(_charCounter).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _charCounter[key];
-      }
-    });
-  });
-  Object.keys(_checkbox).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _checkbox[key];
-      }
-    });
-  });
-  Object.keys(_chip).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _chip[key];
-      }
-    });
-  });
-  Object.keys(_chips).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _chips[key];
-      }
-    });
-  });
-  Object.keys(_collapsible).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collapsible[key];
-      }
-    });
-  });
-  Object.keys(_collectionHeader).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collectionHeader[key];
-      }
-    });
-  });
-  Object.keys(_collectionItem).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collectionItem[key];
-      }
-    });
-  });
-  Object.keys(_collection).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _collection[key];
-      }
-    });
-  });
-  Object.keys(_mdCollectionSelector).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _mdCollectionSelector[key];
-      }
-    });
-  });
-  Object.keys(_colorValueConverters).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _colorValueConverters[key];
-      }
-    });
-  });
-  Object.keys(_mdColors).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _mdColors[key];
-      }
-    });
-  });
-  Object.keys(_attributeManager).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _attributeManager[key];
-      }
-    });
-  });
-  Object.keys(_attributes).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _attributes[key];
-      }
-    });
-  });
-  Object.keys(_constants).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _constants[key];
-      }
-    });
-  });
-  Object.keys(_events).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _events[key];
-      }
-    });
-  });
-  Object.keys(_datepickerDefaultParser).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _datepickerDefaultParser[key];
-      }
-    });
-  });
-  Object.keys(_datepicker).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _datepicker[key];
-      }
-    });
-  });
-  Object.keys(_dropdownElement).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _dropdownElement[key];
-      }
-    });
-  });
-  Object.keys(_dropdown).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _dropdown[key];
-      }
-    });
-  });
-  Object.keys(_dropdownFix).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _dropdownFix[key];
-      }
-    });
-  });
-  Object.keys(_fab).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _fab[key];
-      }
-    });
-  });
-  Object.keys(_file).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _file[key];
-      }
-    });
-  });
-  Object.keys(_footer).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _footer[key];
-      }
-    });
-  });
-  Object.keys(_inputPrefix).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _inputPrefix[key];
-      }
-    });
-  });
-  Object.keys(_inputUpdateService).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _inputUpdateService[key];
-      }
-    });
-  });
-  Object.keys(_input).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _input[key];
-      }
-    });
-  });
-  Object.keys(_modal).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _modal[key];
-      }
-    });
-  });
-  Object.keys(_modalTrigger).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _modalTrigger[key];
-      }
-    });
-  });
-  Object.keys(_navbar).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _navbar[key];
-      }
-    });
-  });
-  Object.keys(_pagination).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _pagination[key];
-      }
-    });
-  });
-  Object.keys(_parallax).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _parallax[key];
-      }
-    });
-  });
-  Object.keys(_progress).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _progress[key];
-      }
-    });
-  });
-  Object.keys(_pushpin).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _pushpin[key];
-      }
-    });
-  });
-  Object.keys(_radio).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _radio[key];
-      }
-    });
-  });
-  Object.keys(_range).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _range[key];
-      }
-    });
-  });
-  Object.keys(_scrollfirePatch).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfirePatch[key];
-      }
-    });
-  });
-  Object.keys(_scrollfireTarget).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfireTarget[key];
-      }
-    });
-  });
-  Object.keys(_scrollfire).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollfire[key];
-      }
-    });
-  });
-  Object.keys(_scrollspy).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _scrollspy[key];
-      }
-    });
-  });
-  Object.keys(_select).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _select[key];
-      }
-    });
-  });
-  Object.keys(_sidenavCollapse).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _sidenavCollapse[key];
-      }
-    });
-  });
-  Object.keys(_sidenav).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _sidenav[key];
-      }
-    });
-  });
-  Object.keys(_slider).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _slider[key];
-      }
-    });
-  });
-  Object.keys(_switch).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _switch[key];
-      }
-    });
-  });
-  Object.keys(_tabs).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _tabs[key];
-      }
-    });
-  });
-  Object.keys(_toastService).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _toastService[key];
-      }
-    });
-  });
-  Object.keys(_tooltip).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _tooltip[key];
-      }
-    });
-  });
-  Object.keys(_fadeinImage).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _fadeinImage[key];
-      }
-    });
-  });
-  Object.keys(_staggeredList).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _staggeredList[key];
-      }
-    });
-  });
-  Object.keys(_validationRenderer).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _validationRenderer[key];
-      }
-    });
-  });
-  Object.keys(_waves).forEach(function (key) {
-    if (key === "default" || key === "__esModule") return;
-    Object.defineProperty(exports, key, {
-      enumerable: true,
-      get: function () {
-        return _waves[key];
-      }
-    });
-  });
-});
-define('aurelia-materialize-bridge/autocomplete/autocomplete',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdAutoComplete = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdAutoComplete = exports.MdAutoComplete = (_dec = (0, _aureliaTemplating.customAttribute)('md-autocomplete'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdAutoComplete(element) {
-      _classCallCheck(this, MdAutoComplete);
-
-      this.input = null;
-
-      _initDefineProp(this, 'values', _descriptor, this);
-
-      this.element = element;
-    }
-
-    MdAutoComplete.prototype.attached = function attached() {
-      if (this.element.tagName.toLowerCase() === 'input') {
-        this.input = this.element;
-      } else if (this.element.tagName.toLowerCase() === 'md-input') {
-        this.input = this.element.au.controller.viewModel.input;
-      } else {
-        throw new Error('md-autocomplete must be attached to either an input or md-input element');
-      }
-      this.refresh();
-    };
-
-    MdAutoComplete.prototype.detached = function detached() {
-      $(this.input).siblings('.autocomplete-content').off('click');
-      $(this.input).siblings('.autocomplete-content').remove();
-    };
-
-    MdAutoComplete.prototype.refresh = function refresh() {
-      var _this = this;
-
-      this.detached();
-      $(this.input).autocomplete({
-        data: this.values
-      });
-
-      $(this.input).siblings('.autocomplete-content').on('click', function () {
-        (0, _events.fireEvent)(_this.input, 'change');
-      });
-    };
-
-    MdAutoComplete.prototype.valuesChanged = function valuesChanged(newValue) {
-      this.refresh();
-    };
-
-    return MdAutoComplete;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'values', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return {};
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/common/events',['exports', './constants'], function (exports, _constants) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.fireEvent = fireEvent;
-  exports.fireMaterializeEvent = fireMaterializeEvent;
-  function fireEvent(element, name) {
-    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    var event = new CustomEvent(name, {
-      detail: data,
-      bubbles: true
-    });
-    element.dispatchEvent(event);
-
-    return event;
-  }
-
-  function fireMaterializeEvent(element, name) {
-    var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-    return fireEvent(element, '' + _constants.constants.eventPrefix + name, data);
-  }
-});
-define('aurelia-materialize-bridge/common/constants',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var constants = exports.constants = {
-    eventPrefix: 'md-on-',
-    bindablePrefix: 'md-'
-  };
-});
-define('aurelia-materialize-bridge/badge/badge',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdBadge = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-  var MdBadge = exports.MdBadge = (_dec = (0, _aureliaTemplating.customAttribute)('md-badge'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdBadge(element) {
-      _classCallCheck(this, MdBadge);
-
-      _initDefineProp(this, 'isNew', _descriptor, this);
-
-      _initDefineProp(this, 'caption', _descriptor2, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdBadge.prototype.attached = function attached() {
-      var classes = ['badge'];
-
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.isNew)) {
-        classes.push('new');
-      }
-
-      if (this.caption !== null) {
-        this.attributeManager.addAttributes({ 'data-badge-caption': this.caption });
-      }
-
-      this.attributeManager.addClasses(classes);
-    };
-
-    MdBadge.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['badge', 'new']);
-      this.attributeManager.removeAttributes(['data-badge-caption']);
-    };
-
-    MdBadge.prototype.newChanged = function newChanged(newValue) {
-      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
-        this.attributeManager.addClasses('new');
-      } else {
-        this.attributeManager.removeClasses('new');
-      }
-    };
-
-    MdBadge.prototype.captionChanged = function captionChanged(newValue) {
-      if (newValue !== null) {
-        this.attributeManager.addAttributes({ 'data-badge-caption': newValue });
-      } else {
-        this.attributeManager.removeAttributes(['data-badge-caption']);
-      }
-    };
-
-    return MdBadge;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'isNew', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/common/attributeManager',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var AttributeManager = exports.AttributeManager = function () {
-    function AttributeManager(element) {
-      _classCallCheck(this, AttributeManager);
-
-      this._colorClasses = ['accent', 'primary'];
-      this.addedClasses = [];
-      this.addedAttributes = {};
-
-      this.element = element;
-    }
-
-    AttributeManager.prototype.addAttributes = function addAttributes(attrs) {
-      var _this = this;
-
-      var keys = Object.keys(attrs);
-      keys.forEach(function (k) {
-        if (!_this.element.getAttribute(k)) {
-          _this.addedAttributes[k] = attrs[k];
-          _this.element.setAttribute(k, attrs[k]);
-        } else if (_this.element.getAttribute(k) !== attrs[k]) {
-          _this.element.setAttribute(k, attrs[k]);
-        }
-      });
-    };
-
-    AttributeManager.prototype.removeAttributes = function removeAttributes(attrs) {
-      var _this2 = this;
-
-      if (typeof attrs === 'string') {
-        attrs = [attrs];
-      }
-      attrs.forEach(function (a) {
-        if (_this2.element.getAttribute(a) && !!_this2.addedAttributes[a]) {
-          _this2.element.removeAttribute(a);
-          _this2.addedAttributes[a] = null;
-          delete _this2.addedAttributes[a];
-        }
-      });
-    };
-
-    AttributeManager.prototype.addClasses = function addClasses(classes) {
-      var _this3 = this;
-
-      if (typeof classes === 'string') {
-        classes = [classes];
-      }
-      classes.forEach(function (c) {
-        var classListHasColor = _this3._colorClasses.filter(function (cc) {
-          return _this3.element.classList.contains(cc);
-        }).length > 0;
-        if (_this3._colorClasses.indexOf(c) > -1 && classListHasColor) {} else {
-          if (!_this3.element.classList.contains(c)) {
-            _this3.addedClasses.push(c);
-            _this3.element.classList.add(c);
-          }
-        }
-      });
-    };
-
-    AttributeManager.prototype.removeClasses = function removeClasses(classes) {
-      var _this4 = this;
-
-      if (typeof classes === 'string') {
-        classes = [classes];
-      }
-      classes.forEach(function (c) {
-        if (_this4.element.classList.contains(c) && _this4.addedClasses.indexOf(c) > -1) {
-          _this4.element.classList.remove(c);
-          _this4.addedClasses.splice(_this4.addedClasses.indexOf(c), 1);
-        }
-      });
-    };
-
-    return AttributeManager;
-  }();
-});
-define('aurelia-materialize-bridge/common/attributes',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.getBooleanFromAttributeValue = getBooleanFromAttributeValue;
-  function getBooleanFromAttributeValue(value) {
-    return value === true || value === 'true';
-  }
-});
-define('aurelia-materialize-bridge/box/box',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdBox = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdBox = exports.MdBox = (_dec = (0, _aureliaTemplating.customAttribute)('md-box'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdBox(element) {
-      _classCallCheck(this, MdBox);
-
-      _initDefineProp(this, 'caption', _descriptor, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdBox.prototype.attached = function attached() {
-      this.attributeManager.addClasses('materialboxed');
-      if (this.caption) {
-        this.attributeManager.addAttributes({ 'data-caption': this.caption });
-      }
-
-      $(this.element).materialbox();
-    };
-
-    MdBox.prototype.detached = function detached() {
-      this.attributeManager.removeAttributes('data-caption');
-      this.attributeManager.removeClasses('materialboxed');
-    };
-
-    return MdBox;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'caption', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/breadcrumbs/breadcrumbs',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-router'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaRouter) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdBreadcrumbs = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdBreadcrumbs = exports.MdBreadcrumbs = (_dec = (0, _aureliaTemplating.customElement)('md-breadcrumbs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaRouter.Router), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdBreadcrumbs(element, router) {
-      _classCallCheck(this, MdBreadcrumbs);
-
-      _initDefineProp(this, 'router', _descriptor, this);
-
-      this.element = element;
-      this.aureliaRouter = router;
-    }
-
-    MdBreadcrumbs.prototype.bind = function bind() {
-      if (!this.router) {
-        this.router = this.aureliaRouter;
-      }
-      var router = this.router;
-      this._childRouter = router;
-      while (router.parent) {
-        router = router.parent;
-      }
-      this.router = router;
-    };
-
-    MdBreadcrumbs.prototype.routerChanged = function routerChanged() {};
-
-    MdBreadcrumbs.prototype.navigate = function navigate(navigationInstruction) {
-      this._childRouter.navigateToRoute(navigationInstruction.config.name);
-    };
-
-    return MdBreadcrumbs;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'router', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/breadcrumbs/instructionFilter',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var InstructionFilterValueConverter = exports.InstructionFilterValueConverter = function () {
-    function InstructionFilterValueConverter() {
-      _classCallCheck(this, InstructionFilterValueConverter);
-    }
-
-    InstructionFilterValueConverter.prototype.toView = function toView(navigationInstructions) {
-      return navigationInstructions.filter(function (i) {
-        var result = false;
-        if (i.config.title) {
-          result = true;
-        }
-        return result;
-      });
-    };
-
-    return InstructionFilterValueConverter;
-  }();
-});
-define('aurelia-materialize-bridge/button/button',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdButton = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdButton = exports.MdButton = (_dec = (0, _aureliaTemplating.customAttribute)('md-button'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdButton(element) {
-      _classCallCheck(this, MdButton);
-
-      _initDefineProp(this, 'disabled', _descriptor, this);
-
-      _initDefineProp(this, 'flat', _descriptor2, this);
-
-      _initDefineProp(this, 'floating', _descriptor3, this);
-
-      _initDefineProp(this, 'large', _descriptor4, this);
-
-      this.attributeManager = new _attributeManager.AttributeManager(element);
-    }
-
-    MdButton.prototype.attached = function attached() {
-      var classes = [];
-
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.flat)) {
-        classes.push('btn-flat');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.floating)) {
-        classes.push('btn-floating');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.large)) {
-        classes.push('btn-large');
-      }
-
-      if (classes.length === 0) {
-        classes.push('btn');
-      }
-
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.disabled)) {
-        classes.push('disabled');
-      }
-
-      if (!(0, _attributes.getBooleanFromAttributeValue)(this.flat)) {
-        classes.push('accent');
-      }
-      this.attributeManager.addClasses(classes);
-    };
-
-    MdButton.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['accent', 'btn', 'btn-flat', 'btn-large', 'disabled']);
-    };
-
-    MdButton.prototype.disabledChanged = function disabledChanged(newValue) {
-      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
-        this.attributeManager.addClasses('disabled');
-      } else {
-        this.attributeManager.removeClasses('disabled');
-      }
-    };
-
-    MdButton.prototype.flatChanged = function flatChanged(newValue) {
-      if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
-        this.attributeManager.removeClasses(['btn', 'accent']);
-        this.attributeManager.addClasses('btn-flat');
-      } else {
-        this.attributeManager.removeClasses('btn-flat');
-        this.attributeManager.addClasses(['btn', 'accent']);
-      }
-    };
-
-    return MdButton;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'flat', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'floating', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'large', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/card/card',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaBinding, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCard = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
-
-  var MdCard = exports.MdCard = (_dec = (0, _aureliaTemplating.customElement)('md-card'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdCard(element) {
-      _classCallCheck(this, MdCard);
-
-      _initDefineProp(this, 'mdHorizontal', _descriptor, this);
-
-      _initDefineProp(this, 'mdImage', _descriptor2, this);
-
-      _initDefineProp(this, 'mdReveal', _descriptor3, this);
-
-      _initDefineProp(this, 'mdSize', _descriptor4, this);
-
-      _initDefineProp(this, 'mdTitle', _descriptor5, this);
-
-      this.element = element;
-    }
-
-    MdCard.prototype.attached = function attached() {
-      this.mdHorizontal = (0, _attributes.getBooleanFromAttributeValue)(this.mdHorizontal);
-      this.mdReveal = (0, _attributes.getBooleanFromAttributeValue)(this.mdReveal);
-    };
-
-    return MdCard;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHorizontal', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdReveal', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec7], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/carousel/carousel-item',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCarouselItem = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-  var MdCarouselItem = exports.MdCarouselItem = (_dec = (0, _aureliaTemplating.customElement)('md-carousel-item'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdCarouselItem(element) {
-      _classCallCheck(this, MdCarouselItem);
-
-      _initDefineProp(this, 'mdHref', _descriptor, this);
-
-      _initDefineProp(this, 'mdImage', _descriptor2, this);
-
-      this.element = element;
-    }
-
-    MdCarouselItem.prototype.attached = function attached() {};
-
-    return MdCarouselItem;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdHref', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdImage', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/carousel/carousel',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCarousel = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-  var MdCarousel = exports.MdCarousel = (_dec = (0, _aureliaTemplating.customElement)('md-carousel'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.children)('md-carousel-item'), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdCarousel(element, taskQueue) {
-      _classCallCheck(this, MdCarousel);
-
-      _initDefineProp(this, 'mdIndicators', _descriptor, this);
-
-      _initDefineProp(this, 'mdSlider', _descriptor2, this);
-
-      _initDefineProp(this, 'items', _descriptor3, this);
-
-      this.element = element;
-      this.taskQueue = taskQueue;
-    }
-
-    MdCarousel.prototype.attached = function attached() {
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdSlider)) {
-        this.element.classList.add('carousel-slider');
-      }
-
-      this.refresh();
-    };
-
-    MdCarousel.prototype.itemsChanged = function itemsChanged(newValue) {
-      this.refresh();
-    };
-
-    MdCarousel.prototype.refresh = function refresh() {
-      var _this = this;
-
-      if (this.items.length > 0) {
-        (function () {
-          var options = {
-            full_width: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
-            fullWidth: (0, _attributes.getBooleanFromAttributeValue)(_this.mdSlider),
-            indicators: _this.mdIndicators
-          };
-
-          _this.taskQueue.queueTask(function () {
-            $(_this.element).carousel(options);
-          });
-        })();
-      }
-    };
-
-    return MdCarousel;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdSlider', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'items', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/char-counter/char-counter',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCharCounter = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdCharCounter = exports.MdCharCounter = (_dec = (0, _aureliaTemplating.customAttribute)('md-char-counter'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdCharCounter(element) {
-      _classCallCheck(this, MdCharCounter);
-
-      _initDefineProp(this, 'length', _descriptor, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdCharCounter.prototype.attached = function attached() {
-      var _this = this;
-
-      this.length = parseInt(this.length, 10);
-
-      if (this.element.tagName.toUpperCase() === 'INPUT') {
-        this.attributeManager.addAttributes({ 'length': this.length });
-        $(this.element).characterCounter();
-      } else {
-        $(this.element).find('input').each(function (i, el) {
-          $(el).attr('length', _this.length);
-        });
-        $(this.element).find('input').characterCounter();
-      }
-    };
-
-    MdCharCounter.prototype.detached = function detached() {
-      this.attributeManager.removeAttributes(['length']);
-    };
-
-    return MdCharCounter;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'length', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 120;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/checkbox/checkbox',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCheckbox = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _class3, _temp;
-
-  var MdCheckbox = exports.MdCheckbox = (_dec = (0, _aureliaTemplating.customElement)('md-checkbox'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdCheckbox(element) {
-      _classCallCheck(this, MdCheckbox);
-
-      _initDefineProp(this, 'mdChecked', _descriptor, this);
-
-      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
-
-      _initDefineProp(this, 'mdFilledIn', _descriptor3, this);
-
-      _initDefineProp(this, 'mdMatcher', _descriptor4, this);
-
-      _initDefineProp(this, 'mdModel', _descriptor5, this);
-
-      this.element = element;
-      this.controlId = 'md-checkbox-' + MdCheckbox.id++;
-    }
-
-    MdCheckbox.prototype.attached = function attached() {
-      this.attributeManager = new _attributeManager.AttributeManager(this.checkbox);
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFilledIn)) {
-        this.attributeManager.addClasses('filled-in');
-      }
-      if (this.mdChecked === null) {
-        this.checkbox.indeterminate = true;
-      } else {
-        this.checkbox.indeterminate = false;
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
-        this.checkbox.disabled = true;
-      }
-    };
-
-    MdCheckbox.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['filled-in', 'disabled']);
-    };
-
-    MdCheckbox.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
-      if (this.checkbox) {
-        this.checkbox.disabled = !!newValue;
-      }
-    };
-
-    return MdCheckbox;
-  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFilledIn', [_dec5], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdMatcher', [_dec6], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec7], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/chip/chip',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdChip = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdChip = exports.MdChip = (_dec = (0, _aureliaTemplating.customElement)('md-chip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdChip(element) {
-      _classCallCheck(this, MdChip);
-
-      _initDefineProp(this, 'mdClose', _descriptor, this);
-
-      this.element = element;
-    }
-
-    MdChip.prototype.attached = function attached() {
-      this.mdClose = (0, _attributes.getBooleanFromAttributeValue)(this.mdClose);
-    };
-
-    MdChip.prototype.close = function close() {
-      this.element.parentElement.removeChild(this.element);
-    };
-
-    return MdChip;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdClose', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/chip/chips',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdChips = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdChips = exports.MdChips = (_dec = (0, _aureliaTemplating.customAttribute)('md-chips'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdChips(element) {
-      _classCallCheck(this, MdChips);
-
-      _initDefineProp(this, 'autocompleteData', _descriptor, this);
-
-      _initDefineProp(this, 'data', _descriptor2, this);
-
-      _initDefineProp(this, 'placeholder', _descriptor3, this);
-
-      _initDefineProp(this, 'secondaryPlaceholder', _descriptor4, this);
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-chips');
-
-      this.onChipAdd = this.onChipAdd.bind(this);
-      this.onChipDelete = this.onChipDelete.bind(this);
-      this.onChipSelect = this.onChipSelect.bind(this);
-    }
-
-    MdChips.prototype.attached = function attached() {
-      var options = {
-        autocompleteData: this.autocompleteData,
-        data: this.data,
-        placeholder: this.placeholder,
-        secondaryPlaceholder: this.secondaryPlaceholder
-      };
-      $(this.element).material_chip(options);
-      $(this.element).on('chip.add', this.onChipAdd);
-      $(this.element).on('chip.delete', this.onChipDelete);
-      $(this.element).on('chip.select', this.onChipSelect);
-    };
-
-    MdChips.prototype.detached = function detached() {};
-
-    MdChips.prototype.onChipAdd = function onChipAdd(e, chip) {
-      this.data = $(this.element).material_chip('data');
-      (0, _events.fireEvent)(this.element, 'change', { operation: 'add', target: chip, data: this.data });
-    };
-
-    MdChips.prototype.onChipDelete = function onChipDelete(e, chip) {
-      this.data = $(this.element).material_chip('data');
-      (0, _events.fireEvent)(this.element, 'change', { operation: 'delete', target: chip, data: this.data });
-    };
-
-    MdChips.prototype.onChipSelect = function onChipSelect(e, chip) {
-      (0, _events.fireEvent)(this.element, 'selected', { target: chip });
-    };
-
-    return MdChips;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'autocompleteData', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return {};
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'data', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'placeholder', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'secondaryPlaceholder', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/collapsible/collapsible',['exports', 'aurelia-event-aggregator', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaEventAggregator, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCollapsible = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class;
-
-  var MdCollapsible = exports.MdCollapsible = (_dec = (0, _aureliaTemplating.customAttribute)('md-collapsible'), _dec2 = (0, _aureliaTemplating.bindable)({ name: 'accordion', defaultValue: false }), _dec3 = (0, _aureliaTemplating.bindable)({ name: 'popout', defaultValue: false }), _dec4 = (0, _aureliaTemplating.bindable)({ name: 'onOpen' }), _dec5 = (0, _aureliaTemplating.bindable)({ name: 'onClose' }), _dec6 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaEventAggregator.EventAggregator), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = _dec5(_class = _dec6(_class = function () {
-    function MdCollapsible(element, eventAggregator) {
-      _classCallCheck(this, MdCollapsible);
-
-      this.element = element;
-      this.eventAggregator = eventAggregator;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdCollapsible.prototype.attached = function attached() {
-      this.attributeManager.addClasses('collapsible');
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.popout)) {
-        this.attributeManager.addClasses('popout');
-      }
-      this.refresh();
-    };
-
-    MdCollapsible.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['collapsible', 'popout']);
-      this.attributeManager.removeAttributes(['data-collapsible']);
-    };
-
-    MdCollapsible.prototype.refresh = function refresh() {
-      var accordion = (0, _attributes.getBooleanFromAttributeValue)(this.accordion);
-      var dataCollapsibleAttributeValue = accordion ? 'accordion' : 'expandable';
-
-      this.attributeManager.addAttributes({ 'data-collapsible': dataCollapsibleAttributeValue });
-
-      $(this.element).collapsible({
-        accordion: accordion,
-        onOpen: this.buildCollapsibleOpenCloseCallbackHandler(this.onOpen),
-        onClose: this.buildCollapsibleOpenCloseCallbackHandler(this.onClose)
-      });
-    };
-
-    MdCollapsible.prototype.accordionChanged = function accordionChanged() {
-      this.refresh();
-    };
-
-    MdCollapsible.prototype.buildCollapsibleOpenCloseCallbackHandler = function buildCollapsibleOpenCloseCallbackHandler(handler) {
-      return typeof handler === 'function' ? function (targetElementJquery) {
-        var targetElement = targetElementJquery[0];
-
-        handler(targetElement);
-      } : null;
-    };
-
-    return MdCollapsible;
-  }()) || _class) || _class) || _class) || _class) || _class) || _class);
-});
-define('aurelia-materialize-bridge/collection/collection-header',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCollectionHeader = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdCollectionHeader = exports.MdCollectionHeader = (_dec = (0, _aureliaTemplating.customElement)('md-collection-header'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function MdCollectionHeader(element) {
-    _classCallCheck(this, MdCollectionHeader);
-
-    this.element = element;
-  }) || _class) || _class);
-});
-define('aurelia-materialize-bridge/collection/collection-item',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCollectionItem = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _class;
-
-  var MdCollectionItem = exports.MdCollectionItem = (_dec = (0, _aureliaTemplating.customElement)('md-collection-item'), _dec(_class = function MdCollectionItem() {
-    _classCallCheck(this, MdCollectionItem);
-  }) || _class);
-});
-define('aurelia-materialize-bridge/collection/collection',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdCollection = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdCollection = exports.MdCollection = (_dec = (0, _aureliaTemplating.customElement)('md-collection'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdCollection(element) {
-      _classCallCheck(this, MdCollection);
-
-      this.element = element;
-    }
-
-    MdCollection.prototype.attached = function attached() {
-      var header = this.element.querySelector('md-collection-header');
-      if (header) {
-        this.anchor.classList.add('with-header');
-      }
-    };
-
-    MdCollection.prototype.getSelected = function getSelected() {
-      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
-      return items.filter(function (i) {
-        return i.au['md-collection-selector'].viewModel.isSelected;
-      }).map(function (i) {
-        return i.au['md-collection-selector'].viewModel.item;
-      });
-    };
-
-    MdCollection.prototype.clearSelection = function clearSelection() {
-      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
-      items.forEach(function (i) {
-        return i.au['md-collection-selector'].viewModel.isSelected = false;
-      });
-    };
-
-    MdCollection.prototype.selectAll = function selectAll() {
-      var items = [].slice.call(this.element.querySelectorAll('md-collection-selector'));
-      items.forEach(function (i) {
-        var vm = i.au['md-collection-selector'].viewModel;
-        vm.isSelected = !vm.mdDisabled;
-      });
-    };
-
-    return MdCollection;
-  }()) || _class) || _class);
-});
-define('aurelia-materialize-bridge/collection/md-collection-selector',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-binding', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaBinding, _events, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdlListSelector = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-  var MdlListSelector = exports.MdlListSelector = (_dec = (0, _aureliaTemplating.customElement)('md-collection-selector'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaBinding.observable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdlListSelector(element) {
-      _classCallCheck(this, MdlListSelector);
-
-      _initDefineProp(this, 'item', _descriptor, this);
-
-      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
-
-      _initDefineProp(this, 'isSelected', _descriptor3, this);
-
-      this.element = element;
-    }
-
-    MdlListSelector.prototype.isSelectedChanged = function isSelectedChanged(newValue) {
-      (0, _events.fireMaterializeEvent)(this.element, 'selection-changed', { item: this.item, isSelected: this.isSelected });
-    };
-
-    MdlListSelector.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
-      this.mdDisabled = (0, _attributes.getBooleanFromAttributeValue)(newValue);
-    };
-
-    return MdlListSelector;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'item', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'isSelected', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/colors/colorValueConverters',["exports"], function (exports) {
-    "use strict";
-
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
-
-    function _classCallCheck(instance, Constructor) {
-        if (!(instance instanceof Constructor)) {
-            throw new TypeError("Cannot call a class as a function");
-        }
-    }
-
-    function shadeBlendConvert(p, from, to) {
-        if (typeof p != "number" || p < -1 || p > 1 || typeof from != "string" || from[0] != 'r' && from[0] != '#' || typeof to != "string" && typeof to != "undefined") return null;
-        var sbcRip = function sbcRip(d) {
-            var l = d.length,
-                RGB = new Object();
-            if (l > 9) {
-                d = d.split(",");
-                if (d.length < 3 || d.length > 4) return null;
-                RGB[0] = i(d[0].slice(4)), RGB[1] = i(d[1]), RGB[2] = i(d[2]), RGB[3] = d[3] ? parseFloat(d[3]) : -1;
-            } else {
-                switch (l) {case 8:case 6:case 3:case 2:case 1:
-                        return null;}
-                if (l < 6) d = "#" + d[1] + d[1] + d[2] + d[2] + d[3] + d[3] + (l > 4 ? d[4] + "" + d[4] : "");
-                d = i(d.slice(1), 16), RGB[0] = d >> 16 & 255, RGB[1] = d >> 8 & 255, RGB[2] = d & 255, RGB[3] = l == 9 || l == 5 ? r((d >> 24 & 255) / 255 * 10000) / 10000 : -1;
-            }
-            return RGB;
-        };
-        var i = parseInt,
-            r = Math.round,
-            h = from.length > 9,
-            h = typeof to == "string" ? to.length > 9 ? true : to == "c" ? !h : false : h,
-            b = p < 0,
-            p = b ? p * -1 : p,
-            to = to && to != "c" ? to : b ? "#000000" : "#FFFFFF",
-            f = sbcRip(from),
-            t = sbcRip(to);
-        if (!f || !t) return null;
-        if (h) return "rgb(" + r((t[0] - f[0]) * p + f[0]) + "," + r((t[1] - f[1]) * p + f[1]) + "," + r((t[2] - f[2]) * p + f[2]) + (f[3] < 0 && t[3] < 0 ? ")" : "," + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 10000) / 10000 : t[3] < 0 ? f[3] : t[3]) + ")");else return "#" + (0x100000000 + (f[3] > -1 && t[3] > -1 ? r(((t[3] - f[3]) * p + f[3]) * 255) : t[3] > -1 ? r(t[3] * 255) : f[3] > -1 ? r(f[3] * 255) : 255) * 0x1000000 + r((t[0] - f[0]) * p + f[0]) * 0x10000 + r((t[1] - f[1]) * p + f[1]) * 0x100 + r((t[2] - f[2]) * p + f[2])).toString(16).slice(f[3] > -1 || t[3] > -1 ? 1 : 3);
-    }
-
-    var DarkenValueConverter = exports.DarkenValueConverter = function () {
-        function DarkenValueConverter() {
-            _classCallCheck(this, DarkenValueConverter);
-        }
-
-        DarkenValueConverter.prototype.toView = function toView(value, steps) {
-            return shadeBlendConvert(-0.3 * parseFloat(steps, 10), value);
-        };
-
-        return DarkenValueConverter;
-    }();
-
-    var LightenValueConverter = exports.LightenValueConverter = function () {
-        function LightenValueConverter() {
-            _classCallCheck(this, LightenValueConverter);
-        }
-
-        LightenValueConverter.prototype.toView = function toView(value, steps) {
-            return shadeBlendConvert(0.3 * parseFloat(steps, 10), value);
-        };
-
-        return LightenValueConverter;
-    }();
-});
-define('aurelia-materialize-bridge/colors/md-colors',['exports', 'aurelia-templating'], function (exports, _aureliaTemplating) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdColors = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdColors = exports.MdColors = (_dec = (0, _aureliaTemplating.bindable)(), _dec2 = (0, _aureliaTemplating.bindable)(), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), (_class = function MdColors() {
-    _classCallCheck(this, MdColors);
-
-    _initDefineProp(this, 'mdPrimaryColor', _descriptor, this);
-
-    _initDefineProp(this, 'mdAccentColor', _descriptor2, this);
-
-    _initDefineProp(this, 'mdErrorColor', _descriptor3, this);
-
-    _initDefineProp(this, 'mdSuccessColor', _descriptor4, this);
-  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'mdPrimaryColor', [_dec], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'mdAccentColor', [_dec2], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'mdErrorColor', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '#F44336';
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'mdSuccessColor', [_dec4], {
-    enumerable: true,
-    initializer: null
-  })), _class));
-});
-define('aurelia-materialize-bridge/datepicker/datepicker-default-parser',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var DatePickerDefaultParser = exports.DatePickerDefaultParser = function () {
-    function DatePickerDefaultParser() {
-      _classCallCheck(this, DatePickerDefaultParser);
-    }
-
-    DatePickerDefaultParser.prototype.canParse = function canParse(value) {
-      if (value) {
-        return true;
-      }
-      return false;
-    };
-
-    DatePickerDefaultParser.prototype.parse = function parse(value) {
-      if (value) {
-        var result = value.split('/').join('-');
-        result = new Date(result);
-        return isNaN(result) ? null : result;
-      }
-      return null;
-    };
-
-    return DatePickerDefaultParser;
-  }();
-});
-define('aurelia-materialize-bridge/datepicker/datepicker',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging', '../common/attributes', './datepicker-default-parser', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging, _attributes, _datepickerDefaultParser, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdDatePicker = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8;
-
-  var MdDatePicker = exports.MdDatePicker = (_dec = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _datepickerDefaultParser.DatePickerDefaultParser), _dec2 = (0, _aureliaTemplating.customAttribute)('md-datepicker'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec6 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.twoWay }), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec9 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec10 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdDatePicker(element, taskQueue, defaultParser) {
-      _classCallCheck(this, MdDatePicker);
-
-      _initDefineProp(this, 'container', _descriptor, this);
-
-      _initDefineProp(this, 'translation', _descriptor2, this);
-
-      _initDefineProp(this, 'value', _descriptor3, this);
-
-      _initDefineProp(this, 'parsers', _descriptor4, this);
-
-      _initDefineProp(this, 'selectMonths', _descriptor5, this);
-
-      _initDefineProp(this, 'selectYears', _descriptor6, this);
-
-      _initDefineProp(this, 'options', _descriptor7, this);
-
-      _initDefineProp(this, 'showErrortext', _descriptor8, this);
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-datepicker');
-      this.taskQueue = taskQueue;
-      this.parsers.push(defaultParser);
-    }
-
-    MdDatePicker.prototype.bind = function bind() {
-      var _this = this;
-
-      this.selectMonths = (0, _attributes.getBooleanFromAttributeValue)(this.selectMonths);
-      this.selectYears = parseInt(this.selectYears, 10);
-      this.element.classList.add('date-picker');
-
-      var options = {
-        selectMonths: this.selectMonths,
-        selectYears: this.selectYears,
-        onClose: function onClose() {
-          $(document.activeElement).blur();
-        }
-      };
-      var i18n = {};
-
-      Object.assign(options, i18n);
-
-      if (this.options) {
-        Object.assign(options, this.options);
-
-        if (this.options.onClose) {
-          options.onClose = function () {
-            this.options.onClose();
-            $(document.activeElement).blur();
-          };
-        }
-      }
-      if (this.container) {
-        options.container = this.container;
-      }
-      this.picker = $(this.element).pickadate(options).pickadate('picker');
-      this.picker.on({
-        'close': this.onClose.bind(this),
-        'set': this.onSet.bind(this)
-      });
-
-      if (this.value) {
-        this.picker.set('select', this.value);
-      }
-      if (this.options && this.options.editable) {
-        $(this.element).on('keydown', function (e) {
-          if (e.keyCode === 13 || e.keyCode === 9) {
-            if (_this.parseDate($(_this.element).val())) {
-              _this.closeDatePicker();
-            } else {
-              _this.openDatePicker();
-            }
-          } else {
-            _this.value = null;
-          }
-        });
-      } else {
-        $(this.element).on('focusin', function () {
-          _this.openDatePicker();
-        });
-      }
-      if (this.options.showIcon) {
-        this.element.classList.add('left');
-        var calendarIcon = document.createElement('i');
-        calendarIcon.classList.add('right');
-        calendarIcon.classList.add('material-icons');
-        calendarIcon.textContent = 'today';
-        this.element.parentNode.insertBefore(calendarIcon, this.element.nextSibling);
-        $(calendarIcon).on('click', this.onCalendarIconClick.bind(this));
-
-        options.iconClass = options.iconClass || 'std-icon-fixup';
-        calendarIcon.classList.add(options.iconClass);
-      }
-
-      this.movePickerCloserToSrc();
-      this.setErrorTextAttribute();
-    };
-
-    MdDatePicker.prototype.parseDate = function parseDate(value) {
-      if (this.parsers && this.parsers.length && this.parsers.length > 0) {
-        for (var _iterator = this.parsers, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-          var _ref;
-
-          if (_isArray) {
-            if (_i >= _iterator.length) break;
-            _ref = _iterator[_i++];
-          } else {
-            _i = _iterator.next();
-            if (_i.done) break;
-            _ref = _i.value;
-          }
-
-          var parser = _ref;
-
-          if (parser.canParse(value)) {
-            var parsedDate = parser.parse(value);
-            if (parsedDate !== null) {
-              this.picker.set('select', parsedDate);
-              return true;
-            }
-          }
-        }
-      }
-      return false;
-    };
-
-    MdDatePicker.prototype.movePickerCloserToSrc = function movePickerCloserToSrc() {
-      $(this.picker.$root).appendTo($(this.element).parent());
-    };
-
-    MdDatePicker.prototype.detached = function detached() {
-      if (this.picker) {
-        this.picker.stop();
-      }
-    };
-
-    MdDatePicker.prototype.openDatePicker = function openDatePicker() {
-      $(this.element).pickadate('open');
-    };
-
-    MdDatePicker.prototype.closeDatePicker = function closeDatePicker() {
-      $(this.element).pickadate('close');
-    };
-
-    MdDatePicker.prototype.onClose = function onClose() {
-      var selected = this.picker.get('select');
-      this.value = selected ? selected.obj : null;
-      (0, _events.fireEvent)(this.element, 'blur');
-    };
-
-    MdDatePicker.prototype.onCalendarIconClick = function onCalendarIconClick(event) {
-      event.stopPropagation();
-      this.openDatePicker();
-    };
-
-    MdDatePicker.prototype.onSet = function onSet(value) {
-      if (this.options && this.options.closeOnSelect && value.select) {
-        this.value = value.select;
-        this.picker.close();
-      }
-    };
-
-    MdDatePicker.prototype.valueChanged = function valueChanged(newValue) {
-      if (this.options.max && newValue > this.options.max) {
-        this.value = this.options.max;
-      }
-      this.log.debug('selectedChanged', this.value);
-
-      this.picker.set('select', this.value);
-    };
-
-    MdDatePicker.prototype.showErrortextChanged = function showErrortextChanged() {
-      this.setErrorTextAttribute();
-    };
-
-    MdDatePicker.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
-      var element = this.element;
-      if (!element) return;
-      this.log.debug('showErrortextChanged: ' + this.showErrortext);
-      element.setAttribute('data-show-errortext', (0, _attributes.getBooleanFromAttributeValue)(this.showErrortext));
-    };
-
-    return MdDatePicker;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'container', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'translation', [_dec4], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'value', [_dec5], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'parsers', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'selectMonths', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'selectYears', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 15;
-    }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'options', [_dec9], {
-    enumerable: true,
-    initializer: function initializer() {
-      return {};
-    }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec10], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/dropdown/dropdown-element',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdDropdownElement = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _class3, _temp;
-
-  var MdDropdownElement = exports.MdDropdownElement = (_dec = (0, _aureliaTemplating.customElement)('md-dropdown'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec8 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec9 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec10 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdDropdownElement(element) {
-      _classCallCheck(this, MdDropdownElement);
-
-      _initDefineProp(this, 'alignment', _descriptor, this);
-
-      _initDefineProp(this, 'belowOrigin', _descriptor2, this);
-
-      _initDefineProp(this, 'constrainWidth', _descriptor3, this);
-
-      _initDefineProp(this, 'gutter', _descriptor4, this);
-
-      _initDefineProp(this, 'hover', _descriptor5, this);
-
-      _initDefineProp(this, 'mdTitle', _descriptor6, this);
-
-      _initDefineProp(this, 'inDuration', _descriptor7, this);
-
-      _initDefineProp(this, 'outDuration', _descriptor8, this);
-
-      this.element = element;
-      this.controlId = 'md-dropdown-' + MdDropdown.id++;
-    }
-
-    MdDropdownElement.prototype.attached = function attached() {
-      $(this.element).dropdown({
-        alignment: this.alignment,
-        belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
-        constrain_width: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
-        gutter: parseInt(this.gutter, 10),
-        hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
-        inDuration: parseInt(this.inDuration, 10),
-        outDuration: parseInt(this.outDuration, 10)
-      });
-    };
-
-    return MdDropdownElement;
-  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'left';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec8], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec9], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 300;
-    }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec10], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 225;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/dropdown/dropdown',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdDropdown = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _class3, _temp;
-
-  var MdDropdown = exports.MdDropdown = (_dec = (0, _aureliaTemplating.customAttribute)('md-dropdown'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec8 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec9 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec10 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec11 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec12 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdDropdown(element) {
-      _classCallCheck(this, MdDropdown);
-
-      _initDefineProp(this, 'activates', _descriptor, this);
-
-      _initDefineProp(this, 'ref', _descriptor2, this);
-
-      _initDefineProp(this, 'alignment', _descriptor3, this);
-
-      _initDefineProp(this, 'belowOrigin', _descriptor4, this);
-
-      _initDefineProp(this, 'constrainWidth', _descriptor5, this);
-
-      _initDefineProp(this, 'gutter', _descriptor6, this);
-
-      _initDefineProp(this, 'hover', _descriptor7, this);
-
-      _initDefineProp(this, 'mdTitle', _descriptor8, this);
-
-      _initDefineProp(this, 'inDuration', _descriptor9, this);
-
-      _initDefineProp(this, 'outDuration', _descriptor10, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdDropdown.prototype.attached = function attached() {
-      this.handleActivateElement();
-      this.contentAttributeManager = new _attributeManager.AttributeManager(document.getElementById(this.activates));
-
-      this.attributeManager.addClasses('dropdown-button');
-      this.contentAttributeManager.addClasses('dropdown-content');
-
-
-      $(this.element).dropdown({
-        alignment: this.alignment,
-        belowOrigin: (0, _attributes.getBooleanFromAttributeValue)(this.belowOrigin),
-        constrain_width: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
-        constrainWidth: (0, _attributes.getBooleanFromAttributeValue)(this.constrainWidth),
-        gutter: parseInt(this.gutter, 10),
-        hover: (0, _attributes.getBooleanFromAttributeValue)(this.hover),
-        inDuration: parseInt(this.inDuration, 10),
-        outDuration: parseInt(this.outDuration, 10)
-      });
-    };
-
-    MdDropdown.prototype.detached = function detached() {
-      this.attributeManager.removeAttributes('data-activates');
-      this.attributeManager.removeClasses('dropdown-button');
-      this.contentAttributeManager.removeClasses('dropdown-content');
-    };
-
-    MdDropdown.prototype.handleActivateElement = function handleActivateElement() {
-      if (this.ref) {
-        var id = this.ref.getAttribute('id');
-        if (!id) {
-          id = 'md-dropdown-' + MdDropdown.elementId++;
-          this.ref.setAttribute('id', id);
-          this.activates = id;
-        }
-        this.id = MdDropdown.elementId++;
-      }
-      this.attributeManager.addAttributes({ 'data-activates': this.activates });
-    };
-
-    return MdDropdown;
-  }(), _class3.elementId = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'activates', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'alignment', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'left';
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'belowOrigin', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'constrainWidth', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'gutter', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'hover', [_dec9], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdTitle', [_dec10], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'inDuration', [_dec11], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 300;
-    }
-  }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'outDuration', [_dec12], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 225;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/dropdown/dropdown-fix',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.applyMaterializeDropdownFix = applyMaterializeDropdownFix;
-  function applyMaterializeDropdownFix() {
-    $.fn.dropdown = function (options) {
-      var defaults = {
-        inDuration: 300,
-        outDuration: 225,
-        constrain_width: true,
-        hover: false,
-        gutter: 0,
-        belowOrigin: false,
-        alignment: 'left',
-        stopPropagation: false
-      };
-
-      if (options === 'open') {
-        this.each(function () {
-          $(this).trigger('open');
-        });
-        return false;
-      }
-
-      if (options === 'close') {
-        this.each(function () {
-          $(this).trigger('close');
-        });
-        return false;
-      }
-
-      this.each(function () {
-        var origin = $(this);
-        var currentOptions = $.extend({}, defaults, options);
-        var isFocused = false;
-
-        var activates = $('#' + origin.attr('data-activates'));
-
-        function updateOptions() {
-          if (origin.data('induration') !== undefined) {
-            currentOptions.inDuration = origin.data('induration');
-          }
-          if (origin.data('outduration') !== undefined) {
-            currentOptions.outDuration = origin.data('outduration');
-          }
-          if (origin.data('constrainwidth') !== undefined) {
-            currentOptions.constrain_width = origin.data('constrainwidth');
-          }
-          if (origin.data('hover') !== undefined) {
-            currentOptions.hover = origin.data('hover');
-          }
-          if (origin.data('gutter') !== undefined) {
-            currentOptions.gutter = origin.data('gutter');
-          }
-          if (origin.data('beloworigin') !== undefined) {
-            currentOptions.belowOrigin = origin.data('beloworigin');
-          }
-          if (origin.data('alignment') !== undefined) {
-            currentOptions.alignment = origin.data('alignment');
-          }
-          if (origin.data('stoppropagation') !== undefined) {
-            currentOptions.stopPropagation = origin.data('stoppropagation');
-          }
-        }
-
-        updateOptions();
-
-        origin.after(activates);
-
-        function placeDropdown(eventType) {
-          if (eventType === 'focus') {
-            isFocused = true;
-          }
-
-          updateOptions();
-
-          activates.addClass('active');
-          origin.addClass('active');
-
-          if (currentOptions.constrain_width === true) {
-            activates.css('width', origin.outerWidth());
-          } else {
-            activates.css('white-space', 'nowrap');
-          }
-
-          var windowHeight = window.innerHeight;
-          var originHeight = origin.innerHeight();
-          var offsetLeft = origin.offset().left;
-          var offsetTop = origin.offset().top - $(window).scrollTop();
-          var currAlignment = currentOptions.alignment;
-          var gutterSpacing = 0;
-          var leftPosition = 0;
-
-          var verticalOffset = 0;
-          if (currentOptions.belowOrigin === true) {
-            verticalOffset = originHeight;
-          }
-
-          var scrollYOffset = 0;
-          var scrollXOffset = 0;
-          var wrapper = origin.parent();
-          if (!wrapper.is('body')) {
-            if (wrapper[0].scrollHeight > wrapper[0].clientHeight) {
-              scrollYOffset = wrapper[0].scrollTop;
-            }
-            if (wrapper[0].scrollWidth > wrapper[0].clientWidth) {
-              scrollXOffset = wrapper[0].scrollLeft;
-            }
-          }
-
-          if (offsetLeft + activates.innerWidth() > $(window).width()) {
-            currAlignment = 'right';
-          } else if (offsetLeft - activates.innerWidth() + origin.innerWidth() < 0) {
-            currAlignment = 'left';
-          }
-
-          if (offsetTop + activates.innerHeight() > windowHeight) {
-            if (offsetTop + originHeight - activates.innerHeight() < 0) {
-              var adjustedHeight = windowHeight - offsetTop - verticalOffset;
-              activates.css('max-height', adjustedHeight);
-            } else {
-              if (!verticalOffset) {
-                verticalOffset += originHeight;
-              }
-              verticalOffset -= activates.innerHeight();
-            }
-          }
-
-          if (currAlignment === 'left') {
-            gutterSpacing = currentOptions.gutter;
-            leftPosition = origin.position().left + gutterSpacing;
-          } else if (currAlignment === 'right') {
-            var offsetRight = origin.position().left + origin.outerWidth() - activates.outerWidth();
-            gutterSpacing = -currentOptions.gutter;
-            leftPosition = offsetRight + gutterSpacing;
-          }
-
-          activates.css({
-            position: 'absolute',
-            top: origin.position().top + verticalOffset + scrollYOffset,
-            left: leftPosition + scrollXOffset
-          });
-
-          activates.stop(true, true).css('opacity', 0).slideDown({
-            queue: false,
-            duration: currentOptions.inDuration,
-            easing: 'easeOutCubic',
-            complete: function complete() {
-              $(this).css('height', '');
-            }
-          }).animate({ opacity: 1 }, { queue: false, duration: currentOptions.inDuration, easing: 'easeOutSine' });
-        }
-
-        function hideDropdown() {
-          isFocused = false;
-          activates.fadeOut(currentOptions.outDuration);
-          activates.removeClass('active');
-          origin.removeClass('active');
-          setTimeout(function () {
-            activates.css('max-height', '');
-          }, currentOptions.outDuration);
-        }
-
-        if (currentOptions.hover) {
-          (function () {
-            var open = false;
-            origin.unbind('click.' + origin.attr('id'));
-
-            origin.on('mouseenter', function (e) {
-              if (open === false) {
-                placeDropdown();
-                open = true;
-              }
-            });
-            origin.on('mouseleave', function (e) {
-              var toEl = e.toElement || e.relatedTarget;
-              if (!$(toEl).closest('.dropdown-content').is(activates)) {
-                activates.stop(true, true);
-                hideDropdown();
-                open = false;
-              }
-            });
-
-            activates.on('mouseleave', function (e) {
-              var toEl = e.toElement || e.relatedTarget;
-              if (!$(toEl).closest('.dropdown-button').is(origin)) {
-                activates.stop(true, true);
-                hideDropdown();
-                open = false;
-              }
-            });
-          })();
-        } else {
-          origin.unbind('click.' + origin.attr('id'));
-          origin.bind('click.' + origin.attr('id'), function (e) {
-            if (!isFocused) {
-              if (origin[0] === e.currentTarget && !origin.hasClass('active') && $(e.target).closest('.dropdown-content').length === 0) {
-                e.preventDefault();
-                if (currentOptions.stopPropagation) {
-                  e.stopPropagation();
-                }
-                placeDropdown('click');
-              } else if (origin.hasClass('active')) {
-                hideDropdown();
-                $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-              }
-
-              if (activates.hasClass('active')) {
-                $(document).bind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'), function (e2) {
-                  if (!activates.is(e2.target) && !origin.is(e2.target) && !origin.find(e2.target).length) {
-                    hideDropdown();
-                    $(document).unbind('click.' + activates.attr('id') + ' touchstart.' + activates.attr('id'));
-                  }
-                });
-              }
-            }
-          });
-        }
-        origin.on('open', function (e, eventType) {
-          placeDropdown(eventType);
-        });
-        origin.on('close', hideDropdown);
-      });
-    };
-
-    $(document).ready(function () {
-      $('.dropdown-button').dropdown();
-    });
-  }
-});
-define('aurelia-materialize-bridge/fab/fab',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdFab = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-  var MdFab = exports.MdFab = (_dec = (0, _aureliaTemplating.customElement)('md-fab'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdFab(element) {
-      _classCallCheck(this, MdFab);
-
-      _initDefineProp(this, 'mdFixed', _descriptor, this);
-
-      _initDefineProp(this, 'mdLarge', _descriptor2, this);
-
-      this.element = element;
-    }
-
-    MdFab.prototype.attached = function attached() {
-      this.mdFixed = (0, _attributes.getBooleanFromAttributeValue)(this.mdFixed);
-      this.mdLarge = (0, _attributes.getBooleanFromAttributeValue)(this.mdLarge);
-    };
-
-    return MdFab;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdLarge', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/file/file',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _events, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdFileInput = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdFileInput = exports.MdFileInput = (_dec = (0, _aureliaTemplating.customElement)('md-file'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdFileInput(element) {
-      _classCallCheck(this, MdFileInput);
-
-      _initDefineProp(this, 'mdCaption', _descriptor, this);
-
-      _initDefineProp(this, 'mdMultiple', _descriptor2, this);
-
-      _initDefineProp(this, 'mdLabelValue', _descriptor3, this);
-
-      _initDefineProp(this, 'disabled', _descriptor4, this);
-
-      this.files = [];
-      this._suspendUpdate = false;
-
-      this.element = element;
-      this.handleChangeFromNativeInput = this.handleChangeFromNativeInput.bind(this);
-    }
-
-    MdFileInput.prototype.attached = function attached() {
-      this.mdMultiple = (0, _attributes.getBooleanFromAttributeValue)(this.mdMultiple);
-      $(this.filePath).on('change', this.handleChangeFromNativeInput);
-    };
-
-    MdFileInput.prototype.detached = function detached() {
-      $(this.element).off('change', this.handleChangeFromNativeInput);
-    };
-
-    MdFileInput.prototype.handleChangeFromNativeInput = function handleChangeFromNativeInput() {
-      if (!this._suspendUpdate) {
-        this._suspendUpdate = true;
-        (0, _events.fireEvent)(this.filePath, 'change', { files: this.files });
-        (0, _events.fireMaterializeEvent)(this.filePath, 'change', { files: this.files });
-        this._suspendUpdate = false;
-      }
-    };
-
-    return MdFileInput;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdCaption', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'File';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMultiple', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelValue', [_dec5], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/footer/footer',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdFooter = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdFooter = exports.MdFooter = (_dec = (0, _aureliaTemplating.customAttribute)('md-footer'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdFooter(element) {
-      _classCallCheck(this, MdFooter);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdFooter.prototype.bind = function bind() {
-      this.attributeManager.addClasses('page-footer');
-    };
-
-    MdFooter.prototype.unbind = function unbind() {
-      this.attributeManager.removeClasses('page-footer');
-    };
-
-    return MdFooter;
-  }()) || _class) || _class);
-});
-define('aurelia-materialize-bridge/input/input-prefix',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdPrefix = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdPrefix = exports.MdPrefix = (_dec = (0, _aureliaTemplating.customAttribute)('md-prefix'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdPrefix(element) {
-      _classCallCheck(this, MdPrefix);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdPrefix.prototype.bind = function bind() {
-      this.attributeManager.addClasses('prefix');
-    };
-
-    MdPrefix.prototype.unbind = function unbind() {
-      this.attributeManager.removeClasses('prefix');
-    };
-
-    return MdPrefix;
-  }()) || _class) || _class);
-});
-define('aurelia-materialize-bridge/input/input-update-service',['exports', 'aurelia-task-queue', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTaskQueue, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdInputUpdateService = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _class;
-
-  var MdInputUpdateService = exports.MdInputUpdateService = (_dec = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue), _dec(_class = function () {
-    function MdInputUpdateService(taskQueue) {
-      _classCallCheck(this, MdInputUpdateService);
-
-      this._updateCalled = false;
-
-      this.log = (0, _aureliaLogging.getLogger)('MdInputUpdateService');
-      this.taskQueue = taskQueue;
-    }
-
-    MdInputUpdateService.prototype.materializeUpdate = function materializeUpdate() {
-      this.log.debug('executing Materialize.updateTextFields');
-      Materialize.updateTextFields();
-      this._updateCalled = false;
-    };
-
-    MdInputUpdateService.prototype.update = function update() {
-      this.log.debug('update called');
-      if (!this._updateCalled) {
-        this._updateCalled = true;
-        this.taskQueue.queueTask(this.materializeUpdate.bind(this));
-      }
-    };
-
-    return MdInputUpdateService;
-  }()) || _class);
-});
-define('aurelia-materialize-bridge/input/input',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/attributes', './input-update-service', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _attributes, _inputUpdateService, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdInput = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _dec10, _dec11, _dec12, _dec13, _dec14, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _class3, _temp;
-
-  var MdInput = exports.MdInput = (_dec = (0, _aureliaTemplating.customElement)('md-input'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue, _inputUpdateService.MdInputUpdateService), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec8 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec9 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec10 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec11 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec12 = (0, _aureliaTemplating.bindable)(), _dec13 = (0, _aureliaTemplating.bindable)(), _dec14 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdInput(element, taskQueue, updateService) {
-      _classCallCheck(this, MdInput);
-
-      _initDefineProp(this, 'mdLabel', _descriptor, this);
-
-      _initDefineProp(this, 'mdBlurOnEnter', _descriptor2, this);
-
-      _initDefineProp(this, 'mdDisabled', _descriptor3, this);
-
-      _initDefineProp(this, 'mdPlaceholder', _descriptor4, this);
-
-      _initDefineProp(this, 'mdTextArea', _descriptor5, this);
-
-      _initDefineProp(this, 'mdType', _descriptor6, this);
-
-      _initDefineProp(this, 'mdStep', _descriptor7, this);
-
-      _initDefineProp(this, 'mdValidate', _descriptor8, this);
-
-      _initDefineProp(this, 'mdShowErrortext', _descriptor9, this);
-
-      _initDefineProp(this, 'mdValidateError', _descriptor10, this);
-
-      _initDefineProp(this, 'mdValidateSuccess', _descriptor11, this);
-
-      _initDefineProp(this, 'mdValue', _descriptor12, this);
-
-      this._suspendUpdate = false;
-
-      this.element = element;
-      this.taskQueue = taskQueue;
-      this.controlId = 'md-input-' + MdInput.id++;
-      this.updateService = updateService;
-      this.blurOnEnter = this.blurOnEnter.bind(this);
-    }
-
-    MdInput.prototype.bind = function bind() {
-      this.mdTextArea = (0, _attributes.getBooleanFromAttributeValue)(this.mdTextArea);
-      this.mdShowErrortext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowErrortext);
-      this.mdBlurOnEnter = (0, _attributes.getBooleanFromAttributeValue)(this.mdBlurOnEnter);
-    };
-
-    MdInput.prototype.attached = function attached() {
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdValidate)) {
-        this.input.classList.add('validate');
-      }
-      if (this.mdValidateError) {
-        this.label.setAttribute('data-error', this.mdValidateError);
-      }
-      if (this.mdValidateSuccess) {
-        this.label.setAttribute('data-success', this.mdValidateSuccess);
-      }
-      if (this.mdPlaceholder) {
-        this.input.setAttribute('placeholder', this.mdPlaceholder);
-      }
-      if (this.mdShowErrortext) {
-        this.input.setAttribute('data-show-errortext', this.mdShowErrortext);
-      }
-      this.updateService.update();
-
-      if (this.mdType === 'time') {
-        $(this.input).siblings('label').addClass('active');
-      }
-      this.attachEventHandlers();
-    };
-
-    MdInput.prototype.detached = function detached() {
-      this.detachEventHandlers();
-    };
-
-    MdInput.prototype.blur = function blur() {
-      (0, _events.fireEvent)(this.element, 'blur');
-    };
-
-    MdInput.prototype.focus = function focus() {
-      (0, _events.fireEvent)(this.element, 'focus');
-    };
-
-    MdInput.prototype.mdValueChanged = function mdValueChanged() {
-      if (!$(this.input).is(':focus')) {
-        this.updateService.update();
-      }
-      if (this.mdTextArea) {
-        $(this.input).trigger('autoresize');
-      }
-    };
-
-    MdInput.prototype.attachEventHandlers = function attachEventHandlers() {
-      if (this.mdBlurOnEnter) {
-        this.element.addEventListener('keyup', this.blurOnEnter);
-      }
-    };
-
-    MdInput.prototype.detachEventHandlers = function detachEventHandlers() {
-      if (this.mdBlurOnEnter) {
-        this.element.removeEventListener('keyup', this.blurOnEnter);
-      }
-    };
-
-    MdInput.prototype.blurOnEnter = function blurOnEnter(e) {
-      if (e.keyCode && e.keyCode === 13) {
-        this.input.blur();
-      }
-    };
-
-    return MdInput;
-  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdLabel', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdBlurOnEnter', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdPlaceholder', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTextArea', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'text';
-    }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec9], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'any';
-    }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidate', [_dec10], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor9 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowErrortext', [_dec11], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor10 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateError', [_dec12], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor11 = _applyDecoratedDescriptor(_class2.prototype, 'mdValidateSuccess', [_dec13], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor12 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec14], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/modal/modal',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdModal = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdModal = exports.MdModal = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdModal(element) {
-      _classCallCheck(this, MdModal);
-
-      _initDefineProp(this, 'dismissible', _descriptor, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-      this.onComplete = this.onComplete.bind(this);
-      this.onReady = this.onReady.bind(this);
-    }
-
-    MdModal.prototype.attached = function attached() {
-      this.attributeManager.addClasses('modal');
-      $(this.element).modal({
-        complete: this.onComplete,
-        dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible),
-        ready: this.onReady
-      });
-    };
-
-    MdModal.prototype.detached = function detached() {
-      this.attributeManager.removeClasses('modal');
-    };
-
-    MdModal.prototype.onComplete = function onComplete() {
-      (0, _events.fireMaterializeEvent)(this.element, 'modal-complete');
-    };
-
-    MdModal.prototype.onReady = function onReady(modal, trigger) {
-      (0, _events.fireMaterializeEvent)(this.element, 'modal-ready', { modal: modal, trigger: trigger });
-    };
-
-    MdModal.prototype.open = function open() {
-      $(this.element).modal('open');
-    };
-
-    MdModal.prototype.close = function close() {
-      $(this.element).modal('close');
-    };
-
-    return MdModal;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dismissible', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/modal/modal-trigger',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', '../common/events'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdModalTrigger = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdModalTrigger = exports.MdModalTrigger = (_dec = (0, _aureliaTemplating.customAttribute)('md-modal-trigger'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdModalTrigger(element) {
-      _classCallCheck(this, MdModalTrigger);
-
-      _initDefineProp(this, 'dismissible', _descriptor, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-      this.onComplete = this.onComplete.bind(this);
-    }
-
-    MdModalTrigger.prototype.attached = function attached() {
-      this.attributeManager.addClasses('modal-trigger');
-      $(this.element).leanModal({
-        complete: this.onComplete,
-        dismissible: (0, _attributes.getBooleanFromAttributeValue)(this.dismissible)
-      });
-    };
-
-    MdModalTrigger.prototype.detached = function detached() {
-      this.attributeManager.removeClasses('modal-trigger');
-    };
-
-    MdModalTrigger.prototype.onComplete = function onComplete() {
-      (0, _events.fireMaterializeEvent)(this.element, 'modal-complete');
-    };
-
-    return MdModalTrigger;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'dismissible', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/navbar/navbar',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _attributeManager) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdNavbar = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-  var MdNavbar = exports.MdNavbar = (_dec = (0, _aureliaTemplating.customElement)('md-navbar'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdNavbar(element) {
-      _classCallCheck(this, MdNavbar);
-
-      _initDefineProp(this, 'mdFixed', _descriptor, this);
-
-      _initDefineProp(this, 'mdAutoHeight', _descriptor2, this);
-
-      this.element = element;
-    }
-
-    MdNavbar.prototype.attached = function attached() {
-      this.fixedAttributeManager = new _attributeManager.AttributeManager(this.fixedAnchor);
-      this.navAttributeManager = new _attributeManager.AttributeManager(this.nav);
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
-        this.fixedAttributeManager.addClasses('navbar-fixed');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
-        this.navAttributeManager.addClasses('md-auto-height');
-      }
-    };
-
-    MdNavbar.prototype.detached = function detached() {
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
-        this.fixedAttributeManager.removeClasses('navbar-fixed');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdAutoHeight)) {
-        this.navAttributeManager.addClasses('md-auto-height');
-      }
-    };
-
-    return MdNavbar;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdAutoHeight', [_dec4], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/pagination/pagination',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/events', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _events, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdPagination = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _dec9, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-
-  var MdPagination = exports.MdPagination = (_dec = (0, _aureliaTemplating.customElement)('md-pagination'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneWay
-  }), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec9 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdPagination(element) {
-      _classCallCheck(this, MdPagination);
-
-      _initDefineProp(this, 'mdActivePage', _descriptor, this);
-
-      _initDefineProp(this, 'mdPages', _descriptor2, this);
-
-      _initDefineProp(this, 'mdVisiblePageLinks', _descriptor3, this);
-
-      _initDefineProp(this, 'mdPageLinks', _descriptor4, this);
-
-      _initDefineProp(this, 'mdShowFirstLast', _descriptor5, this);
-
-      _initDefineProp(this, 'mdShowPrevNext', _descriptor6, this);
-
-      _initDefineProp(this, 'mdShowPageLinks', _descriptor7, this);
-
-      this.numberOfLinks = 15;
-      this.pages = 5;
-
-      this.element = element;
-    }
-
-    MdPagination.prototype.bind = function bind() {
-      this.pages = parseInt(this.mdPages, 10);
-
-      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
-      this.mdShowFirstLast = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowFirstLast);
-      this.mdShowPrevNext = (0, _attributes.getBooleanFromAttributeValue)(this.mdShowPrevNext);
-      this.mdPageLinks = this.generatePageLinks();
-    };
-
-    MdPagination.prototype.setActivePage = function setActivePage(page) {
-      this.mdActivePage = parseInt(page, 10);
-      this.mdPageLinks = this.generatePageLinks();
-      (0, _events.fireMaterializeEvent)(this.element, 'page-changed', this.mdActivePage);
-    };
-
-    MdPagination.prototype.setFirstPage = function setFirstPage() {
-      if (this.mdActivePage > 1) {
-        this.setActivePage(1);
-      }
-    };
-
-    MdPagination.prototype.setLastPage = function setLastPage() {
-      if (this.mdActivePage < this.pages) {
-        this.setActivePage(this.pages);
-      }
-    };
-
-    MdPagination.prototype.setPreviousPage = function setPreviousPage() {
-      if (this.mdActivePage > 1) {
-        this.setActivePage(this.mdActivePage - 1);
-      }
-    };
-
-    MdPagination.prototype.setNextPage = function setNextPage() {
-      if (this.mdActivePage < this.pages) {
-        this.setActivePage(this.mdActivePage + 1);
-      }
-    };
-
-    MdPagination.prototype.mdPagesChanged = function mdPagesChanged() {
-      this.pages = parseInt(this.mdPages, 10);
-      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
-      this.setActivePage(1);
-    };
-
-    MdPagination.prototype.mdVisiblePageLinksChanged = function mdVisiblePageLinksChanged() {
-      this.numberOfLinks = Math.min(parseInt(this.mdVisiblePageLinks, 10), this.pages);
-      this.mdPageLinks = this.generatePageLinks();
-    };
-
-    MdPagination.prototype.generatePageLinks = function generatePageLinks() {
-      var midPoint = parseInt(this.numberOfLinks / 2, 10);
-      var start = Math.max(this.mdActivePage - midPoint, 0);
-
-      if (start + midPoint * 2 > this.pages) start = this.pages - midPoint * 2;
-      var end = Math.min(start + this.numberOfLinks, this.pages);
-
-      var list = [];
-      for (var i = start; i < end; i++) {
-        list.push(i);
-      }
-
-      return list;
-    };
-
-    return MdPagination;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdActivePage', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 1;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPages', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 5;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdVisiblePageLinks', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 15;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdPageLinks', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowFirstLast', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPrevNext', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class2.prototype, 'mdShowPageLinks', [_dec9], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/parallax/parallax',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdParallax = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdParallax = exports.MdParallax = (_dec = (0, _aureliaTemplating.customAttribute)('md-parallax'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdParallax(element) {
-      _classCallCheck(this, MdParallax);
-
-      this.element = element;
-    }
-
-    MdParallax.prototype.attached = function attached() {
-      $(this.element).parallax();
-    };
-
-    MdParallax.prototype.detached = function detached() {};
-
-    return MdParallax;
-  }()) || _class) || _class);
-});
-define('aurelia-materialize-bridge/progress/progress',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdProgress = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
-
-  var MdProgress = exports.MdProgress = (_dec = (0, _aureliaTemplating.customElement)('md-progress'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec7 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdProgress(element) {
-      _classCallCheck(this, MdProgress);
-
-      _initDefineProp(this, 'mdColor', _descriptor, this);
-
-      _initDefineProp(this, 'mdPixelSize', _descriptor2, this);
-
-      _initDefineProp(this, 'mdSize', _descriptor3, this);
-
-      _initDefineProp(this, 'mdType', _descriptor4, this);
-
-      _initDefineProp(this, 'mdValue', _descriptor5, this);
-
-      this.element = element;
-    }
-
-    MdProgress.prototype.bind = function bind() {};
-
-    MdProgress.prototype.attached = function attached() {
-      this.mdPixelSizeChanged(this.mdPixelSize);
-    };
-
-    MdProgress.prototype.mdSizeChanged = function mdSizeChanged(newValue) {
-      this.mdPixelSize = null;
-    };
-
-    MdProgress.prototype.mdPixelSizeChanged = function mdPixelSizeChanged(newValue) {
-      if (this.wrapper) {
-        newValue = newValue === null || newValue === '' || isNaN(newValue) ? '' : newValue + 'px';
-        this.wrapper.style.height = newValue;
-        this.wrapper.style.width = newValue;
-      }
-    };
-
-    return MdProgress;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdColor', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdPixelSize', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdSize', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'big';
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdType', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'linear';
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/pushpin/pushpin',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdPushpin = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-  var MdPushpin = exports.MdPushpin = (_dec = (0, _aureliaTemplating.customAttribute)('md-pushpin'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdPushpin(element) {
-      _classCallCheck(this, MdPushpin);
-
-      _initDefineProp(this, 'bottom', _descriptor, this);
-
-      _initDefineProp(this, 'offset', _descriptor2, this);
-
-      _initDefineProp(this, 'top', _descriptor3, this);
-
-      this.element = element;
-    }
-
-    MdPushpin.prototype.attached = function attached() {
-      $(this.element).pushpin({
-        bottom: this.bottom === Infinity ? Infinity : parseInt(this.bottom, 10),
-        offset: parseInt(this.offset, 10),
-        top: parseInt(this.top, 10)
-      });
-    };
-
-    MdPushpin.prototype.detached = function detached() {};
-
-    return MdPushpin;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'bottom', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return Infinity;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'offset', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'top', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/radio/radio',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdRadio = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _class3, _temp;
-
-  var MdRadio = exports.MdRadio = (_dec = (0, _aureliaTemplating.customElement)('md-radio'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec8 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdRadio(element) {
-      _classCallCheck(this, MdRadio);
-
-      _initDefineProp(this, 'mdChecked', _descriptor, this);
-
-      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
-
-      _initDefineProp(this, 'mdGap', _descriptor3, this);
-
-      _initDefineProp(this, 'mdModel', _descriptor4, this);
-
-      _initDefineProp(this, 'mdName', _descriptor5, this);
-
-      _initDefineProp(this, 'mdValue', _descriptor6, this);
-
-      this.element = element;
-      this.controlId = 'md-radio-' + MdRadio.id++;
-    }
-
-    MdRadio.prototype.attached = function attached() {
-      this.attributeManager = new _attributeManager.AttributeManager(this.radio);
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdGap)) {
-        this.attributeManager.addClasses('with-gap');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
-        this.radio.disabled = true;
-      }
-    };
-
-    MdRadio.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['with-gap', 'disabled']);
-    };
-
-    MdRadio.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
-      if (this.radio) {
-        this.radio.disabled = !!newValue;
-      }
-    };
-
-    return MdRadio;
-  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdGap', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdModel', [_dec6], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdName', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/range/range',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdRange = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdRange = exports.MdRange = (_dec = (0, _aureliaTemplating.customElement)('md-range'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec6 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec(_class = _dec2(_class = (_class2 = function MdRange(element) {
-    _classCallCheck(this, MdRange);
-
-    _initDefineProp(this, 'mdMin', _descriptor, this);
-
-    _initDefineProp(this, 'mdMax', _descriptor2, this);
-
-    _initDefineProp(this, 'mdStep', _descriptor3, this);
-
-    _initDefineProp(this, 'mdValue', _descriptor4, this);
-
-    this.element = element;
-    this.log = (0, _aureliaLogging.getLogger)('md-range');
-  }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdMin', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdMax', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 100;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdStep', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 1;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdValue', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/scrollfire/scrollfire-patch',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _class, _temp;
-
-  var ScrollfirePatch = exports.ScrollfirePatch = (_temp = _class = function () {
-    function ScrollfirePatch() {
-      _classCallCheck(this, ScrollfirePatch);
-    }
-
-    ScrollfirePatch.prototype.patch = function patch() {
-      if (!ScrollfirePatch.patched) {
-        ScrollfirePatch.patched = true;
-
-        window.Materialize.scrollFire = function (options) {
-          var didScroll = false;
-          window.addEventListener('scroll', function () {
-            didScroll = true;
-          });
-
-          setInterval(function () {
-            if (didScroll) {
-              didScroll = false;
-
-              var windowScroll = window.pageYOffset + window.innerHeight;
-              for (var i = 0; i < options.length; i++) {
-                var value = options[i];
-                var selector = value.selector;
-                var offset = value.offset;
-                var callback = value.callback;
-
-                var currentElement = document.querySelector(selector);
-                if (currentElement !== null) {
-                  var elementOffset = currentElement.getBoundingClientRect().top + window.pageYOffset;
-
-                  if (windowScroll > elementOffset + offset) {
-                    if (value.done !== true) {
-                      if (typeof callback === 'string') {
-                        var callbackFunc = new Function(callback);
-                        callbackFunc();
-                      } else if (typeof callback === 'function') {
-                        callback();
-                      }
-                      value.done = true;
-                    }
-                  }
-                }
-              }
-            }
-          }, 100);
-        };
-      }
-    };
-
-    return ScrollfirePatch;
-  }(), _class.patched = false, _temp);
-});
-define('aurelia-materialize-bridge/scrollfire/scrollfire-target',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdScrollfireTarget = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2;
-
-  var MdScrollfireTarget = exports.MdScrollfireTarget = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire-target'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function MdScrollfireTarget(element) {
-    _classCallCheck(this, MdScrollfireTarget);
-
-    _initDefineProp(this, 'callback', _descriptor, this);
-
-    _initDefineProp(this, 'offset', _descriptor2, this);
-
-    this.element = element;
-  }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'callback', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'offset', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 0;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/scrollfire/scrollfire',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdScrollfire = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _dec2, _class;
-
-  var MdScrollfire = exports.MdScrollfire = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollfire'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec(_class = _dec2(_class = function () {
-    function MdScrollfire(element) {
-      _classCallCheck(this, MdScrollfire);
-
-      this.targetId = 0;
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-scrollfire');
-    }
-
-    MdScrollfire.prototype.attached = function attached() {
-      var _this = this;
-
-      var targets = $('[md-scrollfire-target]', this.element);
-      if (targets.length > 0) {
-        (function () {
-          _this.log.debug('targets', targets);
-          var self = _this;
-          var options = [];
-          targets.each(function (i, el) {
-            var target = $(el);
-            if (!target.attr('id')) {
-              target.attr('id', 'md-scrollfire-target-' + self.targetId++);
-            }
-            options.push({
-              selector: '#' + target.attr('id'),
-              callback: target.get(0).au['md-scrollfire-target'].viewModel.callback,
-              offset: parseInt(target.get(0).au['md-scrollfire-target'].viewModel.offset, 10)
-            });
-          });
-          if (options.length > 0) {
-            _this.log.debug('configuring scrollFire with these options:', options);
-            Materialize.scrollFire(options);
-          }
-        })();
-      }
-    };
-
-    return MdScrollfire;
-  }()) || _class) || _class);
-});
-define('aurelia-materialize-bridge/scrollspy/scrollspy',['exports', 'aurelia-templating', 'aurelia-dependency-injection'], function (exports, _aureliaTemplating, _aureliaDependencyInjection) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdScrollSpy = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdScrollSpy = exports.MdScrollSpy = (_dec = (0, _aureliaTemplating.customAttribute)('md-scrollspy'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdScrollSpy(element) {
-      _classCallCheck(this, MdScrollSpy);
-
-      _initDefineProp(this, 'target', _descriptor, this);
-
-      this.element = element;
-    }
-
-    MdScrollSpy.prototype.attached = function attached() {
-      $(this.target, this.element).scrollSpy();
-    };
-
-    MdScrollSpy.prototype.detached = function detached() {};
-
-    return MdScrollSpy;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'target', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/select/select',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging', '../common/events', '../common/attributes', 'aurelia-pal'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _aureliaTaskQueue, _aureliaLogging, _events, _attributes, _aureliaPal) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSelect = undefined;
-
-  var LogManager = _interopRequireWildcard(_aureliaLogging);
-
-  function _interopRequireWildcard(obj) {
-    if (obj && obj.__esModule) {
-      return obj;
-    } else {
-      var newObj = {};
-
-      if (obj != null) {
-        for (var key in obj) {
-          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-        }
-      }
-
-      newObj.default = obj;
-      return newObj;
-    }
-  }
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-  var MdSelect = exports.MdSelect = (_dec = (0, _aureliaDependencyInjection.inject)(Element, LogManager, _aureliaBinding.BindingEngine, _aureliaTaskQueue.TaskQueue), _dec2 = (0, _aureliaTemplating.customAttribute)('md-select'), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdSelect(element, logManager, bindingEngine, taskQueue) {
-      _classCallCheck(this, MdSelect);
-
-      _initDefineProp(this, 'disabled', _descriptor, this);
-
-      _initDefineProp(this, 'label', _descriptor2, this);
-
-      _initDefineProp(this, 'showErrortext', _descriptor3, this);
-
-      this._suspendUpdate = false;
-      this.subscriptions = [];
-      this.input = null;
-      this.dropdownMutationObserver = null;
-      this._taskqueueRunning = false;
-
-      this.element = element;
-      this.taskQueue = taskQueue;
-      this.handleChangeFromViewModel = this.handleChangeFromViewModel.bind(this);
-      this.handleChangeFromNativeSelect = this.handleChangeFromNativeSelect.bind(this);
-      this.handleBlur = this.handleBlur.bind(this);
-      this.log = LogManager.getLogger('md-select');
-      this.bindingEngine = bindingEngine;
-    }
-
-    MdSelect.prototype.attached = function attached() {
-      var _this = this;
-
-      this.taskQueue.queueTask(function () {
-        _this.createMaterialSelect(false);
-
-        if (_this.label) {
-          var wrapper = $(_this.element).parent('.select-wrapper');
-          var div = $('<div class="input-field"></div>');
-          var va = _this.element.attributes.getNamedItem('validate');
-          if (va) {
-            div.attr(va.name, va.label);
-          }
-          wrapper.wrap(div);
-          $('<label>' + _this.label + '</label>').insertAfter(wrapper);
-        }
-      });
-      this.subscriptions.push(this.bindingEngine.propertyObserver(this.element, 'value').subscribe(this.handleChangeFromViewModel));
-
-
-      $(this.element).on('change', this.handleChangeFromNativeSelect);
-    };
-
-    MdSelect.prototype.detached = function detached() {
-      $(this.element).off('change', this.handleChangeFromNativeSelect);
-      this.observeVisibleDropdownContent(false);
-      this.dropdownMutationObserver = null;
-      $(this.element).material_select('destroy');
-      this.subscriptions.forEach(function (sub) {
-        return sub.dispose();
-      });
-    };
-
-    MdSelect.prototype.refresh = function refresh() {
-      var _this2 = this;
-
-      this.taskQueue.queueTask(function () {
-        _this2.createMaterialSelect(true);
-      });
-    };
-
-    MdSelect.prototype.disabledChanged = function disabledChanged(newValue) {
-      this.toggleControl(newValue);
-    };
-
-    MdSelect.prototype.showErrortextChanged = function showErrortextChanged() {
-      this.setErrorTextAttribute();
-    };
-
-    MdSelect.prototype.setErrorTextAttribute = function setErrorTextAttribute() {
-      var input = this.element.parentElement.querySelector('input.select-dropdown');
-      if (!input) return;
-      this.log.debug('showErrortextChanged: ' + this.showErrortext);
-      input.setAttribute('data-show-errortext', (0, _attributes.getBooleanFromAttributeValue)(this.showErrortext));
-    };
-
-    MdSelect.prototype.notifyBindingEngine = function notifyBindingEngine() {
-      this.log.debug('selectedOptions changed', arguments);
-    };
-
-    MdSelect.prototype.handleChangeFromNativeSelect = function handleChangeFromNativeSelect() {
-      if (!this._suspendUpdate) {
-        this.log.debug('handleChangeFromNativeSelect', this.element.value, $(this.element).val());
-        this._suspendUpdate = true;
-        (0, _events.fireEvent)(this.element, 'change');
-        this._suspendUpdate = false;
-      }
-    };
-
-    MdSelect.prototype.handleChangeFromViewModel = function handleChangeFromViewModel(newValue) {
-      this.log.debug('handleChangeFromViewModel', newValue, $(this.element).val());
-      if (!this._suspendUpdate) {
-        this.createMaterialSelect(false);
-      }
-    };
-
-    MdSelect.prototype.toggleControl = function toggleControl(disable) {
-      var $wrapper = $(this.element).parent('.select-wrapper');
-      if ($wrapper.length > 0) {
-        if (disable) {
-          $('.caret', $wrapper).addClass('disabled');
-          $('input.select-dropdown', $wrapper).attr('disabled', 'disabled');
-          $wrapper.attr('disabled', 'disabled');
-        } else {
-          $('.caret', $wrapper).removeClass('disabled');
-          $('input.select-dropdown', $wrapper).attr('disabled', null);
-          $wrapper.attr('disabled', null);
-          $('.select-dropdown', $wrapper).dropdown({ 'hover': false, 'closeOnClick': false });
-        }
-      }
-    };
-
-    MdSelect.prototype.createMaterialSelect = function createMaterialSelect(destroy) {
-      this.observeVisibleDropdownContent(false);
-      if (destroy) {
-        $(this.element).material_select('destroy');
-      }
-      $(this.element).material_select();
-      this.toggleControl(this.disabled);
-      this.observeVisibleDropdownContent(true);
-      this.setErrorTextAttribute();
-    };
-
-    MdSelect.prototype.observeVisibleDropdownContent = function observeVisibleDropdownContent(attach) {
-      var _this3 = this;
-
-      if (attach) {
-        if (!this.dropdownMutationObserver) {
-          this.dropdownMutationObserver = _aureliaPal.DOM.createMutationObserver(function (mutations) {
-            var isHidden = false;
-            for (var _iterator = mutations, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-              var _ref;
-
-              if (_isArray) {
-                if (_i >= _iterator.length) break;
-                _ref = _iterator[_i++];
-              } else {
-                _i = _iterator.next();
-                if (_i.done) break;
-                _ref = _i.value;
-              }
-
-              var mutation = _ref;
-
-              if (window.getComputedStyle(mutation.target).getPropertyValue('display') === 'none') {
-                isHidden = true;
-              }
-            }
-            if (isHidden) {
-              _this3.dropdownMutationObserver.takeRecords();
-              _this3.handleBlur();
-            }
-          });
-        }
-        this.dropdownMutationObserver.observe(this.element.parentElement.querySelector('.dropdown-content'), {
-          attributes: true,
-          attributeFilter: ['style']
-        });
-      } else {
-        if (this.dropdownMutationObserver) {
-          this.dropdownMutationObserver.disconnect();
-          this.dropdownMutationObserver.takeRecords();
-        }
-      }
-    };
-
-    MdSelect.prototype.handleBlur = function handleBlur() {
-      var _this4 = this;
-
-      if (this._taskqueueRunning) return;
-      this._taskqueueRunning = true;
-      this.taskQueue.queueTask(function () {
-        _this4.log.debug('fire blur event');
-        (0, _events.fireEvent)(_this4.element, 'blur');
-        _this4._taskqueueRunning = false;
-      });
-    };
-
-    return MdSelect;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'disabled', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'label', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'showErrortext', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/sidenav/sidenav-collapse',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSidenavCollapse = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdSidenavCollapse = exports.MdSidenavCollapse = (_dec = (0, _aureliaTemplating.customAttribute)('md-sidenav-collapse'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaBinding.ObserverLocator), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdSidenavCollapse(element, observerLocator) {
-      _classCallCheck(this, MdSidenavCollapse);
-
-      _initDefineProp(this, 'ref', _descriptor, this);
-
-      this.element = element;
-      this.observerLocator = observerLocator;
-      this.log = (0, _aureliaLogging.getLogger)('md-sidenav-collapse');
-    }
-
-    MdSidenavCollapse.prototype.attached = function attached() {
-      var _this = this;
-
-      this.ref.whenAttached.then(function () {
-
-        var closeOnClick = _this.ref.mdFixed && window.innerWidth > 992 ? false : (0, _attributes.getBooleanFromAttributeValue)(_this.ref.mdCloseOnClick);
-
-        _this.element.setAttribute('data-activates', _this.ref.controlId);
-        var sideNavConfig = {
-          edge: _this.ref.mdEdge || 'left',
-
-          closeOnClick: closeOnClick,
-          menuWidth: parseInt(_this.ref.mdWidth, 10)
-        };
-
-        $(_this.element).sideNav(sideNavConfig);
-      });
-    };
-
-    MdSidenavCollapse.prototype.detached = function detached() {};
-
-    MdSidenavCollapse.prototype.show = function show() {
-      $(this.element).sideNav('show');
-    };
-
-    MdSidenavCollapse.prototype.hide = function hide() {
-      $(this.element).sideNav('hide');
-    };
-
-    return MdSidenavCollapse;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/sidenav/sidenav',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributes', '../common/attributeManager', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributes, _attributeManager, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSidenav = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _class3, _temp;
-
-  var MdSidenav = exports.MdSidenav = (_dec = (0, _aureliaTemplating.customElement)('md-sidenav'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = (_temp = _class3 = function () {
-    function MdSidenav(element) {
-      var _this = this;
-
-      _classCallCheck(this, MdSidenav);
-
-      _initDefineProp(this, 'mdCloseOnClick', _descriptor, this);
-
-      _initDefineProp(this, 'mdEdge', _descriptor2, this);
-
-      _initDefineProp(this, 'mdFixed', _descriptor3, this);
-
-      _initDefineProp(this, 'mdWidth', _descriptor4, this);
-
-      this.element = element;
-      this.controlId = 'md-sidenav-' + MdSidenav.id++;
-      this.log = (0, _aureliaLogging.getLogger)('md-sidenav');
-      this.whenAttached = new Promise(function (resolve, reject) {
-        _this.attachedResolver = resolve;
-      });
-    }
-
-    MdSidenav.prototype.attached = function attached() {
-      this.attributeManager = new _attributeManager.AttributeManager(this.sidenav);
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFixed)) {
-        this.attributeManager.addClasses('fixed');
-        if (this.mdEdge === 'right') {
-          this.attributeManager.addClasses('right-aligned');
-        }
-      }
-
-      this.attachedResolver();
-    };
-
-    MdSidenav.prototype.detached = function detached() {
-      this.attributeManager.removeClasses(['fixed', 'right-aligned']);
-    };
-
-    MdSidenav.prototype.mdFixedChanged = function mdFixedChanged(newValue) {
-      if (this.attributeManager) {
-        if ((0, _attributes.getBooleanFromAttributeValue)(newValue)) {
-          this.attributeManager.addClasses('fixed');
-        } else {
-          this.attributeManager.removeClasses('fixed');
-        }
-      }
-    };
-
-    return MdSidenav;
-  }(), _class3.id = 0, _temp), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdCloseOnClick', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdEdge', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'left';
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdFixed', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdWidth', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 300;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/slider/slider',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSlider = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _dec8, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
-
-  var MdSlider = exports.MdSlider = (_dec = (0, _aureliaTemplating.customElement)('md-slider'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.inlineView)('\n  <template class="slider">\n  <require from="./slider.css"></require>\n  <ul class="slides">\n    <slot></slot>\n  </ul>\n  </template>\n'), _dec4 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec5 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec8 = (0, _aureliaTemplating.bindable)({ defaultBindingMode: _aureliaBinding.bindingMode.oneTime }), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-    function MdSlider(element) {
-      _classCallCheck(this, MdSlider);
-
-      _initDefineProp(this, 'mdFillContainer', _descriptor, this);
-
-      _initDefineProp(this, 'mdHeight', _descriptor2, this);
-
-      _initDefineProp(this, 'mdIndicators', _descriptor3, this);
-
-      _initDefineProp(this, 'mdInterval', _descriptor4, this);
-
-      _initDefineProp(this, 'mdTransition', _descriptor5, this);
-
-      this.element = element;
-      this.log = (0, _aureliaLogging.getLogger)('md-slider');
-    }
-
-    MdSlider.prototype.attached = function attached() {
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdFillContainer)) {
-        this.element.classList.add('fullscreen');
-      }
-      this.refresh();
-    };
-
-    MdSlider.prototype.pause = function pause() {
-      $(this.element).slider('pause');
-    };
-
-    MdSlider.prototype.start = function start() {
-      $(this.element).slider('start');
-    };
-
-    MdSlider.prototype.next = function next() {
-      $(this.element).slider('next');
-    };
-
-    MdSlider.prototype.prev = function prev() {
-      $(this.element).slider('prev');
-    };
-
-    MdSlider.prototype.refresh = function refresh() {
-      var options = {
-        height: parseInt(this.mdHeight, 10),
-        indicators: (0, _attributes.getBooleanFromAttributeValue)(this.mdIndicators),
-        interval: parseInt(this.mdInterval, 10),
-        transition: parseInt(this.mdTransition, 10)
-      };
-      this.log.debug('refreshing slider, params:', options);
-      $(this.element).slider(options);
-    };
-
-    MdSlider.prototype.mdIndicatorsChanged = function mdIndicatorsChanged() {
-      this.refresh();
-    };
-
-    return MdSlider;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdFillContainer', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdHeight', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 400;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdIndicators', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return true;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdInterval', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 6000;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'mdTransition', [_dec8], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 500;
-    }
-  })), _class2)) || _class) || _class) || _class);
-});
-define('aurelia-materialize-bridge/switch/switch',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributes', '../common/events'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributes, _events) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdSwitch = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdSwitch = exports.MdSwitch = (_dec = (0, _aureliaTemplating.customElement)('md-switch'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.twoWay
-  }), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdSwitch(element) {
-      _classCallCheck(this, MdSwitch);
-
-      _initDefineProp(this, 'mdChecked', _descriptor, this);
-
-      _initDefineProp(this, 'mdDisabled', _descriptor2, this);
-
-      _initDefineProp(this, 'mdLabelOff', _descriptor3, this);
-
-      _initDefineProp(this, 'mdLabelOn', _descriptor4, this);
-
-      this.element = element;
-      this.handleChange = this.handleChange.bind(this);
-    }
-
-    MdSwitch.prototype.attached = function attached() {
-      this.checkbox.checked = (0, _attributes.getBooleanFromAttributeValue)(this.mdChecked);
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.mdDisabled)) {
-        this.checkbox.disabled = true;
-      }
-      this.checkbox.addEventListener('change', this.handleChange);
-    };
-
-    MdSwitch.prototype.detached = function detached() {
-      this.checkbox.removeEventListener('change', this.handleChange);
-    };
-
-    MdSwitch.prototype.handleChange = function handleChange() {
-      this.mdChecked = this.checkbox.checked;
-      (0, _events.fireEvent)(this.element, 'blur');
-    };
-
-    MdSwitch.prototype.blur = function blur() {
-      (0, _events.fireEvent)(this.element, 'blur');
-    };
-
-    MdSwitch.prototype.mdCheckedChanged = function mdCheckedChanged(newValue) {
-      if (this.checkbox) {
-        this.checkbox.checked = !!newValue;
-      }
-    };
-
-    MdSwitch.prototype.mdDisabledChanged = function mdDisabledChanged(newValue) {
-      if (this.checkbox) {
-        this.checkbox.disabled = !!newValue;
-      }
-    };
-
-    return MdSwitch;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'mdChecked', [_dec3], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'mdDisabled', [_dec4], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelOff', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'Off';
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'mdLabelOn', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'On';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/tabs/tabs',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-task-queue', '../common/events', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaTaskQueue, _events, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdTabs = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _createClass = function () {
-    function defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-
-    return function (Constructor, protoProps, staticProps) {
-      if (protoProps) defineProperties(Constructor.prototype, protoProps);
-      if (staticProps) defineProperties(Constructor, staticProps);
-      return Constructor;
-    };
-  }();
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
-
-  var MdTabs = exports.MdTabs = (_dec = (0, _aureliaTemplating.customAttribute)('md-tabs'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element, _aureliaTaskQueue.TaskQueue), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec7 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdTabs(element, taskQueue) {
-      _classCallCheck(this, MdTabs);
-
-      _initDefineProp(this, 'fixed', _descriptor, this);
-
-      _initDefineProp(this, 'onShow', _descriptor2, this);
-
-      _initDefineProp(this, 'responsiveThreshold', _descriptor3, this);
-
-      _initDefineProp(this, 'swipeable', _descriptor4, this);
-
-      _initDefineProp(this, 'transparent', _descriptor5, this);
-
-      this.element = element;
-      this.taskQueue = taskQueue;
-      this.fireTabSelectedEvent = this.fireTabSelectedEvent.bind(this);
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-      this.tabAttributeManagers = [];
-    }
-
-    MdTabs.prototype.attached = function attached() {
-      var _this = this;
-
-      this.attributeManager.addClasses('tabs');
-
-      var children = this.element.querySelectorAll('li');
-      [].forEach.call(children, function (child) {
-        var setter = new _attributeManager.AttributeManager(child);
-        setter.addClasses(['tab', 'primary-text']);
-        _this.tabAttributeManagers.push(setter);
-      });
-
-      var self = this;
-      $(this.element).tabs({
-        onShow: function onShow(jQueryElement) {
-          if (self.onShow) {
-            self.onShow({ element: jQueryElement });
-          }
-        },
-        swipeable: (0, _attributes.getBooleanFromAttributeValue)(this.swipeable),
-        responsiveThreshold: this.responsiveThreshold
-      });
-      var childAnchors = this.element.querySelectorAll('li a');
-      [].forEach.call(childAnchors, function (a) {
-        a.addEventListener('click', _this.fireTabSelectedEvent);
-      });
-    };
-
-    MdTabs.prototype.detached = function detached() {
-      var _this2 = this;
-
-      this.attributeManager.removeClasses('tabs');
-
-      this.tabAttributeManagers.forEach(function (setter) {
-        setter.removeClasses('tab');
-      });
-      this.tabAttributeManagers = [];
-      var childAnchors = this.element.querySelectorAll('li a');
-      [].forEach.call(childAnchors, function (a) {
-        a.removeEventListener('click', _this2.fireTabSelectedEvent);
-      });
-    };
-
-    MdTabs.prototype.refresh = function refresh() {
-      var _this3 = this;
-
-      this.taskQueue.queueTask(function () {
-        var hrefs = [];
-        $('li a', _this3.element).each(function (i, tab) {
-          $(tab).parent().addClass('tab');
-          hrefs.push($(tab).attr('href'));
-        });
-        $(hrefs).each(function (i, tab) {
-          if (_this3.selectedTab.index != i) {
-            $(tab).hide();
-          }
-        });
-        _this3.taskQueue.queueTask(function () {
-          $(window).trigger('resize');
-        });
-      });
-    };
-
-    MdTabs.prototype.fixedChanged = function fixedChanged(newValue) {
-      if (newValue) {
-        this.attributeManager.addClasses('tabs-fixed-width');
-      } else {
-        this.attributeManager.removeClasses('tabs-fixed-width');
-      }
-    };
-
-    MdTabs.prototype.transparentChanged = function transparentChanged(newValue) {
-      if (newValue) {
-        this.attributeManager.addClasses('tabs-transparent');
-      } else {
-        this.attributeManager.removeClasses('tabs-transparent');
-      }
-    };
-
-    MdTabs.prototype.fireTabSelectedEvent = function fireTabSelectedEvent(e) {
-      var href = e.target.getAttribute('href');
-      (0, _events.fireMaterializeEvent)(this.element, 'selected', href);
-    };
-
-    MdTabs.prototype.selectTab = function selectTab(id) {
-      $(this.element).tabs('select_tab', id);
-      this.fireTabSelectedEvent({
-        target: { getAttribute: function getAttribute() {
-            return '#' + id;
-          } }
-      });
-    };
-
-    _createClass(MdTabs, [{
-      key: 'selectedTab',
-      get: function get() {
-        var children = this.element.querySelectorAll('li.tab a');
-        var index = -1;
-        var href = null;
-        [].forEach.call(children, function (a, i) {
-          if (a.classList.contains('active')) {
-            index = i;
-            href = a.href;
-            return;
-          }
-        });
-        return { href: href, index: index };
-      }
-    }]);
-
-    return MdTabs;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'fixed', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'onShow', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return null;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'responsiveThreshold', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return Infinity;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'swipeable', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'transparent', [_dec7], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/toast/toastService',["exports"], function (exports) {
-  "use strict";
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var MdToastService = exports.MdToastService = function () {
-    function MdToastService() {
-      _classCallCheck(this, MdToastService);
-    }
-
-    MdToastService.prototype.show = function show(message, displayLength, className) {
-      return new Promise(function (resolve, reject) {
-        Materialize.toast(message, displayLength, className, function () {
-          resolve();
-        });
-      });
-    };
-
-    return MdToastService;
-  }();
-});
-define('aurelia-materialize-bridge/tooltip/tooltip',['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdTooltip = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var MdTooltip = exports.MdTooltip = (_dec = (0, _aureliaTemplating.customAttribute)('md-tooltip'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec4 = (0, _aureliaTemplating.bindable)(), _dec5 = (0, _aureliaTemplating.bindable)(), _dec6 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdTooltip(element) {
-      _classCallCheck(this, MdTooltip);
-
-      _initDefineProp(this, 'position', _descriptor, this);
-
-      _initDefineProp(this, 'delay', _descriptor2, this);
-
-      _initDefineProp(this, 'html', _descriptor3, this);
-
-      _initDefineProp(this, 'text', _descriptor4, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdTooltip.prototype.bind = function bind() {
-      this.html = (0, _attributes.getBooleanFromAttributeValue)(this.html);
-    };
-
-    MdTooltip.prototype.attached = function attached() {
-      this.attributeManager.addClasses('tooltipped');
-      this.attributeManager.addAttributes({ 'data-position': this.position, 'data-tooltip': this.text });
-      this.initTooltip();
-    };
-
-    MdTooltip.prototype.detached = function detached() {
-      $(this.element).tooltip('remove');
-      this.attributeManager.removeClasses('tooltipped');
-      this.attributeManager.removeAttributes(['data-position', 'data-tooltip']);
-    };
-
-    MdTooltip.prototype.textChanged = function textChanged() {
-      this.attributeManager.addAttributes({ 'data-tooltip': this.text });
-      this.initTooltip();
-    };
-
-    MdTooltip.prototype.initTooltip = function initTooltip() {
-      $(this.element).tooltip('remove');
-      $(this.element).tooltip({
-        delay: parseInt(this.delay, 10),
-        html: this.html
-      });
-    };
-
-    return MdTooltip;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'position', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 'bottom';
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'delay', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return 50;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'html', [_dec5], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'text', [_dec6], {
-    enumerable: true,
-    initializer: function initializer() {
-      return '';
-    }
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/transitions/fadein-image',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdFadeinImage = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdFadeinImage = exports.MdFadeinImage = (_dec = (0, _aureliaTemplating.customAttribute)('md-fadein-image'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdFadeinImage(element) {
-      _classCallCheck(this, MdFadeinImage);
-
-      _initDefineProp(this, 'ref', _descriptor, this);
-
-      this.element = element;
-      this.fadeInImage = this.fadeInImage.bind(this);
-      this.log = (0, _aureliaLogging.getLogger)('md-fadein-image');
-    }
-
-    MdFadeinImage.prototype.attached = function attached() {
-      this.element.addEventListener('click', this.fadeInImage);
-      this.ensureOpacity();
-    };
-
-    MdFadeinImage.prototype.detached = function detached() {
-      this.element.removeEventListener('click', this.fadeInImage);
-    };
-
-    MdFadeinImage.prototype.fadeInImage = function fadeInImage() {
-      Materialize.fadeInImage($(this.ref));
-    };
-
-    MdFadeinImage.prototype.ensureOpacity = function ensureOpacity() {
-      var opacity = window.getComputedStyle(this.ref).opacity;
-      if (opacity !== 0) {
-        this.ref.style.opacity = 0;
-      }
-    };
-
-    return MdFadeinImage;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/transitions/staggered-list',['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-logging'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaLogging) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdStaggeredList = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor;
-
-  var MdStaggeredList = exports.MdStaggeredList = (_dec = (0, _aureliaTemplating.customAttribute)('md-staggered-list'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)(), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdStaggeredList(element) {
-      _classCallCheck(this, MdStaggeredList);
-
-      _initDefineProp(this, 'ref', _descriptor, this);
-
-      this.element = element;
-      this.staggerList = this.staggerList.bind(this);
-      this.log = (0, _aureliaLogging.getLogger)('md-staggered-list');
-    }
-
-    MdStaggeredList.prototype.attached = function attached() {
-      this.element.addEventListener('click', this.staggerList);
-      this.ensureOpacity();
-    };
-
-    MdStaggeredList.prototype.detached = function detached() {
-      this.element.removeEventListener('click', this.staggerList);
-    };
-
-    MdStaggeredList.prototype.staggerList = function staggerList() {
-      Materialize.showStaggeredList($(this.ref));
-    };
-
-    MdStaggeredList.prototype.ensureOpacity = function ensureOpacity() {
-      var items = this.ref.querySelectorAll('li');
-      [].forEach.call(items, function (item) {
-        var opacity = window.getComputedStyle(item).opacity;
-        if (opacity !== 0) {
-          item.style.opacity = 0;
-        }
-      });
-    };
-
-    return MdStaggeredList;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'ref', [_dec3], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/validation/validationRenderer',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var MaterializeFormValidationRenderer = exports.MaterializeFormValidationRenderer = function () {
-    function MaterializeFormValidationRenderer() {
-      _classCallCheck(this, MaterializeFormValidationRenderer);
-
-      this.className = 'md-input-validation';
-      this.classNameFirst = 'md-input-validation-first';
-    }
-
-    MaterializeFormValidationRenderer.prototype.render = function render(instruction) {
-      var _this = this;
-
-      var allElements = new Array();
-      for (var _iterator = instruction.unrender, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref2;
-
-        if (_isArray) {
-          if (_i >= _iterator.length) break;
-          _ref2 = _iterator[_i++];
-        } else {
-          _i = _iterator.next();
-          if (_i.done) break;
-          _ref2 = _i.value;
-        }
-
-        var _ref5 = _ref2;
-        var result = _ref5.result,
-            elements = _ref5.elements;
-
-        for (var _iterator3 = elements, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
-          var _ref6;
-
-          if (_isArray3) {
-            if (_i3 >= _iterator3.length) break;
-            _ref6 = _iterator3[_i3++];
-          } else {
-            _i3 = _iterator3.next();
-            if (_i3.done) break;
-            _ref6 = _i3.value;
-          }
-
-          var element = _ref6;
-
-          this.remove(element, result);
-          if (allElements.indexOf(element) == -1) {
-            allElements.push(element);
-          }
-        }
-      }
-      for (var _iterator2 = instruction.render, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-        var _ref4;
-
-        if (_isArray2) {
-          if (_i2 >= _iterator2.length) break;
-          _ref4 = _iterator2[_i2++];
-        } else {
-          _i2 = _iterator2.next();
-          if (_i2.done) break;
-          _ref4 = _i2.value;
-        }
-
-        var _ref7 = _ref4;
-        var result = _ref7.result,
-            elements = _ref7.elements;
-
-        for (var _iterator4 = elements, _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
-          var _ref8;
-
-          if (_isArray4) {
-            if (_i4 >= _iterator4.length) break;
-            _ref8 = _iterator4[_i4++];
-          } else {
-            _i4 = _iterator4.next();
-            if (_i4.done) break;
-            _ref8 = _i4.value;
-          }
-
-          var _element = _ref8;
-
-          this.add(_element, result);
-          if (allElements.indexOf(_element) == -1) {
-            allElements.push(_element);
-          }
-        }
-      }
-      allElements.forEach(function (e) {
-        return _this.underlineInput(e);
-      });
-    };
-
-    MaterializeFormValidationRenderer.prototype.underlineInput = function underlineInput(element) {
-      var input = void 0;
-      switch (element.tagName) {
-        case 'MD-INPUT':
-          {
-            input = element.querySelector('input') || element.querySelector('textarea');
-            break;
-          }
-        case 'SELECT':
-          {
-            var selectWrapper = element.closest('.select-wrapper');
-            if (selectWrapper) {
-              input = selectWrapper.querySelector('input');
-            }
-            break;
-          }
-        case 'INPUT':
-          {
-            input = element;
-            break;
-          }
-        default:
-          break;
-      }
-      if (input) {
-        if (element.querySelectorAll('.' + this.className).length === 0) {
-          input.classList.remove('invalid');
-          input.classList.add('valid');
-        } else {
-          input.classList.remove('valid');
-          input.classList.add('invalid');
-        }
-      }
-    };
-
-    MaterializeFormValidationRenderer.prototype.add = function add(element, result) {
-      if (result.valid) {
-        return;
-      }
-      switch (element.tagName) {
-        case 'MD-INPUT':
-          {
-            var label = element.querySelector('label');
-            var input = element.querySelector('input') || element.querySelector('textarea');
-            if (label) {
-              label.removeAttribute('data-error');
-            }
-            if (input) {
-              result.target = input;
-              if (input.hasAttribute('data-show-errortext')) {
-                this.addMessage(element, result);
-              }
-            }
-            break;
-          }
-        case 'SELECT':
-          {
-            var selectWrapper = element.closest('.select-wrapper');
-            if (!selectWrapper) {
-              return;
-            }
-            var _input = selectWrapper.querySelector('input');
-            if (_input) {
-              result.target = _input;
-              if (!(_input.hasAttribute('data-show-errortext') && _input.getAttribute('data-show-errortext') === 'false')) {
-                this.addMessage(selectWrapper, result);
-              }
-            }
-            break;
-          }
-        case 'INPUT':
-          {
-            if (element.hasAttribute('md-datepicker')) {
-              if (!(element.hasAttribute('data-show-errortext') && element.getAttribute('data-show-errortext') === 'false')) {
-                this.addMessage(element.parentNode, result);
-              }
-            }
-            break;
-          }
-        default:
-          break;
-      }
-    };
-
-    MaterializeFormValidationRenderer.prototype.remove = function remove(element, result) {
-      if (result.valid) {
-        return;
-      }
-      switch (element.tagName) {
-        case 'MD-INPUT':
-          {
-            this.removeMessage(element, result);
-            break;
-          }
-        case 'SELECT':
-          {
-            var selectWrapper = element.closest('.select-wrapper');
-            if (!selectWrapper) {
-              return;
-            }
-
-            if ($(selectWrapper.parentElement).children().hasClass('md-input-validation')) {
-              this.removeMessage(selectWrapper.parentElement, result);
-            } else {
-              this.removeMessage(selectWrapper, result);
-            }
-            break;
-          }
-        case 'INPUT':
-          {
-            if (element.hasAttribute('md-datepicker')) {
-              this.removeMessage(element.parentNode, result);
-            }
-            break;
-          }
-        default:
-          break;
-      }
-    };
-
-    MaterializeFormValidationRenderer.prototype.addMessage = function addMessage(element, result) {
-      var message = document.createElement('div');
-      message.id = 'md-input-validation-' + result.id;
-      message.textContent = result.message;
-      message.className = this.className;
-      if (element.querySelectorAll('.' + this.className).length === 0) {
-        message.className += ' ' + this.classNameFirst;
-      }
-      message.style.opacity = 0;
-      element.appendChild(message, element.nextSibling);
-      window.getComputedStyle(message).opacity;
-      message.style.opacity = 1;
-    };
-
-    MaterializeFormValidationRenderer.prototype.removeMessage = function removeMessage(element, result) {
-      var message = element.querySelector('#md-input-validation-' + result.id);
-      if (message) {
-        element.removeChild(message);
-      }
-    };
-
-    return MaterializeFormValidationRenderer;
-  }();
-});
-define('aurelia-materialize-bridge/waves/waves',['exports', 'aurelia-templating', 'aurelia-binding', 'aurelia-dependency-injection', '../common/attributeManager', '../common/attributes'], function (exports, _aureliaTemplating, _aureliaBinding, _aureliaDependencyInjection, _attributeManager, _attributes) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.MdWaves = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
-
-  var MdWaves = exports.MdWaves = (_dec = (0, _aureliaTemplating.customAttribute)('md-waves'), _dec2 = (0, _aureliaDependencyInjection.inject)(Element), _dec3 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec4 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec5 = (0, _aureliaTemplating.bindable)({
-    defaultBindingMode: _aureliaBinding.bindingMode.oneTime
-  }), _dec(_class = _dec2(_class = (_class2 = function () {
-    function MdWaves(element) {
-      _classCallCheck(this, MdWaves);
-
-      _initDefineProp(this, 'block', _descriptor, this);
-
-      _initDefineProp(this, 'circle', _descriptor2, this);
-
-      _initDefineProp(this, 'color', _descriptor3, this);
-
-      this.element = element;
-      this.attributeManager = new _attributeManager.AttributeManager(this.element);
-    }
-
-    MdWaves.prototype.attached = function attached() {
-      var classes = ['waves-effect'];
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.block)) {
-        classes.push('waves-block');
-      }
-      if ((0, _attributes.getBooleanFromAttributeValue)(this.circle)) {
-        classes.push('waves-circle');
-      }
-      if (this.color) {
-        classes.push('waves-' + this.color);
-      }
-
-      this.attributeManager.addClasses(classes);
-      Waves.attach(this.element);
-    };
-
-    MdWaves.prototype.detached = function detached() {
-      var classes = ['waves-effect', 'waves-block'];
-      if (this.color) {
-        classes.push('waves-' + this.color);
-      }
-
-      this.attributeManager.removeClasses(classes);
-    };
-
-    return MdWaves;
-  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'block', [_dec3], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'circle', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'color', [_dec5], {
-    enumerable: true,
-    initializer: null
-  })), _class2)) || _class) || _class);
-});
-define('aurelia-materialize-bridge/config-builder',['exports', './dropdown/dropdown-fix'], function (exports, _dropdownFix) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.ConfigBuilder = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var ConfigBuilder = exports.ConfigBuilder = function () {
-    function ConfigBuilder() {
-      _classCallCheck(this, ConfigBuilder);
-
-      this.useGlobalResources = true;
-      this.useScrollfirePatch = false;
-      this.globalResources = [];
-    }
-
-    ConfigBuilder.prototype.useAll = function useAll() {
-      return this.useAutoComplete().useBadge().useBox().useBreadcrumbs().useButton().useCard().useCarousel().useCharacterCounter().useCheckbox().useChip().useCollapsible().useCollection().useColors().useDatePicker().useDropdown().useFab().useFile().useFooter().useInput().useModal().useNavbar().usePagination().useParallax().useProgress().usePushpin().useRadio().useRange().useScrollfire().useScrollSpy().useSelect().useSidenav().useSlider().useSwitch().useTabs().useTooltip().useTransitions().useWaves().useWell();
-    };
-
-    ConfigBuilder.prototype.useAutoComplete = function useAutoComplete() {
-      this.globalResources.push('./autocomplete/autocomplete');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useBadge = function useBadge() {
-      this.globalResources.push('./badge/badge');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useBox = function useBox() {
-      this.globalResources.push('./box/box');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useBreadcrumbs = function useBreadcrumbs() {
-      this.globalResources.push('./breadcrumbs/breadcrumbs');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useButton = function useButton() {
-      this.globalResources.push('./button/button');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCarousel = function useCarousel() {
-      this.globalResources.push('./carousel/carousel');
-      this.globalResources.push('./carousel/carousel-item');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCharacterCounter = function useCharacterCounter() {
-      this.globalResources.push('./char-counter/char-counter');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCard = function useCard() {
-      this.globalResources.push('./card/card');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCheckbox = function useCheckbox() {
-      this.globalResources.push('./checkbox/checkbox');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useChip = function useChip() {
-      this.globalResources.push('./chip/chip');
-      this.globalResources.push('./chip/chips');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useClickCounter = function useClickCounter() {
-      this.globalResources.push('./click-counter');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCollapsible = function useCollapsible() {
-      this.globalResources.push('./collapsible/collapsible');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useCollection = function useCollection() {
-      this.globalResources.push('./collection/collection');
-      this.globalResources.push('./collection/collection-item');
-      this.globalResources.push('./collection/collection-header');
-      this.globalResources.push('./collection/md-collection-selector');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useColors = function useColors() {
-      this.globalResources.push('./colors/md-colors');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useDatePicker = function useDatePicker() {
-      this.globalResources.push('./datepicker/datepicker');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useDropdown = function useDropdown() {
-      this.globalResources.push('./dropdown/dropdown');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useDropdownFix = function useDropdownFix() {
-      (0, _dropdownFix.applyMaterializeDropdownFix)();
-      return this;
-    };
-
-    ConfigBuilder.prototype.useFab = function useFab() {
-      this.globalResources.push('./fab/fab');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useFile = function useFile() {
-      this.globalResources.push('./file/file');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useFooter = function useFooter() {
-      this.globalResources.push('./footer/footer');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useInput = function useInput() {
-      this.globalResources.push('./input/input');
-      this.globalResources.push('./input/input-prefix');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useModal = function useModal() {
-      this.globalResources.push('./modal/modal');
-      this.globalResources.push('./modal/modal-trigger');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useNavbar = function useNavbar() {
-      this.globalResources.push('./navbar/navbar');
-      return this;
-    };
-
-    ConfigBuilder.prototype.usePagination = function usePagination() {
-      this.globalResources.push('./pagination/pagination');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useParallax = function useParallax() {
-      this.globalResources.push('./parallax/parallax');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useProgress = function useProgress() {
-      this.globalResources.push('./progress/progress');
-      return this;
-    };
-
-    ConfigBuilder.prototype.usePushpin = function usePushpin() {
-      this.globalResources.push('./pushpin/pushpin');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useRadio = function useRadio() {
-      this.globalResources.push('./radio/radio');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useRange = function useRange() {
-      this.globalResources.push('./range/range');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useScrollfire = function useScrollfire() {
-      this.globalResources.push('./scrollfire/scrollfire');
-      this.globalResources.push('./scrollfire/scrollfire-target');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useScrollSpy = function useScrollSpy() {
-      this.globalResources.push('./scrollspy/scrollspy');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useSelect = function useSelect() {
-      this.globalResources.push('./select/select');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useSidenav = function useSidenav() {
-      this.globalResources.push('./sidenav/sidenav');
-      this.globalResources.push('./sidenav/sidenav-collapse');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useSlider = function useSlider() {
-      this.globalResources.push('./slider/slider');
-
-      return this;
-    };
-
-    ConfigBuilder.prototype.useSwitch = function useSwitch() {
-      this.globalResources.push('./switch/switch');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useTabs = function useTabs() {
-      this.globalResources.push('./tabs/tabs');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useTooltip = function useTooltip() {
-      this.globalResources.push('./tooltip/tooltip');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useTransitions = function useTransitions() {
-      this.globalResources.push('./transitions/fadein-image');
-      this.globalResources.push('./transitions/staggered-list');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useWaves = function useWaves() {
-      this.globalResources.push('./waves/waves');
-      return this;
-    };
-
-    ConfigBuilder.prototype.useWell = function useWell() {
-      this.globalResources.push('./well/md-well.html');
-      return this;
-    };
-
-    ConfigBuilder.prototype.withoutGlobalResources = function withoutGlobalResources() {
-      this.useGlobalResources = false;
-      return this;
-    };
-
-    ConfigBuilder.prototype.withScrollfirePatch = function withScrollfirePatch() {
-      this.useScrollfirePatch = true;
-      return this;
-    };
-
-    return ConfigBuilder;
-  }();
-});
-define('aurelia-materialize-bridge/common/polyfills',['exports'], function (exports) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.polyfillElementClosest = polyfillElementClosest;
-  function polyfillElementClosest() {
-    if (typeof Element.prototype.matches !== 'function') {
-      Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.webkitMatchesSelector || function matches(selector) {
-        var element = this;
-        var elements = (element.document || element.ownerDocument).querySelectorAll(selector);
-        var index = 0;
-
-        while (elements[index] && elements[index] !== element) {
-          ++index;
-        }
-        return Boolean(elements[index]);
-      };
-    }
-
-    if (typeof Element.prototype.closest !== 'function') {
-      Element.prototype.closest = function closest(selector) {
-        var element = this;
-
-        while (element && element.nodeType === 1) {
-          if (element.matches(selector)) {
-            return element;
-          }
-
-          element = element.parentNode;
-        }
-        return null;
-      };
-    }
-  }
-});
-define('text!aurelia-materialize-bridge/breadcrumbs/breadcrumbs.css', ['module'], function(module) { module.exports = "md-breadcrumbs a {\n  cursor: pointer;\n}\n"; });
-define('text!aurelia-materialize-bridge/breadcrumbs/breadcrumbs.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./breadcrumbs.css\"></require>\n  <require from=\"./instructionFilter\"></require>\n  <nav class=\"primary\">\n    <div class=\"nav-wrapper\">\n      <div class=\"col s12\">\n        <template repeat.for=\"instruction of router.currentInstruction.getAllInstructions() | instructionFilter\">\n          <a click.delegate=\"navigate(instruction)\" class=\"breadcrumb\">\n            ${instruction.config.title}\n          </a>\n        </template>\n      </div>\n    </div>\n  </nav>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/card/card.css', ['module'], function(module) { module.exports = "md-card {\n  display: block;\n}\n"; });
-define('text!aurelia-materialize-bridge/card/card.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./card.css\"></require>\n  <div class=\"card ${ mdHorizontal ? 'horizontal' : '' } ${ mdSize || '' }\">\n    <div if.bind=\"mdImage !== null\" md-waves=\"color: light; block: true;\" class=\"card-image\">\n      <img class=\"${ mdReveal === true ? 'activator' : '' }\" src.bind=\"mdImage\" />\n      <span if.bind=\"mdReveal === false\" class=\"card-title\">${mdTitle}</span>\n    </div>\n\n    <!-- <div class=\"${ mdHorizontal ? 'card-stacked' : ''}\">\n\n    </div> -->\n    <div class=\"card-content\">\n      <span if.bind=\"mdReveal === true\" class=\"card-title activator\">\n        ${mdTitle}\n        <i class=\"material-icons right\">more_vert</i>\n      </span>\n      <span if.bind=\"mdImage === null\" class=\"card-title\">${mdTitle}</span>\n      <slot></slot>\n    </div>\n\n    <div show.bind=\"mdReveal\" class=\"${ mdReveal ? 'card-reveal' : '' }\">\n      <span class=\"card-title ${ mdReveal ? 'activator' : '' }\">\n        ${mdTitle}\n        <i class=\"material-icons right\">close</i>\n      </span>\n      <slot name=\"reveal-text\"></slot>\n    </div>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/carousel/carousel-item.html', ['module'], function(module) { module.exports = "<template class=\"carousel-item\">\n  <a if.bind=\"mdHref\" href.bind=\"mdHref\">\n    <img if.bind=\"mdImage\" src.bind=\"mdImage\" />\n  </a>\n  <img if.bind=\"!mdHref && mdImage\" src.bind=\"mdImage\" />\n  <slot></slot>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/carousel/carousel.css', ['module'], function(module) { module.exports = "md-carousel {\r\n  display: block;\r\n}\r\n"; });
-define('text!aurelia-materialize-bridge/carousel/carousel.html', ['module'], function(module) { module.exports = "<template class=\"carousel\">\n  <require from=\"./carousel.css\"></require>\n  <slot></slot>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/checkbox/checkbox.html', ['module'], function(module) { module.exports = "<template>\n  <input type=\"checkbox\" id=\"${controlId}\" checked.bind=\"mdChecked\" matcher.bind=\"mdMatcher\" model.bind=\"mdModel\" ref=\"checkbox\" />\n  <label for=\"${controlId}\">\n    <slot></slot>\n  </label>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/chip/chip.css', ['module'], function(module) { module.exports = "md-chip i.material-icons {\n  float: right;\n  line-height: 32px;\n  font-size: 16px;\n  cursor: pointer;\n}\n"; });
-define('text!aurelia-materialize-bridge/chip/chip.html', ['module'], function(module) { module.exports = "<template class=\"chip\">\n  <require from=\"./chip.css\"></require>\n  <slot></slot>\n  <i show.bind=\"mdClose\" class=\"material-icons\" click.delegate=\"close()\">close</i>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/collection/collection-header.css', ['module'], function(module) { module.exports = "md-collection-header {\n  display: block;\n}\n"; });
-define('text!aurelia-materialize-bridge/collection/collection-header.html', ['module'], function(module) { module.exports = "<template class=\"collection-header\">\n  <require from=\"./collection-header.css\"></require>\n  <slot></slot>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/collection/collection-item.css', ['module'], function(module) { module.exports = "md-collection-item {\n  display: block;\n}\n\nmd-collection-item.collection-item:not(.active):hover {\n  background-color: #ddd;\n}\n"; });
-define('text!aurelia-materialize-bridge/collection/collection-item.html', ['module'], function(module) { module.exports = "<template class=\"collection-item\">\n  <require from=\"./collection-item.css\"></require>\n  <slot></slot>\n  <!-- <content select=\".secondary-content\"></content> -->\n</template>\n"; });
-define('text!aurelia-materialize-bridge/collection/collection.html', ['module'], function(module) { module.exports = "<template>\n  <div class=\"collection\" ref=\"anchor\">\n    <!-- <content select=\"md-collection-header\"></content>\n    <content select=\"md-collection-item\"></content> -->\n    <slot></slot>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/collection/md-collection-selector.css', ['module'], function(module) { module.exports = "md-collection-selector .md-collection-selector__hover {\n  display: inline-block;\n}\nmd-collection-selector:hover .md-collection-selector__hover, md-collection-item.selected md-collection-selector .md-collection-selector__hover {\n  display: none !important;\n}\nmd-collection-selector .md-collection-selector__checkbox div {\n  margin-left: 5px;\n  display: inline-block;\n  position: absolute;\n  left: 20px;\n  top: 20px;\n  margin-right: 11px;\n  height: 42px;\n  width: 42px;\n  line-height: 42px;\n  text-align: center;\n}\nmd-collection-selector .md-collection-selector__checkbox .md-collection-selector__hover ~ div {\n  display: none;\n}\n\nmd-collection-selector:hover .md-collection-selector__checkbox .md-collection-selector__hover ~ div, md-collection-item.selected md-collection-selector .md-collection-selector__checkbox .md-collection-selector__hover ~ div {\n  display: inline-block;\n}\n\nmd-collection-item.selected {\n  background-color: #eee;\n}\n\nmd-collection-selector md-checkbox {\n  display: inline-block;\n}\nmd-collection-selector md-collection md-checkbox .md-checkbox.is-upgraded {\n  padding-left: 16px;\n}\n"; });
-define('text!aurelia-materialize-bridge/collection/md-collection-selector.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./md-collection-selector.css\"></require>\n  <div class=\"md-collection-selector__checkbox\">\n    <!-- <content select=\".md-collection-selector__hover\"></content> -->\n    <slot></slot>\n    <div>\n      <md-checkbox md-checked.two-way=\"isSelected\" md-disabled.bind=\"mdDisabled\"></md-checkbox>\n    </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/colors/md-colors.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./colorValueConverters\"></require>\n\n  <!--\n    According to Material color spec (https://www.google.com/design/spec/style/color.html#color-ui-color-application)\n    and using Materialize terminology (darken/lighten instead of hue numbers)\n    the used palettes here consist of:\n    Primary - lighten-1 (400), lighten-2 (300), lighten-3 (200)\n    Accent  - lighten-1 (400), lighten-3 (200)\n\n    These should optionally be defined by the user. At the moment, they are\n    calculated and even not exact (but close).\n\n    Focused elements are an exception, these use \"lighten-0.5\" which is\n    not specified anywhere.\n  -->\n\n  <style>\n  .primary {\n    background-color: ${mdPrimaryColor};\n    color: white;\n  }\n\n  .primary-text {\n    /*background-color: white;*/\n    color: ${mdPrimaryColor};\n  }\n\n  .waves-effect.waves-primary .waves-ripple {\n    background-color: ${mdPrimaryColor};\n  }\n\n  .waves-effect.waves-accent .waves-ripple {\n    background-color: ${mdAccentColor};\n  }\n\n  .accent {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  .accent-text {\n    /*background-color: white;*/\n    color: ${mdAccentColor};\n  }\n\n  .error {\n    background-color: ${mdErrorColor};\n  }\n\n  .error-text {\n    color: ${mdErrorColor}\n  }\n\n  .success {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  .success-text {\n    color: ${mdAccentColor};\n  }\n\n  /* buttons */\n  .btn.primary, .btn-flat.primary, .btn-large.primary {\n    transition: .2s ease-out;\n  }\n  .btn.primary:hover, .btn-flat.primary:hover, .btn-large.primary:hover {\n    background-color: ${mdPrimaryColor | lighten:1};\n    transition: .2s ease-out;\n  }\n  .btn.primary:focus, .btn-flat.primary:focus, .btn-large.primary:focus {\n    background-color: ${mdPrimaryColor | lighten:0.5};\n    transition: .2s ease-out;\n  }\n  .btn-flat:not(.disabled):hover {\n    /*background-color: ${mdAccentColor | lighten:3};*/\n    background-color: rgba(50, 50, 50, .15);\n    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);\n    border: none;\n    box-shadow: none;\n    transition: .2s ease-out;\n  }\n  .btn-flat:focus {\n    /*background-color: ${mdAccentColor | lighten:2};*/\n    background-color: transparent;\n    border: none;\n    box-shadow: none;\n    transition: .2s ease-out;\n  }\n\n  .btn.accent, .btn-flat.accent, .btn-large.accent {\n    transition: .2s ease-out;\n  }\n  .btn.accent:hover, .btn-flat.accent:hover, .btn-large.accent:hover, .btn-floating:hover {\n    background-color: ${mdAccentColor | lighten:1};\n    transition: .2s ease-out;\n  }\n  .btn.accent:focus, .btn-flat.accent:focus, .btn-large.accent:focus, .btn-floating:focus {\n    background-color: ${mdAccentColor | lighten:0.5};\n    transition: .2s ease-out;\n  }\n\n  /* checkbox */\n  [type=\"checkbox\"]:checked + label:before {\n    border-right-color: ${mdAccentColor};\n    border-bottom-color: ${mdAccentColor};\n  }\n\n  [type=\"checkbox\"].filled-in:checked + label:after {\n    border-color: ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n\n  [type=\"checkbox\"]:indeterminate + label:before {\n    border-right-color: ${mdAccentColor};\n  }\n\n  /* collection */\n  md-collection .collection md-collection-item.collection-item.active {\n    background-color: ${mdAccentColor};\n    color: white;\n  }\n\n  md-collection .collection md-collection-item.collection-item .secondary-content {\n    color: ${mdAccentColor};\n  }\n\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary {\n    background-color: ${mdPrimaryColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent {\n    background-color: ${mdAccentColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.error {\n    background-color: ${mdErrorColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.success {\n    background-color: ${mdAccentColor};\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.primary-text {\n    color: ${mdPrimaryColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.accent-text {\n    color: ${mdAccentColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.error-text {\n    color: ${mdErrorColor};\n    background-color: transparent;\n  }\n  md-collection .collection md-collection-item.collection-item.avatar i.circle.success-text {\n    color: ${mdAccentColor};\n    background-color: transparent;\n  }   \n\n\n  /* datepicker */\n  .picker__date-display {\n    background-color: ${mdAccentColor};\n  }\n  .picker__weekday-display {\n    background-color: ${mdAccentColor | darken:1};\n  }\n  .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {\n    background-color: ${mdAccentColor};\n  }\n  .picker__day.picker__day--today {\n    color: ${mdAccentColor}\n  }\n  .picker__footer button:not(.picker__clear) {\n    color: ${mdAccentColor}\n  }\n  .picker__footer button:focus {\n    background-color: ${mdAccentColor | lighten:2};\n  }\n  [md-datepicker] + i.material-icons.std-icon-fixup {\n    margin-left: -24px;\n    line-height: 1;\n    margin-top: 12px;\n    cursor: pointer;\n  }\n\n  /* text input */\n  md-input .input-field label {\n    left: 0;\n  }\n  md-input .input-field input[type=text]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=text]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field input[type=email]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=email]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field input[type=password]:focus {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input .input-field input[type=password]:focus + label {\n    color: ${mdAccentColor};\n  }\n  md-input .input-field .prefix.active {\n    color: ${mdAccentColor};\n  }\n  md-input textarea.materialize-textarea:focus:not([readonly]) {\n    border-bottom: 1px solid ${mdAccentColor};\n    box-shadow: 0 1px 0 0 ${mdAccentColor};\n  }\n  md-input textarea.materialize-textarea:focus:not([readonly]) + label {\n    color: ${mdAccentColor}\n  }\n\n  md-input input:not([type]).invalid + label:after,\n  md-input input:not([type]):focus.invalid + label:after,\n  md-input input[type=text].invalid + label:after,\n  md-input input[type=text]:focus.invalid + label:after,\n  md-input input[type=password].invalid + label:after,\n  md-input input[type=password]:focus.invalid + label:after,\n  md-input input[type=email].invalid + label:after,\n  md-input input[type=email]:focus.invalid + label:after,\n  md-input input[type=url].invalid + label:after,\n  md-input input[type=url]:focus.invalid + label:after,\n  md-input input[type=time].invalid + label:after,\n  md-input input[type=time]:focus.invalid + label:after,\n  md-input input[type=date].invalid + label:after,\n  md-input input[type=date]:focus.invalid + label:after,\n  md-input input[type=datetime].invalid + label:after,\n  md-input input[type=datetime]:focus.invalid + label:after,\n  md-input input[type=datetime-local].invalid + label:after,\n  md-input input[type=datetime-local]:focus.invalid + label:after,\n  md-input input[type=tel].invalid + label:after,\n  md-input input[type=tel]:focus.invalid + label:after,\n  md-input input[type=number].invalid + label:after,\n  md-input input[type=number]:focus.invalid + label:after,\n  md-input input[type=search].invalid + label:after,\n  md-input input[type=search]:focus.invalid + label:after,\n  md-input textarea.materialize-textarea.invalid + label:after,\n  md-input textarea.materialize-textarea:focus.invalid + label:after\n  {\n    color: ${mdErrorColor}\n  }\n\n  /* text input aurelia-validation messages */\n  .md-input-validation {\n    left: 0;\n    /*color: #f44336;*/\n    color: ${mdErrorColor};\n    font-size: 0.8rem;\n    transition: opacity .2s ease-out;\n    margin-top: -4px;\n    margin-bottom: 0;\n  }\n  @media only screen and (min-width: 0) {\n    .md-input-validation-first {\n      margin-top: -14px;\n      margin-bottom: -2px;\n    }\n  }\n  @media only screen and (min-width: 992px) {\n    .md-input-validation-first {\n      margin-top: -18px;\n      padding-bottom: 3px;\n    }\n  }\n  @media only screen and (min-width: 1200px) {\n    .md-input-validation-first {\n      margin-top: -19px;\n    }\n  }\n\n  /* pagination */\n  md-pagination .pagination li.active {\n    background-color: ${mdPrimaryColor}\n  }\n\n  /* progress */\n  md-progress .progress {\n    background-color: ${mdAccentColor | lighten:2};\n  }\n\n  md-progress .progress .determinate, md-progress .progress .indeterminate {\n    background-color: ${mdAccentColor};\n  }\n\n  /* radio input */\n  md-radio input[type=\"radio\"]:checked + label:after {\n    border: 2px solid ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n  md-radio [type=\"radio\"].with-gap:checked + label:before {\n    border: 2px solid ${mdAccentColor};\n  }\n  md-radio [type=\"radio\"].with-gap:checked + label:after {\n    border: 2px solid ${mdAccentColor};\n    background-color: ${mdAccentColor};\n  }\n\n  /* range */\n  md-range .range-field input[type=\"range\"]::-webkit-slider-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range .range-field input[type=\"range\"]::-moz-range-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range .range-field input[type=\"range\"]::-ms-thumb {\n    background: ${mdAccentColor};\n  }\n  md-range input[type=\"range\"] + .thumb {\n    background-color: ${mdAccentColor} !important;\n  }\n\n  /* select */\n  .dropdown-content li > a, .dropdown-content li > span {\n    color: ${mdAccentColor};\n  }\n\n  .select-wrapper input.select-dropdown {\n    -webkit-user-select:none;\n    -moz-user-select:none;\n    -ms-user-select:none;\n    -o-user-select:none;\n    user-select:none;\n  }\n\n  /* side-nav */\n  md-sidenav .side-nav .collapsible-body li.active, .side-nav.fixed .collapsible-body li.active {\n    background-color: ${mdPrimaryColor};\n  }\n\n  .side-nav .collapsible-body > ul:not(.collapsible) > li.active, .side-nav.fixed .collapsible-body > ul:not(.collapsible) > li.active {\n    background-color: ${mdPrimaryColor};\n  }\n\n  /* slider */\n  .slider .indicators .indicator-item.active {\n    background-color: ${mdAccentColor};\n  }\n\n  /* switch */\n  md-switch.switch label input[type=checkbox]:checked + .lever {\n    background-color: ${mdAccentColor | lighten:1};\n  }\n  md-switch.switch label input[type=checkbox]:checked + .lever:after {\n    background-color: ${mdAccentColor};\n  }\n\n  /* tabs */\n\n  .tab.primary-text a {\n    color: ${mdPrimaryColor};\n  }\n  .tab.primary-text a.active {\n    color: ${mdPrimaryColor};\n  }\n  .tab.waves-effect {\n    position: static;\n  }\n  .tab.primary-text a:hover {\n    color: ${mdPrimaryColor | lighten:2};\n  }\n  .tabs .indicator {\n    background-color: ${mdPrimaryColor | lighten:2};\n  }\n\n  /* well */\n  md-well li.active {\n    border-right: 2px solid ${mdPrimaryColor};\n    background-color: ${mdPrimaryColor | lighten:3};\n  }\n\n  /* footer */\n  footer.page-footer {\n    background-color: ${mdPrimaryColor};\n  }\n\n  /* md-select label */\n  .select-wrapper input {\n    /* make input fit in div */\n    display: inline-block !important;\n    /* fix validation border thickness */\n    border-bottom: 1px solid #4CAF50;\n  }\n\n  .select-wrapper input.invalid {\n    border-bottom: 1px solid ${mdErrorColor};\n  }\n\n  .select-wrapper + label {\n    color: ${mdAccentColor};\n    width: 100%;\n  }\n  /* position validation label */\n  .select-wrapper + label:after {\n    display: block;\n    content: \"\";\n    position: absolute;\n    top: 60px;\n    opacity: 0;\n    transition: .2s opacity ease-out, .2s color ease-out;\n    transform: translateY(0) !important;\n  }\n  /* set validation text */\n  .select-wrapper.invalid + label:after {\n    content: attr(data-error);\n    color: ${mdErrorColor};\n    opacity: 1;\n  }\n\n  </style>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/dropdown/dropdown-element.html', ['module'], function(module) { module.exports = "<template md-button class=\"dropdown-button\" data-activates=\"${ controlId }\">\n  ${mdTitle}\n  <div id=\"${ controlId }\" class='dropdown-content'>\n    <slot></slot>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/fab/fab.html', ['module'], function(module) { module.exports = "<template>\n  <a if.bind=\"mdFixed === false\" md-button=\"large.bind: mdLarge;\" md-waves=\"color: light;\" class=\"btn-floating\">\n    <slot></slot>\n  </a>\n\n  <div if.bind=\"mdFixed === true\" class=\"fixed-action-btn\" style=\"bottom: 45px; right: 24px;\">\n    <a md-button=\"large: true;\" md-waves=\"color: light;\" class=\"btn-floating\">\n      <slot></slot>\n    </a>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/file/file.html', ['module'], function(module) { module.exports = "<template>\n    <div class=\"file-field input-field\">\n        <div disabled.bind=\"disabled\" class=\"btn accent ${disabled ? 'disabled' : ''}\">\n            <span>${mdCaption}</span>\n            <input disabled.bind=\"disabled\" type=\"file\" multiple.bind=\"mdMultiple\" files.bind=\"files\" />\n        </div>\n        <div class=\"file-path-wrapper\">\n            <input disabled.bind=\"disabled\" class=\"file-path validate\" type=\"text\" value.bind=\"mdLabelValue\" ref=\"filePath\" />\n        </div>\n    </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/input/input.css', ['module'], function(module) { module.exports = "/*md-input .input-field label {\n  transform: translateX(-11px);\n}\nmd-input .input-field label.active {\n  transform: translateX(-11px) translateY(-140%);\n}*/\n\nmd-input .input-field label.active {\n  width: 100%;\n}\n"; });
-define('text!aurelia-materialize-bridge/input/input.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./input.css\"></require>\n  <div class=\"input-field\">\n    <!-- <content select=\"[md-prefix]\"></content> -->\n    <slot></slot>\n    <input if.bind=\"mdTextArea === false\" id=\"${controlId}\" type.bind=\"mdType\" step.bind=\"mdStep\" ref=\"input\" value.bind=\"mdValue\" disabled.bind=\"mdDisabled\" blur.trigger=\"blur()\" focus.trigger=\"focus()\" />\n    <textarea if.bind=\"mdTextArea === true\" id=\"${controlId}\" ref=\"input\" value.bind=\"mdValue\" class=\"materialize-textarea\" disabled.bind=\"mdDisabled\" blur.trigger=\"blur()\" focus.trigger=\"focus()\"></textarea>\n    <label for=\"${controlId}\" ref=\"label\">${mdLabel}</label>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/navbar/navbar.css', ['module'], function(module) { module.exports = "md-navbar .primary {\n  transition: all .3s ease-out;\n}\n\nmd-navbar .primary.md-auto-height {\n  height: auto;\n}\n"; });
-define('text!aurelia-materialize-bridge/navbar/navbar.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./navbar.css\"></require>\n  <div ref=\"fixedAnchor\">\n    <nav class=\"primary\" ref=\"nav\">\n      <div class=\"nav-wrapper\">\n        <slot></slot>\n      </div>\n    </nav>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/pagination/pagination.html', ['module'], function(module) { module.exports = "<template>\n  <ul class=\"pagination\">\n    <template if.bind=\"mdShowFirstLast\">\n      <li md-waves click.delegate=\"setFirstPage()\" class=\"${ mdActivePage === 1 ? 'disabled' : '' }\"><a><i class=\"material-icons\">first_page</i></a></li>\n    </template>\n    <template if.bind=\"mdShowPrevNext\">\n      <li md-waves click.delegate=\"setPreviousPage()\" class=\"${ mdActivePage === 1 ? 'disabled' : '' }\"><a><i class=\"material-icons\">chevron_left</i></a></li>\n    </template>\n    <template if.bind=\"mdShowPageLinks\">\n      <template repeat.for=\"p of mdPageLinks\">\n        <li md-waves click.delegate=\"setActivePage(p+1)\"><span if.bind=\"$first && p > 0\"><a>...</a></span></li>\n        <li md-waves click.delegate=\"setActivePage(p+1)\" class=\"${ p+1 === mdActivePage ? 'active' : ''}\">\n          <a>${p+1}</a>\n        </li>\n        <li md-waves click.delegate=\"setActivePage(p+1)\"><span if.bind=\"$last && p < pages - 1\"><a>...</a></span></li>\n      </template>\n    </template>\n    <template if.bind=\"mdShowPrevNext\">\n      <li md-waves click.delegate=\"setNextPage()\" class=\"${ mdActivePage == pages ? 'disabled' : '' }\"><a><i class=\"material-icons\">chevron_right</i></a></li>\n    </template>\n    <template if.bind=\"mdShowFirstLast\">\n      <li md-waves click.delegate=\"setLastPage()\" class=\"${ mdActivePage == pages ? 'disabled' : '' }\"><a><i class=\"material-icons\">last_page</i></a></li>\n    </template>\n  </ul>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/progress/progress.html', ['module'], function(module) { module.exports = "<template>\n  <template if.bind=\"mdType === 'linear'\">\n    <div class=\"progress\">\n      <div class=\"${ mdValue === null ? 'indeterminate' : 'determinate' }\" css=\"width: ${ mdValue ? mdValue : 0 }%\"></div>\n  </div>\n  </template>\n  <template if.bind=\"mdType === 'circular' && mdColor !== 'flashing'\">\n    <div class=\"preloader-wrapper ${mdSize} active\" ref=\"wrapper\">\n      <div class=\"spinner-layer spinner-${mdColor}-only\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n    </div>\n  </template>\n  <template if.bind=\"mdType === 'circular' && mdColor === 'flashing'\">\n    <div class=\"preloader-wrapper ${mdSize} active\" ref=\"wrapper\">\n      <div class=\"spinner-layer spinner-blue\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-red\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-yellow\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n\n      <div class=\"spinner-layer spinner-green\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n    </div>\n  </template>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/radio/radio.html', ['module'], function(module) { module.exports = "<template>\n  <input if.bind=\"!mdModel\" type=\"radio\" name=\"${mdName}\" value.bind=\"mdValue\" id=\"${controlId}\" checked.bind=\"mdChecked\" ref=\"radio\" />\n  <input if.bind=\"!!mdModel\" type=\"radio\" name=\"${mdName}\" model.bind=\"mdModel\" id=\"${controlId}\" checked.bind=\"mdChecked\" ref=\"radio\" />\n  <label for=\"${controlId}\">\n    <slot></slot>\n  </label>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/range/range.css', ['module'], function(module) { module.exports = "md-range input[type=\"range\"]::-ms-tooltip {\r\n  display: none;\r\n}\r\n"; });
-define('text!aurelia-materialize-bridge/range/range.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./range.css\"></require>\n  <p class=\"range-field\">\n    <input type=\"range\" min.one-way=\"mdMin\" max.one-way=\"mdMax\" step.one-way=\"mdStep\" value.bind=\"mdValue\" ref=\"input\" />\n  </p>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/sidenav/sidenav.css', ['module'], function(module) { module.exports = "md-sidenav li[md-waves] {\n  display: block;\n}\nmd-sidenav li a:hover {\n  background-color: transparent;\n  display: inline-block;\n  width: 100%;\n}\n"; });
-define('text!aurelia-materialize-bridge/sidenav/sidenav.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"./sidenav.css\"></require>\n  <div id=\"${ controlId }\" class=\"side-nav\" ref=\"sidenav\">\n    <slot></slot>\n  </div>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/slider/slider.css', ['module'], function(module) { module.exports = "md-slider {\n  display: block;\n}\n\nmd-slide {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: inherit;\n    overflow: hidden;\n}\n"; });
-define('text!aurelia-materialize-bridge/switch/switch.css', ['module'], function(module) { module.exports = "md-switch {\n  display: block;\n}\n"; });
-define('text!aurelia-materialize-bridge/switch/switch.html', ['module'], function(module) { module.exports = "<template class=\"switch\">\n  <require from=\"./switch.css\"></require>\n  <label>\n    ${mdLabelOff}\n    <input type=\"checkbox\" ref=\"checkbox\" blur.trigger=\"blur()\">\n    <span class=\"lever\"></span>\n    ${mdLabelOn}\n  </label>\n</template>\n"; });
-define('text!aurelia-materialize-bridge/well/md-well.html', ['module'], function(module) { module.exports = "<template bindable=\"router\">\n<style>\n  md-well li[md-waves] {\n    display: block;\n  }\n  md-well li a {\n    padding: 5px;\n    display: inline-block;\n    width: 100%;\n  }\n  /*md-well li.active {\n    border-right: 2px solid #ea4a4f;\n    background-color: #ffebee;\n  }*/\n</style>\n  <ul class=\"z-depth-1\">\n      <li md-waves=\"color: primary;\" repeat.for=\"row of router.navigation\" class=\"${row.isActive ? 'active' : ''}\">\n          <a href.bind=\"row.href\">${row.title}</a>\n      </li>\n  </ul>\n</template>\n"; });

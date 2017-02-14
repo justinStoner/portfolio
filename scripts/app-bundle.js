@@ -1048,6 +1048,91 @@ define('showcases/beatmaker/synth/piano',['exports', '../components/audio-bus', 
     return UpperValueConverter;
   }();
 });
+define('showcases/beatmaker/synth/components/oscillator',['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.Oscillator = undefined;
+
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
+
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+
+  var Oscillator = exports.Oscillator = (_class = function Oscillator() {
+    _classCallCheck(this, Oscillator);
+
+    _initDefineProp(this, 'wave', _descriptor, this);
+
+    _initDefineProp(this, 'volume', _descriptor2, this);
+
+    _initDefineProp(this, 'muted', _descriptor3, this);
+
+    _initDefineProp(this, 'octave', _descriptor4, this);
+
+    this.octaves = [-3, -2, -1, 0, 1, 2, 3];
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'wave', [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'volume', [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'muted', [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'octave', [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  })), _class);
+});
 define('showcases/beatmaker/synth/components/piano-key',['exports', 'aurelia-framework', '../piano', 'aurelia-event-aggregator'], function (exports, _aureliaFramework, _piano, _aureliaEventAggregator) {
   'use strict';
 
@@ -1144,107 +1229,22 @@ define('showcases/beatmaker/synth/components/piano-key',['exports', 'aurelia-fra
     initializer: null
   })), _class2)) || _class);
 });
-define('showcases/beatmaker/synth/components/oscillator',['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Oscillator = undefined;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
-  var _desc, _value, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-
-  var Oscillator = exports.Oscillator = (_class = function Oscillator() {
-    _classCallCheck(this, Oscillator);
-
-    _initDefineProp(this, 'wave', _descriptor, this);
-
-    _initDefineProp(this, 'volume', _descriptor2, this);
-
-    _initDefineProp(this, 'muted', _descriptor3, this);
-
-    _initDefineProp(this, 'octave', _descriptor4, this);
-
-    this.octaves = [-3, -2, -1, 0, 1, 2, 3];
-  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, 'wave', [_aureliaFramework.bindable], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, 'volume', [_aureliaFramework.bindable], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, 'muted', [_aureliaFramework.bindable], {
-    enumerable: true,
-    initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, 'octave', [_aureliaFramework.bindable], {
-    enumerable: true,
-    initializer: null
-  })), _class);
-});
 define('text!about.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"parallax-container z-depth-2\">\r\n      <div md-parallax>\r\n        <div style=\"position:absolute;width:100%;height:100%;background:rgba(0,0,0,.2)\"></div>\r\n        <!-- <img src=\"images/IMG_1066.JPG\"> -->\r\n      </div>\r\n    </div>\r\n    <div class=\"parallax-container z-depth-3\" >\r\n        <div md-parallax>\r\n          <div style=\"height:100%;\" class=\"green accent-3\"></div>\r\n        </div>\r\n      </div>\r\n      <div class=\"parallax-container\">\r\n          <div md-parallax>\r\n            <!-- <img src=\"images/IMG_0983.JPG\" style=\"width:100%\"> -->\r\n          </div>\r\n        </div>\r\n</template>\r\n"; });
 define('text!styles/main.css', ['module'], function(module) { module.exports = "body {\n  background-color: #fff; }\n\nnav .brand-logo,\n.brand-logo {\n  margin-left: 15px;\n  font-size: 18px; }\n\n[md-tabs] .waves-effect {\n  position: static; }\n\n.parallax-container {\n  height: 800px; }\n\n.b-radius-card {\n  border-radius: 0 0 2px 2px; }\n\n.showcase-tabs {\n  border-bottom: 1px solid rgba(160, 160, 160, 0.2); }\n  .showcase-tabs .indicator {\n    background: #2196f3 !important; }\n  .showcase-tabs li a.active {\n    color: #2196f3 !important; }\n  .showcase-tabs li a {\n    color: #343434 !important; }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: initial !important;\n    -webkit-transform: none !important;\n    transform: none !important; } }\n"; });
 define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"materialize-css/css/materialize.css\"></require>\n  <require from=\"./styles/main.css\"></require>\n  <md-colors md-primary-color=\"#2196f3\" md-accent-color=\"#009688\"></md-colors>\n  <div class=\"navbar-fixed\">\n    <md-navbar>\n      <a href=\"#/samples/navbar\" class=\"brand-logo\"><span>Justin Stoner</span></a>\n      <ul class=\"right\">\n        <li md-waves repeat.for=\"row of router.navigation\" class=\"${row.isActive?'active':''}\"><a href=\"${row.href}\">${row.title}</a></li>\n      </ul>\n    </md-navbar>\n  </div>\n  <router-view></router-view>\n</template>\n"; });
-define('text!showcases/beatmaker/styles/main.css', ['module'], function(module) { module.exports = ".card-content .row {\n  margin: 0; }\n\n.card-left {\n  display: table-cell;\n  /*border-right: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right {\n  display: table-cell;\n  /*border-left: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right > div,\n.card-left > div {\n  height: 20%; }\n\nmd-card > .card {\n  background-color: inherit; }\n\n.input-field.inline.col.m4 {\n  text-align: center; }\n\nlabel.sm {\n  font-size: 0.8rem;\n  /*position: absolute !important;*/\n  top: -14px !important;\n  left: 0rem !important; }\n\n.select-wrapper {\n  margin-top: 0px; }\n\n.select-wrapper + label {\n  color: #343434 !important; }\n\n.wave-shape {\n  width: 36px;\n  padding: 0; }\n\n#right form,\n#left form {\n  padding: 0; }\n\n#left form > div:first-child {\n  padding-left: 0; }\n\n#right form > div:last-child {\n  padding-right: 0; }\n\n.dropdown-content li > span {\n  color: #2196f3 !important; }\n\ninput:focus:not([type]):not([readonly]), input[type=\"text\"]:focus:not([readonly]), input[type=\"password\"]:focus:not([readonly]), input[type=\"email\"]:focus:not([readonly]), input[type=\"url\"]:focus:not([readonly]), input[type=\"time\"]:focus:not([readonly]), input[type=\"date\"]:focus:not([readonly]), input[type=\"datetime\"]:focus:not([readonly]), input[type=\"datetime-local\"]:focus:not([readonly]), input[type=\"tel\"]:focus:not([readonly]), input[type=\"number\"]:focus:not([readonly]), input[type=\"search\"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {\n  border-bottom: 1px solid #2196f3;\n  box-shadow: 0 1px 0 0 #2196f3; }\n\ninput:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {\n  color: #2196f3; }\n\ninput[type=\"range\"] + .thumb {\n  background: #2196f3; }\n\n.range-field.inline input[type=\"checkbox\"] {\n  margin-top: 10px; }\n\ninput[type=range]::-webkit-slider-thumb {\n  background-color: #2196f3; }\n\ninput[type=range]::-moz-range-thumb {\n  background-color: #2196f3; }\n\ninput[type=range]::-ms-thumb {\n  background-color: #2196f3; }\n\n.range-field.inline input {\n  width: 100%; }\n\n.range-field.inline label {\n  display: block;\n  text-align: left !important; }\n\n.mute-label {\n  color: #9e9e9e; }\n\ntd {\n  padding: 5px; }\n\nsection {\n  margin: 0; }\n\n.waves-effect.waves-blue .waves-ripple {\n  /*\r\n  The alpha value allows the text and background color\r\n  of the button to still show through.\r\n*/\n  background-color: rgba(3, 169, 244, 0.65); }\n\n.navbar-nav li.loader {\n  margin: 12px 24px 0 6px; }\n\n.pictureDetail {\n  max-width: 425px; }\n\n/* animate page transitions */\nsection.au-enter-active {\n  -webkit-animation: fadeInRight 1s;\n  animation: fadeInRight 1s; }\n\ndiv.au-stagger {\n  /* 50ms will be applied between each successive enter operation */\n  -webkit-animation-delay: 50ms;\n  animation-delay: 50ms; }\n\n.black0 {\n  margin-left: 24px; }\n\n.black2 {\n  margin-left: 48px; }\n\n.black5 {\n  margin-left: 48px; }\n\n.white-notes {\n  /*top:-89px;*/\n  position: relative;\n  margin-top: -90px;\n  z-index: 1; }\n\n.black-notes {\n  /*  position:absolute;*/\n  z-index: 2; }\n"; });
 define('text!showcase.html', ['module'], function(module) { module.exports = "<template>\r\n  <ul md-tabs class=\"showcase-tabs\" style=\"top:3px;\">\r\n      <li md-waves=\"color: primary;\" repeat.for=\"row of router.navigation\"><a class=\"${row.isActive?'active':''}\" href=\"#tab_${$index+1}\">${row.title}</a></li>\r\n      <li md-waves><a href=\"#tab2\" class=\"disabled\">More coming soon...</a></li>\r\n    </ul>\r\n    <router-view></router-view>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/synth/styles/synth.css', ['module'], function(module) { module.exports = "section {\n  background: #eee; }\n\n.key {\n  box-sizing: border-box;\n  width: 7.9%;\n  display: inline-block;\n  padding: 0 !important;\n  overflow: visible; }\n\n.key h1 {\n  text-align: center;\n  margin: 0;\n  font-size: 2.2rem; }\n\n.key div {\n  margin: 0 0.25rem;\n  height: 100%;\n  border-radius: 0px 0px 5px 5px;\n  font-size: 12px;\n  transition: box-shadow .25s; }\n\n.key.white {\n  height: 220px;\n  /*float:left;*/\n  position: relative; }\n  .key.white h1 {\n    color: #000;\n    padding-top: 11rem; }\n  .key.white div {\n    background-color: #fff; }\n\n.key.white.play div {\n  background: #dddddd; }\n\n.key.black-key {\n  height: 148px;\n  position: absolute;\n  z-index: 2;\n  text-align: center;\n  background: transparent !important;\n  margin-left: 3.5% !important;\n  padding: 0 4px !important; }\n  .key.black-key div {\n    display: inline-block;\n    margin: 0 0.25rem;\n    outline: none;\n    background-color: #000;\n    width: 100%; }\n  .key.black-key h1 {\n    color: #fff;\n    padding-top: 6rem; }\n\n.key.black-key.play {\n  background: #717171; }\n\n.key.black-key >\n.key-info {\n  list-style: none;\n  margin: 0px;\n  padding: 0px;\n  text-align: center; }\n\n.key-item {\n  height: 100%;\n  padding-top: 105%; }\n\n.key-item > a {\n  padding-top: 50%; }\n\n.parameter-holder {\n  padding: 0;\n  margin: 0 0.75rem; }\n\nform.col.m4,\nform.col.m2 {\n  padding-left: 0;\n  margin-bottom: 0.75rem; }\n  form.col.m4 .row,\n  form.col.m2 .row {\n    padding: 0.75rem; }\n\nform.col.m4:last-child {\n  padding-right: 0; }\n\n@media only screen and (max-width: 600px) {\n  form.col.m4 {\n    padding: 0; } }\n"; });
+define('text!showcases/beatmaker/styles/main.css', ['module'], function(module) { module.exports = ".card-content .row {\n  margin: 0; }\n\n.card-left {\n  display: table-cell;\n  /*border-right: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right {\n  display: table-cell;\n  /*border-left: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right > div,\n.card-left > div {\n  height: 20%; }\n\nmd-card > .card {\n  background-color: inherit; }\n\n.input-field.inline.col.m4 {\n  text-align: center; }\n\nlabel.sm {\n  font-size: 0.8rem;\n  /*position: absolute !important;*/\n  top: -14px !important;\n  left: 0rem !important; }\n\n.select-wrapper {\n  margin-top: 0px; }\n\n.select-wrapper + label {\n  color: #343434 !important; }\n\n.wave-shape {\n  width: 36px;\n  padding: 0; }\n\n#right form,\n#left form {\n  padding: 0; }\n\n#left form > div:first-child {\n  padding-left: 0; }\n\n#right form > div:last-child {\n  padding-right: 0; }\n\n.dropdown-content li > span {\n  color: #2196f3 !important; }\n\ninput:focus:not([type]):not([readonly]), input[type=\"text\"]:focus:not([readonly]), input[type=\"password\"]:focus:not([readonly]), input[type=\"email\"]:focus:not([readonly]), input[type=\"url\"]:focus:not([readonly]), input[type=\"time\"]:focus:not([readonly]), input[type=\"date\"]:focus:not([readonly]), input[type=\"datetime\"]:focus:not([readonly]), input[type=\"datetime-local\"]:focus:not([readonly]), input[type=\"tel\"]:focus:not([readonly]), input[type=\"number\"]:focus:not([readonly]), input[type=\"search\"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {\n  border-bottom: 1px solid #2196f3;\n  box-shadow: 0 1px 0 0 #2196f3; }\n\ninput:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {\n  color: #2196f3; }\n\ninput[type=\"range\"] + .thumb {\n  background: #2196f3; }\n\n.range-field.inline input[type=\"checkbox\"] {\n  margin-top: 10px; }\n\ninput[type=range]::-webkit-slider-thumb {\n  background-color: #2196f3; }\n\ninput[type=range]::-moz-range-thumb {\n  background-color: #2196f3; }\n\ninput[type=range]::-ms-thumb {\n  background-color: #2196f3; }\n\n.range-field.inline input {\n  width: 100%; }\n\n.range-field.inline label {\n  display: block;\n  text-align: left !important; }\n\n.mute-label {\n  color: #9e9e9e; }\n\ntd {\n  padding: 5px; }\n\nsection {\n  margin: 0; }\n\n.waves-effect.waves-blue .waves-ripple {\n  /*\r\n  The alpha value allows the text and background color\r\n  of the button to still show through.\r\n*/\n  background-color: rgba(3, 169, 244, 0.65); }\n\n.navbar-nav li.loader {\n  margin: 12px 24px 0 6px; }\n\n.pictureDetail {\n  max-width: 425px; }\n\n/* animate page transitions */\nsection.au-enter-active {\n  -webkit-animation: fadeInRight 1s;\n  animation: fadeInRight 1s; }\n\ndiv.au-stagger {\n  /* 50ms will be applied between each successive enter operation */\n  -webkit-animation-delay: 50ms;\n  animation-delay: 50ms; }\n\n.black0 {\n  margin-left: 24px; }\n\n.black2 {\n  margin-left: 48px; }\n\n.black5 {\n  margin-left: 48px; }\n\n.white-notes {\n  /*top:-89px;*/\n  position: relative;\n  margin-top: -90px;\n  z-index: 1; }\n\n.black-notes {\n  /*  position:absolute;*/\n  z-index: 2; }\n"; });
 define('text!showcases/beatmaker/sequencer/styles/sequencer.css', ['module'], function(module) { module.exports = ""; });
 define('text!work.html', ['module'], function(module) { module.exports = "<template></template>\r\n"; });
+define('text!showcases/beatmaker/synth/styles/synth.css', ['module'], function(module) { module.exports = "section {\n  background: #eee; }\n\n.key {\n  box-sizing: border-box;\n  width: 7.9%;\n  display: inline-block;\n  padding: 0 !important;\n  overflow: visible; }\n\n.key h1 {\n  text-align: center;\n  margin: 0;\n  font-size: 2.2rem; }\n\n.key div {\n  margin: 0 0.25rem;\n  height: 100%;\n  border-radius: 0px 0px 5px 5px;\n  font-size: 12px;\n  transition: box-shadow .25s; }\n\n.key.white {\n  height: 220px;\n  /*float:left;*/\n  position: relative; }\n  .key.white h1 {\n    color: #000;\n    padding-top: 11rem; }\n  .key.white div {\n    background-color: #fff; }\n\n.key.white.play div {\n  background: #dddddd; }\n\n.key.black-key {\n  height: 148px;\n  position: absolute;\n  z-index: 2;\n  text-align: center;\n  background: transparent !important;\n  margin-left: 3.5% !important;\n  padding: 0 4px !important; }\n  .key.black-key div {\n    display: inline-block;\n    margin: 0 0.25rem;\n    outline: none;\n    background-color: #000;\n    width: 100%; }\n  .key.black-key h1 {\n    color: #fff;\n    padding-top: 6rem; }\n\n.key.black-key.play {\n  background: #717171; }\n\n.key.black-key >\n.key-info {\n  list-style: none;\n  margin: 0px;\n  padding: 0px;\n  text-align: center; }\n\n.key-item {\n  height: 100%;\n  padding-top: 105%; }\n\n.key-item > a {\n  padding-top: 50%; }\n\n.parameter-holder {\n  padding: 0;\n  margin: 0 0.75rem; }\n\nform.col.m4,\nform.col.m2 {\n  padding-left: 0;\n  margin-bottom: 0.75rem; }\n  form.col.m4 .row,\n  form.col.m2 .row {\n    padding: 0.75rem; }\n\nform.col.m4:last-child {\n  padding-right: 0; }\n\n@media only screen and (max-width: 600px) {\n  form.col.m4 {\n    padding: 0; } }\n"; });
 define('text!showcases/beatmaker/beat-maker.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./synth/piano\"></require>\r\n  <require from=\"./sequencer/sequencer\"></require>\r\n  <require from=\"./components/sound-wave\"></require>\r\n  <require from=\"./styles/main.css\"></require>\r\n  <sound-wave ab.bind='ab' canvas-id='beatmaker' style=\"\" background.bind=\"true\"></sound-wave>\r\n  <div style=\"height:100%;background:#eee\" id='beatmaker'>\r\n    <div class=\"row\" >\r\n\r\n      <piano></piano>\r\n      <sequencer></sequencer>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/knob.html', ['module'], function(module) { module.exports = "<template>\r\n  <input type=\"text\" class=\"dial\" data-min=\"${min}\" data-max=\"${max}\" value.bind=\"val\" data-width=\"50\" data-height=\"50\" data-thickness=\".3\" data-fgColor=\"#2196f3\" data-bgColor=\"#fff\"/>\r\n  <label style=\"text-align:left !important;display:block;position:relative;left:0;margin-top:7px;\" class=\"sm\">${label}</label>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/mute-button.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <a class=\"waves-effect waves-${!muted?'blue':'red'} btn-flat center-align\" style=\"width:100%;margin-top:3px;\" click.delegate='muted=!muted'>\r\n      <template if.bind='muted'>\r\n        <i class=\"material-icons blue-text\" style=\"vertical-align:sub\">volume_up</i>\r\n      </template>\r\n      <template if.bind='!muted'>\r\n        <i class=\"material-icons red-text\" style=\"vertical-align:sub\">volume_off</i>\r\n      </template>\r\n    </a>\r\n\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/sound-wave.html', ['module'], function(module) { module.exports = "<template>\r\n  <canvas width=\"50\" height=\"50\" id=''  class=\"canvas\" css=\"${background?'position:absolute;z-index:-1':''}\"></canvas>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/synth/piano.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./components/piano-key\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/mute-button\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"./styles/synth.css\"></require>\r\n  <require from='./components/oscillator'></require>\r\n  <div class=\"au-animate col l7 m12\">\r\n      <div class=\"card\" id=\"piano\">\r\n        <sound-wave ab.bind='ab' canvas-id='piano' style=\"\"></sound-wave>\r\n        <div class=\"card-content\" style=\"padding:0 0.75rem\" >\r\n          <div id=\"oscillator\">\r\n          <div class=\"row\">\r\n           <form class=\"col m4\">\r\n              <oscillator volume.two-way=\"vol1\" wave.two-way=\"w1\" octave.two-way=\"o1\" muted.two-way='mute1'></oscillator>\r\n            </form>\r\n            <form class=\"col m4\">\r\n              <oscillator volume.two-way=\"vol2\" wave.two-way=\"w2\" octave.two-way=\"o2\" muted.two-way='mute2'></oscillator>\r\n            </form>\r\n             <form class=\"col m4\">\r\n               <oscillator volume.two-way=\"vol3\" wave.two-way=\"w3\" octave.two-way=\"o3\" muted.two-way='mute3'></oscillator>\r\n             </form>\r\n            </div>\r\n            <div class=\"row\">\r\n\r\n              <form class=\"col l2 m2 s3\">\r\n                <!-- <div id=\"delay\" class=\"\">\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ1\" val.two-way=\"eq1\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ2\" val.two-way=\"eq2\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ3\" val.two-way=\"eq3\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ4\" val.two-way=\"eq4\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ5\" val.two-way=\"eq5\"></knob></div>\r\n                </div> -->\r\n                <div id=\"filter\" class=\"row grey lighten-3 z-depth-1 b-radius-card\">\r\n                  <p>Filter</p>\r\n                  <!-- <knob min=\"0\" max=\"100\" label=\"Delay Time\" val.two-way=\"dTime\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Feedback\" val.two-way=\"dFeed\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Wet/Dry\" val.two-way=\"dWet\" style=\"display:inline-block;\"></knob> -->\r\n                  <knob min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"attack\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"release\" style=\"display:inline-block;\"></knob>\r\n                </div>\r\n              </form>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"row\" style=\"margin-bottom:0;\">\r\n            <div class=\"col s12\" id='right' style=\"padding:0;height:90%\">\r\n              <div class=\"col s1\" style=\"padding:0;margin-right: 0px;\">\r\n                <div class=\"input-field\" style=\"margin-top:0;\">\r\n                  <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:30px;padding:0;margin-right:5px;\"><i class=\"material-icons\">remove</i></button>\r\n                  <input style=\"width:34px;\" >\r\n                  <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:30px;padding:0;margin-left:5px;\" ><i class=\"material-icons\">add</i></button>\r\n                </div>\r\n                <div class=\"range-field inline\" style=\"float:left;\">\r\n                  <input type=\"range\" style=\"\">\r\n                </div>\r\n                <div class=\"range-field inline\" style=\"float:left;\">\r\n                  <input type=\"range\" style=\"\">\r\n                </div>\r\n              </div>\r\n              <piano-key class=\"${note.color?'white'+$index:'black'+$index}\" repeat.for=\"note of notes\" index.bind=\"$index\"  assigned.bind=\"note.assigned\" key.bind=\"note\" containerLess></piano-key>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/effects/delay.html', ['module'], function(module) { module.exports = "<template>\r\n  \r\n</template>\r\n"; });
 define('text!showcases/beatmaker/effects/equalizer.html', ['module'], function(module) { module.exports = "<template>\r\n  \r\n</template>\r\n"; });
 define('text!showcases/beatmaker/sequencer/sequencer.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"./styles/sequencer.css\"></require>\r\n  <section class=\"au-animate col m12 l5\">\r\n\r\n    <div class=\"card\" id=\"sequencer\">\r\n      <sound-wave ab.bind='ab' canvas-id='sequencer' style=\"\"></sound-wave>\r\n      <div class=\"card-content\">\r\n        <a class=\"waves-effect waves-${!muted?'blue':'red'} btn-flat center-align\" style=\"margin-bottom:20px;padding:0;\" click.delegate='handlePlay()'>\r\n          <template if.bind='!playing'>\r\n            <i class=\"material-icons blue-text\" style=\"vertical-align:sub;font-size:2.3rem\">play_arrow</i>\r\n          </template>\r\n          <template if.bind='playing'>\r\n            <i class=\"material-icons red-text\" style=\"vertical-align:sub;font-size:2.3rem\" >stop</i>\r\n          </template>\r\n        </a>\r\n        <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n          <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:36px;padding:0;margin-right:5px;\" click.delegate=\"changeTempo(false)\"><i class=\"material-icons\">remove</i></button>\r\n          <input style=\"width:40px;\" type=\"number\" value.bind=\"tempo\">\r\n          <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:36px;padding:0;margin-left:5px;\" click.delegate=\"changeTempo(true)\"><i class=\"material-icons\">add</i></button>\r\n        </div>\r\n        <table>\r\n          <tbody>\r\n              <tr>\r\n                <td style=\"width:5.88%\"></td>\r\n                <td repeat.for=\"i of 16\" style=\"width:5.88%\">\r\n                  <div class=\"${notePlaying-1==i?'blue':'grey'} lighten-2\" style=\"height:5px;\"></div>\r\n                </td>\r\n              </tr>\r\n              <tr repeat.for=\"drum of drums\">\r\n                <td style=\"width:5.88%;cursor:pointer\" class=\"blue-text\" click.delegate=\"playSample(drum.sound)\">${drum.name}</td>\r\n                <td repeat.for=\"i of 16\" style=\"width:5.88%\"><a md-waves class=\"waves-effect waves-light btn green accent-3\" style=\"width:100%;padding:0rem;\" click.delegate=\"addNote($event, $parent.$index, i)\"></a></td>\r\n              </tr>\r\n          </tbody>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/synth/components/piano-key.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"col s1 key ${key.color===true?'white':'black-key'} \" tabindex=\"0\" mousedown.trigger=\"play()\" mouseup.delegate=\"stop()\">\r\n    <div class=\"${isPlaying?'play z-depth-1':'z-depth-2'}\"  md-waves=\"block:true;color:blue\">\r\n      <h1>${key.key}</h1>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/synth/piano.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./components/piano-key\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/mute-button\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"./styles/synth.css\"></require>\r\n  <require from='./components/oscillator'></require>\r\n  <div class=\"au-animate col l7 m12\">\r\n      <div class=\"card\" id=\"piano\">\r\n        <sound-wave ab.bind='ab' canvas-id='piano' style=\"\"></sound-wave>\r\n        <div class=\"card-content\" style=\"padding:0 0.75rem\" >\r\n          <div id=\"oscillator\">\r\n          <div class=\"row\">\r\n           <form class=\"col m4\">\r\n              <oscillator volume.two-way=\"vol1\" wave.two-way=\"w1\" octave.two-way=\"o1\" muted.two-way='mute1'></oscillator>\r\n            </form>\r\n            <form class=\"col m4\">\r\n              <oscillator volume.two-way=\"vol2\" wave.two-way=\"w2\" octave.two-way=\"o2\" muted.two-way='mute2'></oscillator>\r\n            </form>\r\n             <form class=\"col m4\">\r\n               <oscillator volume.two-way=\"vol3\" wave.two-way=\"w3\" octave.two-way=\"o3\" muted.two-way='mute3'></oscillator>\r\n             </form>\r\n            </div>\r\n            <div class=\"row\">\r\n\r\n              <form class=\"col l2 m2 s3\">\r\n                <!-- <div id=\"delay\" class=\"\">\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ1\" val.two-way=\"eq1\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ2\" val.two-way=\"eq2\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ3\" val.two-way=\"eq3\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ4\" val.two-way=\"eq4\"></knob></div>\r\n                  <div style=\"display:inline-block;\"><knob min=\"-40\" max=\"40\" label=\"EQ5\" val.two-way=\"eq5\"></knob></div>\r\n                </div> -->\r\n                <div id=\"filter\" class=\"row grey lighten-3 z-depth-1 b-radius-card\">\r\n                  <p>Filter</p>\r\n                  <!-- <knob min=\"0\" max=\"100\" label=\"Delay Time\" val.two-way=\"dTime\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Feedback\" val.two-way=\"dFeed\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Wet/Dry\" val.two-way=\"dWet\" style=\"display:inline-block;\"></knob> -->\r\n                  <knob min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"attack\" style=\"display:inline-block;\"></knob>\r\n                  <knob min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"release\" style=\"display:inline-block;\"></knob>\r\n                </div>\r\n              </form>\r\n            </div>\r\n          </div>\r\n\r\n          <div class=\"row\" style=\"margin-bottom:0;\">\r\n            <div class=\"col s12\" id='right' style=\"padding:0;height:90%\">\r\n              <div class=\"col s1\" style=\"padding:0;margin-right: 0px;\">\r\n                <div class=\"input-field\" style=\"margin-top:0;\">\r\n                  <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:30px;padding:0;margin-right:5px;\"><i class=\"material-icons\">remove</i></button>\r\n                  <input style=\"width:34px;\" >\r\n                  <button class=\"btn waves-effect waves-light blue\" style=\"display:inline-block;width:30px;padding:0;margin-left:5px;\" ><i class=\"material-icons\">add</i></button>\r\n                </div>\r\n                <div class=\"range-field inline\" style=\"float:left;\">\r\n                  <input type=\"range\" style=\"\">\r\n                </div>\r\n                <div class=\"range-field inline\" style=\"float:left;\">\r\n                  <input type=\"range\" style=\"\">\r\n                </div>\r\n              </div>\r\n              <piano-key class=\"${note.color?'white'+$index:'black'+$index}\" repeat.for=\"note of notes\" index.bind=\"$index\"  assigned.bind=\"note.assigned\" key.bind=\"note\" containerLess></piano-key>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/synth/components/oscillator.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from='../../components/knob'></require>\r\n  <require from='../../components/mute-button'></require>\r\n  <div class=\"grey lighten-3 z-depth-1 b-radius-card row\">\r\n    <p>Oscillator 1</p>\r\n     <div class=\"col s12 m12\">\r\n       <div class=\"input-field col s6 m6\">\r\n         <knob min=\"0\" max=\"100\" label=\"Volume\" val.two-way=\"volume\"></knob>\r\n       </div>\r\n       <div class=\"col s6 m6\">\r\n         <button class=\"waves-effect waves-light btn ${wave=='sine'?'green accent-3':'blue'} wave-shape\" style=\"margin-bottom:5px;\" click.delegate=\"wave='sine'\">Sine</button>\r\n         <button class=\"waves-effect waves-light btn ${wave=='square'?'green accent-3':'blue'} wave-shape\" style=\"margin-bottom:5px;\" click.delegate=\"wave='square'\">Sqr</button>\r\n          <br>\r\n         <button class=\"waves-effect waves-light btn ${wave=='triangle'?'green accent-3':'blue'} wave-shape\" click.delegate=\"wave='triangle'\">Tri</button>\r\n         <button class=\"waves-effect waves-light btn ${wave=='sawtooth'?'green accent-3':'blue'} wave-shape\" click.delegate=\"wave='sawtooth'\">Saw</button>\r\n       </div>\r\n     </div>\r\n     <div class=\"col s12 m12\">\r\n       <div class=\"input-field col s6 m6\">\r\n         <select md-select value.bind=\"octave\" >\r\n           <option repeat.for=\"o of octaves\" value.bind=\"o\" >${o}</option>\r\n         </select>\r\n         <label >Octave</label>\r\n       </div>\r\n       <div class=\"input-field col s6 m6\" >\r\n         <mute-button muted.two-way='mute'></mute-button>\r\n       </div>\r\n     </div>\r\n  </div>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/synth/components/piano-key.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"col s1 key ${key.color===true?'white':'black-key'} \" tabindex=\"0\" mousedown.trigger=\"play()\" mouseup.delegate=\"stop()\">\r\n    <div class=\"${isPlaying?'play z-depth-1':'z-depth-2'}\"  md-waves=\"block:true;color:blue\">\r\n      <h1>${key.key}</h1>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
 //# sourceMappingURL=app-bundle.js.map
