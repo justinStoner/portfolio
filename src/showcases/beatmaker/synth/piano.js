@@ -11,39 +11,41 @@ export class Piano{
     this.audio=this.ab.audio;
     this.canvas="piano";
     this.octaves=[-3,-2,-1,0,1,2,3];
-    this.whiteNotes=[];
-    this.blackNotes=[];
-    this.w1="sine";
-    this.w2="sine";
-    this.w3="sine";
-    this.vol1=10;
-    this.vol2=10;
-    this.vol3=10;
+    this.waves=['sine', 'sawtooth', 'square', 'triangle']
+    this.oscillators=createVoices();
+    this.lfoData={
+      volume:50,
+      wave:1,
+      detune:0,
+      octave:-3,
+      frequency:2.1
+    }
+    this.modMult=1;
+    this.lpf=this.audio.createBiquadFilter();
+    this.master = this.audio.createGain();
+    this.master.gain.value=0;
+    this.effectOutput=this.audio.createGain();
 
-    this.attack=50;
-    this.release=50;
-    this.octave1=0;
-    this.octave2=0;
-    this.octave3=0;
 
-    this.mute1=false;
-    this.mute2=false;
-    this.mute3=false;
+    this.lpf.connect(this.master);
+    this.master.connect(this.effectOutput);
+    this.effectOutput.gain.value=0.7;
+    this.effectOutput.connect(this.ab.input);
 
-    this.currentFilterCutoff = 8;
-    this.currentFilterQ = 7.0;
-    this.currentFilterMod = 21;
-    this.currentFilterEnv = 56;
+    this.lpfCutoff = 8;
+    this.lpfQ = 7.0;
+    this.lpfMod = 21;
+    this.lpfEnv = 56;
 
-    this.currentEnvA = 2;
-    this.currentEnvD = 15;
-    this.currentEnvS = 68;
-    this.currentEnvR = 5;
+    this.envA = 2;
+    this.envD = 15;
+    this.envS = 68;
+    this.envR = 5;
 
-    this.currentFilterEnvA = 5;
-    this.currentFilterEnvD = 6;
-    this.currentFilterEnvS = 5;
-    this.currentFilterEnvR = 7;
+    this.lpfA = 5;
+    this.lpfD = 6;
+    this.lpfS = 5;
+    this.lpfR = 7;
 
     this.notes=[
       {note:'c' ,hz:261.626 ,color:true, key:'a', isPlaying:false},
@@ -82,10 +84,7 @@ export class Piano{
     this.ea.subscribe('stop-key', msg=>{
       this.stopKey(msg.index);
     });
-  this.dInput = this.audio.createGain();
-   this.output = this.audio.createGain();
-   this.dInput.connect(this.output);
-   this.output.connect(this.ab.input);
+
   }
   attached(){
     //$('select').material_select();
@@ -149,71 +148,56 @@ export class Piano{
   }
   playKey(i){
      if(this.notes[i].isPlaying==false){
-      this.notes[i].g1=this.ab.audio.createGain();
-      this.notes[i].g2=this.ab.audio.createGain();
-      this.notes[i].g3=this.ab.audio.createGain();
-      this.notes[i].o1=this.ab.audio.createOscillator();
-      console.log(this.notes[i].hz);
-      if(this.octave1==0){
-        this.notes[i].o1.frequency.value=this.notes[i].hz;
-        console.log(true);
-      }else if (this.octave1>0){
-        this.notes[i].o1.frequency.value=this.notes[i].hz * 2*this.octave1;
-        console.log(false);
-      }else{
-        console.log(2/Math.abs(this.octave1));
-        this.notes[i].o1.frequency.value=this.notes[i].hz * 2/Math.abs(this.octave1);
-        console.log(false);
-      }
-      this.notes[i].o1.type=this.w1;
-      this.notes[i].o1.connect(this.notes[i].g1);
-      this.notes[i].o2=this.ab.audio.createOscillator();
-      if(this.octave2==0){
-        this.notes[i].o2.frequency.value=this.notes[i].hz;
-        console.log(true);
-      }else if (this.octave2>0){
-        this.notes[i].o2.frequency.value=this.notes[i].hz * 2*this.octave2;
-        console.log(false);
-      }else{
-        this.notes[i].o2.frequency.value=this.notes[i].hz * 2/Math.abs(this.octave2);
-        console.log(false);
-      }
-      this.notes[i].o2.type=this.w2;
-      this.notes[i].o2.connect(this.notes[i].g2);
-      this.notes[i].o3=this.ab.audio.createOscillator();
-        if(this.octave3==0){
-          this.notes[i].o3.frequency.value=this.notes[i].hz;
-          console.log(true);
-        }else if (this.octave3>0){
-          this.notes[i].o3.frequency.value=this.notes[i].hz * 2*this.octave3;
-          console.log(false);
-        }else{
-          this.notes[i].o3.frequency.value=this.notes[i].hz * 2/Math.abs(this.octave3);
-          console.log(false);
-        }
-      console.log(this.ab.audio.currentTime+this.attack/100);
-      this.notes[i].o3.type=this.w3;
-      this.notes[i].o3.connect(this.notes[i].g3);
-      this.notes[i].g1.connect(this.dInput);
-      this.notes[i].g2.connect(this.dInput);
-      this.notes[i].g3.connect(this.dInput);
-      this.notes[i].g1.gain.value=this.vol1/100;
-      this.notes[i].g2.gain.value=this.vol2/100;
-      this.notes[i].g3.gain.value=this.vol3/100;
-      this.notes[i].o1.start(0);
-      //var now = this.ab.audio.currentTime;
-      this.notes[i].g1.gain.cancelScheduledValues(this.ab.audio.currentTime);
-      this.notes[i].g1.gain.setValueAtTime(0, this.ab.audio.currentTime);
-      this.notes[i].g1.gain.linearRampToValueAtTime(this.vol1/100, this.ab.audio.currentTime + this.attack/100);
-      this.notes[i].o2.start(0);
-      this.notes[i].g2.gain.cancelScheduledValues(this.ab.audio.currentTime);
-      this.notes[i].g2.gain.setValueAtTime(0, this.ab.audio.currentTime);
-      this.notes[i].g2.gain.linearRampToValueAtTime(this.vol2/100, this.ab.audio.currentTime + this.attack/100);
-      this.notes[i].o3.start(0);
-      this.notes[i].g3.gain.cancelScheduledValues(this.ab.audio.currentTime);
-      this.notes[i].g3.gain.setValueAtTime(0, this.ab.audio.currentTime);
-      this.notes[i].g3.gain.linearRampToValueAtTime(this.vol3/100, this.ab.audio.currentTime + this.attack/100);
-      this.notes[i].isPlaying=true;
+       this.lfo=this.audio.createOscillator();
+       this.lfo.type=this.waves[this.lfoData.wave];
+       this.lfo.frequency.value=this.lfoData.frequency*this.modMult;
+
+       for(var ii=0;ii<this.oscillators.length;ii++){
+
+         this.notes[i]['g'+ii]=this.ab.audio.createGain();
+         this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
+         console.log(this.oscillators[ii].octave-3);
+         if(this.oscillators[ii].octave-3==0){
+           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
+           console.log(true);
+         }else if (this.oscillators[ii].octave-3>0){
+           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2*(this.oscillators[ii].octave-3);
+           console.log(false);
+         }else{
+           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2/Math.abs(this.oscillators[ii].octave-3);
+           console.log(false);
+         }
+         this['lfoOscGain'+ii]=this.ab.audio.createGain();
+         this['lfoOscGain'+ii].tyoe=this.waves[this.lfo.wave]
+         this.lfo.connect(this['lfoOscGain'+ii]);
+         this['lfoOscGain'+ii].connect(this.notes[i]['o'+ii].frequency)
+         this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
+         this.notes[i]['o'+ii].connect(this.notes[i]['g'+ii]);
+         this.notes[i]['g'+ii].gain.value=this.oscillators[ii].volume/100;
+         this.filter1 = this.ab.audio.createBiquadFilter();
+        	this.filter1.type = "lowpass";
+        	this.filter1.Q.value = 7.0;
+        	this.filter1.frequency.value = Math.pow(2, 8);
+        	// filterFrequencyFromCutoff( this.originalFrequency, currentFilterCutoff );
+        //	console.log( "filter frequency: " + this.filter1.frequency.value);
+        	this.filter2 = this.ab.audio.createBiquadFilter();
+        	this.filter2.type = "lowpass";
+        	this.filter2.Q.value = 7.0;
+        	this.filter2.frequency.value = Math.pow(2, 8);
+
+        	this.notes[i]['g'+ii].connect( this.filter1 );
+        	this.notes[i]['g'+ii].connect( this.filter1 );
+        	this.filter1.connect( this.master );
+       }
+
+
+       for(var ii=0;ii<2;ii++){
+         this.notes[i]['o'+ii].start(0);
+         this.notes[i]['g'+ii].gain.cancelScheduledValues(this.ab.audio.currentTime);
+         this.notes[i]['g'+ii].gain.setValueAtTime(0, this.ab.audio.currentTime);
+         this.notes[i]['g'+ii].gain.linearRampToValueAtTime(this.oscillators[ii].volume/100, this.ab.audio.currentTime + this.envA/100);
+       }
+         this.notes[i].isPlaying=true;
 
       }
   }
@@ -221,18 +205,29 @@ export class Piano{
   stopKey(i){
     //aconsole.log(e);
     if(this.notes[i].isPlaying==true){
-     this.notes[i].g1.gain.cancelScheduledValues(this.ab.audio.currentTime);
-     this.notes[i].g2.gain.cancelScheduledValues(this.ab.audio.currentTime);
-     this.notes[i].g3.gain.cancelScheduledValues(this.ab.audio.currentTime);
-     this.notes[i].g1.gain.setValueAtTime(this.notes[i].g1.gain.value, this.ab.audio.currentTime);
-     this.notes[i].g1.gain.linearRampToValueAtTime(0, this.ab.audio.currentTime + (this.release/100));
-     this.notes[i].g2.gain.setValueAtTime(this.notes[i].g2.gain.value, this.ab.audio.currentTime);
-     this.notes[i].g2.gain.linearRampToValueAtTime(0, this.ab.audio.currentTime + (this.release/100));
-     this.notes[i].g3.gain.setValueAtTime(this.notes[i].g3.gain.value, this.ab.audio.currentTime);
-     this.notes[i].g3.gain.linearRampToValueAtTime(0, this.ab.audio.currentTime + (this.release/100));
+    for(var ii=0;ii<this.oscillators.length;ii++){
+      this.notes[i]['g'+ii].gain.cancelScheduledValues(this.ab.audio.currentTime);
+      this.notes[i]['g'+ii].gain.setValueAtTime(this.notes[i]['g'+ii].gain.value, this.ab.audio.currentTime);
+      this.notes[i]['g'+ii].gain.linearRampToValueAtTime(0, this.ab.audio.currentTime + (this.envR/100));
+    }
       this.notes[i].isPlaying=false;
     }
+  }d
+}
+function createVoices(){
+  var arr=[];
+  for(var i=0;i<2;i++){
+    arr.push(function(){
+      var voice={
+        volume:50,
+        wave:'sine',
+        octave:0,
+        type:'oscillator'
+      }
+      return voice
+    });
   }
+  return arr;
 }
 export class UpperValueConverter {
   toView(value){

@@ -38,6 +38,41 @@ label.sm{
 .tab-content.grey{
 
 }
+
+.p1 rect {
+  fill: #2196f3;
+}
+
+.p1 g polygon {
+  opacity: 1;
+}
+
+.p1 circle {
+  fill: #fff;
+  stroke: #2196f3;
+  stroke-width: 2;
+  -webkit-filter: url(#dropshadow);
+   filter: url(#dropshadow);
+}
+
+.p1 text {
+  font-size: 10px;
+  fill: rgba(0, 0, 0, 0.870588);
+  font-family: sans-serif;
+  font-weight: 300;
+  -webkit-transition: all .1s ease-in-out;
+}
+
+.p1 text.active {
+  font-size: 15px;
+  -webkit-transition: all .3s ease-in-out;
+  fill:#2196f3;
+}
+svg:not(:root){
+  overflow: visible;
+}
+
+
 .wave-shape{
   width: 36px;
   padding: 0;

@@ -125,9 +125,8 @@
           "aurelia-templating-binding",
           {
             "name": "jquery-knob",
-            "path": "../node_modules/jquery-knob/dist/",
-            "main": "jquery.knob.min",
-            "deps":["jquery"]
+            "path": "../node_modules/jim-knopf/dist/",
+            "main": "knob-min"
           },
           "text",
           {

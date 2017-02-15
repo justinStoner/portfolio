@@ -1,6 +1,7 @@
 section{
   background:#eee;
 }
+
 .key{
   box-sizing: border-box;
   width:7.9%;
@@ -92,6 +93,7 @@ section{
   margin:0 0.75rem;
 }
 form.col.m4,
+form.col.m5,
 form.col.m2{
   padding-left: 0;
   margin-bottom:0.75rem;
@@ -101,7 +103,8 @@ form.col.m2{
   }
 
 }
-form.col.m4:last-child{
+form.col.m4:last-child,
+form.col.m5:last-child{
   padding-right: 0;
 }
 @media only screen and (max-width: 600px){

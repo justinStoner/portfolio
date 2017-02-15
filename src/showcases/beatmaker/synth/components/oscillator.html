@@ -2,28 +2,21 @@
   <require from='../../components/knob'></require>
   <require from='../../components/mute-button'></require>
   <div class="grey lighten-3 z-depth-1 b-radius-card row">
-    <p>Oscillator 1</p>
+    <p>${type==='lfo' ? type : type + '' + index}</p>
      <div class="col s12 m12">
        <div class="input-field col s6 m6">
-         <knob min="0" max="100" label="Volume" val.two-way="volume"></knob>
+         <knob min="0" max="100" label="Mix" val.two-way="volume" offset="220"></knob>
        </div>
        <div class="col s6 m6">
-         <button class="waves-effect waves-light btn ${wave=='sine'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="wave='sine'">Sine</button>
-         <button class="waves-effect waves-light btn ${wave=='square'?'green accent-3':'blue'} wave-shape" style="margin-bottom:5px;" click.delegate="wave='square'">Sqr</button>
-          <br>
-         <button class="waves-effect waves-light btn ${wave=='triangle'?'green accent-3':'blue'} wave-shape" click.delegate="wave='triangle'">Tri</button>
-         <button class="waves-effect waves-light btn ${wave=='sawtooth'?'green accent-3':'blue'} wave-shape" click.delegate="wave='sawtooth'">Saw</button>
+         <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' val.two-way="wave" val.two-way="wave" offset='276' range="180"></knob>
        </div>
      </div>
      <div class="col s12 m12">
        <div class="input-field col s6 m6">
-         <select md-select value.bind="octave" >
-           <option repeat.for="o of octaves" value.bind="o" >${o}</option>
-         </select>
-         <label >Octave</label>
+         <knob min='0' max="7" label="Octave" labels="-3,-2,-1,0,1,2,3" val.two-way="octave" offset='220'></knob>
        </div>
        <div class="input-field col s6 m6" >
-         <mute-button muted.two-way='mute'></mute-button>
+          <knob min='0' max="7" label="Detune" val.two-way="detune" offset='220'></knob>
        </div>
      </div>
   </div>

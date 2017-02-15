@@ -11,4 +11,37 @@
       <sequencer></sequencer>
     </div>
   </div>
+  <svg>
+    <filter id="dropshadow" height="150%" width="150%">
+		<feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+		<feOffset dx="1" dy="2" result="offsetblur"/>
+		<feFlood flood-color="rgba(0,0,0,0.4)"/>
+		<feComposite in2="offsetblur" operator="in"/>
+		<feMerge>
+			<feMergeNode/>
+			<feMergeNode in="SourceGraphic"/>
+		</feMerge>
+	</filter>
+      <filter id="inner-shadow">
+
+          <!-- Shadow Offset -->
+          <feOffset dx="0" dy="5"></feOffset>
+
+          <!-- Shadow Blur -->
+          <feGaussianBlur stdDeviation="5" result="offset-blur"></feGaussianBlur>
+
+          <!-- Invert the drop shadow
+               to create an inner shadow -->
+          <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"></feComposite>
+
+          <!-- Color & Opacity -->
+          <feFlood flood-color="black" flood-opacity="0.75" result="color"></feFlood>
+
+          <!-- Clip color inside shadow -->
+          <feComposite operator="in" in="color" in2="inverse" result="shadow"></feComposite>
+
+          <!-- Put shadow over original object -->
+          <feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite>
+      </filter>
+  </svg>
 </template>
