@@ -168,8 +168,8 @@ export class Piano{
            console.log(false);
          }
          this['lfoOscGain'+ii]=this.ab.audio.createGain();
-         this['lfoOscGain'+ii].tyoe=this.waves[this.lfo.wave]
          this.lfo.connect(this['lfoOscGain'+ii]);
+         this['lfoOscGain'+ii].gain.value=0.5;//change to modOsc var later
          this['lfoOscGain'+ii].connect(this.notes[i]['o'+ii].frequency)
          this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
          this.notes[i]['o'+ii].connect(this.notes[i]['g'+ii]);
@@ -185,7 +185,6 @@ export class Piano{
         	this.filter2.Q.value = 7.0;
         	this.filter2.frequency.value = Math.pow(2, 8);
 
-        	this.notes[i]['g'+ii].connect( this.filter1 );
         	this.notes[i]['g'+ii].connect( this.filter1 );
         	this.filter1.connect( this.master );
        }

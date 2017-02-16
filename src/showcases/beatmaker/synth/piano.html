@@ -11,7 +11,7 @@
         <div class="card-content" style="padding:0 0.75rem" >
           <div class="row">
             <form class="col m4">
-              <oscillator volume.two-way="lfoData.volume" wave.two-way="lfoData.wave" octave.two-way="lfoData.octave" type='lfo' detune.bind="lfoData.detune"></oscillator>
+              <oscillator volume.two-way="lfoData.volume" wave.two-way="lfoData.wave" octave.two-way="lfoData.octave" type='Lfo' detune.bind="lfoData.detune"></oscillator>
             </form>
             <form class="col m4" repeat.for="osc of oscillators">
               <oscillator volume.two-way="osc.volume" wave.two-way="osc.wave" octave.two-way="osc.octave" index.bind="$index" type='oscillator' detune.bind="osc.detune"></oscillator>
@@ -21,10 +21,24 @@
             <form class="col m5">
               <div id="filter" class="row grey lighten-3 z-depth-1 b-radius-card">
                 <p>Filter</p>
-                <knob min="0" max="100" label="Attack" val.two-way="envA" style="display:inline-block;"></knob>
-                <knob min="0" max="100" label="Decay" val.two-way="envD" style="display:inline-block;"></knob>
-                <knob min="0" max="100" label="Sustain" val.two-way="envR" style="display:inline-block;"></knob>
-                <knob min="0" max="100" label="Release" val.two-way="envS" style="display:inline-block;"></knob>
+                <div class="row">
+                  <div class="col m3 s6">
+                    <knob min="0" max="100" label="Attack" val.two-way="envA" style="display:inline-block;"></knob>
+                  </div>
+                  <div class="col m3 s6">
+                    <knob min="0" max="100" label="Decay" val.two-way="envD" style="display:inline-block;"></knob>
+                  </div>
+                  <div class="col m3 s6">
+                    <knob min="0" max="100" label="Sustain" val.two-way="envR" style="display:inline-block;"></knob>
+                  </div>
+                  <div class="col m3 s6">
+                    <knob min="0" max="100" label="Release" val.two-way="envS" style="display:inline-block;"></knob>
+                  </div>
+                </div>
+
+
+
+
               </div>
             </form>
           </div>
