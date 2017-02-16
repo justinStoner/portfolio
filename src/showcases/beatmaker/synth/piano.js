@@ -152,7 +152,7 @@ export class Piano{
      if(this.notes[i].isPlaying==false){
        this.lfo=this.audio.createOscillator();
        this.lfo.type=this.waves[this.lfoData.wave];
-       this.lfo.frequency.value=this.lfoData.freq*this.modMult;
+       this.lfo.frequency.value=this.lfoData.freq;
        this.lfo.detune.value=this.lfoData.detune;
        this.filter1 = this.ab.audio.createBiquadFilter();
        this.filter1.type = "lowpass";
@@ -167,7 +167,7 @@ export class Piano{
 
          this.notes[i]['g'+ii]=this.ab.audio.createGain();
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
-         this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune;
+         this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
          console.log(this.oscillators[ii].octave-3);
          if(this.oscillators[ii].octave-3==0){
            this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
@@ -202,10 +202,10 @@ export class Piano{
 
        this.envelope=this.ab.audio.createGain();
        this.filter2.connect(this.envelope);
-       this.cutoff=this.ab.audio.createBiquadFilter();
-       this.filter1.connect(this.cutoff);
-       this.filter2.connect(this.cutoff);
-       this.cutoff.connect(this.envelope);
+      //  this.cutoff=this.ab.audio.createBiquadFilter();
+      //  this.filter1.connect(this.cutoff);
+      //  this.filter2.connect(this.cutoff);
+      //  this.cutoff.connect(this.envelope);
        this.envelope.connect(this.master);
       //  if(this.lfoData.modType===1){
       //    this.lfoOscGain1.connect(this.cutoff.frequency);
@@ -265,7 +265,7 @@ export class Piano{
     for(var ii=0;ii<this.oscillators.length;ii++){
       this.notes[i]['g'+ii].gain.cancelScheduledValues(now);
       this.notes[i]['g'+ii].gain.setTargetAtTime( 0, now, (this.envR/10.0) +0.001);
-      //this.notes[i]['o'+ii].stop(now+this.envR);
+      this.notes[i]['o'+ii].stop(now+(this.envR/3.0));
     }
       this.notes[i].isPlaying=false;
     }
@@ -279,7 +279,8 @@ function createVoices(){
         volume:50,
         wave:'sine',
         octave:0,
-        type:'oscillator'
+        type:'oscillator',
+        detune:50
       }
       return voice
     });
