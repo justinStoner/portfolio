@@ -18,7 +18,7 @@ export class App {
     config.title="Justin Stoner";
     config.map([
       { route: ['', 'about'],  name: 'about', moduleId: 'about', href:'#/about', nav: true, title:'About' },
-      { route: 'work',  name: 'work',      moduleId: 'work',      nav: true, title:'Work', auth:false, href:'#/work'},
+      // { route: 'work',  name: 'work',      moduleId: 'work',      nav: true, title:'Work', auth:false, href:'#/work'},
       { route: 'showcase',  name: 'showcase',      moduleId: 'showcase',      nav: true, title:'Showcase', auth:false }
     ]);
     this.router=router;
