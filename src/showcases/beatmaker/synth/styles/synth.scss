@@ -11,7 +11,7 @@ knob{
 }
 knob>p{
   margin-bottom: 7px !important;
-  
+
 }
 .input-field{
   margin-top: 0;
@@ -108,7 +108,7 @@ knob>p{
 }
 form.col.m4,
 form.col.m5,
-form.col.m2{
+form.col.m6{
   padding-left: 0;
   margin-bottom:0.75rem;
   .row{
@@ -118,6 +118,7 @@ form.col.m2{
 
 }
 form.col.m4:last-child,
+form.col.m6:last-child,
 form.col.m5:last-child{
   padding-right: 0;
 }
