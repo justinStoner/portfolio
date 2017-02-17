@@ -22,16 +22,17 @@ export class Piano{
       type:'Lfo',
       modType:0
     }
+    this.masterVol=50;
     this.modMult=10;
     // this.lpf=this.audio.createBiquadFilter();
     this.master = this.audio.createGain();
-    this.master.gain.value=2.0;
+    this.master.gain.value=1.0;
     this.effectOutput=this.audio.createGain();
 
 
     // this.lpf.connect(this.master);
     this.master.connect(this.effectOutput);
-    this.effectOutput.gain.value=1.0;
+    this.effectOutput.gain.value=2.0;
     this.effectOutput.connect(this.ab.input);
 
     this.lpfCutoff = 50;
@@ -159,6 +160,7 @@ export class Piano{
        this.filter1.Q.value = this.lpfQ;
        this.filter1.frequency.value = this.lpfCutoff*2000;
 
+       this.master.gain.value=this.masterVol/5;
        this.filter2 = this.ab.audio.createBiquadFilter();
        this.filter2.type = "lowpass";
        this.filter2.Q.value = this.lpfQ;
