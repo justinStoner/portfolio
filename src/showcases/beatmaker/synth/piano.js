@@ -18,6 +18,7 @@ export class Piano{
       detune:0,
       osc1:20,
       osc2:20,
+      osc3:20,
       freq:2.1,
       type:'Lfo',
       modType:0
@@ -220,8 +221,8 @@ export class Piano{
     	 this.envelope.gain.linearRampToValueAtTime( 1.0, atkEnd );
     	 this.envelope.gain.setTargetAtTime( (this.envS/10.0), atkEnd, (this.envD/10.0)+0.001 );
 
-       var filterAttackLevel = this.lpfEnv*72;  // Range: 0-7200: 6-octave range
-       var filterSustainLevel = filterAttackLevel* this.lpfS / 100.0; // range: 0-7200
+       var filterAttackLevel = this.lpfEnv*72;
+       var filterSustainLevel = filterAttackLevel* this.lpfS / 100.0;
        var filterAttackEnd = (this.lpfA/10.0);
 
        if (!filterAttackEnd){
@@ -236,7 +237,7 @@ export class Piano{
     	 this.filter2.detune.setTargetAtTime( filterSustainLevel, now+filterAttackEnd, (this.lpfD/10.0)+0.001 );
 
 
-       for(var ii=0;ii<2;ii++){
+       for(var ii=0;ii<this.oscillators.length;ii++){
          this.notes[i]['o'+ii].start(0);
         //  this.notes[i]['g'+ii].gain.cancelScheduledValues(this.ab.audio.currentTime);
         //  this.notes[i]['g'+ii].gain.setValueAtTime(0, this.ab.audio.currentTime);
@@ -249,15 +250,11 @@ export class Piano{
   }
 
   stopKey(i){
-    //aconsole.log(e);
     if(this.notes[i].isPlaying==true){
       var now =  this.ab.audio.currentTime;
     	var release = now + (this.envR/10.0);
-      //var initFilter = filterFrequencyFromCutoff( this.originalFrequency, currentFilterCutoff/100 * (1.0-(currentFilterEnv/100.0)) );
-
-    //    console.log("noteoff: now: " + now + " val: " + this.filter1.frequency.value + " initF: " + initFilter + " fR: " + currentFilterEnvR/100 );
     	this.envelope.gain.cancelScheduledValues(now);
-    	this.envelope.gain.setValueAtTime( this.envelope.gain.value, now );  // this is necessary because of the linear ramp
+    	this.envelope.gain.setValueAtTime( this.envelope.gain.value, now );
     	this.envelope.gain.setTargetAtTime(0.0, now, (this.envR/10.0)+0.001);
     	this.filter1.detune.cancelScheduledValues(now);
     	this.filter1.detune.setTargetAtTime( 0, now, (this.lpfR/10.0) +0.001);
@@ -275,13 +272,13 @@ export class Piano{
 }
 function createVoices(){
   var arr=[];
-  for(var i=0;i<2;i++){
+  for(var i=0;i<3;i++){
     arr.push(function(){
       var voice={
         volume:50,
         wave:'sine',
         octave:0,
-        type:'oscillator',
+        type:'Oscillator',
         detune:50
       }
       return voice

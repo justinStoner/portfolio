@@ -12,7 +12,6 @@
     "aurelia-bootstrapper": "^1.0.0",
     "aurelia-dialog": "^1.0.0-beta.3.0.1",
     "aurelia-fetch-client": "^1.1.0",
-    "aurelia-materialize-bridge": "^0.23.0",
     "bluebird": "^3.4.1",
     "express": "^4.14.1",
     "jim-knopf": "git+https://github.com/eskimoblood/jim-knopf.git",

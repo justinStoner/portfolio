@@ -38,7 +38,39 @@ label.sm{
 .tab-content.grey{
 
 }
-
+sound-wave{
+position: absolute;
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: -1;
+  top:-9999px;
+}
+.canvas-as-bg{
+  p{
+    color: #fff !important
+  }
+}
+// #synth{
+//   background: -webkit-canvas(synthbg) no-repeat 50% 50%;
+// }
+// #synth{
+//   background: -webkit-canvas(seqbg) no-repeat 50% 50%;
+// }
+#synth,
+#sequencer-controller{
+  .p1 rect{
+    fill:#00E676 ;
+  }
+  .p1 circle{
+    stroke:#00E676 ;
+  }
+  .p1 text{
+    fill: #ddd;
+  }
+  .p1 text.active{
+    fill:#fff;
+  }
+}
 .p1 rect {
   fill: #2196f3;
 }

@@ -129,6 +129,18 @@
             "main": "knob-min"
           },
           "text",
+          "jquery",
+          "hammerjs",
+          {
+            "name": "materialize-css",
+            "path": "../node_modules/materialize-css",
+            "main": "js/materialize",
+            "deps": ["jquery", "hammerjs"],
+            "resources":[
+              "dist/css/materialize.min.css"
+            ],
+            "exports": "$"
+          },
           {
             "name": "aurelia-templating-resources",
             "path": "../node_modules/aurelia-templating-resources/dist/amd",
@@ -144,40 +156,6 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
-          }
-        ]
-      },
-      {
-        "name": "materialize-bundle.js",
-        "dependencies": [
-          "jquery",
-          {
-            "name": "materialize-css",
-            "path": "../node_modules/materialize-css/dist",
-            "main": "js/materialize.amd",
-            "deps": [
-              "jquery"
-            ],
-            "resources": [
-              "css/materialize.css"
-            ],
-            "exports": "Materialize"
-          },
-          {
-            "name": "aurelia-materialize-bridge",
-            "path": "../node_modules/aurelia-materialize-bridge/dist/amd",
-            "main": "index",
-            "deps": [
-              "jquery"
-            ],
-            "resources": [
-              "card/card.css",
-              "card/card.html",
-              "colors/md-colors.html",
-              "input/input.html",
-              "navbar/navbar.css",
-              "navbar/navbar.html"
-            ]
           }
         ]
       }

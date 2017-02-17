@@ -1,6 +1,6 @@
 import environment from './environment';
 import $ from 'jquery';
-import 'materialize-css';
+import materialize from 'materialize-css';
 //Configure Bluebird Promises.
 Promise.config({
   longStackTraces: environment.debug,
@@ -21,12 +21,6 @@ export function configure(aurelia) {
   if (environment.testing) {
     aurelia.use.plugin('aurelia-testing');
   }
-  aurelia.use.plugin('aurelia-materialize-bridge', b =>{
-    b.useTabs()
-    .useWaves()
-    .useNavbar()
-    .useCard()
-    .useColors()
-  });
+
   aurelia.start().then(() => aurelia.setRoot());
 }

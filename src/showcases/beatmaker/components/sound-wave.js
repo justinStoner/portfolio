@@ -10,26 +10,19 @@ export class SoundWave{
     this.element=element;
 
     this.ea.subscribe('resize', ()=>{
-      this.canvas.width=$(this.element.parentElement).width();
-      this.canvas.height=$(`#${this.canvasId}`).height() - 10;
+      this.canvas.width=$(this.bgEl).width();
+      this.canvas.height=$(this.bgEl).height();
     });
   }
   attached(){
-    if(this.background){
-      this.bgColor="#eee";
-      this.fgColor="#2196f3";
-    }else{
-      this.bgColor="#2196f3";
-      this.fgColor="#fff";
-    }
+    this.bgColor="#2196f3";
+    this.fgColor="#fff";
     console.log(this.canvasId);
     this.canvas=this.element.children[0];
     this.canvasCtx = this.canvas.getContext('2d');
-
-    this.canvas.width=$(this.element.parentElement).width();
-    this.canvas.height=$(`#${this.canvasId}`).height() - 10;
-
-    console.log(this.element.parentElement);
+    this.bgEl=document.getElementById(this.canvasId);
+    this.canvas.width=$(this.bgEl).width();
+    this.canvas.height=$(this.bgEl).height();
     this.draw();
   }
   draw(){
@@ -37,7 +30,7 @@ export class SoundWave{
     this.ab.analyser.getByteTimeDomainData(this.ab.dataArray);
     this.canvasCtx.fillStyle = this.bgColor;
     this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-    this.canvasCtx.lineWidth = 2;
+    this.canvasCtx.lineWidth = 1;
     this.canvasCtx.strokeStyle = this.fgColor;
     this.canvasCtx.beginPath();
 
@@ -45,7 +38,6 @@ export class SoundWave{
     var x = 0;
 
     for(var i = 0; i < this.ab.bufferLength; i++) {
-
       var v = this.ab.dataArray[i] / 128.0;
       var y = v * this.canvas.height/2;
       if(i === 0) {
@@ -53,10 +45,10 @@ export class SoundWave{
       } else {
         this.canvasCtx.lineTo(x, y);
       }
-
       x += sliceWidth;
     }
     this.canvasCtx.lineTo(this.canvas.width, this.canvas.height/2);
     this.canvasCtx.stroke();
+    this.bgEl.style.background='url('+this.canvas.toDataURL('image/jpeg')+') no-repeat 100% 100%'
   }
 }

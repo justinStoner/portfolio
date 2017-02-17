@@ -10,6 +10,7 @@ export class KnobCustomElement{
   @bindable labels;
   @bindable offset;
   @bindable range;
+  @bindable canvas;
   constructor(e){
     this.element=e;
     if(this.labels===null){

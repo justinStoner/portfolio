@@ -1,18 +1,17 @@
 <template>
   <require from="../components/sound-wave"></require>
   <require from="./styles/sequencer.css"></require>
-    <require from="../components/knob"></require>
+  <require from="../components/knob"></require>
   <section class="au-animate col m12 l6">
-
+  <require from="../components/sound-wave"></require>
     <div class="card" id="sequencer">
-      <!-- <sound-wave ab.bind='ab' canvas-id='sequencer' style=""></sound-wave> -->
       <div class="card-content" style="padding:0.75rem">
         <div class="row">
-          <form class="col s12" style="margin-bottom:20px;">
-            <div class="row grey lighten-3 z-depth-1 b-radius-card">
-              <a class="waves-effect waves-${!muted?'blue':'red'} btn-flat center-align" style="padding:0;" click.delegate='handlePlay()'>
+          <form class="col s12 b-radius-card z-depth-1" style="margin-bottom:20px;" id='sequencer-controller'>
+            <div class="row canvas-as-bg  b-radius-card" >
+              <a class="waves-effect waves-${!muted?'green accent-3':'red'} btn-flat center-align" style="padding:0;" click.delegate='handlePlay()'>
                 <template if.bind='!playing'>
-                  <i class="material-icons blue-text" style="vertical-align:sub;font-size:2.3rem">play_arrow</i>
+                  <i class="material-icons green-text text-accent-3" style="vertical-align:sub;font-size:2.3rem">play_arrow</i>
                 </template>
                 <template if.bind='playing'>
                   <i class="material-icons red-text" style="vertical-align:sub;font-size:2.3rem" >stop</i>
@@ -20,18 +19,16 @@
               </a>
               <div class="input-field inline" style="margin-top:0;">
                 <p>Tempo</p>
-                <button class="btn waves-effect waves-light blue" style="display:inline-block;width:36px;padding:0;margin-right:5px;" click.delegate="changeTempo(false)"><i class="material-icons">remove</i></button>
-                <input style="width:40px;" type="number" value.bind="tempo">
-                <button class="btn waves-effect waves-light blue" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
+                <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-right:5px;" click.delegate="changeTempo(false)"><i class="material-icons">remove</i></button>
+                <input class="white-text" style="width:40px;" type="number" value.bind="tempo">
+                <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
               </div>
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="100" label="Volume" val.two-way="volume" style="display:inline-block;"></knob>
+                <knob min="0" max="100" label="Volume" canvas.bind="true" val.two-way="volume"></knob>
               </div>
             </div>
+            <sound-wave ab.bind='ab' canvas-id='sequencer-controller' style=""></sound-wave>
           </form>
-          <!-- <form class="col s4 row grey lighten-3 z-depth-1 b-radius-card">
-
-          </form> -->
         </div>
         <table>
           <tbody>
