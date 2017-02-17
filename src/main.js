@@ -21,6 +21,12 @@ export function configure(aurelia) {
   if (environment.testing) {
     aurelia.use.plugin('aurelia-testing');
   }
-  aurelia.use.plugin('aurelia-materialize-bridge', b => b.useAll());
+  aurelia.use.plugin('aurelia-materialize-bridge', b =>{
+    b.useTabs()
+    .useWaves()
+    .useNavbar()
+    .useCard()
+    .useColors()
+  });
   aurelia.start().then(() => aurelia.setRoot());
 }
