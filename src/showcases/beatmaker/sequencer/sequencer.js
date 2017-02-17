@@ -76,13 +76,12 @@ export class SequencerCustomElement{
     }
     playSample(buffer){
       var src=this.audio.createBufferSource();
+      src.buffer=buffer;
       src.connect(this.gain);
-
       this.gain.connect(this.ab.input);
       this.gain.gain.value=this.volume/5;
       console.log(this.gain);
       src.start(0);
-      this.src.disconnect(1);
     }
     changeTempo(up){
       //bugged
