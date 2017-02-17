@@ -129,7 +129,7 @@ export class Piano{
 
   }
   attached(){
-    console.log($);
+
   }
   play(e){
     let s=e.key;

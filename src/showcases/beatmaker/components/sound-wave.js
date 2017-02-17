@@ -10,12 +10,8 @@ export class SoundWave{
     this.element=element;
 
     this.ea.subscribe('resize', ()=>{
-      if(this.background){
-        this.canvas.width=$(`#${this.canvasId}`).width();
-        this.canvas.height=$(`#${this.canvasId}`).height();
-      }else{
-        this.canvas.width=$(`#${this.canvasId}`).width();
-      }
+      this.canvas.width=$(this.element.parentElement).width();
+      this.canvas.height=$(`#${this.canvasId}`).height() - 10;
     });
   }
   attached(){
@@ -30,12 +26,10 @@ export class SoundWave{
     this.canvas=this.element.children[0];
     this.canvasCtx = this.canvas.getContext('2d');
 
-    if(this.background){
-      this.canvas.width=$(`#${this.canvasId}`).width();
-      this.canvas.height=$(`#${this.canvasId}`).height();
-    }else{
-      this.canvas.width=$(`#${this.canvasId}`).width();
-    }
+    this.canvas.width=$(this.element.parentElement).width();
+    this.canvas.height=$(`#${this.canvasId}`).height() - 10;
+
+    console.log(this.element.parentElement);
     this.draw();
   }
   draw(){

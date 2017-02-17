@@ -25,6 +25,7 @@ export class SequencerCustomElement{
       console.log(this.drums);
       this.loopLength=16;
       this.tempo=120;
+      this.volume=100;
       this.samples=[
         {name:'kick',sample:'Roland_TR-33_Kick'},
         {name:'snare',sample:'Roland_TR-33_Snare'},
@@ -51,6 +52,8 @@ export class SequencerCustomElement{
         }
         this.drums.push(obj);
       }
+      this.gain=this.ab.audio.createGain();
+      this.gain.value=1.0;
     }
     loadSample(type, i){
       this.http.fetch("audio/roland-tr-33/"+type+".wav")
@@ -63,15 +66,23 @@ export class SequencerCustomElement{
     }
     playSound(buffer, time){
       var src=this.audio.createBufferSource();
+      console.log(src);
       src.buffer=buffer;
-      src.connect(this.ab.input);
+      src.connect(this.gain);
+      this.gain.connect(this.ab.input);
+      this.gain.gain.value=this.volume/5;
+      console.log(this.gain)
       src.start(time);
     }
     playSample(buffer){
       var src=this.audio.createBufferSource();
-      src.buffer=buffer;
-      src.connect(this.ab.input);
+      src.connect(this.gain);
+
+      this.gain.connect(this.ab.input);
+      this.gain.gain.value=this.volume/5;
+      console.log(this.gain);
       src.start(0);
+      this.src.disconnect(1);
     }
     changeTempo(up){
       //bugged

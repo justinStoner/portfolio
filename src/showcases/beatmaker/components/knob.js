@@ -17,35 +17,15 @@ export class KnobCustomElement{
     }
   }
   attached(){
-    console.log(this.element.children);
+
     this.knob=new Knob(this.element.children[1], new Ui.P1());
-    console.log(this.knob);
-    this.knob.input.onchange = e =>{
-      console.log(e);
-    }
+
+    // this.knob.input.onchange = e =>{
+    //   console.log(e);
+    // }
   }
 }
-// class P1 extends Ui{
-//   constructor(){
-//     super()
-//   }
-//   createElement(){
-//     "use strict";
-//     Ui.createElement.apply(this, arguments);
-//     this.addComponent(new Ui.Arc({
-//       arcWidth:this.width / 10
-//     }));
-//     this.addComponent(new Ui.Pointer(this.merge(this.options, {
-//       type: 'Rect',
-//       pointerWidth: this.width / 10
-//     })));
-//     this.merge(this.options, {arcWidth: this.width / 10});
-//     var arc = new Ui.El.Arc(this.options);
-//     arc.setAngle(this.options.anglerange);
-//     this.el.node.appendChild(arc.node);
-//     this.el.node.setAttribute("class", "P1");
-//   }
-// }
+
 Ui.P1 = function() {
 
 };
