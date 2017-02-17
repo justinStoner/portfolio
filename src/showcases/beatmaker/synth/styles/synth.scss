@@ -18,7 +18,7 @@ knob>p{
 }
 .key{
   box-sizing: border-box;
-  width:7.9%;
+  width:9.091% !important;
   display:inline-block;
   padding:0 !important;overflow: visible;
 }
@@ -126,7 +126,14 @@ form.col.m5:last-child{
   padding-right: 0;
 }
 @media only screen and (max-width: 600px){
-  form.col.m4{
+  form.col.m4,
+  form.col.m5,
+  form.col.m6{
     padding: 0;
+  }
+  .key{
+    div{
+      margin:0 0.05rem;
+    }
   }
 }
