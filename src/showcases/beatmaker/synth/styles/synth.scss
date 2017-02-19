@@ -54,14 +54,13 @@ form{
 .key.white{
 
   height: 220px;
-  /*float:left;*/
   position: relative;
   h1{
    color:#000;
    padding-top: 11rem;
  }
  div{
-   background-color: #fff;
+   background-color: transparent;
  }
 }
 .key.white.play{
@@ -72,11 +71,12 @@ form{
 .key.black-key{
 
   height:148px;
-  position: absolute;
+  position: relative;
   z-index: 2;
   text-align: center;
   background: transparent !important;
-  margin-left: -3.5% !important;
+  left: -4.5455% !important;
+  margin-right: -9.091%;
   padding: 0 4px !important;
   div{
       display: inline-block;
