@@ -23,6 +23,26 @@ export class Piano{
       type:'Lfo',
       modType:0
     }
+    this.oscPresets=[
+      {
+        wave:1,
+        detune:0.01,
+        octave:-3,
+        volume:100,
+      },
+      {
+        wave:1,
+        detune:5,
+        octave:3,
+        volume:100,
+      },
+      {
+        wave:1,
+        detune:100,
+        octave:4,
+        volume:100,
+      }
+    ]
     this.masterVol=50;
     this.modMult=10;
     // this.lpf=this.audio.createBiquadFilter();
@@ -64,11 +84,11 @@ export class Piano{
       {note:'a' ,hz:440 ,color:true, key:'h', isPlaying:false},
       {note:'a#' ,hz:466.164 ,color:false, key:'u', isPlaying:false},
       {note:'b' ,hz:493.883 ,color:true, key:'j', isPlaying:false},
-      {note:'c' ,hz:532.251 ,color:true, key:'k', isPlaying:false},
-      {note:'c#' ,hz:554.365 ,color:false, key:'o', isPlaying:false},
+      {note:'c' ,hz:523.252 ,color:true, key:'k', isPlaying:false},
+      {note:'c#' ,hz:554.366 ,color:false, key:'o', isPlaying:false},
       {note:'d' ,hz:587.33 ,color:true, key:'l', isPlaying:false},
       {note:'d#' ,hz:622.254 ,color:false, key:'p', isPlaying:false},
-      {note:'e' ,hz:659.255 ,color:true, key:';', isPlaying:false},
+      {note:'e' ,hz:659.256 ,color:true, key:';', isPlaying:false},
       {note:'f' ,hz:698.456 ,color:true, key:"'", isPlaying:false}
     ];
     this.x=0;
@@ -276,7 +296,7 @@ function createVoices(){
     arr.push(function(){
       var voice={
         volume:50,
-        wave:'sine',
+        wave:1,
         octave:0,
         type:'Oscillator',
         detune:50

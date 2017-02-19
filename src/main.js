@@ -1,6 +1,4 @@
 import environment from './environment';
-import $ from 'jquery';
-import materialize from 'materialize-css';
 //Configure Bluebird Promises.
 Promise.config({
   longStackTraces: environment.debug,

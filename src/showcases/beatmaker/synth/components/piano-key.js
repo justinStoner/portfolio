@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {bindable} from 'aurelia-framework';
 import {Piano} from '../piano';
 import {EventAggregator} from 'aurelia-event-aggregator';
+
 @inject(Element, Piano, EventAggregator)
 export class PianoKeyCustomElement{
   @bindable key;
@@ -17,6 +18,7 @@ export class PianoKeyCustomElement{
    }
    play(){
      console.log(this.index);
+     materialize.waves(this.element);
      this.ea.publish('play-key', {index:this.index});
    }
    stop(){

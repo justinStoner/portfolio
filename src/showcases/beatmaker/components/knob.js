@@ -11,6 +11,7 @@ export class KnobCustomElement{
   @bindable offset;
   @bindable range;
   @bindable canvas;
+  @bindable preset;
   constructor(e){
     this.element=e;
     if(this.labels===null){
@@ -20,6 +21,9 @@ export class KnobCustomElement{
   attached(){
 
     this.knob=new Knob(this.element.children[1], new Ui.P1());
+    if(this.preset){
+      this.knob.update(this.preset);
+    }
 
     // this.knob.input.onchange = e =>{
     //   console.log(e);

@@ -8,7 +8,7 @@
       <div class="card-content" style="padding:0.75rem">
         <div class="row">
           <form class="col s12 b-radius-card z-depth-1" style="margin-bottom:20px;" id='sequencer-controller'>
-            <div class="row canvas-as-bg  b-radius-card" >
+            <div class="row canvas-as-bg  b-radius-card blue" >
               <a class="waves-effect waves-${!muted?'green accent-3':'red'} btn-flat center-align" style="padding:0;" click.delegate='handlePlay()'>
                 <template if.bind='!playing'>
                   <i class="material-icons green-text text-accent-3" style="vertical-align:sub;font-size:2.3rem">play_arrow</i>
@@ -27,7 +27,7 @@
                 <knob min="0" max="100" label="Volume" canvas.bind="true" val.two-way="volume"></knob>
               </div>
             </div>
-            <sound-wave ab.bind='ab' canvas-id='sequencer-controller' style=""></sound-wave>
+            <!-- <sound-wave ab.bind='ab' canvas-id='sequencer-controller' style=""></sound-wave> -->
           </form>
         </div>
         <table>
@@ -40,7 +40,7 @@
               </tr>
               <tr repeat.for="drum of drums">
                 <td style="width:5.88%;cursor:pointer" class="blue-text" click.delegate="playSample(drum.sound)">${drum.name}</td>
-                <td repeat.for="i of 16" style="width:5.88%"><a md-waves class="waves-effect waves-light btn green accent-3" style="width:100%;padding:0rem;" click.delegate="addNote($event, $parent.$index, i)"></a></td>
+                <td repeat.for="i of 16" style="width:5.88%"><a class="waves-effect waves-light btn green accent-3" style="width:100%;padding:0rem;" click.delegate="addNote($event, $parent.$index, i)"></a></td>
               </tr>
           </tbody>
         </table>

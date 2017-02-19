@@ -14,7 +14,7 @@
               <oscillator gain.two-way="lfoData.gain" wave.two-way="lfoData.wave" freq.two-way="lfoData.freq" type='Lfo' modtype.two-way="lfoData.modType" detune.two-way="lfoData.detune" osc1.two-way="lfoData.osc1" osc2.two-way="lfoData.osc2"></oscillator>
             </form>
             <form class="col m3" repeat.for="osc of oscillators">
-              <oscillator volume.two-way="osc.volume" wave.two-way="osc.wave" octave.two-way="osc.octave" index.bind="$index" type='Oscillator' detune.two-way="osc.detune"></oscillator>
+              <oscillator osc.two-way="osc" index.bind="$index" type='Oscillator' preset.one-time="oscPresets[$index]"></oscillator>
             </form>
           </div>
           <div class="row">
@@ -23,10 +23,10 @@
                 <p>Filter</p>
                 <div class="row">
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Cutoff" val.two-way="lpfCutoff" ></knob>
+                    <knob min="0" max="100" label="Cutoff" val.two-way="lpfCutoff" preset.one-time="2"></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="20" label="Q" val.two-way="lpfQ" ></knob>
+                    <knob min="0" max="20" label="Q" val.two-way="lpfQ" preset.one-time="2"></knob>
                   </div>
                   <div class="col m3 s6">
                     <knob min="0" max="100" label="Mod" val.two-way="lpfMod" ></knob>
@@ -47,13 +47,12 @@
                     <knob min="0" max="100" label="Sustain" val.two-way="lpfS" ></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Relase" val.two-way="lpfR" ></knob>
+                    <knob min="0" max="100" label="Release" val.two-way="lpfR" ></knob>
                   </div>
                 </div>
               </div>
             </form>
             <form class="col m6 b-radius-card z-depth-1" id="synth">
-
               <div id="synthfilter" class="row canvas-as-bg  b-radius-card">
                 <p>Synth</p>
                 <div class="row">
@@ -73,20 +72,20 @@
                 <p>Envelope</p>
                 <div class="row">
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Attack" canvas.bind="true" val.two-way="envA" ></knob>
+                    <knob min="0" max="100" label="Attack" canvas.bind="true" val.two-way="envA" preset="4"></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Decay" canvas.bind="true" val.two-way="envD" ></knob>
+                    <knob min="0" max="100" label="Decay" canvas.bind="true" val.two-way="envD" preset="3"></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Sustain" canvas.bind="true" val.two-way="envS" ></knob>
+                    <knob min="0" max="100" label="Sustain" canvas.bind="true" val.two-way="envS" preset="2"></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Relase" canvas.bind="true" val.two-way="envR" ></knob>
+                    <knob min="0" max="100" label="Release" canvas.bind="true" val.two-way="envR" ></knob>
                   </div>
                 </div>
               </div>
-              <sound-wave ab.bind='ab' canvas-id='synth' style=""></sound-wave>
+              <sound-wave ab.bind='ab' canvas-id='synth'></sound-wave>
             </form>
           </div>
           <div class="row">

@@ -39,11 +39,17 @@ label.sm{
 
 }
 sound-wave{
-position: absolute;
+  position: absolute;
   border-radius: 2px;
   overflow: hidden;
-  z-index: -1;
-  top:-9999px;
+  z-index: 0;
+  // height: 100%;
+  // width: 100%;
+  // top:0;
+  canvas{
+    height:100%;
+    width:100%
+  }
 }
 .canvas-as-bg{
   p{
@@ -58,6 +64,11 @@ position: absolute;
 // }
 #synth,
 #sequencer-controller{
+  background: #2196f3;
+  #synthfilter{
+    z-index: 1;
+    position: relative;
+  }
   .p1 rect{
     fill:#00E676 ;
   }
