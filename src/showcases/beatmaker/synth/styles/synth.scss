@@ -118,11 +118,12 @@ form{
   padding: 0;
   margin:0 0.75rem;
 }
-form.col.m3,
+form.col.m3.s12,
 form.col.m4,
 form.col.m5,
-form.col.m6{
+form.col.m6.s12{
   padding-left: 0;
+  padding-right: 0.75rem;
   margin-bottom:0.75rem;
   .row{
     padding: 0.75rem 0.375rem;
@@ -136,16 +137,16 @@ form.col.m6{
 }
 form.col.m3:last-child,
 form.col.m4:last-child,
-form.col.m6:last-child,
+form.col.m6.s12:last-child,
 form.col.m5:last-child{
   padding-right: 0;
 }
 
 @media only screen and (max-width: 600px){
-  form.col.m3,
+  form.col.m3.s12,
   form.col.m4,
   form.col.m5,
-  form.col.m6{
+  form.col.m6.s12{
     padding: 0;
   }
   .key{

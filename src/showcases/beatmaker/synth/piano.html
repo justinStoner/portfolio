@@ -10,15 +10,15 @@
 
         <div class="card-content" style="padding:0.75rem" >
           <div class="row">
-            <form class="col m3">
+            <form class="col m3 s12">
               <oscillator gain.two-way="lfoData.gain" wave.two-way="lfoData.wave" freq.two-way="lfoData.freq" type='Lfo' modtype.two-way="lfoData.modType" detune.two-way="lfoData.detune" osc1.two-way="lfoData.osc1" osc2.two-way="lfoData.osc2"></oscillator>
             </form>
-            <form class="col m3" repeat.for="osc of oscillators">
+            <form class="col m3 s12" repeat.for="osc of oscillators">
               <oscillator osc.two-way="osc" index.bind="$index" type='Oscillator' preset.one-time="oscPresets[$index]"></oscillator>
             </form>
           </div>
           <div class="row">
-            <form class="col m6">
+            <form class="col m6 s12">
               <div id="filter" class="row grey lighten-3 z-depth-1 b-radius-card">
                 <p>Filter</p>
                 <div class="row">
@@ -52,7 +52,7 @@
                 </div>
               </div>
             </form>
-            <form class="col m6 b-radius-card z-depth-1" id="synth">
+            <form class="col m6 s12 b-radius-card z-depth-1" id="synth">
               <div id="synthfilter" class="row canvas-as-bg  b-radius-card">
                 <p>Synth</p>
                 <div class="row">
@@ -93,7 +93,7 @@
           </div>
           <div class="row" style="margin-bottom:10px;">
             <div class="col s12" id='right' style="padding:0;height:90%">
-              <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of notes" index.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
+              <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of notes" playing.bind="note.isPlaying" index.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
             </div>
           </div>
         </div>

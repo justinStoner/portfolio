@@ -1,6 +1,6 @@
 <template>
-  <div class="col s1 key ${key.color===true?'white':'black-key'} " tabindex="0" mousedown.trigger="play()" mouseup.delegate="stop()">
-    <div class="${isPlaying?'play z-depth-1':'z-depth-2'} waves-effect waves-blue"  >
+  <div class="col s1 key ${key.color===true?'white':'black-key'} " tabindex="0" mousedown.trigger="play()" mouseup.delegate="stop()" touchstart.trigger="play()" touchend.delegate="stop()">
+    <div class="${playing?'play z-depth-1':'z-depth-2'} waves-effect waves-blue"  >
       <h1>${key.key}</h1>
     </div>
   </div>
