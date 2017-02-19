@@ -40,7 +40,7 @@
               </tr>
               <tr repeat.for="drum of drums">
                 <td style="width:5.88%;cursor:pointer" class="blue-text" click.delegate="playSample(drum.sound)">${drum.name}</td>
-                <td repeat.for="i of 16" style="width:5.88%"><a class="waves-effect waves-light btn green accent-3" style="width:100%;padding:0rem;" click.delegate="addNote($event, $parent.$index, i)"></a></td>
+                <td repeat.for="i of 16" style="width:5.88%"><a class="waves-effect waves-light btn ${scheduled[$parent.$index][i]==true?'blue':'green accent-3'}" style="width:100%;padding:0rem;" click.delegate="addNote($event, $parent.$index, i)"></a></td>
               </tr>
           </tbody>
         </table>

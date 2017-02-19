@@ -26,6 +26,36 @@ export class SequencerCustomElement{
       this.loopLength=16;
       this.tempo=120;
       this.volume=100;
+      this.scheduled=new Array(14);
+      for(var i=0; i<14; i++){
+        this.scheduled[i]=new Array(16);
+        for(var ii=0; ii<16; ii++){
+          this.scheduled[i][ii]=false;
+        }
+      }
+      for(var i=0; i<14; i++){
+        if(i==0){
+          this.scheduled[i][0]=true;
+          this.scheduled[i][4]=true;
+          this.scheduled[i][8]=true;
+          this.scheduled[i][12]=true;
+          this.scheduled[i][14]=true;
+        }else if(i==1){
+          this.scheduled[i][4]=true;
+          this.scheduled[i][12]=true;
+        }else if (i==2) {
+          this.scheduled[i][2]=true;
+        }else if(i==3){
+          this.scheduled[i][6]=true;
+          this.scheduled[i][10]=true;
+          this.scheduled[i][14]=true;
+        }else if (i==10) {
+          this.scheduled[i][4]=true;
+          this.scheduled[i][6]=true;
+          this.scheduled[i][12]=true;
+        }
+      }
+      console.log(this.scheduled);
       this.samples=[
         {name:'kick',sample:'Roland_TR-33_Kick'},
         {name:'snare',sample:'Roland_TR-33_Snare'},
@@ -108,14 +138,16 @@ export class SequencerCustomElement{
       }
     }
     addNote(e, i, ii){
-      var index=this.drums[i].scheduled.indexOf(ii);
-      if(index>-1){
-        this.drums[i].scheduled.splice(index, 1);
+      console.log(i);
+      if(this.scheduled[i][ii]==true){
+        this.scheduled[i][ii]=false
         e.srcElement.classList.remove('blue');
         e.srcElement.classList.add('green');
+        e.srcElement.classList.add('accent-3');
       }else{
-        this.drums[i].scheduled.push(ii);
+        this.scheduled[i][ii]=true;
         e.srcElement.classList.remove('green');
+        e.srcElement.classList.remove('accent-3');
         e.srcElement.classList.add('blue');
       }
 
@@ -133,9 +165,8 @@ export class SequencerCustomElement{
       currentTime -= this.startTime;
       while (this.noteTime < currentTime + 0.200) {
         var contextPlayTime = this.noteTime + this.startTime;
-        //Insert playing notes here
-        for(var i=0;i<this.drums.length;i++){
-          if(this.drums[i].scheduled.indexOf(this.rhythmIndex)>-1){
+        for(var i=0;i<this.scheduled.length;i++){
+          if(this.scheduled[i][this.rhythmIndex]===true){
             this.playSound(this.drums[i].sound, contextPlayTime);
           }
         }

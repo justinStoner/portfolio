@@ -171,6 +171,7 @@ export class Piano{
     }
   }
   playKey(i){
+    //change filters and envelopes to be note properties later
      if(this.notes[i].isPlaying==false){
        this.lfo=this.audio.createOscillator();
        this.lfo.type=this.waves[this.lfoData.wave];
