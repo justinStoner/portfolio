@@ -129,17 +129,13 @@
             "main": "knob-min"
           },
           "text",
-          "jquery",
-          "hammerjs",
           {
             "name": "materialize-css",
-            "path": "../node_modules/materialize-css",
-            "main": "js/materialize",
-            "deps": ["jquery", "hammerjs"],
+            "path": "../node_modules/materialize-css/dist/css",
             "resources":[
-              "dist/css/materialize.min.css"
+              "materialize.min.css"
             ],
-            "exports": "$"
+            "exports": "mtJQ"
           },
           {
             "name": "aurelia-templating-resources",
