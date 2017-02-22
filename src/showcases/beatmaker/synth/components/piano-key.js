@@ -18,8 +18,6 @@ export class PianoKeyCustomElement{
 
    }
    play(){
-     console.log(this.index);
-     //materialize.waves(this.element);
      this.ea.publish('play-key', {index:this.index});
    }
    stop(){

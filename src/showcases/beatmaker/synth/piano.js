@@ -177,18 +177,19 @@ export class Piano{
        this.lfo.type=this.waves[this.lfoData.wave];
        this.lfo.frequency.value=this.lfoData.freq;
        this.lfo.detune.value=this.lfoData.detune;
-       this.filter1 = this.ab.audio.createBiquadFilter();
-       this.filter1.type = "lowpass";
-       this.filter1.Q.value = this.lpfQ;
-       this.filter1.frequency.value = this.lpfCutoff*2000;
+
 
        this.master.gain.value=this.masterVol/5;
-       this.filter2 = this.ab.audio.createBiquadFilter();
-       this.filter2.type = "lowpass";
-       this.filter2.Q.value = this.lpfQ;
-       this.filter2.frequency.value = this.lpfCutoff*2000;
-       for(var ii=0;ii<this.oscillators.length;ii++){
 
+       for(var ii=0;ii<this.oscillators.length;ii++){
+         this.notes[i]['f1'+i] = this.ab.audio.createBiquadFilter();
+         this.notes[i]['f1'+i].type = "lowpass";
+         this.notes[i]['f1'+i].Q.value = this.lpfQ;
+         this.notes[i]['f1'+i].frequency.value = this.lpfCutoff*2000;
+         this.notes[i]['f2'+i] = this.ab.audio.createBiquadFilter();
+         this.notes[i]['f2'+i].type = "lowpass";
+         this.notes[i]['f2'+i].Q.value = this.lpfQ;
+         this.notes[i]['f2'+i].frequency.value = this.lpfCutoff*2000;
          this.notes[i]['g'+ii]=this.ab.audio.createGain();
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
          this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
@@ -213,49 +214,49 @@ export class Piano{
          this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
          this.notes[i]['o'+ii].connect(this.notes[i]['g'+ii]);
          this.notes[i]['g'+ii].gain.value=0.005*this.oscillators[ii].volume;
-         this.notes[i]['g'+ii].connect( this.filter1 );
+         this.notes[i]['g'+ii].connect( this.notes[i]['f1'+i] );
+         this.notes[i]['f1'+i].connect( this.notes[i]['f2'+i] );
+         this.modfilterGain=this.ab.audio.createGain();
+         this.lfo.connect(this.modfilterGain);
+         this.modfilterGain.gain.value=this.lpfMod*24;
+         this.modfilterGain.connect( this.notes[i]['f1'+i].detune );	// filter tremolo
+  	     this.modfilterGain.connect( this.notes[i]['f2'+i].detune );	// filter tremolo
 
+         this.notes[i]['e'+i]=this.ab.audio.createGain();
+         this.notes[i]['f2'+i].connect(this.notes[i]['e'+i]);
+        //  this.cutoff=this.ab.audio.createBiquadFilter();
+        //  this.filter1.connect(this.cutoff);
+        //  this.filter2.connect(this.cutoff);
+        //  this.cutoff.connect(this.notes[i]['e'+i]);
+         this.notes[i]['e'+i].connect(this.master);
+        //  if(this.lfoData.modType===1){
+        //    this.lfoOscGain1.connect(this.cutoff.frequency);
+        //    this.lfoOscGain2.connect(this.filter2.frequency);
+        //  }
+         var now = this.ab.audio.currentTime;
+         var atkEnd=now + (this.envA/10.0);
+         this.notes[i]['e'+i].gain.value = 0.0;
+      	 this.notes[i]['e'+i].gain.setValueAtTime( 0.0, now );
+      	 this.notes[i]['e'+i].gain.linearRampToValueAtTime( 1.0, atkEnd );
+      	 this.notes[i]['e'+i].gain.setTargetAtTime( (this.envS/10.0), atkEnd, (this.envD/10.0)+0.001 );
+
+         var filterAttackLevel = this.lpfEnv*72;
+         var filterSustainLevel = filterAttackLevel* this.lpfS / 100.0;
+         var filterAttackEnd = (this.lpfA/10.0);
+
+         if (!filterAttackEnd){
+           filterAttackEnd=0.05; // tweak to get target decay to work properly
+         }
+
+       	 this.notes[i]['f1'+i].detune.setValueAtTime( 0, now );
+      	 this.notes[i]['f1'+i].detune.linearRampToValueAtTime( filterAttackLevel, now+filterAttackEnd );
+      	 this.notes[i]['f2'+i].detune.setValueAtTime( 0, now );
+      	 this.notes[i]['f2'+i].detune.linearRampToValueAtTime( filterAttackLevel, now+filterAttackEnd );
+      	 this.notes[i]['f1'+i].detune.setTargetAtTime( filterSustainLevel, now+filterAttackEnd, (this.lpfD/10.0)+0.001 );
+      	 this.notes[i]['f2'+i].detune.setTargetAtTime( filterSustainLevel, now+filterAttackEnd, (this.lpfD/10.0)+0.001 );
        }
 
-       this.filter1.connect( this.filter2 );
-       this.modfilterGain=this.ab.audio.createGain();
-       this.lfo.connect(this.modfilterGain);
-       this.modfilterGain.gain.value=this.lpfMod*24;
-       this.modfilterGain.connect( this.filter1.detune );	// filter tremolo
-	     this.modfilterGain.connect( this.filter2.detune );	// filter tremolo
 
-       this.envelope=this.ab.audio.createGain();
-       this.filter2.connect(this.envelope);
-      //  this.cutoff=this.ab.audio.createBiquadFilter();
-      //  this.filter1.connect(this.cutoff);
-      //  this.filter2.connect(this.cutoff);
-      //  this.cutoff.connect(this.envelope);
-       this.envelope.connect(this.master);
-      //  if(this.lfoData.modType===1){
-      //    this.lfoOscGain1.connect(this.cutoff.frequency);
-      //    this.lfoOscGain2.connect(this.filter2.frequency);
-      //  }
-       var now = this.ab.audio.currentTime;
-       var atkEnd=now + (this.envA/10.0);
-       this.envelope.gain.value = 0.0;
-    	 this.envelope.gain.setValueAtTime( 0.0, now );
-    	 this.envelope.gain.linearRampToValueAtTime( 1.0, atkEnd );
-    	 this.envelope.gain.setTargetAtTime( (this.envS/10.0), atkEnd, (this.envD/10.0)+0.001 );
-
-       var filterAttackLevel = this.lpfEnv*72;
-       var filterSustainLevel = filterAttackLevel* this.lpfS / 100.0;
-       var filterAttackEnd = (this.lpfA/10.0);
-
-       if (!filterAttackEnd){
-         filterAttackEnd=0.05; // tweak to get target decay to work properly
-       }
-
-     	 this.filter1.detune.setValueAtTime( 0, now );
-    	 this.filter1.detune.linearRampToValueAtTime( filterAttackLevel, now+filterAttackEnd );
-    	 this.filter2.detune.setValueAtTime( 0, now );
-    	 this.filter2.detune.linearRampToValueAtTime( filterAttackLevel, now+filterAttackEnd );
-    	 this.filter1.detune.setTargetAtTime( filterSustainLevel, now+filterAttackEnd, (this.lpfD/10.0)+0.001 );
-    	 this.filter2.detune.setTargetAtTime( filterSustainLevel, now+filterAttackEnd, (this.lpfD/10.0)+0.001 );
 
 
        for(var ii=0;ii<this.oscillators.length;ii++){
@@ -274,13 +275,13 @@ export class Piano{
     if(this.notes[i].isPlaying==true){
       var now =  this.ab.audio.currentTime;
     	var release = now + (this.envR/10.0);
-    	this.envelope.gain.cancelScheduledValues(now);
-    	this.envelope.gain.setValueAtTime( this.envelope.gain.value, now );
-    	this.envelope.gain.setTargetAtTime(0.0, now, (this.envR/10.0)+0.001);
-    	this.filter1.detune.cancelScheduledValues(now);
-    	this.filter1.detune.setTargetAtTime( 0, now, (this.lpfR/10.0) +0.001);
-    	this.filter2.detune.cancelScheduledValues(now);
-    	this.filter2.detune.setTargetAtTime( 0, now, (this.lpfR/10.0) +0.001);
+    	this.notes[i]['e'+i].gain.cancelScheduledValues(now);
+    	this.notes[i]['e'+i].gain.setValueAtTime( this.notes[i]['e'+i].gain.value, now );
+    	this.notes[i]['e'+i].gain.setTargetAtTime(0.0, now, (this.envR/10.0)+0.001);
+    	this.notes[i]['f1'+i].detune.cancelScheduledValues(now);
+    	this.notes[i]['f1'+i].detune.setTargetAtTime( 0, now, (this.lpfR/10.0) +0.001);
+    	this.notes[i]['f2'+i].detune.cancelScheduledValues(now);
+    	this.notes[i]['f2'+i].detune.setTargetAtTime( 0, now, (this.lpfR/10.0) +0.001);
 
     for(var ii=0;ii<this.oscillators.length;ii++){
       this.notes[i]['g'+ii].gain.cancelScheduledValues(now);
