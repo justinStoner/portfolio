@@ -11,7 +11,39 @@ export class Piano{
     this.audio=this.ab.audio;
     this.canvas="piano";
     this.octaves=[-3,-2,-1,0,1,2,3];
-    this.waves=['sine', 'sawtooth', 'square', 'triangle']
+    this.waves=['sine', 'sawtooth', 'square', 'triangle'];
+    /*
+    Working towards midi support
+
+    Equations for the Frequency Table
+
+    The basic formula for the frequencies of the notes of the equal tempered scale is given by
+    fn = f0 * (a)n
+    where
+    f0 = the frequency of one fixed note which must be defined. A common choice is setting the A above middle C (A4) at f0 = 440 Hz.
+    n = the number of half steps away from the fixed note you are. If you are at a higher note, n is positive. If you are on a lower note, n is negative.
+    fn = the frequency of the note n half steps away.
+    a = (2)1/12 = the twelth root of 2 = the number which when multiplied by itself 12 times equals 2 = 1.059463094359...
+
+    The wavelength of the sound for the notes is found from
+    Wn = c/fn
+    where W is the wavelength and c is the speed of sound. The speed of sound depends on temperature, but is approximately 345 m/s at "room temperature."
+
+    Examples using A4 = 440 Hz:
+
+    C5 = the C an octave above middle C. This is 3 half steps above A4 and so the frequency is
+    f3 = 440 * (1.059463..)3 = 523.3 Hz
+    If your calculator does not have the ability to raise to powers, then use the fact that
+    (1.059463..)3 = (1.059463..)*(1.059463..)*(1.059463..)
+    That is, you multiply it by itself 3 times.
+
+    Middle C is 9 half steps below A4 and the frequency is:
+    f -9 = 440 * (1.059463..)-9 = 261.6 Hz
+    If you don't have powers on your calculator, remember that the negative sign on the power means you divide instead of multiply. For this example, you divide by (1.059463..) 9 times.
+
+    Source: http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
+    */
+    this.A4=440;
     this.oscillators=createVoices();
     this.lfoData={
       wave:1,
@@ -110,10 +142,7 @@ export class Piano{
     });
 
   }
-  attached(){
-    //$('select').material_select();
 
-  }
   changeDelay(){
     this.delay.delayTime.value = this.dTime/100;
   }
@@ -172,16 +201,15 @@ export class Piano{
   }
   playKey(i){
     //change filters and envelopes to be note properties later
-     if(this.notes[i].isPlaying==false){
+     if(this.notes[i].isPlaying===false){
        this.lfo=this.audio.createOscillator();
        this.lfo.type=this.waves[this.lfoData.wave];
        this.lfo.frequency.value=this.lfoData.freq;
        this.lfo.detune.value=this.lfoData.detune;
-
-
        this.master.gain.value=this.masterVol/5;
 
        for(var ii=0;ii<this.oscillators.length;ii++){
+         //add filters
          this.notes[i]['f1'+i] = this.ab.audio.createBiquadFilter();
          this.notes[i]['f1'+i].type = "lowpass";
          this.notes[i]['f1'+i].Q.value = this.lpfQ;
@@ -190,6 +218,7 @@ export class Piano{
          this.notes[i]['f2'+i].type = "lowpass";
          this.notes[i]['f2'+i].Q.value = this.lpfQ;
          this.notes[i]['f2'+i].frequency.value = this.lpfCutoff*2000;
+         //add oscillators
          this.notes[i]['g'+ii]=this.ab.audio.createGain();
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
          this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
@@ -222,6 +251,7 @@ export class Piano{
          this.modfilterGain.connect( this.notes[i]['f1'+i].detune );	// filter tremolo
   	     this.modfilterGain.connect( this.notes[i]['f2'+i].detune );	// filter tremolo
 
+         //add envelopes and connect to filters
          this.notes[i]['e'+i]=this.ab.audio.createGain();
          this.notes[i]['f2'+i].connect(this.notes[i]['e'+i]);
         //  this.cutoff=this.ab.audio.createBiquadFilter();
@@ -272,7 +302,7 @@ export class Piano{
   }
 
   stopKey(i){
-    if(this.notes[i].isPlaying==true){
+    if(this.notes[i].isPlaying===true){
       var now =  this.ab.audio.currentTime;
     	var release = now + (this.envR/10.0);
     	this.notes[i]['e'+i].gain.cancelScheduledValues(now);
