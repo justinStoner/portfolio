@@ -115,7 +115,7 @@ export class SequencerCustomElement{
     changeTempo(up){
       //bugged
       if(up){
-        this.tempo=this.tempo+4;
+        this.tempo=this.tempo+=4;
       }else{
         if(this.tempo>4){
           this.tempo-=4;

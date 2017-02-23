@@ -18,8 +18,10 @@
                 </template>
               </a>
               <div class="input-field inline" style="margin-top:0;">
-                <p>Tempo</p>
-                <input class="white-text" style="width:40px;" type="number" value.bind="tempo">
+                <p style="padding-bottom:3px;margin-top:-24px;">Tempo</p>
+                <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-right:5px;" click.delegate="changeTempo(false)"><i class="material-icons">remove</i></button>
+                <p style="width:40px;display:inline-block;">${tempo}</p>
+                <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
               </div>
               <div class="input-field inline" style="margin-top:0;">
                 <knob min="0" max="100" label="Volume" canvas.bind="true" val.two-way="volume"></knob>
