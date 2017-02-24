@@ -195,13 +195,18 @@ export class Piano{
         }
       }
     }
-    console.log(this.output);
   }
   stop(e){
     let s=e.key;
     for(let i in this.notes){
-      if(s==this.notes[i].key||s==this.notes[i].key){
-        this.stopKey(i)
+      if(!e.key){
+        if(String.fromCharCode(e.keyCode)==this.notes[i].key||String.fromCharCode(e.keyCode)==this.notes[i].key.toUpperCase()){
+          this.stopKey(i);
+        }
+      }else{
+        if(s==this.notes[i].key){
+          this.stopKey(i);
+        }
       }
     }
   }
@@ -231,13 +236,10 @@ export class Piano{
          console.log(this.oscillators[ii].octave-3);
          if(this.oscillators[ii].octave-3==0){
            this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
-           console.log(true);
          }else if (this.oscillators[ii].octave-3>0){
            this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2*(this.oscillators[ii].octave-3);
-           console.log(false);
          }else{
            this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2/Math.abs(this.oscillators[ii].octave-3);
-           console.log(false);
          }
          this['lfoOscGain'+ii]=this.ab.audio.createGain();
          this.lfo.connect(this['lfoOscGain'+ii]);
