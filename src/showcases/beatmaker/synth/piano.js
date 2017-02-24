@@ -185,8 +185,14 @@ export class Piano{
     let s=e.key;
     console.log(e);
     for(let i in this.notes){
-      if(s==this.notes[i].key||s==this.notes[i].key){
-        this.playKey(i);
+      if(!e.key){
+        if(String.fromCharCode(e.keyCode)==this.notes[i].key||String.fromCharCode(e.keyCode)==this.notes[i].key.toUpperCase()){
+          this.playKey(i);
+        }
+      }else{
+        if(s==this.notes[i].key){
+          this.playKey(i);
+        }
       }
     }
     console.log(this.output);
