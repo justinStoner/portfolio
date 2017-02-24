@@ -11,7 +11,7 @@
         <div class="card-content" style="padding:0.75rem" >
           <div class="row">
             <form class="col m3 s12">
-              <oscillator gain.two-way="lfoData.gain" wave.two-way="lfoData.wave" freq.two-way="lfoData.freq" type='Lfo' modtype.two-way="lfoData.modType" detune.two-way="lfoData.detune" osc1.two-way="lfoData.osc1" osc2.two-way="lfoData.osc2"></oscillator>
+              <oscillator type='Lfo' osc.two-way="lfoData"></oscillator>
             </form>
             <form class="col m3 s12" repeat.for="osc of oscillators">
               <oscillator osc.two-way="osc" index.bind="$index" type='Oscillator' preset.one-time="oscPresets[$index]"></oscillator>
