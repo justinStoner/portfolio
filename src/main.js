@@ -10,6 +10,12 @@ Promise.config({
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    .plugin('aurelia-dialog', config => {
+      config.useDefaults();
+      config.settings.lock = false;
+      config.settings.centerHorizontalOnly = false;
+      config.settings.startingZIndex = 1031;
+    })
     .feature('resources');
 
   if (environment.debug) {

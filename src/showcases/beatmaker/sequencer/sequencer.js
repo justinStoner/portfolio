@@ -98,8 +98,8 @@ export class SequencerCustomElement{
       console.log(src);
       src.buffer=buffer;
       src.connect(this.gain);
-      this.gain.connect(this.ab.input);
-      this.gain.gain.value=this.volume/5;
+      this.gain.connect(this.ab.drumsIn);
+      this.gain.gain.value=this.volume/50;
       console.log(this.gain)
       src.start(time);
     }
@@ -107,8 +107,8 @@ export class SequencerCustomElement{
       var src=this.audio.createBufferSource();
       src.buffer=buffer;
       src.connect(this.gain);
-      this.gain.connect(this.ab.input);
-      this.gain.gain.value=this.volume/5;
+      this.gain.connect(this.ab.drumsIn);
+      this.gain.gain.value=this.volume/50;
       console.log(this.gain);
       src.start(0);
     }

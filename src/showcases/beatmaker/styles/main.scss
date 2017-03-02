@@ -69,9 +69,11 @@ sound-wave{
     z-index: 1;
     position: relative;
   }
+  .p2 rect,
   .p1 rect{
     fill:#00E676 ;
   }
+  .p2 circle,
   .p1 circle{
     stroke:#00E676 ;
   }
@@ -82,14 +84,15 @@ sound-wave{
     fill:#fff;
   }
 }
+.p2 rect,
 .p1 rect {
   fill: #2196f3;
 }
-
+.p2 g polygon,
 .p1 g polygon {
   opacity: 1;
 }
-
+.p2 circle,
 .p1 circle {
   fill: #fff;
   stroke: #2196f3;

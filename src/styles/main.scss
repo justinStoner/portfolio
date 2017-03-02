@@ -17,9 +17,28 @@ nav .brand-logo,
 .b-radius-card{
   border-radius: 0 0 2px 2px;
 }
+.p2 path{
+  fill:#2196f3;
+  stroke:none;
+}
+.p2 path:first-child{
+  stroke:none;
+  fill:#fff;
 
+}
+#synth,
+#sequencer-controller{
+  .p2 path:first-child{
+    fill:#eee;
+  }
+  .p2 path{
+    stroke:none;
+    fill:#00E676;
+
+  }
+}
 .showcase-tabs{
-   
+
   .indicator{
     background: #2196f3 !important;
   }

@@ -1,0 +1,25 @@
+<template>
+  <require from="../effects/compressor"></require>
+  <require from="../effects/delay"></require>
+  <require from="../effects/equalizer"></require>
+  <ai-dialog style="width:auto">
+    <ai-dialog-body>
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs" style="overflow-x:hidden;">
+            <li class="tab col s4"><a class="blue-text" id="eqtab" href="#test1">EQ</a></li>
+            <li class="tab col s4"><a class="blue-text" href="#test2">Delay</a></li>
+            <li class="tab col s4"><a class="blue-text" href="#test3">Compressor</a></li>
+          </ul>
+        </div>
+        <div id="test1" class="col s12">
+          <equalizer></equalizer>
+        </div>
+        <div id="test2" class="col s12">
+          <delay></delay>
+        </div>
+        <div id="test3" class="col s12"><compressor></compressor></div>
+      </div>
+    </ai-dialog-body>
+  </ai-dialog>
+</template>

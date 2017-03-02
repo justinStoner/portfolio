@@ -1,7 +1,7 @@
 import "jquery-knob";
-console.log(Knob);
+import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject, bindable} from "aurelia-framework"
-@inject(Element)
+@inject(Element, EventAggregator)
 export class KnobCustomElement{
   @bindable min;
   @bindable max;
@@ -12,22 +12,31 @@ export class KnobCustomElement{
   @bindable range;
   @bindable canvas;
   @bindable preset;
-  constructor(e){
+  @bindable channel;
+  constructor(e, ea){
     this.element=e;
-    if(this.labels===null){
-      this.labels="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10"
-    }
+    this.ea=ea;
+    // if(this.labels===null){
+    //   this.labels="0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10"
+    // }
   }
   attached(){
 
-    this.knob=new Knob(this.element.children[1], new Ui.P1());
+    if(this.label==='Wave' || this.label==='Octave'){
+      this.knob=new Knob(this.element.children[1], new Ui.P1());
+    }else{
+      this.knob=new Knob(this.element.children[1], new Ui.P2());
+    }
     if(this.preset){
       this.knob.update(this.preset);
     }
 
-    // this.knob.input.onchange = e =>{
-    //   console.log(e);
-    // }
+    this.knob.input.onchange = e =>{
+      console.log(this.knob.value);
+      if(this.channel){
+        this.ea.publish(this.channel, this.knob.value);
+      }
+    }
   }
 }
 
@@ -55,4 +64,33 @@ Ui.P1.prototype.createElement = function() {
   var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
   this.el.node.appendChild(circle.node);
   this.el.node.setAttribute("class", "p1");
+};
+
+Ui.P2 = function() {
+};
+
+Ui.P2.prototype = Object.create(Ui.prototype);
+
+Ui.P2.prototype.createElement = function() {
+  "use strict";
+  Ui.prototype.createElement.apply(this, arguments);
+  this.addComponent(new Ui.Arc({
+    arcWidth: this.width / 10
+  }));
+  var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
+  this.addComponent(new Ui.Pointer(this.merge(this.options, {
+    type: 'Rect',
+    pointerWidth: 3,
+    pointerHeight: this.width / 4,
+    offset: this.width / 2 - this.width / 3.3 - this.width / 10
+  })));
+
+  this.merge(this.options, {arcWidth: this.width / 10});
+  var arc = new Ui.El.Arc(this.options);
+
+  arc.setAngle(this.options.anglerange);
+
+  this.el.node.appendChild(arc.node);
+  this.el.node.appendChild(circle.node);
+  this.el.node.setAttribute("class", "p2");
 };
