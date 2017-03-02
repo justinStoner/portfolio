@@ -59,19 +59,19 @@ export class Piano{
     this.oscPresets=[
       {
         wave:1,
-        detune:0.01,
+        detune:45,
         octave:-3,
         volume:100,
       },
       {
         wave:1,
-        detune:5,
+        detune:50,
         octave:3,
         volume:100,
       },
       {
         wave:1,
-        detune:10,
+        detune:55,
         octave:4,
         volume:100,
       }
@@ -231,7 +231,7 @@ export class Piano{
         //  }
          this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
          this.notes[i]['o'+ii].connect(this.notes[i]['g'+ii]);
-         this.notes[i]['g'+ii].gain.value=0.005*this.oscillators[ii].volume;
+         this.notes[i]['g'+ii].gain.value=0.0005*this.oscillators[ii].volume;
          this.notes[i]['g'+ii].connect( this.notes[i]['f1'+i] );
          this.notes[i]['f1'+i].connect( this.notes[i]['f2'+i] );
          this.modfilterGain=this.ab.audio.createGain();
