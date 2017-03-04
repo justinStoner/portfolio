@@ -62,6 +62,26 @@ sound-wave{
 // #synth{
 //   background: -webkit-canvas(seqbg) no-repeat 50% 50%;
 // }
+ .p2 .active ~rect {
+    fill: #bdbdbd;
+}
+.p2 rect{
+      filter:url(#glow);
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.p1,
+.p2{
+  circle.pointer{
+    fill:#64b5f6;
+    stroke:none;
+  }
+}
+.p2{
+  text{
+    font-size: 13px;
+    fill: #64b5f6;
+  }
+}
 #synth,
 #sequencer-controller{
   background: #2196f3;
@@ -69,13 +89,38 @@ sound-wave{
     z-index: 1;
     position: relative;
   }
+  .p2{
+    text{
+      fill:#00e676;
+      filter:none;
+    }
+
+  }
+  .p1,
+  .p2{
+    circle.pointer{
+      fill:#00e676;
+      stroke:none;
+    }
+  }
   .p2 rect,
   .p1 rect{
     fill:#00E676 ;
   }
+  .p2 .active ~rect {
+     fill: #bdbdbd;
+ }
+ .p2 circle:first-child,
+ .p1 circle:first-child{
+   -webkit-filter: url(#dropshadow);
+    filter: url(#dropshadow);
+    fill:#00c853 ;
+    stroke:none;
+ }
   .p2 circle,
   .p1 circle{
-    stroke:#00E676 ;
+    stroke:#69f0ae;
+    stroke-width:3;
   }
   .p1 text{
     fill: #ddd;
@@ -86,24 +131,30 @@ sound-wave{
 }
 .p2 rect,
 .p1 rect {
-  fill: #2196f3;
+  fill: #64b5f6;
 }
 .p2 g polygon,
 .p1 g polygon {
   opacity: 1;
 }
+.p2 circle:first-child,
+.p1 circle:first-child{
+  -webkit-filter: url(#dropshadow);
+   filter: url(#dropshadow);
+   fill:#2196f3;
+   stroke:none;
+}
 .p2 circle,
 .p1 circle {
   fill: #fff;
-  stroke: #2196f3;
-  stroke-width: 2;
-  -webkit-filter: url(#dropshadow);
-   filter: url(#dropshadow);
+  stroke: #64b5f6  ;
+  stroke-width: 3;
+
 }
 
 .p1 text {
   font-size: 12px;
-  fill: rgba(0, 0, 0, 0.870588);
+  fill: #bdbdbd;
   font-family: sans-serif;
   font-weight: 300;
   -webkit-transition: all .1s ease-in-out;
@@ -112,7 +163,7 @@ sound-wave{
 .p1 text.active {
   font-size: 12px;
   -webkit-transition: all .3s ease-in-out;
-  fill:#2196f3;
+  fill:#64b5f6;
 }
 svg:not(:root){
   overflow: visible;
@@ -201,27 +252,7 @@ div.au-stagger {
   -webkit-animation-delay:50ms;
   animation-delay:50ms;
 }
-.black0{
-  margin-left: 24px;
-}
-.black1{
 
-}
-.black2{
-  margin-left: 48px;
-}
-.black3{
-
-}
-.black4{
-
-}
-.black5{
-  margin-left: 48px;
-}
-.black6{
-
-}
 .white-notes{
   /*top:-89px;*/
   position: relative;

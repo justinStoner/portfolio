@@ -4,18 +4,28 @@
   <require from="./components/sound-wave"></require>
   <require from="./styles/main.css"></require>
   <!-- <sound-wave ab.bind='ab' canvas-id='beatmaker' style="" background.bind="true"></sound-wave> -->
-  <div style="" id='beatmaker'>
+  <ul class="tabs showcase-tabs z-depth-1" style="overflow-x:hidden;z-index:998;position:fixed">
+    <li class="tab col s4"><a class="active blue-text" href="#synthtab">Synth</a></li>
+    <li class="tab col s4"><a class="blue-text" href="#drumtab">Sequencer</a></li>
+  </ul>
+  <div style="margin-top:50px;" id='beatmaker'>
     <div class="row" >
+      <div class="col s12">
 
-      <piano></piano>
-      <sequencer></sequencer>
+      </div>
+      <div id="synthtab" class="col s12" style="padding:0;">
+        <piano></piano>
+      </div>
+      <div id="drumtab" class="col s12" style="padding:0;">
+        <sequencer></sequencer>
+      </div>
     </div>
   </div>
-  <svg>
+  <svg style="position:absolute;top:-9999px;">
     <filter id="dropshadow" height="150%" width="150%">
-  		<feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
-  		<feOffset dx="1" dy="2" result="offsetblur"/>
-  		<feFlood flood-color="rgba(0,0,0,0.4)"/>
+  		<feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+  		<feOffset dx="1" dy="4" result="offsetblur"/>
+  		<feFlood flood-color="rgba(0,0,0,0.2)"/>
   		<feComposite in2="offsetblur" operator="in"/>
   		<feMerge>
   			<feMergeNode/>
@@ -42,6 +52,14 @@
 
           <!-- Put shadow over original object -->
           <feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite>
+      </filter>
+
+      <filter id="glow">
+        <feGaussianBlur class="blur" stdDeviation="7" result="coloredBlur"></feGaussianBlur>
+        <feMerge>
+          <feMergeNode in="coloredBlur"></feMergeNode>
+          <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
       </filter>
   </svg>
 </template>

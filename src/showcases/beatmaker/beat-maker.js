@@ -5,5 +5,8 @@ export class BeatMaker{
   constructor(ab){
     this.ab=ab;
   }
+  attached(){
+    $('ul.showcase-tabs').tabs();
+  }
 
 }

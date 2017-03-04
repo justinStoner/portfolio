@@ -2,6 +2,7 @@ $body-bgcolor: #eee;
 
 body{
   background-color: $body-bgcolor ;
+
 }
 nav .brand-logo,
 .brand-logo{
@@ -20,11 +21,25 @@ nav .brand-logo,
 .p2 path{
   fill:#2196f3;
   stroke:none;
+  // filter:url(#dropshadow);
 }
 .p2 path:first-child{
   stroke:none;
   fill:#fff;
+  filter:none
 
+}
+div.au-animate.au-enter{
+  display: none !important;
+}
+div.au-animate.au-enter-active{
+ display: initial;
+ -webkit-animation: blurIn 2s;
+    animation: blurIn 2s;
+}
+div.au-animate.au-leave-active{
+  -webkit-animation: blurOut 2s;
+    animation: blurOut 2s;
 }
 #synth,
 #sequencer-controller{
@@ -50,6 +65,25 @@ nav .brand-logo,
       color:#343434 !important;
     }
   }
+}
+@-webkit-keyframes blurIn {
+    0%   { -webkit-filter:blur(10px) }
+    100% { -webkit-filter:blur(0px) }
+}
+
+@keyframes blurIn {
+    0%   { filter:blur(10px) }
+    100% { filter:blur(0px) }
+}
+
+@-webkit-keyframes blurOut {
+    0%   { -webkit-filter:blur(0px) }
+    100% { -webkit-filter:blur(10px) }
+}
+
+@keyframes blurOut {
+    0%   { -webkit-filter:blur(0px) }
+    100% { -webkit-filter:blur(10px) }
 }
 @media only screen and (max-width: 992px){
   nav .brand-logo {

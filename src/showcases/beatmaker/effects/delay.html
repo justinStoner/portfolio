@@ -1,14 +1,20 @@
 <template>
   <require from="../components/knob"></require>
+  <require from="../components/mute-button"></require>
   <div class="row">
-    <div class="col s4">
+    <div class="col s6">
       <knob min="0" max="100" label="Time" val.two-way="dTime" channel='delayTime' preset="50"></knob>
     </div>
-    <div class="col s4">
+    <div class="col s6">
       <knob min="0" max="100" label="Feedback" val.two-way="dFeed" channel='delayFeedback' preset="15"></knob>
     </div>
-    <div class="col s4">
+  </div>
+  <div class="row">
+    <div class="col s6">
       <knob min="0" max="100" label="Wet/Dry" val.two-way="dWet" channel="delayWet" preset="25"></knob>
+    </div>
+    <div class="col s6">
+      <mute-button></mute-button>
     </div>
   </div>
 </template>
