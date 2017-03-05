@@ -58,7 +58,7 @@ export class Piano{
     }
     this.oscPresets=[
       {
-        wave:1,
+        wave:-1,
         detune:45,
         octave:-3,
         volume:100,
@@ -70,7 +70,7 @@ export class Piano{
         volume:100,
       },
       {
-        wave:1,
+        wave:-1,
         detune:55,
         octave:4,
         volume:100,
@@ -89,7 +89,7 @@ export class Piano{
     this.effectOutput.gain.value=2.0;
     this.effectOutput.connect(this.ab.synthIn);
 
-    this.lpfCutoff = 50;
+    this.lpfCutoff = 10;
     this.lpfQ = 7.0;
     this.lpfMod = 21;
     this.lpfEnv = 56;
@@ -164,7 +164,6 @@ export class Piano{
   }
   play(e){
     let s=e.key;
-    console.log(e);
     for(let i in this.notes){
       if(!e.key){
         if(String.fromCharCode(e.keyCode)==this.notes[i].key||String.fromCharCode(e.keyCode)==this.notes[i].key.toUpperCase()){
@@ -214,7 +213,6 @@ export class Piano{
          this.notes[i]['g'+ii]=this.ab.audio.createGain();
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
          this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
-         console.log(this.oscillators[ii].octave-3);
          if(this.oscillators[ii].octave-3==0){
            this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
          }else if (this.oscillators[ii].octave-3>0){

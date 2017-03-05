@@ -1,6 +1,7 @@
 <template>
   <require from="../components/knob"></require>
-  <require from="../components/mute-button"></require>
+  <require from="../components/switch"></require>
+  <p>Delay <switch class="right" switched.two-way="active" click.delegate="toggleEffect()"></switch></p>
   <div class="row">
     <div class="col s6">
       <knob min="0" max="100" label="Time" val.two-way="dTime" channel='delayTime' preset="50"></knob>
@@ -14,7 +15,7 @@
       <knob min="0" max="100" label="Wet/Dry" val.two-way="dWet" channel="delayWet" preset="25"></knob>
     </div>
     <div class="col s6">
-      <mute-button></mute-button>
+
     </div>
   </div>
 </template>

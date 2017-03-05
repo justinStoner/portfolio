@@ -1,10 +1,12 @@
 import {inject} from "aurelia-framework";
 import {HttpClient} from "aurelia-fetch-client";
 import {AudioBus} from '../components/audio-bus';
-@inject(HttpClient, AudioBus)
+import {EventAggregator} from 'aurelia-event-aggregator';
+@inject(HttpClient, AudioBus, EventAggregator)
 export class SequencerCustomElement{
-    constructor(http, ab){
+    constructor(http, ab, ea){
       this.http=http;
+      this.ea=ea;
       this.http.configure(config=>{
         config.useStandardConfiguration()
         .withDefaults({
@@ -26,6 +28,11 @@ export class SequencerCustomElement{
       this.tempo=120;
       this.volume=100;
       this.scheduled=new Array(14);
+      this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
+      this.scriptNode.onaudioprocess=(e)=>{
+        this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
+        //console.log(Math.pow(10, this.ab.compressor.reduction/20));
+      }
       for(var i=0; i<14; i++){
         this.scheduled[i]=new Array(16);
         for(var ii=0; ii<16; ii++){
@@ -93,14 +100,25 @@ export class SequencerCustomElement{
         })
       })
     }
-    playSound(buffer, time){
+    playSound(buffer, time, name){
       var src=this.audio.createBufferSource();
-      console.log(src);
       src.buffer=buffer;
-      src.connect(this.gain);
-      this.gain.connect(this.ab.drumsIn);
+      src.disconnect();
+      this.scriptNode.disconnect();
+      this.gain.disconnect();
+      if(name==='kick' && this.ab.compressionOn){
+        this.ea.publish('sidechain', time);
+
+        src.connect(this.gain);
+        this.scriptNode.connect(this.ab.compressor);
+        this.gain.connect(this.ab.compressor);
+        this.gain.connect(this.ab.drumsIn)
+      }else{
+        src.connect(this.gain);
+        this.gain.connect(this.ab.drumsIn);
+      }
       this.gain.gain.value=this.volume/50;
-      console.log(this.gain)
+
       src.start(time);
     }
     playSample(buffer){
@@ -109,7 +127,6 @@ export class SequencerCustomElement{
       src.connect(this.gain);
       this.gain.connect(this.ab.drumsIn);
       this.gain.gain.value=this.volume/50;
-      console.log(this.gain);
       src.start(0);
     }
     changeTempo(up){
@@ -166,7 +183,7 @@ export class SequencerCustomElement{
         var contextPlayTime = this.noteTime + this.startTime;
         for(var i=0;i<this.scheduled.length;i++){
           if(this.scheduled[i][this.rhythmIndex]===true){
-            this.playSound(this.drums[i].sound, contextPlayTime);
+            this.playSound(this.drums[i].sound, contextPlayTime, this.drums[i].name);
           }
         }
         this.advanceNote();

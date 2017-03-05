@@ -30,9 +30,7 @@ export class KnobCustomElement{
     if(this.preset){
       this.knob.update(this.preset);
     }
-
     this.knob.input.onchange = e =>{
-      console.log(this.knob.value);
       if(this.channel){
         this.ea.publish(this.channel, this.knob.value);
       }

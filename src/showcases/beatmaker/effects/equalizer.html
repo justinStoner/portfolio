@@ -1,6 +1,7 @@
 <template>
   <require from="../components/knob"></require>
-  <require from="../components/mute-button"></require>
+  <require from="../components/switch"></require>
+  <p>Equalizer <switch class="right" switched.two-way="active" click.delegate="toggleEffect()"></switch></p>
   <div class="row">
     <div class="col s4">
       <knob min="0" max="80" label="80hz" val.two-way="eq1" channel='eq1'></knob>
@@ -20,7 +21,7 @@
       <knob min="0" max="80" label="5khz" val.two-way="eq5" channel='eq5'></knob>
     </div>
     <div class="col s4">
-      <mute-button></mute-button>
+      <knob min="0" max="80" label="10khz" val.two-way="eq6" channel='eq6'></knob>
     </div>
   </div>
 </template>

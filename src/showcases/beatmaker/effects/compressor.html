@@ -1,18 +1,37 @@
 <template>
   <require from="../components/knob"></require>
-  <require from="../components/mute-button"></require>
-  <div class="row">
-    <div class="col s4">
-      <knob min="0" max="100" label="Attack" val.two-way="attack" channel='compAttack' preset="25"></knob>
+  <require from="../components/slider"></require>
+  <require from="../components/switch"></require>
+  <p>Compressor <switch class="right" switched.bind="active" click.delegate="toggleEffect()"></switch></p>
+  <div class="row" >
+    <div class="col l2 m4 s6">
+      <slider min="0" max="100" label="Attack" val.two-way="attack" channel='compAttack' preset="25"></slider>
+      <!-- <knob min="0" max="100" label="Attack" val.two-way="attack" channel='compAttack' preset="25"></knob> -->
     </div>
-    <div class="col s4">
+    <div class="col l2 m4 s6">
+      <slider min="0" max="100" label="Release" val.two-way="release" channel='compRelease' preset="25"></slider>
+    </div>
+    <div class="col l2 m4 s6">
+      <slider min="0" max="100" label="Threshold" val.two-way="threshold" channel='compThresh' preset="50"></slider>
+    </div>
+    <div class="col l2 m4 s6">
+      <slider min="0" max="40" label="Knee" val.two-way="knee" channel='compKnee' preset="40"></slider>
+    </div>
+    <div class="col l2 m4 s6">
+      <slider min="1" max="20" label="Ratio" val.two-way="ratio" channel='compRatio' preset="12"></slider>
+    </div>
+    <div class="col l2 m4 s6">
+
+    </div>
+    <!-- <div class="col s4">
       <knob min="0" max="100" label="Release" val.two-way="release" channel='compRelease' preset="25"></knob>
     </div>
     <div class="col s4">
       <knob min="0" max="100" label="Threshold" val.two-way="threshold" channel='compThresh' preset="50"></knob>
-    </div>
+    </div> -->
+    <div class="col s12"><p>Compressor is currently sidechained to the kick drum. Still a work in progress so expect some weirdness</p></div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col s4">
       <knob min="0" max="40" label="Knee" val.two-way="knee" channel='compKnee' preset="40"></knob>
     </div>
@@ -22,5 +41,5 @@
     <div class="col s4">
       <mute-button></mute-button>
     </div>
-  </div>
+  </div> -->
 </template>
