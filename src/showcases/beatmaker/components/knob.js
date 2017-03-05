@@ -62,8 +62,8 @@ Ui.P1.prototype.createElement = function() {
     radius: this.width/2.6})));
 
   var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
-  var circle1 = new Ui.El.Circle(this.width / 3.1, this.width / 1.95, this.height / 1.82);
-  this.el.node.appendChild(circle1.node);
+  //var circle1 = new Ui.El.Circle(this.width / 3.1, this.width / 1.95, this.height / 1.82);
+  //this.el.node.appendChild(circle1.node);
   this.el.node.appendChild(circle.node);
   this.el.node.setAttribute("class", "p1");
 };
@@ -88,7 +88,7 @@ Ui.P2.prototype.createElement = function() {
   this.addComponent(scale);
   var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
   this.addComponent(new Ui.Text());
-  var circle1 = new Ui.El.Circle(this.width / 3.1, this.width / 1.95, this.height / 1.82);
+  //var circle1 = new Ui.El.Circle(this.width / 3.1, this.width / 1.95, this.height / 1.82);
   this.addComponent(new Ui.Pointer(this.merge(this.options, {
     type: 'Circle',
     pointerWidth: 3,
@@ -98,7 +98,7 @@ Ui.P2.prototype.createElement = function() {
 
 
   this.merge(this.options, {arcWidth: this.width / 7});
-  this.el.node.appendChild(circle1.node);
+//  this.el.node.appendChild(circle1.node);
   this.el.node.appendChild(circle.node);
   this.el.node.setAttribute("class", "p2");
 };

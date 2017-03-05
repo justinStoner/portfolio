@@ -72,14 +72,14 @@ sound-wave{
 .p1,
 .p2{
   circle.pointer{
-    fill:#64b5f6;
+    fill:#fff;
     stroke:none;
   }
 }
 .p2{
   text{
     font-size: 13px;
-    fill: #64b5f6;
+    fill: #fff;
   }
 }
 #synth,
@@ -91,7 +91,7 @@ sound-wave{
   }
   .p2{
     text{
-      fill:#00e676;
+      fill:#fff ;
       filter:none;
     }
 
@@ -99,7 +99,7 @@ sound-wave{
   .p1,
   .p2{
     circle.pointer{
-      fill:#00e676;
+      fill:#fff ;
       stroke:none;
     }
   }
@@ -114,8 +114,8 @@ sound-wave{
  .p1 circle:first-child{
    -webkit-filter: url(#dropshadow);
     filter: url(#dropshadow);
-    fill:#00c853 ;
-    stroke:none;
+    fill:#00e676 ;
+    stroke:#fff;
  }
   .p2 circle,
   .p1 circle{
@@ -142,7 +142,7 @@ sound-wave{
   -webkit-filter: url(#dropshadow);
    filter: url(#dropshadow);
    fill:#2196f3;
-   stroke:none;
+   stroke:#fff;
 }
 .p2 circle,
 .p1 circle {
