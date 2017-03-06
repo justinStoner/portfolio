@@ -108,13 +108,16 @@ export class SequencerCustomElement{
       this.gain.disconnect();
       if(name==='kick' && this.ab.compressionOn){
         this.ea.publish('sidechain', time);
-
+        this.gain.disconnect();
         src.connect(this.gain);
-        this.scriptNode.connect(this.ab.compressor);
+
         this.gain.connect(this.ab.compressor);
+        this.scriptNode.connect(this.ab.compressor);
         this.gain.connect(this.ab.drumsIn)
       }else{
         src.connect(this.gain);
+        this.scriptNode.disconnect();
+        this.gain.disconnect();
         this.gain.connect(this.ab.drumsIn);
       }
       this.gain.gain.value=this.volume/50;

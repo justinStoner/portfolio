@@ -83,7 +83,11 @@ export class Piano{
     this.master.gain.value=1.0;
     this.effectOutput=this.audio.createGain();
 
-
+    this.lfo=this.audio.createOscillator();
+    this.lfo.type=this.waves[this.lfoData.wave];
+    this.lfo.frequency.value=this.lfoData.freq;
+    this.lfo.detune.value=this.lfoData.detune;
+    this.lfo.start(0);
     // this.lpf.connect(this.master);
     this.master.connect(this.effectOutput);
     this.effectOutput.gain.value=2.0;
@@ -193,7 +197,8 @@ export class Piano{
   playKey(i){
     //change filters and envelopes to be note properties later
      if(this.notes[i].isPlaying===false){
-       this.lfo=this.audio.createOscillator();
+       //this.lfo=this.audio.createOscillator();
+       this.lfo.disconnect();
        this.lfo.type=this.waves[this.lfoData.wave];
        this.lfo.frequency.value=this.lfoData.freq;
        this.lfo.detune.value=this.lfoData.detune;
@@ -232,11 +237,12 @@ export class Piano{
          this.notes[i]['g'+ii].gain.value=0.0005*this.oscillators[ii].volume;
          this.notes[i]['g'+ii].connect( this.notes[i]['f1'+i] );
          this.notes[i]['f1'+i].connect( this.notes[i]['f2'+i] );
-         this.modfilterGain=this.ab.audio.createGain();
-         this.lfo.connect(this.modfilterGain);
-         this.modfilterGain.gain.value=this.lpfMod*24;
-         this.modfilterGain.connect( this.notes[i]['f1'+i].detune );	// filter tremolo
-  	     this.modfilterGain.connect( this.notes[i]['f2'+i].detune );	// filter tremolo
+         this.notes[i]['modfilterGain'+ii]=this.ab.audio.createGain();
+         //this.modfilterGain=this.ab.audio.createGain();
+         this.lfo.connect(this.notes[i]['modfilterGain'+ii]);
+         this.notes[i]['modfilterGain'+ii].gain.value=this.lpfMod*24;
+         this.notes[i]['modfilterGain'+ii].connect( this.notes[i]['f1'+i].detune );	// filter tremolo
+  	     this.notes[i]['modfilterGain'+ii].connect( this.notes[i]['f2'+i].detune );	// filter tremolo
 
          //add envelopes and connect to filters
          this.notes[i]['e'+i]=this.ab.audio.createGain();
@@ -282,7 +288,7 @@ export class Piano{
         //  this.notes[i]['g'+ii].gain.setValueAtTime(0, this.ab.audio.currentTime);
         //  this.notes[i]['g'+ii].gain.linearRampToValueAtTime(this.oscillators[ii].volume/100, this.ab.audio.currentTime + this.envA/100.0);
        }
-         this.lfo.start(0);
+
          this.notes[i].isPlaying=true;
 
       }
@@ -300,11 +306,11 @@ export class Piano{
     	this.notes[i]['f2'+i].detune.cancelScheduledValues(now);
     	this.notes[i]['f2'+i].detune.setTargetAtTime( 0, now, (this.lpfR/100.0) +0.001);
 
-    for(var ii=0;ii<this.oscillators.length;ii++){
-      this.notes[i]['g'+ii].gain.cancelScheduledValues(now);
-      this.notes[i]['g'+ii].gain.setTargetAtTime( 0, now, (this.envR/100.0) +0.001);
-      this.notes[i]['o'+ii].stop(now+(this.envR/30.0));
-    }
+      for(var ii=0;ii<this.oscillators.length;ii++){
+        this.notes[i]['g'+ii].gain.cancelScheduledValues(now);
+        this.notes[i]['g'+ii].gain.setTargetAtTime( 0, now, (this.envR/100.0) +0.001);
+        this.notes[i]['o'+ii].stop(now+(this.envR/30.0));
+      }
       this.notes[i].isPlaying=false;
     }
   }

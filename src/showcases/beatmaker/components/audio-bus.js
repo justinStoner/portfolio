@@ -76,36 +76,36 @@ export class AudioBus{
       this.compressor.ratio.value=msg;
     });
 
-    // this.ea.subscribe('toggleCompressor', msg=>{
-    //   console.log(this.compressionOn);
-    //   if(this.compressionOn){
-    //     this.compressor.disconnect();
-    //     if(this.delayOn){
-    //       this.dOutput.disconnect();
-    //       this.dOutput.connect(this.synthOut);
-    //     }else if(this.eqOn){
-    //       this.eq5k.disconnect();
-    //       this.eq5k.connect(this.synthOut)
-    //     }else{
-    //       this.synthIn.disconnect();
-    //       this.synthIn.connect(this.synthOut);
-    //     }
-    //     this.compressionOn=false;
-    //   }else{
-    //     if(this.delayOn){
-    //       this.dOutput.disconnect();
-    //       this.dOutput.connect(this.compressor);
-    //     }else if(this.eqOn){
-    //       this.eq5k.disconnect();
-    //       this.eq5k.connect(this.compressor)
-    //     }else{
-    //       this.synthIn.disconnect();
-    //       this.synthIn.connect(this.compressor);
-    //     }
-    //     this.compressor.connect(this.synthOut);
-    //     this.compressionOn=true;
-    //   }
-    // })
+    this.ea.subscribe('toggleCompressor', msg=>{
+      console.log(this.compressionOn);
+      if(this.compressionOn){
+        // this.compressor.disconnect();
+        // if(this.delayOn){
+        //   this.dOutput.disconnect();
+        //   this.dOutput.connect(this.synthOut);
+        // }else if(this.eqOn){
+        //   this.eq5k.disconnect();
+        //   this.eq5k.connect(this.synthOut)
+        // }else{
+        //   this.synthIn.disconnect();
+        //   this.synthIn.connect(this.synthOut);
+        // }
+        this.compressionOn=false;
+      }else{
+        // if(this.delayOn){
+        //   this.dOutput.disconnect();
+        //   this.dOutput.connect(this.compressor);
+        // }else if(this.eqOn){
+        //   this.eq5k.disconnect();
+        //   this.eq5k.connect(this.compressor)
+        // }else{
+        //   this.synthIn.disconnect();
+        //   this.synthIn.connect(this.compressor);
+        // }
+        // this.compressor.connect(this.synthOut);
+        this.compressionOn=true;
+      }
+    })
     this.ea.subscribe('toggleDelay', msg=>{
       console.log(this.delayOn);
       if(this.delayOn){
