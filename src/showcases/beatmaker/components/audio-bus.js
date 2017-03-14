@@ -221,10 +221,10 @@ export class AudioBus{
     this.compressor = this.audio.createDynamicsCompressor();
     this.compressor.threshold.value = -50;
     this.compressor.knee.value = 40;
-    this.compressor.ratio.value = 12;
+    this.compressor.ratio.value = 13;
     //this.compressor.reduction.value = -20;
-    this.compressor.attack.value = 0.25;
-    this.compressor.release.value = 0.25;
+    this.compressor.attack.value = 0.1;
+    this.compressor.release.value = 0.2;
   }
 
 }

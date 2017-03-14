@@ -89,6 +89,7 @@ export class SequencerCustomElement{
         this.drums.push(obj);
       }
       this.gain=this.ab.audio.createGain();
+      this.sideChainGain=this.ab.audio.createGain();
       this.gain.value=1.0;
     }
     loadSample(type, i){
@@ -104,20 +105,26 @@ export class SequencerCustomElement{
       var src=this.audio.createBufferSource();
       src.buffer=buffer;
       src.disconnect();
-      this.scriptNode.disconnect();
-      this.gain.disconnect();
+      //this.scriptNode.disconnect();
+      //this.gain.disconnect();
+      //TODO handle compression off
       if(name==='kick' && this.ab.compressionOn){
         this.ea.publish('sidechain', time);
-        this.gain.disconnect();
-        src.connect(this.gain);
-
-        this.gain.connect(this.ab.compressor);
-        this.scriptNode.connect(this.ab.compressor);
-        this.gain.connect(this.ab.drumsIn)
-      }else{
-        src.connect(this.gain);
         this.scriptNode.disconnect();
-        this.gain.disconnect();
+        //this.gain.disconnect();
+        src.connect(this.sideChainGain);
+        this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
+        this.scriptNode.onaudioprocess=(e)=>{
+          this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
+          //console.log(Math.pow(10, this.ab.compressor.reduction/20));
+        }
+        this.sideChainGain.connect(this.ab.compressor);
+        this.scriptNode.connect(this.ab.compressor);
+        this.sideChainGain.connect(this.ab.drumsIn)
+      }if(name!=='kick'){
+        src.connect(this.gain);
+        //this.scriptNode.disconnect();
+        //this.gain.disconnect();
         this.gain.connect(this.ab.drumsIn);
       }
       this.gain.gain.value=this.volume/50;

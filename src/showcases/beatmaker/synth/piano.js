@@ -58,19 +58,19 @@ export class Piano{
     }
     this.oscPresets=[
       {
-        wave:-1,
+        wave:1,
         detune:45,
         octave:-3,
         volume:100,
       },
       {
-        wave:1,
+        wave:2,
         detune:50,
         octave:3,
         volume:100,
       },
       {
-        wave:-1,
+        wave:1,
         detune:55,
         octave:4,
         volume:100,
@@ -93,12 +93,12 @@ export class Piano{
     this.effectOutput.gain.value=2.0;
     this.effectOutput.connect(this.ab.synthIn);
 
-    this.lpfCutoff = 10;
-    this.lpfQ = 7.0;
+    this.lpfCutoff = 7;
+    this.lpfQ = 10.0;
     this.lpfMod = 21;
     this.lpfEnv = 56;
 
-    this.envA = 2;
+    this.envA = 25;
     this.envD = 15;
     this.envS = 68;
     this.envR = 5;
