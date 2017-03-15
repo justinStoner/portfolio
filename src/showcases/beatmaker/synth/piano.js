@@ -52,7 +52,7 @@ export class Piano{
       osc1:4,
       osc2:8,
       osc3:12,
-      freq:1,
+      freq:4,
       type:'Lfo',
       modType:0
     }
@@ -95,7 +95,7 @@ export class Piano{
 
     this.lpfCutoff = 10;
     this.lpfQ = 10.0;
-    this.lpfMod = 20;
+    this.lpfMod = 13;
     this.lpfEnv = 50;
 
     this.envA = 20;
