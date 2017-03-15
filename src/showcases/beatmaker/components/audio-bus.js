@@ -190,16 +190,16 @@ export class AudioBus{
     this.eq80.gain.value=0;
     this.eq350.frequency.value=350;
     this.eq350.type="peaking";
-    this.eq350.gain.value=0;
+    this.eq350.gain.value=4;
     this.eq720.frequency.value=720;
     this.eq720.type="peaking";
-    this.eq720.gain.value=0;
+    this.eq720.gain.value=-5;
     this.eq16k.frequency.value=1600;
     this.eq16k.type="peaking";
-    this.eq16k.gain.value=0;
+    this.eq16k.gain.value=-5;
     this.eq5k.frequency.value=5000;
     this.eq5k.type="peaking";
-    this.eq5k.gain.value=0;
+    this.eq5k.gain.value=-3;
     this.eq10k.frequency.value=10000;
     this.eq10k.type="highshelf";
     this.eq10k.gain.value=0;
@@ -219,12 +219,12 @@ export class AudioBus{
   }
   createCompressor(){
     this.compressor = this.audio.createDynamicsCompressor();
-    this.compressor.threshold.value = -50;
-    this.compressor.knee.value = 40;
-    this.compressor.ratio.value = 13;
+    this.compressor.threshold.value = -55;
+    this.compressor.knee.value = 28;
+    this.compressor.ratio.value = 4;
     //this.compressor.reduction.value = -20;
     this.compressor.attack.value = 0.1;
-    this.compressor.release.value = 0.2;
+    this.compressor.release.value = 0.1;
   }
 
 }

@@ -47,18 +47,18 @@ export class Piano{
     this.A4=440;
     this.oscillators=createVoices();
     this.lfoData={
-      wave:1,
+      wave:0.1,
       detune:50,
-      osc1:20,
-      osc2:20,
-      osc3:20,
-      freq:2,
+      osc1:4,
+      osc2:8,
+      osc3:12,
+      freq:1,
       type:'Lfo',
       modType:0
     }
     this.oscPresets=[
       {
-        wave:1,
+        wave:0.1,
         detune:45,
         octave:-3,
         volume:100,
@@ -76,7 +76,7 @@ export class Piano{
         volume:100,
       }
     ]
-    this.masterVol=50;
+    this.masterVol=85;
     this.modMult=10;
     // this.lpf=this.audio.createBiquadFilter();
     this.master = this.audio.createGain();
@@ -84,7 +84,7 @@ export class Piano{
     this.effectOutput=this.audio.createGain();
 
     this.lfo=this.audio.createOscillator();
-    this.lfo.type=this.waves[this.lfoData.wave];
+    this.lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
     this.lfo.frequency.value=this.lfoData.freq;
     this.lfo.detune.value=this.lfoData.detune;
     this.lfo.start(0);
@@ -93,20 +93,20 @@ export class Piano{
     this.effectOutput.gain.value=2.0;
     this.effectOutput.connect(this.ab.synthIn);
 
-    this.lpfCutoff = 7;
+    this.lpfCutoff = 10;
     this.lpfQ = 10.0;
-    this.lpfMod = 21;
-    this.lpfEnv = 56;
+    this.lpfMod = 20;
+    this.lpfEnv = 50;
 
-    this.envA = 25;
-    this.envD = 15;
-    this.envS = 68;
-    this.envR = 5;
+    this.envA = 20;
+    this.envD = 65;
+    this.envS = 65;
+    this.envR = 50;
 
-    this.lpfA = 5;
-    this.lpfD = 6;
-    this.lpfS = 5;
-    this.lpfR = 7;
+    this.lpfA = 65;
+    this.lpfD = 30;
+    this.lpfS = 30;
+    this.lpfR = 50;
 
     this.notes=[
       {note:'c' ,hz:261.626 ,color:true, key:'a', isPlaying:false},
@@ -199,7 +199,7 @@ export class Piano{
      if(this.notes[i].isPlaying===false){
        //this.lfo=this.audio.createOscillator();
        this.lfo.disconnect();
-       this.lfo.type=this.waves[this.lfoData.wave];
+       this.lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
        this.lfo.frequency.value=this.lfoData.freq;
        this.lfo.detune.value=this.lfoData.detune;
        this.master.gain.value=this.masterVol/50;

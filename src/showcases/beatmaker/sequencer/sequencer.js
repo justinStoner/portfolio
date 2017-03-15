@@ -26,7 +26,7 @@ export class SequencerCustomElement{
       console.log(this.drums);
       this.loopLength=16;
       this.tempo=120;
-      this.volume=100;
+      this.volume=85;
       this.scheduled=new Array(14);
       this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
       this.scriptNode.onaudioprocess=(e)=>{
@@ -121,14 +121,20 @@ export class SequencerCustomElement{
         this.sideChainGain.connect(this.ab.compressor);
         this.scriptNode.connect(this.ab.compressor);
         this.sideChainGain.connect(this.ab.drumsIn)
-      }if(name!=='kick'){
+      }else if(name === 'kick' && !this.ab.compressionOn){
+        src.connect(this.sideChainGain);
+        this.scriptNode.disconnect();
+        //this.gain.disconnect();
+        this.gain.connect(this.ab.drumsIn);
+      }
+      if(name!=='kick'){
         src.connect(this.gain);
         //this.scriptNode.disconnect();
         //this.gain.disconnect();
         this.gain.connect(this.ab.drumsIn);
       }
       this.gain.gain.value=this.volume/50;
-
+      this.sideChainGain.gain.value=this.volume/50;
       src.start(time);
     }
     playSample(buffer){

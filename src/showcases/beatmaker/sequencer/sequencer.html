@@ -24,7 +24,7 @@
                 <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
               </div>
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="100" label="Volume" canvas.bind="true" val.two-way="volume"></knob>
+                <knob min="0" max="100" label="Volume" canvas.bind="true" preset.one-time="volume" val.two-way="volume"></knob>
               </div>
             </div>
             <!-- <sound-wave ab.bind='ab' canvas-id='sequencer-controller' style=""></sound-wave> -->
