@@ -1,6 +1,6 @@
 <template>
-  <div class="blue white-text center-align b-radius" style="margin-bottom:15px;">
-    <p class="center-align">${label}</p>
+  <div class="blue white-text center-align b-radius" css="margin-bottom:15px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}">
+    <p class="center-align" css="${inline===true?'margin-bottom:8px;':''}">${label}</p>
     <div class="right">
       <div class="btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3" click.delegate="add()" style="float:none;display:block;height:1.5rem;line-height:1;">
         <i class="material-icons" style="line-height:1;">add</i>
@@ -9,13 +9,13 @@
         <i class="material-icons" style="line-height:1;">remove</i>
       </div>
     </div>
-    <div class="file-field input-field">
+    <div class="file-field input-field" >
       <div class="file-path-wrapper" style="padding:0;">
         <input type="text" class="center-align" style="margin:0;border:none;" value.bind="val" change.delegate="change()">
       </div>
     </div>
   </div>
-  <div class="ui-range"></div>
+  <div class="ui-range" if.bind="noslider!==true"></div>
     <!-- <input type="range" value.bind="val" id="test5" min="${min}" max="${max}" change.delegate="change()" orient="vertical"/> -->
 
 </template>

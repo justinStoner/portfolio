@@ -3,6 +3,7 @@
   <require from="./styles/sequencer.css"></require>
   <require from="../components/knob"></require>
   <require from="../components/sound-wave"></require>
+  <require from="../components/slider"></require>
   <div class="au-animate col s12" style="padding-top:0.75rem;">
     <!-- <div class="card" id="sequencer">
       <div class="card-content" style="padding:0.75rem"> -->
@@ -17,12 +18,13 @@
                   <i class="material-icons red-text" style="vertical-align:sub;font-size:2.3rem" >stop</i>
                 </template>
               </a>
-              <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="220" label="Tempo" val.two-way="tempo" noslider.one-time="true" channel='tempo' inline.one-time="true" preset="120"></slider>
+              <!-- <div class="input-field inline" style="margin-top:0;">
                 <p style="padding-bottom:3px;margin-top:-24px;">Tempo</p>
                 <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-right:5px;" click.delegate="changeTempo(false)"><i class="material-icons">remove</i></button>
                 <p style="width:40px;display:inline-block;">${tempo}</p>
                 <button class="btn waves-effect waves-light green accent-3" style="display:inline-block;width:36px;padding:0;margin-left:5px;" click.delegate="changeTempo(true)"><i class="material-icons">add</i></button>
-              </div>
+              </div> -->
               <div class="input-field inline" style="margin-top:0;">
                 <knob min="0" max="100" label="Volume" canvas.bind="true" preset.one-time="volume" val.two-way="volume"></knob>
               </div>
