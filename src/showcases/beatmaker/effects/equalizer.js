@@ -8,7 +8,7 @@ export class Equalizer{
     this.eq2=44;
     this.eq3=35;
     this.eq4=35;
-    this.eq5=37;
+    this.eq5=30;
     this.eq6=40;
     this.ab=ab;
     this.ea=ea;

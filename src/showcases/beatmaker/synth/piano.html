@@ -8,11 +8,8 @@
   <require from="../effects/compressor"></require>
   <require from="../effects/delay"></require>
   <require from="../effects/equalizer"></require>
-  <div class="au-animate col s12">
-      <div class="card" id="piano">
-
-        <div class="card-content" style="padding:0.75rem;padding-bottom:0px;" >
-          <div class="row">
+  <div class="au-animate col s12" style="padding-top:0.75rem;">
+          <div class="row" >
             <form class="col m3 s12">
               <oscillator type='Lfo' osc.two-way="lfoData" preset.one-time="lfoData"></oscillator>
             </form>
@@ -82,7 +79,7 @@
                     <knob min="0" max="100" label="Decay" canvas.bind="true" val.two-way="envD" preset.one-time="envD"></knob>
                   </div>
                   <div class="col m3 s6">
-                    <knob min="0" max="100" label="Sustain" canvas.bind="true" val.two-way="envR" preset.one-time="envS"></knob>
+                    <knob min="0" max="100" label="Sustain" canvas.bind="true" val.two-way="envS" preset.one-time="envS"></knob>
                   </div>
                   <div class="col m3 s6">
                     <knob min="0" max="100" label="Release" canvas.bind="true" val.two-way="envR" preset.one-time="envR"></knob>
@@ -110,11 +107,9 @@
             </form>
           </div>
           <div class="row" style="">
-            <div class="col s12" id='right' style="padding:0;height:90%;margin-bottom:0.75rem;">
+            <div class="col s12" id='right' style="padding:0;">
               <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of notes" playing.bind="note.isPlaying" index.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
             </div>
           </div>
-        </div>
-      </div>
   </div>
 </template>

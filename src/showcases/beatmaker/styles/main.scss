@@ -1,4 +1,4 @@
-.card-content .row{
+.au-animate .row{
   margin: 0;
 }
 .card-left{
@@ -17,9 +17,6 @@
 .card-left>div{
   height: 20%;
 }
-md-card>.card{
-  background-color: inherit;
-}
 .input-field.inline.col.m4{
   text-align: center;
 }
@@ -37,6 +34,10 @@ label.sm{
 }
 .tab-content.grey{
 
+}
+form p{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 sound-wave{
   position: absolute;

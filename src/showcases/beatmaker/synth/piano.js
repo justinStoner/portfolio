@@ -216,6 +216,7 @@ export class Piano{
          this.notes[i]['f2'+i].frequency.value = this.lpfCutoff*100;
          //add oscillators
          this.notes[i]['g'+ii]=this.ab.audio.createGain();
+         this.notes[i]['g'+ii].gain.value=0.0005*this.oscillators[ii].volume;
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
          this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
          if(this.oscillators[ii].octave-3==0){
@@ -228,17 +229,12 @@ export class Piano{
          this['lfoOscGain'+ii]=this.ab.audio.createGain();
          this.lfo.connect(this['lfoOscGain'+ii]);
          this['lfoOscGain'+ii].gain.value=this.lfoData['osc'+(ii+1)]/100;
-        //  this['lfoOscGain'+ii].disconnect();
-        //  if(this.lfoData.modType===0){
-        //    this['lfoOscGain'+ii].connect(this.notes[i]['o'+ii].frequency);
-        //  }
          this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
          this.notes[i]['o'+ii].connect(this.notes[i]['g'+ii]);
-         this.notes[i]['g'+ii].gain.value=0.0005*this.oscillators[ii].volume;
          this.notes[i]['g'+ii].connect( this.notes[i]['f1'+i] );
          this.notes[i]['f1'+i].connect( this.notes[i]['f2'+i] );
          this.notes[i]['modfilterGain'+ii]=this.ab.audio.createGain();
-         //this.modfilterGain=this.ab.audio.createGain();
+         this.modfilterGain=this.ab.audio.createGain();
          this.lfo.connect(this.notes[i]['modfilterGain'+ii]);
          this.notes[i]['modfilterGain'+ii].gain.value=this.lpfMod*24;
          this.notes[i]['modfilterGain'+ii].connect( this.notes[i]['f1'+i].detune );	// filter tremolo
@@ -247,28 +243,32 @@ export class Piano{
          //add envelopes and connect to filters
          this.notes[i]['e'+i]=this.ab.audio.createGain();
          this.notes[i]['f2'+i].connect(this.notes[i]['e'+i]);
-        //  this.cutoff=this.ab.audio.createBiquadFilter();
-        //  this.filter1.connect(this.cutoff);
-        //  this.filter2.connect(this.cutoff);
-        //  this.cutoff.connect(this.notes[i]['e'+i]);
+
+         //this.notes[i]['c'+i]=this.ab.audio.createBiquadFilter();
+         //  this.notes[i]['c'+i].type='lowpass';
+         //  this.notes[i]['c'+i].Q.value=10;
+         //  this.notes[i]['cutfilterGain'+ii].gain.value=this.lpfMod*24;
+         //  this.notes[i]['f1'+i].connect(this.notes[i]['c'+i]);
+         //  this.notes[i]['f2'+i].connect(this.notes[i]['c'+i]);
+         //  this.notes[i]['c'+i].connect(this.notes[i]['e'+i]);
+         //  this.notes[i]['e'+i].connect(this.notes[i]['c'+i]);
+         //  this.notes[i]['c'+i].connect(this.master);
+         //  this.notes[i]['cutfilterGain'+ii].connect( this.notes[i]['c'+i].frequency );
+
          this.notes[i]['e'+i].connect(this.master);
-        //  if(this.lfoData.modType===1){
-        //    this.lfoOscGain1.connect(this.cutoff.frequency);
-        //    this.lfoOscGain2.connect(this.filter2.frequency);
-        //  }
          var now = this.ab.audio.currentTime;
          var atkEnd=now + (this.envA/100.0);
-         this.notes[i]['e'+i].gain.value = 0.0;
-      	 this.notes[i]['e'+i].gain.setValueAtTime( 0.0, now );
-      	 this.notes[i]['e'+i].gain.linearRampToValueAtTime( 1.0, atkEnd );
-      	 this.notes[i]['e'+i].gain.setTargetAtTime( (this.envS/100.0), atkEnd, (this.envD/100.0)+0.001 );
+        this.notes[i]['e'+i].gain.value = 0.0;
+       	 this.notes[i]['e'+i].gain.setValueAtTime( 0.0, now );
+       	 this.notes[i]['e'+i].gain.linearRampToValueAtTime( 1.0, atkEnd );
+       	 this.notes[i]['e'+i].gain.setTargetAtTime( (this.envS/100.0), atkEnd, (this.envD/100.0)+0.001 );
 
          var filterAttackLevel = this.lpfEnv*72;
          var filterSustainLevel = filterAttackLevel* this.lpfS / 100.0;
          var filterAttackEnd = (this.lpfA/100.0);
 
          if (!filterAttackEnd){
-           filterAttackEnd=0.05; // tweak to get target decay to work properly
+           filterAttackEnd=0.05;
          }
 
        	 this.notes[i]['f1'+i].detune.setValueAtTime( 0, now );
@@ -284,9 +284,6 @@ export class Piano{
 
        for(var ii=0;ii<this.oscillators.length;ii++){
          this.notes[i]['o'+ii].start(0);
-        //  this.notes[i]['g'+ii].gain.cancelScheduledValues(this.ab.audio.currentTime);
-        //  this.notes[i]['g'+ii].gain.setValueAtTime(0, this.ab.audio.currentTime);
-        //  this.notes[i]['g'+ii].gain.linearRampToValueAtTime(this.oscillators[ii].volume/100, this.ab.audio.currentTime + this.envA/100.0);
        }
 
          this.notes[i].isPlaying=true;

@@ -1,7 +1,55 @@
-$body-bgcolor: #eee;
+$body-bgcolor: #fff;
 
 body{
   background-color: $body-bgcolor ;
+}
+.topimg{
+  background: url('images/IMG_1066.jpg') top/cover no-repeat;
+  width: 100%;
+  margin-bottom:0;
+  position:fixed;
+  z-index:0;
+  padding:0;
+  height:400px;
+
+  div{
+    width:100%;
+    height:100%;
+  padding-top: 45px;
+    color:#fff;
+  }
+}
+.me-img{
+  background: url('images/me.jpg')top/cover no-repeat;
+  width: 75px;
+  height: 75px;
+  border-radius: 75px;
+  margin-right: 10px;
+
+}
+.card .row .col{
+  background: transparent !important;
+}
+.pane1{
+  z-index:1;
+  margin-top:400px;
+  background: #fff !important;
+  position: relative;
+  margin-bottom: 0;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2), 0 -2px 3px 0 rgba(0,0,0,0.14), 0 -3px 5px 0 rgba(0,0,0,0.12), 0 -3px 5px 3px rgba(0,0,0,0.2);
+  div.col{
+    background: #fff !important;
+  }
+}
+.pane2{
+  margin-bottom: 0;
+  text-align: center;
+  color: #fff;
+  background: url('images/IMG_0983.jpg') top/cover no-repeat;
+  height: 400px;
+  margin-top: -15px;
+  position: relative;
+  padding-top: 200px;
 }
 .btn-sm{
   padding: 0 0.5rem;
@@ -83,18 +131,47 @@ div.au-animate.au-leave-active{
 
   }
 }
-.showcase-tabs{
-
+canvas{
+  transition: all 0.3s ease-in-out;
+}
+.indicator{
+  background: #2196f3 !important;
+}
+ul.tabs.blue{
   .indicator{
-    background: #2196f3 !important;
+    background: #ffffff !important;
   }
+}
+ul.tabs{
+  overflow-x: auto;
   li{
     a.active{
       color: #2196f3 !important;
     }
+    a.white-text{
+      color:#fff !important;
+    }
+    a.white-text.active{
+      color:#fff !important;
+    }
     a{
       color:#343434 !important;
     }
+}
+
+.showcase-tabs{
+
+
+
+  }
+}
+
+@media only screen and(max-width:992px){
+  .topimg{
+    height: 100%;
+  }
+  .pane1{
+    margin-top: 163%;
   }
 }
 @-webkit-keyframes blurIn {

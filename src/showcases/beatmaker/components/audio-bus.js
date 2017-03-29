@@ -154,6 +154,7 @@ export class AudioBus{
         this.eqOn=true;
       }
     })
+
   }
   connect(){
     this.synthIn.connect(this.eq80);
@@ -199,7 +200,7 @@ export class AudioBus{
     this.eq16k.gain.value=-5;
     this.eq5k.frequency.value=5000;
     this.eq5k.type="peaking";
-    this.eq5k.gain.value=-3;
+    this.eq5k.gain.value=-10;
     this.eq10k.frequency.value=10000;
     this.eq10k.type="highshelf";
     this.eq10k.gain.value=0;

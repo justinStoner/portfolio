@@ -60,11 +60,14 @@ export class Slider{
     }
   }
   add(){
-    this.val++;
+    this.val++
     this.range.noUiSlider.set(this.val);
   }
   minus(){
     this.val--;
+    if(this.val<0){
+      this.val=0;
+    }
     this.range.noUiSlider.set(this.val);
   }
 

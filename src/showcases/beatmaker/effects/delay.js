@@ -15,4 +15,7 @@ export class Delay{
     this.ea.publish('toggleDelay');
     this.active=!this.active;
   }
+  attached(){
+    this.toggleEffect();
+  }
 }
