@@ -1,5 +1,21 @@
+import Chart from 'chartjs'
+//let myChart = new Chart({...})
 export class About{
   constructor(){
+    this.labels=[
+      'Javascript',
+      'HTML',
+      'CSS',
+      'Aurelia',
+      'Angular',
+      'React',
+      'Node',
+      'Express',
+      'PHP'
+    ],
+    this.values=[
+      95,90,90,100,80,60,85,80,70
+    ]
     this.skills=[
       {
         name:'Javascript',
@@ -64,94 +80,35 @@ export class About{
   attached(){
     this.width=400;
     this.height=400;
-
     var canvas=document.querySelector('#skills-container');
-    var context=canvas.getContext('2d');
-    var centerX = Math.floor(canvas.width / 2);
-    var centerY = Math.floor(canvas.height / 2);
-    var radius = Math.floor(canvas.width / 2)-5;
-    context.shadowColor   = 'rgba(0,0,0,0.12)';
-        context.shadowOffsetX = 0;
-        context.shadowOffsetY = 2;
-        context.shadowBlur    = 3;
-
-    var startingAngle = 0
-    var endingAngle = 360;
-    context.beginPath();
-    context.moveTo(centerX, centerY);
-    context.arc(centerX, centerY, radius,
-                startingAngle, endingAngle, false);
-    context.closePath();
-
-    context.fillStyle = '#f0f0f0';
-    context.fill();
-    for (var i = 0; i < this.skills.length; i++) {
-      this.drawSegment(canvas, context, i);
-    }
-  }
-    drawSegment(canvas, context, i) {
-      context.save();
-      var centerX = Math.floor(canvas.width / 2);
-      var centerY = Math.floor(canvas.height / 2);
-      var radius = Math.floor(canvas.width / 2)-5;
-
-      var startingAngle = this.degreesToRadians(this.sumTo(i)-15);
-      var arcSize = this.degreesToRadians(40);
-      var endingAngle = startingAngle + arcSize;
-
-      context.beginPath();
-      context.moveTo(centerX, centerY);
-      context.arc(centerX, centerY, radius*this.skills[i].value/100,
-                  startingAngle, endingAngle, false);
-      context.closePath();
-
-      context.fillStyle = this.colors[i];
-      context.fill();
-
-      context.restore();
-
-      this.drawSegmentLabel(canvas, context, i);
-      $('ul.tabs').tabs();
-  }
-  drawSegmentLabel(canvas, context, i) {
-     context.save();
-     var x = Math.floor(canvas.width / 2);
-     var y = Math.floor(canvas.height / 2);
-     var angle = this.degreesToRadians(this.sumTo(i)+5);
-
-     context.translate(x, y);
-     context.rotate(angle);
-     var dx = Math.floor(canvas.width * 0.45) - 15;
-     var dy = Math.floor(canvas.height * 0.05)-5;
-     context.fillStyle="rgba(0, 0, 0, 0.87)";
-     context.textAlign = "right";
-     var fontSize = Math.floor(canvas.height / 20);
-     context.font = fontSize + "pt Helvetica";
-
-     context.fillText(this.skills[i].name, dx, dy);
-
-
-     context.restore();
-  }
-  degreesToRadians(degrees) {
-    return (degrees * Math.PI)/180;
-  }
-  sumTo(i) {
-    var sum = 0;
-    for (var j = 0; j < i; j++) {
-      sum += 40;
-    }
-    return sum;
-  }
+    this.chart=new Chart(canvas, {
+      type:'polarArea',
+      data:{
+        datasets:[{
+            data:this.values,
+            label:'Skills',
+            backgroundColor:this.colors
+        }],
+        labels:this.labels
+      },
+      options:{
+        layout:{
+          padding:5
+        },
+        legend:{
+          position:'bottom',
+          display:false,
+          labels:{
+            boxWidth:20
+          }
+        }
+      }
+  })
+  $('ul.tabs').tabs();
+}
   changeSkill(i,ii){
     this.activeSkill=i;
     this.skillIndex=ii;
-    var context=document.getElementById('skills-container');
-    var deg=ii*-40;
-    context.style.webkitTransform = 'rotate('+deg+'deg)';
-    context.style.mozTransform    = 'rotate('+deg+'deg)';
-    context.style.msTransform     = 'rotate('+deg+'deg)';
-    context.style.oTransform      = 'rotate('+deg+'deg)';
-    context.style.transform       = 'rotate('+deg+'deg)';
+    
   }
 }

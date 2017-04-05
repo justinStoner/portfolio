@@ -124,11 +124,10 @@
           "aurelia-templating",
           "aurelia-templating-binding",
           {
-            "name": "three",
-            "path": "../node_modules/three/build/",
-            "main": "three.min"
+            "name": "chartjs",
+            "path": "../node_modules/chart.js/",
+            "main": "./dist/Chart.bundle.min"
           },
-          "three-orbit-controls",
           {
             "name": "jquery-knob",
             "path": "../node_modules/jim-knopf/dist/",

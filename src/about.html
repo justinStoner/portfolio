@@ -47,14 +47,14 @@
         <div class="card-content grey lighten-2">
           <div id="exp">
             <div class="row">
-              <div class="col s12 l6" style="padding:0 5px 0 0">
-                <h5>WebGlancer</h5>
+              <div class="col s12 l6 center-align" style="padding:0 5px 0 0">
+                <h5 class="center-align">WebGlancer</h5>
                 In the last 5 years at AlterMedia, I've converted the front end of a jQuery/PHP system back from the old days of web development over to Angular 1.5 and created a REST api for it in PHP.
                  Later, around the time Angular 2 came out, we decided to switch the front end to Aurelia instead and are very happy with it. I am now finishing up migrating the backend over to Node and Express.
                  I also designed much of the interface and maintained multiple versions of the product.
               </div>
-              <div class="col s12 l6" style="padding:0">
-                <h5>WordPress</h5>
+              <div class="col s12 l6 center-align" style="padding:0">
+                <h5 class="center-align">WordPress</h5>
                 I maintain the companies website at <a href="https://studiosuite.com">studiosuite.com</a>
               </div>
             </div>
@@ -71,12 +71,14 @@
         </div>
         <div class="card-tabs">
           <ul class="tabs blue">
-            <li class="tab tabs-fixed-width" repeat.for="skill of skills" click.delegate="changeSkill(skill, $index)"><a class="${skillIndex===$index?'active ':''}white-text" href="${'#skill'+$index}">${skill.name}</a></li>
+            <li class="tab tabs-fixed-width" repeat.for="skill of skills" click.delegate="changeSkill(skill, $index)"><a class="${skillIndex===$index?'active':''} white-text" href="${'#skill'+$index}">${skill.name}</a></li>
           </ul>
         </div>
-        <div class="card-content grey lighten-2">
+        <div class="card-content">
           <div class="row">
-            <canvas id="skills-container" class="left" width="200" height="200"></canvas>
+            <div class="left">
+              <canvas id="skills-container"  width="200" height="200"></canvas>
+            </div>
             <div class="" style="">
               <p style="margin-bottom:5px;">${activeSkill.name+': '}${activeSkill.value}/100</p>
               <p class="skill-descripion">${activeSkill.description}</p>
