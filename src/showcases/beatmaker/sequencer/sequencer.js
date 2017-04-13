@@ -27,6 +27,7 @@ export class SequencerCustomElement{
       this.loopLength=16;
       this.tempo=120;
       this.volume=85;
+      this.mixer=false;
       this.scheduled=new Array(14);
       this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
       this.scriptNode.onaudioprocess=(e)=>{
@@ -63,28 +64,73 @@ export class SequencerCustomElement{
       }
       console.log(this.scheduled);
       this.samples=[
-        {name:'kick',sample:'Roland_TR-33_Kick'},
-        {name:'snare',sample:'Roland_TR-33_Snare'},
-        {name:'hh open',sample:'Roland_TR-33_HH Op'},
-        {name:'hh close',sample:'Roland_TR-33_HH Cl'},
-        {name:'tom hi',sample:'Roland_TR-33_Tom Hi'},
-        {name:'tom med',sample:'Roland_TR-33_Tom Mi'},
-        {name:'tom low',sample:'Roland_TR-33_Tom Lo'},
-        {name:'bongo hi',sample:'Roland_TR-33_Bongo Hi'},
-        {name:'bongo med',sample:'Roland_TR-33_Bongo Mi'},
-        {name:'bongo low',sample:'Roland_TR-33_Bongo Lo'},
-        {name:'conga hi',sample:'Roland_TR-33_Conga Hi'},
-        {name:'conga med',sample:'Roland_TR-33_Conga Mi'},
-        {name:'conga low',sample:'Roland_TR-33_Conga Lo'},
-        {name:'clave',sample:'Roland_TR-33_Clave'}
-      ]
+        {name:'kick',sample:'Roland_TR-33_Kick', type:'kick'},
+        {name:'snare',sample:'Roland_TR-33_Snare', type:'snare'},
+        {name:'hh open',sample:'Roland_TR-33_HH Op', type:'hh'},
+        {name:'hh close',sample:'Roland_TR-33_HH Cl', type:'hh'},
+        {name:'tom hi',sample:'Roland_TR-33_Tom Hi', type:'tom'},
+        {name:'tom med',sample:'Roland_TR-33_Tom Mi', type:'tom'},
+        {name:'tom low',sample:'Roland_TR-33_Tom Lo', type:'tom'},
+        {name:'bongo hi',sample:'Roland_TR-33_Bongo Hi', type:'tom'},
+        {name:'bongo med',sample:'Roland_TR-33_Bongo Mi', type:'tom'},
+        {name:'bongo low',sample:'Roland_TR-33_Bongo Lo', type:'tom'},
+        {name:'conga hi',sample:'Roland_TR-33_Conga Hi', type:'tom'},
+        {name:'conga med',sample:'Roland_TR-33_Conga Mi', type:'tom'},
+        {name:'conga low',sample:'Roland_TR-33_Conga Lo', type:'tom'},
+        {name:'clave',sample:'Roland_TR-33_Clave', type:'tom'}
+      ];
+
+      //see here http://www.audio-issues.com/music-mixing/drum-eq-guide/
+      this.eqFreqs={
+        kick:[50, 450, 3000, 150],
+        kickRange:{
+          low:[50, 100],
+          mid:[300, 600],
+          high:[2000, 4000],
+          lowmid:[150, 250]
+        },
+        snare:[150, 500, 3000],
+        snareRange:{
+          low:[50, 200],
+          mid:[300, 600],
+          high:[2000, 4000]
+        },
+        hh:[200, 500, 5000],
+        hhRange:{
+          low:[100, 300],
+          mid:[300, 900],
+          high:[4000, 7000]
+        },
+        tom:[250, 600, 5000],
+        tomRange:{
+          low:[80, 250],
+          mid:[300, 900],
+          high:[5000, 7000]
+        }
+      }
     }
     attached(){
       for(var i=0;i<this.samples.length;i++){
         var obj={
           name:this.samples[i].name,
           sound:this.loadSample(this.samples[i].sample, i),
-          scheduled:[]
+          type:this.samples[i].type,
+          scheduled:[],
+          volume:50,
+          pitch:0,
+          high:40,
+          highFreq:this.eqFreqs[this.samples[i].type][2],
+          mid:40,
+          midFreq:this.eqFreqs[this.samples[i].type][1],
+          low:40,
+          lowFreq:this.eqFreqs[this.samples[i].type][0],
+          range:this.eqFreqs[this.samples[i].type+'Range'],
+          Q:10,
+          cutoff:200,
+          filterType:'lowpass'
+        }
+        if(obj.type==='kick'){
+          obj.lowmid=this.eqFreqs[this.samples[i].type][3];
         }
         this.drums.push(obj);
       }
@@ -92,6 +138,10 @@ export class SequencerCustomElement{
       this.sideChainGain=this.ab.audio.createGain();
       this.gain.value=1.0;
     }
+    toggleMixer(){
+      this.mixer=!this.mixer;
+    }
+
     loadSample(type, i){
       this.http.fetch("audio/roland-tr-33/"+type+".wav")
       .then(res=>res.arrayBuffer())
@@ -101,18 +151,47 @@ export class SequencerCustomElement{
         })
       })
     }
-    playSound(buffer, time, name){
+    playSound(buffer, time, name, i){
       var src=this.audio.createBufferSource();
       src.buffer=buffer;
       src.disconnect();
-      //this.scriptNode.disconnect();
-      //this.gain.disconnect();
-      //TODO handle compression off
+
+      var eq120=this.audio.createBiquadFilter();
+      eq120.frequency.value=this.drums[i].lowFreq;
+      eq120.type="lowshelf";
+      eq120.gain.value=this.drums[i].low-40;
+
+      var eq600=this.audio.createBiquadFilter();
+      eq600.frequency.value=this.drums[i].midFreq;
+      eq600.type="peaking";
+      eq600.gain.value=this.drums[i].mid-40;
+
+      var eq5k=this.audio.createBiquadFilter();
+      eq5k.frequency.value=this.drums[i].highFreq;
+      eq5k.type="highshelf";
+      eq5k.gain.value=this.drums[i].high-40;
+
+      var filter1 = this.ab.audio.createBiquadFilter();
+      filter1.type = this.drums[i].filterType;
+      filter1.Q.value = this.drums[i].Q;
+      filter1.frequency.value = this.drums[i].cutoff*100;
+
+      var filter2 = this.ab.audio.createBiquadFilter();
+      filter2.type = this.drums[i].filterType;
+      filter2.Q.value = this.drums[i].Q;
+      filter2.frequency.value = this.drums[i].cutoff*100;
+
+      src.connect(eq120);
+      eq120.connect(eq600);
+      eq600.connect(eq5k);
+      eq5k.connect(filter1);
+      filter1.connect(filter2);
       if(name==='kick' && this.ab.compressionOn){
         this.ea.publish('sidechain', time);
         this.scriptNode.disconnect();
         //this.gain.disconnect();
-        src.connect(this.sideChainGain);
+        filter2.connect(this.sideChainGain);
+
         this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
         this.scriptNode.onaudioprocess=(e)=>{
           this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
@@ -122,13 +201,13 @@ export class SequencerCustomElement{
         this.scriptNode.connect(this.ab.compressor);
         this.sideChainGain.connect(this.ab.drumsIn)
       }else if(name === 'kick' && !this.ab.compressionOn){
-        src.connect(this.sideChainGain);
+        filter2.connect(this.sideChainGain);
         this.scriptNode.disconnect();
         //this.gain.disconnect();
         this.gain.connect(this.ab.drumsIn);
       }
       if(name!=='kick'){
-        src.connect(this.gain);
+        filter2.connect(this.gain);
         //this.scriptNode.disconnect();
         //this.gain.disconnect();
         this.gain.connect(this.ab.drumsIn);
@@ -199,12 +278,12 @@ export class SequencerCustomElement{
         var contextPlayTime = this.noteTime + this.startTime;
         for(var i=0;i<this.scheduled.length;i++){
           if(this.scheduled[i][this.rhythmIndex]===true){
-            this.playSound(this.drums[i].sound, contextPlayTime, this.drums[i].name);
+            this.playSound(this.drums[i].sound, contextPlayTime, this.drums[i].name, i);
           }
         }
         this.advanceNote();
       }
-      this.timeoutId = requestAnimationFrame(this.schedule.bind(this))
+      this.timeoutId=requestAnimationFrame(this.schedule.bind(this));
     }
 
     advanceNote() {

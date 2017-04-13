@@ -57,7 +57,9 @@ form{
 .key:last-child>div{
   margin-right: 0;
 }
-
+.black-key>div>h1.hide-on-large-only{
+  font-size: 120%;
+}
 .key.white{
 
   height: 220px;

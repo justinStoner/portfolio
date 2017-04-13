@@ -8,7 +8,10 @@ export class SoundWave{
   constructor(ea, element){
     this.ea=ea;
     this.element=element;
-
+    this.x=0;
+    this.y;
+    this.v;
+    this.animId;
     this.ea.subscribe('resize', ()=>{
       this.canvas.width=$(this.bgEl).width();
       this.canvas.height=$(this.bgEl).height();
@@ -29,6 +32,7 @@ export class SoundWave{
     console.log(this.element.style);
     this.canvas.width=width;
     this.canvas.height=height;
+    this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
     this.draw();
   }
   draw(){
@@ -39,23 +43,23 @@ export class SoundWave{
     this.canvasCtx.lineWidth = 1;
     this.canvasCtx.strokeStyle = this.fgColor;
     this.canvasCtx.beginPath();
+    this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
 
-    var sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
-    var x = 0;
-
+    this.x = 0;
+    var y,v;
     for(var i = 0; i < this.ab.bufferLength; i++) {
-      var v = this.ab.dataArray[i] / 128.0;
-      var y = v * this.canvas.height/2;
+      this.v = this.ab.dataArray[i] / 128.0;
+      this.y = this.v * this.canvas.height/2;
       if(i === 0) {
-        this.canvasCtx.moveTo(x, y);
+        this.canvasCtx.moveTo(this.x, this.y);
       } else {
-        this.canvasCtx.lineTo(x, y);
+        this.canvasCtx.lineTo(this.x, this.y);
       }
-      x += sliceWidth;
+      this.x += this.sliceWidth;
     }
     this.canvasCtx.lineTo(this.canvas.width, this.canvas.height/2);
     this.canvasCtx.stroke();
     //this.bgEl.style.background='url('+this.canvas.toDataURL('image/jpeg')+') no-repeat 100% 100%';
-    var drawVisual = requestAnimationFrame(this.draw.bind(this));
+    this.animId = requestAnimationFrame(this.draw.bind(this));
   }
 }
