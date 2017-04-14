@@ -4,6 +4,7 @@ import {inject} from 'aurelia-framework';
 export class BeatMaker{
   constructor(ab){
     this.ab=ab;
+    this.tab=0;
   }
   attached(){
     $('ul.showcase-tabs').tabs();

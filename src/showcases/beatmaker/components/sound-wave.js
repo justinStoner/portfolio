@@ -2,9 +2,11 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject, bindable} from 'aurelia-framework';
 @inject(EventAggregator, Element)
 export class SoundWave{
+
   @bindable ab;
   @bindable canvasId;
   @bindable background;
+
   constructor(ea, element){
     this.ea=ea;
     this.element=element;
@@ -18,6 +20,7 @@ export class SoundWave{
       this.element.style.marginTop=$(this.bgEl).height() * -1 + 'px';
     });
   }
+
   attached(){
     this.bgColor="#2196f3";
     this.fgColor="#69f0ae";
@@ -35,8 +38,8 @@ export class SoundWave{
     this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
     this.draw();
   }
-  draw(){
 
+  draw(){
     this.ab.analyser.getByteTimeDomainData(this.ab.dataArray);
     this.canvasCtx.fillStyle = this.bgColor;
     this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -44,7 +47,6 @@ export class SoundWave{
     this.canvasCtx.strokeStyle = this.fgColor;
     this.canvasCtx.beginPath();
     this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
-
     this.x = 0;
     var y,v;
     for(var i = 0; i < this.ab.bufferLength; i++) {
@@ -59,7 +61,9 @@ export class SoundWave{
     }
     this.canvasCtx.lineTo(this.canvas.width, this.canvas.height/2);
     this.canvasCtx.stroke();
-    //this.bgEl.style.background='url('+this.canvas.toDataURL('image/jpeg')+') no-repeat 100% 100%';
     this.animId = requestAnimationFrame(this.draw.bind(this));
+  }
+  detached(){
+    cancelAnimationFrame(this.animId);
   }
 }

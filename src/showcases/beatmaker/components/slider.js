@@ -22,7 +22,6 @@ export class Slider{
   attached(){
     if(this.noslider!==true){
       this.range=this.element.children[1];
-      //this.range.style.height="118px";
       this.range.style.margin = '0 2px 15px 2px';
       noUiSlider.create(this.range, {
        start: this.val,

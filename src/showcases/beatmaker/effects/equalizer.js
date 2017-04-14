@@ -13,7 +13,6 @@ export class Equalizer{
     this.ab=ab;
     this.ea=ea;
     this.active=true;
-    //min, max: -40, 40
   }
   toggleEffect(){
     this.ea.publish('toggleEQ');

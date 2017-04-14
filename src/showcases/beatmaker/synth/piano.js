@@ -1,10 +1,12 @@
 import {AudioBus} from '../components/audio-bus';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {DialogService} from 'aurelia-dialog';
 import {EditEffects} from '../components/edit-effects';
+
 @inject(AudioBus, EventAggregator, DialogService)
 export class Piano{
+  @bindable isOpen
   constructor(ab, ea, dialog){
     this.ab=ab;
     this.ea=ea;
@@ -78,7 +80,6 @@ export class Piano{
     ]
     this.masterVol=85;
     this.modMult=10;
-    // this.lpf=this.audio.createBiquadFilter();
     this.master = this.audio.createGain();
     this.master.gain.value=1.0;
     this.effectOutput=this.audio.createGain();
@@ -88,7 +89,7 @@ export class Piano{
     this.lfo.frequency.value=this.lfoData.freq;
     this.lfo.detune.value=this.lfoData.detune;
     this.lfo.start(0);
-    // this.lpf.connect(this.master);
+
     this.master.connect(this.effectOutput);
     this.effectOutput.gain.value=2.0;
     this.effectOutput.connect(this.ab.synthIn);
@@ -197,7 +198,6 @@ export class Piano{
   playKey(i){
     //change filters and envelopes to be note properties later
      if(this.notes[i].isPlaying===false){
-       //this.lfo=this.audio.createOscillator();
        this.lfo.disconnect();
        this.lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
        this.lfo.frequency.value=this.lfoData.freq;

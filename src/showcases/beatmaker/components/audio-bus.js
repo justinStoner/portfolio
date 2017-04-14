@@ -27,10 +27,7 @@ export class AudioBus{
     this.input.connect(this.output);
     this.synthOut.connect(this.output)
     this.output.connect(this.analyser);
-      //delay:this.createDelay(),
-    this.ea.subscribe('sidechain', (time)=>{
-      //console.log(time);
-    });
+
     this.ea.subscribe('eq1', msg=>{
       this.eq80.gain.value=msg-40;
     });
@@ -49,7 +46,6 @@ export class AudioBus{
     this.ea.subscribe('eq6', msg=>{
       this.eq10k.gain.value=msg-40;
     });
-
     this.ea.subscribe('delayTime', msg=>{
       this.delay.delayTime.value=msg/100
     });
@@ -59,7 +55,6 @@ export class AudioBus{
     this.ea.subscribe('delayWet', msg=>{
       this.wetLevel.gain.value=msg/100;
     });
-
     this.ea.subscribe('compAttack', msg=>{
       this.compressor.attack.value=msg/100;
     });
@@ -75,36 +70,8 @@ export class AudioBus{
     this.ea.subscribe('compRatio', msg=>{
       this.compressor.ratio.value=msg;
     });
-
     this.ea.subscribe('toggleCompressor', msg=>{
-      console.log(this.compressionOn);
-      if(this.compressionOn){
-        // this.compressor.disconnect();
-        // if(this.delayOn){
-        //   this.dOutput.disconnect();
-        //   this.dOutput.connect(this.synthOut);
-        // }else if(this.eqOn){
-        //   this.eq5k.disconnect();
-        //   this.eq5k.connect(this.synthOut)
-        // }else{
-        //   this.synthIn.disconnect();
-        //   this.synthIn.connect(this.synthOut);
-        // }
-        this.compressionOn=false;
-      }else{
-        // if(this.delayOn){
-        //   this.dOutput.disconnect();
-        //   this.dOutput.connect(this.compressor);
-        // }else if(this.eqOn){
-        //   this.eq5k.disconnect();
-        //   this.eq5k.connect(this.compressor)
-        // }else{
-        //   this.synthIn.disconnect();
-        //   this.synthIn.connect(this.compressor);
-        // }
-        // this.compressor.connect(this.synthOut);
-        this.compressionOn=true;
-      }
+      this.compressionOn=!this.compressionOn;
     })
     this.ea.subscribe('toggleDelay', msg=>{
       console.log(this.delayOn);
@@ -117,7 +84,6 @@ export class AudioBus{
           this.synthIn.disconnect();
           this.synthIn.connect(this.synthOut);
         }
-
         this.delayOn=false;
       }else{
         if(this.eqOn){
@@ -171,14 +137,14 @@ export class AudioBus{
     this.delay.connect(this.wetLevel);
     this.feedback.connect(this.delay);
     this.wetLevel.connect(this.dOutput);
-    //this.dOutput.connect(this.compressor);
     this.dOutput.connect(this.synthOut);
+
     var gain=this.audio.createGain();
     gain.gain.value=0.001;
     this.compressor.connect(gain);
     gain.connect(this.output);
-  //  this.compressor.connect(this.synthOut);
   }
+
   createEq(){
     this.eq80=this.audio.createBiquadFilter();
     this.eq350=this.audio.createBiquadFilter();
@@ -204,8 +170,8 @@ export class AudioBus{
     this.eq10k.frequency.value=10000;
     this.eq10k.type="highshelf";
     this.eq10k.gain.value=0;
-
   }
+
   createDelay(){
     this.dInput=this.audio.createGain();
     this.dOutput=this.audio.createGain();
@@ -215,15 +181,13 @@ export class AudioBus{
     this.delay.delayTime.value = 0.50;
     this.feedback.gain.value = 0.15;
     this.wetLevel.gain.value = 0.25;
-
-
   }
+
   createCompressor(){
     this.compressor = this.audio.createDynamicsCompressor();
     this.compressor.threshold.value = -55;
     this.compressor.knee.value = 28;
     this.compressor.ratio.value = 4;
-    //this.compressor.reduction.value = -20;
     this.compressor.attack.value = 0.1;
     this.compressor.release.value = 0.1;
   }

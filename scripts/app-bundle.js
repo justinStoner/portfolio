@@ -276,6 +276,7 @@ define('showcases/beatmaker/beat-maker',['exports', './components/audio-bus', 'a
       _classCallCheck(this, BeatMaker);
 
       this.ab = ab;
+      this.tab = 0;
     }
 
     BeatMaker.prototype.attached = function attached() {
@@ -332,7 +333,6 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.synthOut.connect(this.output);
       this.output.connect(this.analyser);
 
-      this.ea.subscribe('sidechain', function (time) {});
       this.ea.subscribe('eq1', function (msg) {
         _this.eq80.gain.value = msg - 40;
       });
@@ -351,7 +351,6 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.ea.subscribe('eq6', function (msg) {
         _this.eq10k.gain.value = msg - 40;
       });
-
       this.ea.subscribe('delayTime', function (msg) {
         _this.delay.delayTime.value = msg / 100;
       });
@@ -361,7 +360,6 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.ea.subscribe('delayWet', function (msg) {
         _this.wetLevel.gain.value = msg / 100;
       });
-
       this.ea.subscribe('compAttack', function (msg) {
         _this.compressor.attack.value = msg / 100;
       });
@@ -377,14 +375,8 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.ea.subscribe('compRatio', function (msg) {
         _this.compressor.ratio.value = msg;
       });
-
       this.ea.subscribe('toggleCompressor', function (msg) {
-        console.log(_this.compressionOn);
-        if (_this.compressionOn) {
-          _this.compressionOn = false;
-        } else {
-          _this.compressionOn = true;
-        }
+        _this.compressionOn = !_this.compressionOn;
       });
       this.ea.subscribe('toggleDelay', function (msg) {
         console.log(_this.delayOn);
@@ -397,7 +389,6 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
             _this.synthIn.disconnect();
             _this.synthIn.connect(_this.synthOut);
           }
-
           _this.delayOn = false;
         } else {
           if (_this.eqOn) {
@@ -451,8 +442,8 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.delay.connect(this.wetLevel);
       this.feedback.connect(this.delay);
       this.wetLevel.connect(this.dOutput);
-
       this.dOutput.connect(this.synthOut);
+
       var gain = this.audio.createGain();
       gain.gain.value = 0.001;
       this.compressor.connect(gain);
@@ -502,7 +493,6 @@ define('showcases/beatmaker/components/audio-bus',['exports', 'aurelia-event-agg
       this.compressor.threshold.value = -55;
       this.compressor.knee.value = 28;
       this.compressor.ratio.value = 4;
-
       this.compressor.attack.value = 0.1;
       this.compressor.release.value = 0.1;
     };
@@ -631,24 +621,32 @@ define('showcases/beatmaker/components/knob',["exports", "aurelia-event-aggregat
 
       this.element = e;
       this.ea = ea;
+      this.hasAttached = false;
     }
 
     KnobCustomElement.prototype.attached = function attached() {
       var _this = this;
 
-      if (this.label === 'Wave' || this.label === 'Octave') {
-        this.knob = new Knob(this.element.children[1], new Ui.P1());
-      } else {
-        this.knob = new Knob(this.element.children[1], new Ui.P2());
-      }
-      if (this.preset) {
-        this.knob.update(this.preset);
-      }
-      this.knob.input.onchange = function (e) {
-        if (_this.channel) {
-          _this.ea.publish(_this.channel, _this.knob.value);
+      if (!this.hasAttached) {
+        if (this.label === 'Wave' || this.label === 'Octave') {
+          this.knob = new Knob(this.element.children[1], new Ui.P1());
+        } else {
+          this.knob = new Knob(this.element.children[1], new Ui.P2());
         }
-      };
+        if (this.preset) {
+          this.knob.update(this.preset);
+        }
+        this.knob.input.onchange = function (e) {
+          if (_this.channel) {
+            _this.ea.publish(_this.channel, _this.knob.value);
+          }
+        };
+        this.hasAttached = true;
+      }
+    };
+
+    KnobCustomElement.prototype.detached = function detached() {
+      console.log('detached');
     };
 
     return KnobCustomElement;
@@ -706,7 +704,6 @@ define('showcases/beatmaker/components/knob',["exports", "aurelia-event-aggregat
       radius: this.width / 2.6 })));
 
     var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
-
     this.el.node.appendChild(circle.node);
     this.el.node.setAttribute("class", "p1");
   };
@@ -719,7 +716,6 @@ define('showcases/beatmaker/components/knob',["exports", "aurelia-event-aggregat
     "use strict";
 
     Ui.prototype.createElement.apply(this, arguments);
-
     var scale = new Ui.Scale({
       drawScale: true,
       steps: this.width / 2.5,
@@ -728,10 +724,10 @@ define('showcases/beatmaker/components/knob',["exports", "aurelia-event-aggregat
       type: 'Rect'
 
     });
+
     this.addComponent(scale);
     var circle = new Ui.El.Circle(this.width / 3.3, this.width / 2, this.height / 2);
     this.addComponent(new Ui.Text());
-
     this.addComponent(new Ui.Pointer(this.merge(this.options, {
       type: 'Circle',
       pointerWidth: 3,
@@ -740,10 +736,10 @@ define('showcases/beatmaker/components/knob',["exports", "aurelia-event-aggregat
     })));
 
     this.merge(this.options, { arcWidth: this.width / 7 });
-
     this.el.node.appendChild(circle.node);
     this.el.node.setAttribute("class", "p2");
   };
+
   Ui.Scale.prototype.createElement = function (parentEl) {
     this.el = new Ui.El(this.width, this.height);
     this.startAngle = this.options.angleoffset || 0;
@@ -936,7 +932,6 @@ define('showcases/beatmaker/components/slider',['exports', 'aurelia-framework', 
 
       if (this.noslider !== true) {
         this.range = this.element.children[1];
-
         this.range.style.margin = '0 2px 15px 2px';
         noUiSlider.create(this.range, {
           start: this.val,
@@ -1130,7 +1125,6 @@ define('showcases/beatmaker/components/sound-wave',['exports', 'aurelia-event-ag
     };
 
     SoundWave.prototype.draw = function draw() {
-
       this.ab.analyser.getByteTimeDomainData(this.ab.dataArray);
       this.canvasCtx.fillStyle = this.bgColor;
       this.canvasCtx.fillRect(0, 0, this.canvas.width, this.canvas.height);
@@ -1138,7 +1132,6 @@ define('showcases/beatmaker/components/sound-wave',['exports', 'aurelia-event-ag
       this.canvasCtx.strokeStyle = this.fgColor;
       this.canvasCtx.beginPath();
       this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
-
       this.x = 0;
       var y, v;
       for (var i = 0; i < this.ab.bufferLength; i++) {
@@ -1153,8 +1146,11 @@ define('showcases/beatmaker/components/sound-wave',['exports', 'aurelia-event-ag
       }
       this.canvasCtx.lineTo(this.canvas.width, this.canvas.height / 2);
       this.canvasCtx.stroke();
-
       this.animId = requestAnimationFrame(this.draw.bind(this));
+    };
+
+    SoundWave.prototype.detached = function detached() {
+      cancelAnimationFrame(this.animId);
     };
 
     return SoundWave;
@@ -1362,19 +1358,64 @@ define('showcases/beatmaker/sequencer/sequencer',["exports", "aurelia-framework"
   });
   exports.SequencerCustomElement = undefined;
 
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   }
 
-  var _dec, _class;
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-  var SequencerCustomElement = exports.SequencerCustomElement = (_dec = (0, _aureliaFramework.inject)(_aureliaFetchClient.HttpClient, _audioBus.AudioBus, _aureliaEventAggregator.EventAggregator), _dec(_class = function () {
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _class, _desc, _value, _class2, _descriptor;
+
+  var SequencerCustomElement = exports.SequencerCustomElement = (_dec = (0, _aureliaFramework.inject)(_aureliaFetchClient.HttpClient, _audioBus.AudioBus, _aureliaEventAggregator.EventAggregator), _dec(_class = (_class2 = function () {
     function SequencerCustomElement(http, ab, ea) {
       var _this = this;
 
       _classCallCheck(this, SequencerCustomElement);
+
+      _initDefineProp(this, "isOpen", _descriptor, this);
 
       this.http = http;
       this.ea = ea;
@@ -1481,7 +1522,12 @@ define('showcases/beatmaker/sequencer/sequencer',["exports", "aurelia-framework"
           range: this.eqFreqs[this.samples[i].type + 'Range'],
           Q: 10,
           cutoff: 200,
-          filterType: 'lowpass'
+          filterType: 'lowpass',
+          eq120: this.audio.createBiquadFilter(),
+          eq600: this.audio.createBiquadFilter(),
+          eq5k: this.audio.createBiquadFilter(),
+          filter1: this.ab.audio.createBiquadFilter(),
+          filter2: this.ab.audio.createBiquadFilter()
         };
         if (obj.type === 'kick') {
           obj.lowmid = this.eqFreqs[this.samples[i].type][3];
@@ -1514,44 +1560,37 @@ define('showcases/beatmaker/sequencer/sequencer',["exports", "aurelia-framework"
 
       var src = this.audio.createBufferSource();
       src.buffer = buffer;
-      src.disconnect();
 
-      var eq120 = this.audio.createBiquadFilter();
-      eq120.frequency.value = this.drums[i].lowFreq;
-      eq120.type = "lowshelf";
-      eq120.gain.value = this.drums[i].low - 40;
+      this.drums[i].eq120.frequency.value = this.drums[i].lowFreq;
+      this.drums[i].eq120.type = "lowshelf";
+      this.drums[i].eq120.gain.value = this.drums[i].low - 40;
 
-      var eq600 = this.audio.createBiquadFilter();
-      eq600.frequency.value = this.drums[i].midFreq;
-      eq600.type = "peaking";
-      eq600.gain.value = this.drums[i].mid - 40;
+      this.drums[i].eq600.frequency.value = this.drums[i].midFreq;
+      this.drums[i].eq600.type = "peaking";
+      this.drums[i].eq600.gain.value = this.drums[i].mid - 40;
 
-      var eq5k = this.audio.createBiquadFilter();
-      eq5k.frequency.value = this.drums[i].highFreq;
-      eq5k.type = "highshelf";
-      eq5k.gain.value = this.drums[i].high - 40;
+      this.drums[i].eq5k.frequency.value = this.drums[i].highFreq;
+      this.drums[i].eq5k.type = "highshelf";
+      this.drums[i].eq5k.gain.value = this.drums[i].high - 40;
 
-      var filter1 = this.ab.audio.createBiquadFilter();
-      filter1.type = this.drums[i].filterType;
-      filter1.Q.value = this.drums[i].Q;
-      filter1.frequency.value = this.drums[i].cutoff * 100;
+      this.drums[i].filter1.type = this.drums[i].filterType;
+      this.drums[i].filter1.Q.value = this.drums[i].Q;
+      this.drums[i].filter1.frequency.value = this.drums[i].cutoff * 100;
 
-      var filter2 = this.ab.audio.createBiquadFilter();
-      filter2.type = this.drums[i].filterType;
-      filter2.Q.value = this.drums[i].Q;
-      filter2.frequency.value = this.drums[i].cutoff * 100;
+      this.drums[i].filter2.type = this.drums[i].filterType;
+      this.drums[i].filter2.Q.value = this.drums[i].Q;
+      this.drums[i].filter2.frequency.value = this.drums[i].cutoff * 100;
 
-      src.connect(eq120);
-      eq120.connect(eq600);
-      eq600.connect(eq5k);
-      eq5k.connect(filter1);
-      filter1.connect(filter2);
+      src.connect(this.drums[i].eq120);
+      this.drums[i].eq120.connect(this.drums[i].eq600);
+      this.drums[i].eq600.connect(this.drums[i].eq5k);
+      this.drums[i].eq5k.connect(this.drums[i].filter1);
+      this.drums[i].filter1.connect(this.drums[i].filter2);
+
       if (name === 'kick' && this.ab.compressionOn) {
         this.ea.publish('sidechain', time);
         this.scriptNode.disconnect();
-
-        filter2.connect(this.sideChainGain);
-
+        this.drums[i].filter2.connect(this.sideChainGain);
         this.scriptNode = this.audio.createScriptProcessor(4096, 1, 1);
         this.scriptNode.onaudioprocess = function (e) {
           _this3.ab.synthOut.gain.value = Math.pow(10, _this3.ab.compressor.reduction / 20);
@@ -1560,14 +1599,12 @@ define('showcases/beatmaker/sequencer/sequencer',["exports", "aurelia-framework"
         this.scriptNode.connect(this.ab.compressor);
         this.sideChainGain.connect(this.ab.drumsIn);
       } else if (name === 'kick' && !this.ab.compressionOn) {
-        filter2.connect(this.sideChainGain);
         this.scriptNode.disconnect();
-
+        this.drums[i].filter2.connect(this.gain);
         this.gain.connect(this.ab.drumsIn);
       }
       if (name !== 'kick') {
-        filter2.connect(this.gain);
-
+        this.drums[i].filter2.connect(this.gain);
         this.gain.connect(this.ab.drumsIn);
       }
       this.gain.gain.value = this.volume / 50;
@@ -1655,7 +1692,10 @@ define('showcases/beatmaker/sequencer/sequencer',["exports", "aurelia-framework"
     };
 
     return SequencerCustomElement;
-  }()) || _class);
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, "isOpen", [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class);
 });
 define('showcases/beatmaker/synth/piano',['exports', '../components/audio-bus', 'aurelia-event-aggregator', 'aurelia-framework', 'aurelia-dialog', '../components/edit-effects'], function (exports, _audioBus, _aureliaEventAggregator, _aureliaFramework, _aureliaDialog, _editEffects) {
   'use strict';
@@ -1665,19 +1705,64 @@ define('showcases/beatmaker/synth/piano',['exports', '../components/audio-bus', 
   });
   exports.UpperValueConverter = exports.Piano = undefined;
 
+  function _initDefineProp(target, property, descriptor, context) {
+    if (!descriptor) return;
+    Object.defineProperty(target, property, {
+      enumerable: descriptor.enumerable,
+      configurable: descriptor.configurable,
+      writable: descriptor.writable,
+      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
+    });
+  }
+
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
       throw new TypeError("Cannot call a class as a function");
     }
   }
 
-  var _dec, _class;
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
+    var desc = {};
+    Object['ke' + 'ys'](descriptor).forEach(function (key) {
+      desc[key] = descriptor[key];
+    });
+    desc.enumerable = !!desc.enumerable;
+    desc.configurable = !!desc.configurable;
 
-  var Piano = exports.Piano = (_dec = (0, _aureliaFramework.inject)(_audioBus.AudioBus, _aureliaEventAggregator.EventAggregator, _aureliaDialog.DialogService), _dec(_class = function () {
+    if ('value' in desc || desc.initializer) {
+      desc.writable = true;
+    }
+
+    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+      return decorator(target, property, desc) || desc;
+    }, desc);
+
+    if (context && desc.initializer !== void 0) {
+      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+      desc.initializer = undefined;
+    }
+
+    if (desc.initializer === void 0) {
+      Object['define' + 'Property'](target, property, desc);
+      desc = null;
+    }
+
+    return desc;
+  }
+
+  function _initializerWarningHelper(descriptor, context) {
+    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
+  }
+
+  var _dec, _class, _desc, _value, _class2, _descriptor;
+
+  var Piano = exports.Piano = (_dec = (0, _aureliaFramework.inject)(_audioBus.AudioBus, _aureliaEventAggregator.EventAggregator, _aureliaDialog.DialogService), _dec(_class = (_class2 = function () {
     function Piano(ab, ea, dialog) {
       var _this = this;
 
       _classCallCheck(this, Piano);
+
+      _initDefineProp(this, 'isOpen', _descriptor, this);
 
       this.ab = ab;
       this.ea = ea;
@@ -1717,7 +1802,6 @@ define('showcases/beatmaker/synth/piano',['exports', '../components/audio-bus', 
       }];
       this.masterVol = 85;
       this.modMult = 10;
-
       this.master = this.audio.createGain();
       this.master.gain.value = 1.0;
       this.effectOutput = this.audio.createGain();
@@ -1912,7 +1996,10 @@ define('showcases/beatmaker/synth/piano',['exports', '../components/audio-bus', 
     };
 
     return Piano;
-  }()) || _class);
+  }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'isOpen', [_aureliaFramework.bindable], {
+    enumerable: true,
+    initializer: null
+  })), _class2)) || _class);
 
   function createVoices() {
     var arr = [];
@@ -2843,25 +2930,25 @@ define('aurelia-dialog/dialog-service',['exports', 'aurelia-metadata', 'aurelia-
   }
 });
 define('text!about.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"row topimg \" style=\"\">\r\n    <div class=\"col s12 center-align\" style=\"\">\r\n      <div>\r\n        <h1 style=\"margin-bottom:5px;\">All Things Front End</h1>\r\n        <p style=\"margin-top:5px;color:#bdbdbd\" >(And More)</p>\r\n        <h4 style=\"margin-bottom:5px;\">Hey, I'm Justin, a Front End Developer.</h4>\r\n        <h4 style=\"margin-bottom:10px;\">And this is my website about making websites.</h4>\r\n\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n  <div class=\"row z-depth-1 pane1\" style=\"\">\r\n    <div class=\"col s12\">\r\n      <div class=\"card\">\r\n        <div class=\"card-image green accent-3\" style=\"padding:15px;\">\r\n          <div class=\"row\" style=\"margin:0\">\r\n            <div class=\"fixed-action-btn horizontal\" style=\"position:absolute;display:inline-block;\">\r\n              <a class=\"btn-floating btn-large blue\">\r\n                <i class=\"large material-icons\">chat_bubble</i>\r\n              </a>\r\n              <ul>\r\n\r\n                <li title=\"Linked In\"><a class=\"btn-floating yellow darken-1\" href=\"https://www.linkedin.com/in/justin-stoner-95160487\"><i class=\"material-icons\">account_circle</i></a></li>\r\n                <li title=\"Download Resume\"><a class=\"btn-floating green\" href=\"justin-stoner-resume.pdf\"><i class=\"material-icons\">insert_drive_file</i></a></li>\r\n                <li title=\"Email\"><a class=\"btn-floating blue\" href=\"mailto:justin@heyjust.in\"><i class=\"material-icons\">mail</i></a></li>\r\n              </ul>\r\n            </div>\r\n            <div class=\"me-img left\"></div>\r\n            <p style=\"color:#fff;font-size:24px;margin:0;padding:18px;\">Who Am I?\r\n\r\n            </p>\r\n          </div>\r\n\r\n        </div>\r\n        <div class=\"card-content\">\r\n          I'm a front end developer at AlterMedia, where we make the worlds leading Studio Management Software. I studied computer science at College of the Canyons.\r\n          <p class=\"grey-text\" style=\"margin-top:5px;\">Please be aware this website is very new and still a work in progress. Suggestions? <a class=\"\" href=\"mailto:justin@heyjust.in\">Email me</a></p>\r\n        </div>\r\n        <div class=\"card-tabs\">\r\n          <ul class=\"tabs\">\r\n            <li class=\"tab tabs-fixed-width\"><a class=\"${skillIndex===$index?'active ':''}blue-text\" href=\"#exp\">Experience</a></li>\r\n            <li class=\"tab tabs-fixed-width\"><a class=\"${skillIndex===$index?'active ':''}blue-text\" href=\"#edu\">Education</a></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"card-content grey lighten-2\">\r\n          <div id=\"exp\">\r\n            <div class=\"row\">\r\n              <div class=\"col s12 l6 center-align\" style=\"padding:0 5px 0 0\">\r\n                <h5 class=\"center-align\">WebGlancer</h5>\r\n                In the last 5 years at AlterMedia, I've converted the front end of a jQuery/PHP system back from the old days of web development over to Angular 1.5 and created a REST api for it in PHP.\r\n                 Later, around the time Angular 2 came out, we decided to switch the front end to Aurelia instead and are very happy with it. I am now finishing up migrating the backend over to Node and Express.\r\n                 I also designed much of the interface and maintained multiple versions of the product.\r\n              </div>\r\n              <div class=\"col s12 l6 center-align\" style=\"padding:0\">\r\n                <h5 class=\"center-align\">WordPress</h5>\r\n                I maintain the companies website at <a href=\"https://studiosuite.com\">studiosuite.com</a>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div id=\"edu\">\r\n            I've finished computer science at College of the Canyons, but I have a few math classes to take before I can transfer.\r\n          </div>\r\n\r\n        </div>\r\n      </div>\r\n      <div class=\"card\">\r\n        <div class=\"card-content blue white-text\">\r\n          <p>Skills </p>\r\n        </div>\r\n        <div class=\"card-tabs\">\r\n          <ul class=\"tabs blue\">\r\n            <li class=\"tab tabs-fixed-width\" repeat.for=\"skill of skills\" click.delegate=\"changeSkill(skill, $index)\"><a class=\"${skillIndex===$index?'active':''} white-text\" href=\"${'#skill'+$index}\">${skill.name}</a></li>\r\n          </ul>\r\n        </div>\r\n        <div class=\"card-content\">\r\n          <div class=\"row\">\r\n            <div class=\"left\">\r\n              <canvas id=\"skills-container\"  width=\"200\" height=\"200\"></canvas>\r\n            </div>\r\n            <div class=\"\" style=\"\">\r\n              <p style=\"margin-bottom:5px;\">${activeSkill.name+': '}${activeSkill.value}/100</p>\r\n              <p class=\"skill-descripion\">${activeSkill.description}</p>\r\n            </div>\r\n          </div>\r\n          <div id=\"skill0\"></div>\r\n\r\n        </div>\r\n      </div>\r\n    </div>\r\n    </div>\r\n    <div class=\"row grey darken-2 pane2\">\r\n      <p style=\"color:#fff;\">Contact: justin@heyjust.in | <a href=\"https://www.linkedin.com/in/justin-stoner-95160487\">Linked In</a></p>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
-define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"materialize-css/materialize.min.css\"></require>\n  <require from=\"./styles/main.css\"></require>\n  <div class=\"navbar-fixed \">\n    <nav>\n      <div class=\"nav-wrapper blue\">\n        <a href=\"#/\" class=\"brand-logo\"><span>Justin Stoner</span></a>\n        <ul class=\"right\">\n          <li repeat.for=\"row of router.navigation\" class=\"${row.isActive?'active':''} waves-effect waves-light\"><a href=\"${row.href}\">${row.title}</a></li>\n        </ul>\n      </div>\n    </nav>\n  </div>\n  <div style=\"overflow:auto;\">\n    <router-view></router-view>\n  </div>\n</template>\n"; });
 define('text!styles/main.css', ['module'], function(module) { module.exports = "body {\n  background-color: #fff; }\n\n.topimg {\n  background: url(\"images/onboat.JPG\") top/cover no-repeat;\n  width: 100%;\n  margin-bottom: 0;\n  position: fixed;\n  z-index: 0;\n  padding: 0;\n  height: 400px; }\n  .topimg div {\n    width: 100%;\n    height: 100%;\n    padding-top: 45px;\n    color: #fff; }\n\n.me-img {\n  background: url(\"images/me.jpg\") top/cover no-repeat;\n  width: 75px;\n  height: 75px;\n  border-radius: 75px;\n  margin-right: 15px; }\n\ntd.waves-effect {\n  display: table-cell; }\n\n.card .row .col {\n  background: transparent !important; }\n\n.pane1 {\n  z-index: 1;\n  margin-top: 400px;\n  background: #fff !important;\n  position: relative;\n  margin-bottom: 0;\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 -2px 3px 0 rgba(0, 0, 0, 0.14), 0 -3px 5px 0 rgba(0, 0, 0, 0.12), 0 -3px 5px 3px rgba(0, 0, 0, 0.2); }\n  .pane1 div.col {\n    background: #fff !important; }\n\n.pane2 {\n  margin-bottom: 0;\n  text-align: center;\n  color: #fff;\n  background: url(\"images/sideofhousejpg.jpg\") top/cover no-repeat;\n  height: 400px;\n  margin-top: -15px;\n  position: relative;\n  padding-top: 200px; }\n\n.btn-sm {\n  padding: 0 0.5rem; }\n\nnav .brand-logo,\n.brand-logo {\n  margin-left: 15px;\n  font-size: 18px; }\n\n[md-tabs] .waves-effect {\n  position: static; }\n\n.parallax-container {\n  height: 800px; }\n\n.b-radius-card {\n  border-radius: 0 0 2px 2px; }\n\n.b-radius {\n  border-radius: 2px;\n  -webkit-border-radius: 2px;\n  -moz-border-radius: 2px; }\n\n.switch label input[type=checkbox]:checked + .lever {\n  background-color: #64b5f6; }\n\n.switch label input[type=checkbox]:checked + .lever:after {\n  background-color: #2196f3; }\n\n.ui-range .noUi-active.noUi-handle {\n  width: 15px;\n  height: 15px;\n  left: -5px;\n  top: -6px; }\n\n.ui-range .noUi-handle {\n  background-color: #2196f3 !important; }\n  .ui-range .noUi-handle .noUi-tooltip {\n    background-color: #2196f3 !important;\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }\n\n.ui-range .noUi-value.noUi-value-horizontal.noUi-value-large {\n  display: none; }\n\n.p2 path {\n  fill: #2196f3;\n  stroke: none; }\n\n.p2 path:first-child {\n  stroke: none;\n  fill: #fff;\n  filter: none; }\n\ndiv.au-animate.au-enter {\n  display: none !important; }\n\ndiv.au-animate.au-enter-active {\n  display: initial;\n  -webkit-animation: blurIn 2s;\n  animation: blurIn 2s; }\n\ndiv.au-animate.au-leave-active {\n  -webkit-animation: blurOut 2s;\n  animation: blurOut 2s; }\n\n#synth .p2 path:first-child,\n#sequencer-controller .p2 path:first-child {\n  fill: #eee; }\n\n#synth .p2 path,\n#sequencer-controller .p2 path {\n  stroke: none;\n  fill: #00E676; }\n\ncanvas {\n  transition: all 0.3s ease-in-out; }\n\n.indicator {\n  background: #2196f3 !important; }\n\nul.tabs.blue .indicator {\n  background: #ffffff !important; }\n\nul.tabs {\n  overflow-x: auto; }\n  ul.tabs li a.active {\n    color: #2196f3 !important; }\n  ul.tabs li a.white-text {\n    color: #fff !important; }\n  ul.tabs li a.white-text.active {\n    color: #fff !important; }\n  ul.tabs li a {\n    color: #343434 !important; }\n\n@media only screen and (max-width: 992px) {\n  .topimg {\n    height: 100%; }\n  .pane1 {\n    margin-top: 163%; } }\n\n@-webkit-keyframes blurIn {\n  0% {\n    -webkit-filter: blur(10px); }\n  100% {\n    -webkit-filter: blur(0px); } }\n\n@keyframes blurIn {\n  0% {\n    filter: blur(10px); }\n  100% {\n    filter: blur(0px); } }\n\n@-webkit-keyframes blurOut {\n  0% {\n    -webkit-filter: blur(0px); }\n  100% {\n    -webkit-filter: blur(10px); } }\n\n@keyframes blurOut {\n  0% {\n    -webkit-filter: blur(0px); }\n  100% {\n    -webkit-filter: blur(10px); } }\n\n@media only screen and (max-width: 992px) {\n  nav .brand-logo {\n    left: initial !important;\n    -webkit-transform: none !important;\n    transform: none !important; } }\n"; });
+define('text!app.html', ['module'], function(module) { module.exports = "<template>\n  <require from=\"materialize-css/materialize.min.css\"></require>\n  <require from=\"./styles/main.css\"></require>\n  <div class=\"navbar-fixed \">\n    <nav>\n      <div class=\"nav-wrapper blue\">\n        <a href=\"#/\" class=\"brand-logo\"><span>Justin Stoner</span></a>\n        <ul class=\"right\">\n          <li repeat.for=\"row of router.navigation\" class=\"${row.isActive?'active':''} waves-effect waves-light\"><a href=\"${row.href}\">${row.title}</a></li>\n        </ul>\n      </div>\n    </nav>\n  </div>\n  <div style=\"overflow:auto;\">\n    <router-view></router-view>\n  </div>\n</template>\n"; });
 define('text!showcase.html', ['module'], function(module) { module.exports = "<template>\r\n    <!-- <ul class=\"showcase-tabs tabs z-depth-1\" style=\"z-index:998;\">\r\n      <li repeat.for=\"row of router.navigation\" class=\"waves-effect waves-blue\"><a class=\"${row.isActive?'active':''}\" href=\"#tab_${$index+1}\">${row.title}</a></li>\r\n      <li ><a href=\"#tab2\" class=\"disabled\">More coming soon...</a></li>\r\n    </ul> -->\r\n    <router-view></router-view>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/styles/main.css', ['module'], function(module) { module.exports = ".au-animate .row {\n  margin: 0; }\n\n.card-left {\n  display: table-cell;\n  /*border-right: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right {\n  display: table-cell;\n  /*border-left: 1px solid #f5f5f5;*/\n  height: 100%;\n  padding: 0 20px; }\n\n.card-right > div,\n.card-left > div {\n  height: 20%; }\n\n.input-field.inline.col.m4 {\n  text-align: center; }\n\nlabel.sm {\n  font-size: 0.8rem;\n  /*position: absolute !important;*/\n  top: -14px !important;\n  left: 0rem !important; }\n\n.select-wrapper {\n  margin-top: 0px; }\n\n.select-wrapper + label {\n  color: #343434 !important; }\n\nform p {\n  margin-top: 0;\n  margin-bottom: 0; }\n\nsound-wave {\n  position: absolute;\n  border-radius: 2px;\n  overflow: hidden;\n  z-index: 0; }\n  sound-wave canvas {\n    height: 100%;\n    width: 100%; }\n\n.canvas-as-bg p {\n  color: #fff !important; }\n\n.p2 .active ~ rect {\n  fill: #bdbdbd; }\n\n.p2 rect {\n  filter: url(#glow);\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2); }\n\n.p1 circle.pointer,\n.p2 circle.pointer {\n  fill: #fff;\n  stroke: none; }\n\n.p2 text {\n  font-size: 13px;\n  fill: #fff; }\n\n#synth,\n#sequencer-controller {\n  background: #2196f3; }\n  #synth #synthfilter,\n  #sequencer-controller #synthfilter {\n    z-index: 1;\n    position: relative; }\n  #synth .p2 text,\n  #sequencer-controller .p2 text {\n    fill: #fff;\n    filter: none; }\n  #synth .p1 circle.pointer,\n  #synth .p2 circle.pointer,\n  #sequencer-controller .p1 circle.pointer,\n  #sequencer-controller .p2 circle.pointer {\n    fill: #fff;\n    stroke: none; }\n  #synth .p2 rect,\n  #synth .p1 rect,\n  #sequencer-controller .p2 rect,\n  #sequencer-controller .p1 rect {\n    fill: #00E676; }\n  #synth .p2 .active ~ rect,\n  #sequencer-controller .p2 .active ~ rect {\n    fill: #bdbdbd; }\n  #synth .p2 circle:first-child,\n  #synth .p1 circle:first-child,\n  #sequencer-controller .p2 circle:first-child,\n  #sequencer-controller .p1 circle:first-child {\n    -webkit-filter: url(#dropshadow);\n    filter: url(#dropshadow);\n    fill: #00e676;\n    stroke: #fff; }\n  #synth .p2 circle,\n  #synth .p1 circle,\n  #sequencer-controller .p2 circle,\n  #sequencer-controller .p1 circle {\n    stroke: #69f0ae;\n    stroke-width: 3; }\n  #synth .p1 text,\n  #sequencer-controller .p1 text {\n    fill: #ddd; }\n  #synth .p1 text.active,\n  #sequencer-controller .p1 text.active {\n    fill: #fff; }\n\n.p2 rect,\n.p1 rect {\n  fill: #64b5f6; }\n\n.p2 g polygon,\n.p1 g polygon {\n  opacity: 1; }\n\n.p2 circle:first-child,\n.p1 circle:first-child {\n  -webkit-filter: url(#dropshadow);\n  filter: url(#dropshadow);\n  fill: #2196f3;\n  stroke: #fff; }\n\n.p2 circle,\n.p1 circle {\n  fill: #fff;\n  stroke: #64b5f6;\n  stroke-width: 3; }\n\n.p1 text {\n  font-size: 12px;\n  fill: #bdbdbd;\n  font-family: sans-serif;\n  font-weight: 300;\n  -webkit-transition: all .1s ease-in-out; }\n\n.p1 text.active {\n  font-size: 12px;\n  -webkit-transition: all .3s ease-in-out;\n  fill: #64b5f6; }\n\nsvg:not(:root) {\n  overflow: visible; }\n\n.wave-shape {\n  width: 36px;\n  padding: 0; }\n\n#right form,\n#left form {\n  padding: 0; }\n\n#left form > div:first-child {\n  padding-left: 0; }\n\n#right form > div:last-child {\n  padding-right: 0; }\n\n.dropdown-content li > span {\n  color: #2196f3 !important; }\n\ninput:focus:not([type]):not([readonly]), input[type=\"text\"]:focus:not([readonly]), input[type=\"password\"]:focus:not([readonly]), input[type=\"email\"]:focus:not([readonly]), input[type=\"url\"]:focus:not([readonly]), input[type=\"time\"]:focus:not([readonly]), input[type=\"date\"]:focus:not([readonly]), input[type=\"datetime\"]:focus:not([readonly]), input[type=\"datetime-local\"]:focus:not([readonly]), input[type=\"tel\"]:focus:not([readonly]), input[type=\"number\"]:focus:not([readonly]), input[type=\"search\"]:focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {\n  border-bottom: 1px solid #2196f3;\n  box-shadow: 0 1px 0 0 #2196f3; }\n\ninput:not([type]):focus:not([readonly]) + label, input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([readonly]) + label, input[type=email]:focus:not([readonly]) + label, input[type=url]:focus:not([readonly]) + label, input[type=time]:focus:not([readonly]) + label, input[type=date]:focus:not([readonly]) + label, input[type=datetime]:focus:not([readonly]) + label, input[type=datetime-local]:focus:not([readonly]) + label, input[type=tel]:focus:not([readonly]) + label, input[type=number]:focus:not([readonly]) + label, input[type=search]:focus:not([readonly]) + label, textarea.materialize-textarea:focus:not([readonly]) + label {\n  color: #2196f3; }\n\n.mute-label {\n  color: #9e9e9e; }\n\ntd {\n  padding: 5px; }\n\nsection {\n  margin: 0; }\n\n.waves-effect.waves-blue .waves-ripple {\n  /*\r\n  The alpha value allows the text and background color\r\n  of the button to still show through.\r\n*/\n  background-color: rgba(3, 169, 244, 0.65); }\n\n.navbar-nav li.loader {\n  margin: 12px 24px 0 6px; }\n\n.pictureDetail {\n  max-width: 425px; }\n\n/* animate page transitions */\nsection.au-enter-active {\n  -webkit-animation: fadeInRight 1s;\n  animation: fadeInRight 1s; }\n\ndiv.au-stagger {\n  /* 50ms will be applied between each successive enter operation */\n  -webkit-animation-delay: 50ms;\n  animation-delay: 50ms; }\n\n.white-notes {\n  /*top:-89px;*/\n  position: relative;\n  margin-top: -90px;\n  z-index: 1; }\n\n.black-notes {\n  /*  position:absolute;*/\n  z-index: 2; }\n"; });
-define('text!work.html', ['module'], function(module) { module.exports = "<template></template>\r\n"; });
 define('text!showcases/beatmaker/sequencer/styles/sequencer.css', ['module'], function(module) { module.exports = "form.col.s12 {\n  padding: 0;\n  margin-bottom: 0.75rem; }\n  form.col.s12 .row {\n    padding: 0.75rem; }\n\n@media only screen and (max-width: 600px) {\n  tr > td {\n    padding: 5px 1px; }\n  tr > td:first-child {\n    padding: 5px; } }\n"; });
-define('text!showcases/beatmaker/beat-maker.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./synth/piano\"></require>\r\n  <require from=\"./sequencer/sequencer\"></require>\r\n  <require from=\"./components/sound-wave\"></require>\r\n  <require from=\"./styles/main.css\"></require>\r\n  <!-- <sound-wave ab.bind='ab' canvas-id='beatmaker' style=\"\" background.bind=\"true\"></sound-wave> -->\r\n  <ul class=\"tabs showcase-tabs z-depth-1\" style=\"overflow-x:hidden;z-index:998;position:fixed\">\r\n    <li class=\"tab col s4\"><a class=\"active blue-text\" href=\"#synthtab\">Synth</a></li>\r\n    <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#drumtab\">Sequencer</a></li>\r\n  </ul>\r\n  <div style=\"margin-top:50px;\" id='beatmaker'>\r\n    <div class=\"row\" style=\"margin-bottom:15px;\">\r\n      <div id=\"synthtab\" class=\"col s12\" style=\"padding:0;\">\r\n        <piano></piano>\r\n      </div>\r\n      <div id=\"drumtab\" class=\"col s12\" style=\"padding:0;\">\r\n        <sequencer></sequencer>\r\n      </div>\r\n    </div>\r\n  </div>\n  <svg style=\"position:absolute;top:-9999px;\">\n    <filter id=\"dropshadow\" height=\"150%\" width=\"150%\">\r\n  \t\t<feGaussianBlur in=\"SourceAlpha\" stdDeviation=\"2\"/>\r\n  \t\t<feOffset dx=\"1\" dy=\"4\" result=\"offsetblur\"/>\r\n  \t\t<feFlood flood-color=\"rgba(0,0,0,0.2)\"/>\r\n  \t\t<feComposite in2=\"offsetblur\" operator=\"in\"/>\r\n  \t\t<feMerge>\r\n  \t\t\t<feMergeNode/>\r\n  \t\t\t<feMergeNode in=\"SourceGraphic\"/>\r\n  \t\t</feMerge>\r\n  \t</filter>\r\n      <filter id=\"inner-shadow\">\r\n\r\n          <!-- Shadow Offset -->\r\n          <feOffset dx=\"0\" dy=\"5\"></feOffset>\r\n\r\n          <!-- Shadow Blur -->\r\n          <feGaussianBlur stdDeviation=\"5\" result=\"offset-blur\"></feGaussianBlur>\r\n\r\n          <!-- Invert the drop shadow\r\n               to create an inner shadow -->\r\n          <feComposite operator=\"out\" in=\"SourceGraphic\" in2=\"offset-blur\" result=\"inverse\"></feComposite>\r\n\r\n          <!-- Color & Opacity -->\r\n          <feFlood flood-color=\"black\" flood-opacity=\"0.75\" result=\"color\"></feFlood>\r\n\r\n          <!-- Clip color inside shadow -->\r\n          <feComposite operator=\"in\" in=\"color\" in2=\"inverse\" result=\"shadow\"></feComposite>\r\n\r\n          <!-- Put shadow over original object -->\r\n          <feComposite operator=\"over\" in=\"shadow\" in2=\"SourceGraphic\"></feComposite>\r\n      </filter>\n\r\n      <filter id=\"glow\">\n        <feGaussianBlur class=\"blur\" stdDeviation=\"7\" result=\"coloredBlur\"></feGaussianBlur>\n        <feMerge>\n          <feMergeNode in=\"coloredBlur\"></feMergeNode>\n          <feMergeNode in=\"SourceGraphic\"></feMergeNode>\n        </feMerge>\n      </filter>\n  </svg>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/components/edit-effects.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../effects/compressor\"></require>\r\n  <require from=\"../effects/delay\"></require>\r\n  <require from=\"../effects/equalizer\"></require>\r\n  <ai-dialog style=\"width:auto\">\r\n    <ai-dialog-body>\r\n      <div class=\"row\">\r\n        <div class=\"col s12\">\r\n          <ul class=\"tabs\" style=\"overflow-x:hidden;\">\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" id=\"eqtab\" href=\"#test1\">EQ</a></li>\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#test2\">Delay</a></li>\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#test3\">Compressor</a></li>\r\n          </ul>\r\n        </div>\r\n        <div id=\"test1\" class=\"col s12\">\r\n          <equalizer></equalizer>\r\n        </div>\r\n        <div id=\"test2\" class=\"col s12\">\r\n          <delay></delay>\r\n        </div>\r\n        <div id=\"test3\" class=\"col s12\"><compressor></compressor></div>\r\n      </div>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>\r\n"; });
+define('text!work.html', ['module'], function(module) { module.exports = "<template></template>\r\n"; });
 define('text!showcases/beatmaker/synth/styles/synth.css', ['module'], function(module) { module.exports = "section {\n  background: #eee; }\n\n.tabs .indicator {\n  background-color: #2196f3; }\n\nknob p {\n  text-align: center; }\n\nknob div {\n  margin: 0 auto; }\n\nknob > p {\n  margin-bottom: 7px !important; }\n\noscillator .row .col {\n  padding: 0; }\n\nform div.grey.lighten-3 {\n  padding: 0.75rem 0.375rem !important; }\n\n.input-field {\n  margin-top: 0; }\n\n.key {\n  box-sizing: border-box;\n  width: 9.091% !important;\n  display: inline-block;\n  padding: 0 !important;\n  overflow: visible; }\n\n.key h1 {\n  text-align: center;\n  margin: 0;\n  font-size: 2.2rem; }\n\n.key div {\n  margin: 0 0.5rem 0 0;\n  height: 100%;\n  border-radius: 0px 0px 5px 5px;\n  display: block;\n  font-size: 12px;\n  transition: box-shadow .25s; }\n\n.key:last-child > div {\n  margin-right: 0; }\n\n.black-key > div > h1.hide-on-large-only {\n  font-size: 120%; }\n\n.key.white {\n  height: 220px;\n  position: relative; }\n  .key.white h1 {\n    color: #000;\n    padding-top: 11rem; }\n  .key.white div {\n    background-color: transparent; }\n\n.key.white.play div {\n  background: #dddddd; }\n\n.key.black-key {\n  height: 148px;\n  position: relative;\n  z-index: 2;\n  text-align: center;\n  background: transparent !important;\n  left: -4.5455% !important;\n  margin-right: -9.091%;\n  padding: 0 4px !important; }\n  .key.black-key div {\n    display: inline-block;\n    margin: 0 0.25rem;\n    outline: none;\n    background-color: #000;\n    width: 100%; }\n  .key.black-key h1 {\n    color: #fff;\n    padding-top: 6rem; }\n\n.key.black-key.play {\n  background: #717171; }\n\n.key.black-key >\n.key-info {\n  list-style: none;\n  margin: 0px;\n  padding: 0px;\n  text-align: center; }\n\n.key-item {\n  height: 100%;\n  padding-top: 105%; }\n\n.key-item > a {\n  padding-top: 50%; }\n\n.parameter-holder {\n  padding: 0;\n  margin: 0 0.75rem; }\n\nform.col.m3.s12,\nform.col.m4,\nform.col.m4.s12,\nform.col.m5,\nform.col.m6.s12 {\n  padding-left: 0;\n  padding-right: 0.75rem;\n  margin-bottom: 0.75rem; }\n  form.col.m3.s12 .row,\n  form.col.m4 .row,\n  form.col.m4.s12 .row,\n  form.col.m5 .row,\n  form.col.m6.s12 .row {\n    padding: 0.75rem 0.375rem; }\n  form.col.m3.s12 .col,\n  form.col.m4 .col,\n  form.col.m4.s12 .col,\n  form.col.m5 .col,\n  form.col.m6.s12 .col {\n    text-align: center;\n    padding: 0 0.375rem; }\n\nform.col.m3:last-child,\nform.col.m4:last-child,\nform.col.m4.s12:last-child,\nform.col.m6.s12:last-child,\nform.col.m5:last-child {\n  padding-right: 0; }\n\n@media only screen and (max-width: 600px) {\n  form.col.m3.s12,\n  form.col.m4,\n  form.col.m4.s12,\n  form.col.m5,\n  form.col.m6.s12 {\n    padding: 0; }\n  .key div {\n    margin: 0 0.05rem; } }\n"; });
-define('text!showcases/beatmaker/components/knob.html', ['module'], function(module) { module.exports = "<template>\r\n  <p style=\"\" class=\"${canvas?'white-text':'grey-text text-darken-1'}\">${label}</p>\r\n  <input type=\"range\" class=\"preset1\" min=\"${min}\" max=\"${max}\" value.bind=\"val\" data-anglerange=\"${range || 280}\" data-width=\"60\" data-height=\"60\" data-angleoffset=\"${offset || 220}\" data-fgColor=\"#2196f3\" data-labels=\"${labels}\" step='1' data-bgColor=\"#fff\"/>\r\n\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/beat-maker.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./synth/piano\"></require>\r\n  <require from=\"./sequencer/sequencer\"></require>\r\n  <require from=\"./components/sound-wave\"></require>\r\n  <require from=\"./styles/main.css\"></require>\r\n\r\n  <ul class=\"tabs showcase-tabs z-depth-1\" style=\"overflow-x:hidden;z-index:998;position:fixed\">\r\n    <li class=\"tab col s4\"><a class=\"active blue-text\" href=\"#synthtab\" click.delegate=\"tab=0\">Synth</a></li>\r\n    <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#drumtab\" click.delegate=\"tab=1\">Sequencer</a></li>\r\n  </ul>\r\n  <div style=\"margin-top:50px;\" id='beatmaker'>\r\n    <div class=\"row\" style=\"margin-bottom:15px;\">\r\n      <div id=\"synthtab\" class=\"col s12\" style=\"padding:0;\">\r\n        <piano is-open.bind=\"tab\"></piano>\r\n      </div>\r\n      <div id=\"drumtab\" class=\"col s12\" style=\"padding:0;\">\r\n        <sequencer is-open.bind=\"tab\"></sequencer>\r\n      </div>\r\n    </div>\r\n  </div>\n  <svg style=\"position:absolute;top:-9999px;\">\n    <filter id=\"dropshadow\" height=\"150%\" width=\"150%\">\r\n  \t\t<feGaussianBlur in=\"SourceAlpha\" stdDeviation=\"2\"/>\r\n  \t\t<feOffset dx=\"1\" dy=\"4\" result=\"offsetblur\"/>\r\n  \t\t<feFlood flood-color=\"rgba(0,0,0,0.2)\"/>\r\n  \t\t<feComposite in2=\"offsetblur\" operator=\"in\"/>\r\n  \t\t<feMerge>\r\n  \t\t\t<feMergeNode/>\r\n  \t\t\t<feMergeNode in=\"SourceGraphic\"/>\r\n  \t\t</feMerge>\r\n  \t</filter>\r\n      <filter id=\"inner-shadow\">\r\n\r\n          <!-- Shadow Offset -->\r\n          <feOffset dx=\"0\" dy=\"5\"></feOffset>\r\n\r\n          <!-- Shadow Blur -->\r\n          <feGaussianBlur stdDeviation=\"5\" result=\"offset-blur\"></feGaussianBlur>\r\n\r\n          <!-- Invert the drop shadow\r\n               to create an inner shadow -->\r\n          <feComposite operator=\"out\" in=\"SourceGraphic\" in2=\"offset-blur\" result=\"inverse\"></feComposite>\r\n\r\n          <!-- Color & Opacity -->\r\n          <feFlood flood-color=\"black\" flood-opacity=\"0.75\" result=\"color\"></feFlood>\r\n\r\n          <!-- Clip color inside shadow -->\r\n          <feComposite operator=\"in\" in=\"color\" in2=\"inverse\" result=\"shadow\"></feComposite>\r\n\r\n          <!-- Put shadow over original object -->\r\n          <feComposite operator=\"over\" in=\"shadow\" in2=\"SourceGraphic\"></feComposite>\r\n      </filter>\n\r\n      <filter id=\"glow\">\n        <feGaussianBlur class=\"blur\" stdDeviation=\"7\" result=\"coloredBlur\"></feGaussianBlur>\n        <feMerge>\n          <feMergeNode in=\"coloredBlur\"></feMergeNode>\n          <feMergeNode in=\"SourceGraphic\"></feMergeNode>\n        </feMerge>\n      </filter>\n  </svg>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/components/edit-effects.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../effects/compressor\"></require>\r\n  <require from=\"../effects/delay\"></require>\r\n  <require from=\"../effects/equalizer\"></require>\r\n  <ai-dialog style=\"width:auto\">\r\n    <ai-dialog-body>\r\n      <div class=\"row\">\r\n        <div class=\"col s12\">\r\n          <ul class=\"tabs\" style=\"overflow-x:hidden;\">\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" id=\"eqtab\" href=\"#test1\">EQ</a></li>\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#test2\">Delay</a></li>\r\n            <li class=\"tab col s4\"><a class=\"blue-text\" href=\"#test3\">Compressor</a></li>\r\n          </ul>\r\n        </div>\r\n        <div id=\"test1\" class=\"col s12\">\r\n          <equalizer></equalizer>\r\n        </div>\r\n        <div id=\"test2\" class=\"col s12\">\r\n          <delay></delay>\r\n        </div>\r\n        <div id=\"test3\" class=\"col s12\"><compressor></compressor></div>\r\n      </div>\r\n    </ai-dialog-body>\r\n  </ai-dialog>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/components/knob.html', ['module'], function(module) { module.exports = "<template>\r\n  <p style=\"\" class=\"${canvas?'white-text':'grey-text text-darken-1'}\">${label}</p>\r\n  <input type=\"range\" class=\"preset1\" min=\"${min}\" max=\"${max}\" value.bind=\"val\" data-anglerange=\"${range || 280}\" data-width=\"60\" data-height=\"60\" data-angleoffset=\"${offset || 220}\" data-fgColor=\"#2196f3\" data-labels=\"${labels}\" step='1' data-bgColor=\"#fff\"/>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/mute-button.html', ['module'], function(module) { module.exports = "<template>\r\n\r\n    <a class=\"waves-effect waves-${!muted?'blue':'red'} btn-flat center-align\" style=\"width:100%;margin-top:33px;\" click.delegate='muted=!muted'>\r\n      <template if.bind='muted'>\r\n        <i class=\"material-icons blue-text\" style=\"vertical-align:sub\">volume_up</i>\r\n      </template>\r\n      <template if.bind='!muted'>\r\n        <i class=\"material-icons red-text\" style=\"vertical-align:sub\">volume_off</i>\r\n      </template>\r\n    </a>\r\n\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/components/slider.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"blue white-text center-align b-radius\" css=\"margin-bottom:15px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}\">\r\n    <p class=\"center-align\" css=\"${inline===true?'margin-bottom:8px;':''}\">${label}</p>\r\n    <div class=\"right\">\r\n      <div class=\"btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3\" click.delegate=\"add()\" style=\"float:none;display:block;height:1.5rem;line-height:1;\">\r\n        <i class=\"material-icons\" style=\"line-height:1;\">add</i>\r\n      </div>\r\n      <div class=\"btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3\" click.delegate=\"minus()\" style=\"float:none;display:block;height:1.5rem;line-height:1;\">\r\n        <i class=\"material-icons\" style=\"line-height:1;\">remove</i>\r\n      </div>\r\n    </div>\r\n    <div class=\"file-field input-field\" >\r\n      <div class=\"file-path-wrapper\" style=\"padding:0;\">\r\n        <input type=\"text\" class=\"center-align\" style=\"margin:0;border:none;\" value.bind=\"val\" change.delegate=\"change()\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-range\" if.bind=\"noslider!==true\"></div>\r\n    <!-- <input type=\"range\" value.bind=\"val\" id=\"test5\" min=\"${min}\" max=\"${max}\" change.delegate=\"change()\" orient=\"vertical\"/> -->\r\n\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/components/slider.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"blue white-text center-align b-radius\" css=\"margin-bottom:15px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}\">\r\n    <p class=\"center-align\" css=\"${inline===true?'margin-bottom:8px;':''}\">${label}</p>\r\n    <div class=\"right\">\r\n      <div class=\"btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3\" click.delegate=\"add()\" style=\"float:none;display:block;height:1.5rem;line-height:1;\">\r\n        <i class=\"material-icons\" style=\"line-height:1;\">add</i>\r\n      </div>\r\n      <div class=\"btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3\" click.delegate=\"minus()\" style=\"float:none;display:block;height:1.5rem;line-height:1;\">\r\n        <i class=\"material-icons\" style=\"line-height:1;\">remove</i>\r\n      </div>\r\n    </div>\r\n    <div class=\"file-field input-field\" >\r\n      <div class=\"file-path-wrapper\" style=\"padding:0;\">\r\n        <input type=\"text\" class=\"center-align\" style=\"margin:0;border:none;\" value.bind=\"val\" change.delegate=\"change()\">\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"ui-range\" if.bind=\"noslider!==true\"></div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/sound-wave.html', ['module'], function(module) { module.exports = "<template>\r\n  <canvas width=\"50\" height=\"\" id='canv' style=\"z-index:-1;\" class=\"canvas\" css=\"${background?'position:absolute;z-index:-1':''}\"></canvas>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/components/switch.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"switch\">\r\n    <label>\r\n      Off\r\n      <input type=\"checkbox\" checked.bind=\"switched\">\r\n      <span class=\"lever\"></span>\r\n      On\r\n    </label>\r\n  </div>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/effects/compressor.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/slider\"></require>\r\n  <require from=\"../components/switch\"></require>\r\n  <p>Compressor <switch class=\"right\" switched.bind=\"active\" click.delegate=\"toggleEffect()\"></switch></p>\r\n  <div class=\"row\" >\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"attack\" channel='compAttack' preset.one-time=\"attack\"></slider>\r\n      <!-- <knob min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"attack\" channel='compAttack' preset=\"25\"></knob> -->\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Threshold\" val.two-way=\"threshold\" channel='compThresh' preset.one-time=\"threshold\"></slider>\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"1\" max=\"20\" label=\"Ratio\" val.two-way=\"ratio\" channel='compRatio' preset.one-time=\"ratio\"></slider>\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"release\" channel='compRelease' preset.one-time=\"release\"></slider>\r\n    </div>\r\n\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"40\" label=\"Knee\" val.two-way=\"knee\" channel='compKnee' preset.one-time=\"knee\"></slider>\r\n    </div>\r\n\r\n    <div class=\"col l4 m4 s6\">\r\n      <label for=\"\" style=\"position:relative;top:0;\">Sidechain</label>\r\n      <select name=\"\" id=\"\" class=\"browser-default\" disabled style=\"background:transparent;\">\r\n        <option value=\"kick\" selected=\"\">kick</option>\r\n\r\n      </select>\r\n    </div>\r\n    <!-- <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"release\" channel='compRelease' preset=\"25\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"100\" label=\"Threshold\" val.two-way=\"threshold\" channel='compThresh' preset=\"50\"></knob>\r\n    </div> -->\r\n  </div>\r\n  <!-- <div class=\"row\">\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"40\" label=\"Knee\" val.two-way=\"knee\" channel='compKnee' preset=\"40\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"1\" max=\"20\" label=\"Ratio\" val.two-way=\"ratio\" channel='compRatio' preset=\"12\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <mute-button></mute-button>\r\n    </div>\r\n  </div> -->\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/effects/compressor.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/slider\"></require>\r\n  <require from=\"../components/switch\"></require>\r\n  <p>Compressor <switch class=\"right\" switched.bind=\"active\" click.delegate=\"toggleEffect()\"></switch></p>\r\n  <div class=\"row\" >\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"attack\" channel='compAttack' preset.one-time=\"attack\"></slider>\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Threshold\" val.two-way=\"threshold\" channel='compThresh' preset.one-time=\"threshold\"></slider>\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"1\" max=\"20\" label=\"Ratio\" val.two-way=\"ratio\" channel='compRatio' preset.one-time=\"ratio\"></slider>\r\n    </div>\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"release\" channel='compRelease' preset.one-time=\"release\"></slider>\r\n    </div>\r\n\r\n    <div class=\"col l4 m4 s6\">\r\n      <slider min=\"0\" max=\"40\" label=\"Knee\" val.two-way=\"knee\" channel='compKnee' preset.one-time=\"knee\"></slider>\r\n    </div>\r\n\r\n    <div class=\"col l4 m4 s6\">\r\n      <label for=\"\" style=\"position:relative;top:0;\">Sidechain</label>\r\n      <select name=\"\" id=\"\" class=\"browser-default\" disabled style=\"background:transparent;\">\r\n        <option value=\"kick\" selected=\"\">kick</option>\r\n\r\n      </select>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/effects/delay.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/switch\"></require>\r\n  <p>Delay <switch class=\"right\" switched.two-way=\"active\" click.delegate=\"toggleEffect()\"></switch></p>\r\n  <div class=\"row\">\r\n    <div class=\"col s6\">\r\n      <knob min=\"0\" max=\"100\" label=\"Time\" val.two-way=\"dTime\" channel='delayTime' preset=\"50\"></knob>\r\n    </div>\r\n    <div class=\"col s6\">\r\n      <knob min=\"0\" max=\"100\" label=\"Feedback\" val.two-way=\"dFeed\" channel='delayFeedback' preset=\"15\"></knob>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col s6\">\r\n      <knob min=\"0\" max=\"100\" label=\"Wet/Dry\" val.two-way=\"dWet\" channel=\"delayWet\" preset=\"25\"></knob>\r\n    </div>\r\n    <div class=\"col s6\">\r\n\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/effects/equalizer.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/switch\"></require>\r\n  <p>Equalizer <switch class=\"right\" switched.two-way=\"active\" click.delegate=\"toggleEffect()\"></switch></p>\r\n  <div class=\"row\">\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"80hz\" val.two-way=\"eq1\" channel='eq1' preset.one-time=\"eq1\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"350hz\" val.two-way=\"eq2\" channel='eq2' preset.one-time=\"eq2\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"720hz\" val.two-way=\"eq3\" channel='eq3' preset.one-time=\"eq3\"></knob>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"1.6khz\" val.two-way=\"eq4\" channel='eq4' preset.one-time=\"eq4\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"5khz\" val.two-way=\"eq5\" channel='eq5' preset.one-time=\"eq5\"></knob>\r\n    </div>\r\n    <div class=\"col s4\">\r\n      <knob min=\"0\" max=\"80\" label=\"10khz\" val.two-way=\"eq6\" channel='eq6'preset.one-time=\"eq6\"></knob>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/sequencer/sequencer.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"./styles/sequencer.css\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/slider\"></require>\r\n  <div class=\"au-animate col s12\" style=\"padding-top:0.75rem;\">\r\n    <!-- <div class=\"card\" id=\"sequencer\">\r\n      <div class=\"card-content\" style=\"padding:0.75rem\"> -->\r\n        <div class=\"row\">\r\n          <form class=\"col s12 b-radius-card z-depth-1\" style=\"margin-bottom:20px;\" id='sequencer-controller'>\r\n            <div class=\"row canvas-as-bg  b-radius-card blue\" >\r\n              <a class=\"waves-effect waves-${!muted?'green accent-3':'red'} btn-flat center-align\" style=\"padding:0;margin-right:10px;\" click.delegate='handlePlay()'>\r\n                <template if.bind='!playing'>\r\n                  <i class=\"material-icons green-text text-accent-3\" style=\"vertical-align:sub;font-size:2.3rem\">play_arrow</i>\r\n                </template>\r\n                <template if.bind='playing'>\r\n                  <i class=\"material-icons red-text\" style=\"vertical-align:sub;font-size:2.3rem\" >stop</i>\r\n                </template>\r\n              </a>\r\n              <a class=\"waves-effect waves-${!mixer?'green accent-3':'white'} btn-flat center-align\" style=\"padding:0;\" click.delegate='toggleMixer()'>\r\n                <i class=\"material-icons ${!mixer?'green':'white'}-text text-accent-3\" style=\"vertical-align:sub;font-size:2.3rem\">equalizer</i>\r\n              </a>\r\n              <slider min=\"0\" max=\"220\" label=\"Tempo\" val.two-way=\"tempo\" noslider.one-time=\"true\" channel='tempo' inline.one-time=\"true\" preset=\"120\"></slider>\r\n              <!-- <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                <p style=\"padding-bottom:3px;margin-top:-24px;\">Tempo</p>\r\n                <button class=\"btn waves-effect waves-light green accent-3\" style=\"display:inline-block;width:36px;padding:0;margin-right:5px;\" click.delegate=\"changeTempo(false)\"><i class=\"material-icons\">remove</i></button>\r\n                <p style=\"width:40px;display:inline-block;\">${tempo}</p>\r\n                <button class=\"btn waves-effect waves-light green accent-3\" style=\"display:inline-block;width:36px;padding:0;margin-left:5px;\" click.delegate=\"changeTempo(true)\"><i class=\"material-icons\">add</i></button>\r\n              </div> -->\r\n              <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                <knob min=\"0\" max=\"100\" label=\"Volume\" canvas.bind=\"true\" preset.one-time=\"volume\" val.two-way=\"volume\"></knob>\r\n              </div>\r\n\r\n            </div>\r\n            <!-- <sound-wave ab.bind='ab' canvas-id='sequencer-controller' style=\"\"></sound-wave> -->\r\n          </form>\r\n        </div>\r\n        <table id=\"note-playing\">\r\n\r\n        </table>\r\n        <table class=\" striped\"  id='sequencer-notes'>\r\n          <thead style=\"border-bottom:0;\">\r\n            <tr>\r\n              <td style=\"width:5.88%;\"></td>\r\n              <td repeat.for=\"i of 16\" style=\"width:5.88%;\">\r\n                <div class=\"${notePlaying-1==i?'blue':'grey'} lighten-2\" style=\"height:5px;\"></div>\r\n              </td>\r\n            </tr>\r\n          </thead>\r\n          <tbody if.bind=\"!mixer\">\r\n              <tr repeat.for=\"drum of drums\" >\r\n                <td style=\"width:5.88%;cursor:pointer;height:36px;\" class=\"blue-text \" click.delegate=\"playSample(drum.sound)\">${drum.name}</td>\r\n                <td class=\"waves-effect waves-light  ${scheduled[$parent.$index][i]==true?'blue':'green accent-3'}\" repeat.for=\"i of 16\" style=\"width:5.88%;border-left:1px solid #fff;border-bottom:1px solid #fff;min-height:36px;\" click.delegate=\"addNote($event, $parent.$index, i)\">\r\n                  <!-- <a  style=\"width:100%;padding:0rem;height:36px;\" ></a> -->\r\n                </td>\r\n              </tr>\r\n          </tbody>\r\n        </table>\r\n        <table class=\"striped\" if.bind=\"mixer\" id='sequencer-mixer'>\r\n          <tbody>\r\n            <tr repeat.for=\"drum of drums\">\r\n              <td style=\"width:5.88%;cursor:pointer\" class=\"blue-text\" click.delegate=\"playSample(drum.sound)\">${drum.name}</td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"80\" label=\"Volume\" preset.one-time=\"drum.volume\" val.two-way=\"drum.volume\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"80\" label=\"Pitch\" preset.one-time=\"drum.volume\" val.two-way=\"drum.pitch\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"80\" label=\"High\" preset.one-time=\"drum.high\" val.two-way=\"drum.high\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min.one-time=\"drum.range.high[0]\" max.one-time=\"drum.range.high[1]\" label=\"High Freq\" preset.one-time=\"drum.highFreq\" val.two-way=\"drum.highFreq\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"80\" label=\"Mid\" preset.one-time=\"drum.mid\" val.two-way=\"drum.mid\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min.one-time=\"drum.range.mid[0]\" max.one-time=\"drum.range.mid[1]\" label=\"Mid Freq\" preset.one-time=\"drum.midFreq\" val.two-way=\"drum.midFreq\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"80\" label=\"Low\" preset.one-time=\"drum.low\" val.two-way=\"drum.low\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min.one-time=\"drum.range.low[0]\" max.one-time=\"drum.range.low[1]\" label=\"Low Freq\" preset.one-time=\"drum.lowFreq\" val.two-way=\"drum.lowFreq\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"200\" label=\"Cutoff\" preset.one-time=\"drum.cutoff\" val.two-way=\"drum.cutoff\"></knob>\r\n                </div>\r\n              </td>\r\n              <td >\r\n                <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n                  <knob min=\"0\" max=\"20\" label=\"Q\" preset.one-time=\"drum.Q\" val.two-way=\"drum.Q\"></knob>\r\n                </div>\r\n              </td>\r\n              <td>\r\n                <div class=\"input-field inline\" style=\"\">\r\n                  <label for=\"\" style=\"position:relative;top:0;\">Filter Type</label>\r\n                  <select name=\"\" id=\"\" class=\"browser-default\" value.bind=\"drum.filterType\">\r\n                    <option value=\"lowpass\">lowpass</option>\r\n                    <option value=\"highpass\">highpass</option>\r\n                    <option value=\"bandpass\">bandpass</option>\r\n                    <option value=\"lowshelf\">lowshelf</option>\r\n                    <option value=\"highshelf\">highshelf</option>\r\n                    <option value=\"peaking\">peaking</option>\r\n                    <option value=\"notch\">notch</option>\r\n                    <option value=\"allpass\">allpass</option>\r\n                  </select>\r\n\r\n                </div>\r\n              </td></tr>\r\n          </tbody>\r\n        </table>\r\n      <!-- </div>\r\n    </div> -->\r\n  </div>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/synth/piano.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./components/piano-key\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/mute-button\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"./styles/synth.css\"></require>\r\n  <require from='./components/oscillator'></require>\r\n  <require from=\"../effects/compressor\"></require>\r\n  <require from=\"../effects/delay\"></require>\r\n  <require from=\"../effects/equalizer\"></require>\r\n  <div class=\"au-animate col s12\" style=\"padding-top:0.75rem;\">\r\n          <div class=\"row\" >\r\n            <form class=\"col m3 s12\">\r\n              <oscillator type='Lfo' osc.two-way=\"lfoData\" preset.one-time=\"lfoData\"></oscillator>\r\n            </form>\r\n            <form class=\"col m3 s12\" repeat.for=\"osc of oscillators\">\r\n              <oscillator osc.two-way=\"osc\" index.bind=\"$index\" type='Oscillator' preset.one-time=\"oscPresets[$index]\"></oscillator>\r\n            </form>\r\n          </div>\r\n          <div class=\"row\">\r\n            <form class=\"col m6 s12\">\r\n              <div id=\"filter\" class=\"row grey lighten-3 z-depth-1 b-radius-card\">\r\n                <p>Filter</p>\r\n                <div class=\"row\">\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"200\" label=\"Cutoff\" val.two-way=\"lpfCutoff\" preset.one-time=\"lpfCutoff\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"20\" label=\"Q\" val.two-way=\"lpfQ\" preset.one-time=\"lpfQ\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Mod\" val.two-way=\"lpfMod\" preset.one-time=\"lpfMod\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Env\" val.two-way=\"lpfEnv\" preset.one-time=\"lpfEnv\"></knob>\r\n                  </div>\r\n                </div>\r\n                <p>Envelope</p>\r\n                <div class=\"row\">\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"lpfA\" preset.one-time=\"lpfA\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Decay\" val.two-way=\"lpfD\" preset.one-time=\"lpfD\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Sustain\" val.two-way=\"lpfS\" preset.one-time=\"lpfS\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"lpfR\" preset.one-time=\"lpfR\"></knob>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n            </form>\r\n            <form class=\"col m6 s12 b-radius-card z-depth-1\" id=\"synth\">\r\n              <div id=\"synthfilter\" class=\"row canvas-as-bg  b-radius-card\">\r\n                <p>Synth</p>\r\n                <div class=\"row\">\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Drive\" val.two-way=\"lpfA\" canvas.bind=\"true\" preset.one-time=\"lpfA\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Reverb\" val.two-way=\"lpfD\" canvas.bind=\"true\" preset.one-time=\"lpfA\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\" >\r\n                    <knob id=\"soundwave\" min=\"0\" max=\"100\" label=\"Volume\" canvas.bind=\"true\" val.two-way=\"masterVol\" preset.one-time=\"masterVol\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <!-- <p class=\"center-align\">Effects</p>\r\n                    <button class=\"btn waves-effect waves-light green accent-3\" style=\"width:36px;padding:0;margin-top:13px;\" click.delegate=\"openEffects()\"><i class=\"material-icons\">equalizer</i></button> -->\r\n                  </div>\r\n                </div>\r\n                <p>Envelope</p>\r\n                <div class=\"row\">\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Attack\" canvas.bind=\"true\" val.two-way=\"envA\" preset.one-time=\"envA\" ></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Decay\" canvas.bind=\"true\" val.two-way=\"envD\" preset.one-time=\"envD\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Sustain\" canvas.bind=\"true\" val.two-way=\"envS\" preset.one-time=\"envS\"></knob>\r\n                  </div>\r\n                  <div class=\"col m3 s6\">\r\n                    <knob min=\"0\" max=\"100\" label=\"Release\" canvas.bind=\"true\" val.two-way=\"envR\" preset.one-time=\"envR\"></knob>\r\n                  </div>\r\n                </div>\r\n              </div>\r\n              <sound-wave ab.bind='ab' canvas-id='synth'></sound-wave>\r\n            </form>\r\n          </div>\r\n          <div class=\"row\">\r\n            <form class=\"col m4 s12\">\r\n              <div class=\"row grey lighten-3 z-depth-1  b-radius-card\">\r\n                <equalizer></equalizer>\r\n              </div>\r\n            </form>\r\n            <form class=\"col m3 s12\">\r\n              <div class=\"row grey lighten-3 z-depth-1  b-radius-card\">\r\n                <delay></delay>\r\n              </div>\r\n            </form>\r\n            <form class=\"col m5 s12\">\r\n              <div class=\"row grey lighten-3 z-depth-1  b-radius-card\" style=\"min-height:267.5px;\">\r\n                <compressor></compressor>\r\n              </div>\r\n            </form>\r\n          </div>\r\n          <div class=\"row\" style=\"\">\r\n            <div class=\"col s12\" id='right' style=\"padding:0;\">\r\n              <piano-key class=\"${note.color?'white'+$index:'black'+$index}\" repeat.for=\"note of notes\" playing.bind=\"note.isPlaying\" index.bind=\"$index\"  assigned.bind=\"note.assigned\" key.bind=\"note\" containerLess></piano-key>\r\n            </div>\r\n          </div>\r\n  </div>\r\n</template>\r\n"; });
-define('text!showcases/beatmaker/synth/components/oscillator.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from='../../components/knob'></require>\r\n  <require from='../../components/mute-button'></require>\r\n  <div class=\"grey lighten-3 z-depth-1 b-radius-card row\">\r\n    <p>${type==='Lfo' ? type : type + ' ' + (index+1)}</p>\r\n     <template if.bind='type!==\"Lfo\"'>\r\n       <div class=\"col s12 m12\">\r\n         <div class=\"input-field text-center col s6 m6\">\r\n           <knob min=\"0\" max=\"100\" label=\"Mix\" val.two-way=\"osc.volume\" offset=\"222\" preset.one-time=\"preset.volume\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s6 m6\">\r\n           <knob min=\"0\" max=\"3\" label=\"Wave\" labels='sine, saw, sqr, tri' val.two-way=\"osc.wave\" offset='276' range=\"180\" preset.one-time=\"preset.wave\"></knob>\r\n         </div>\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s6 m6\">\r\n           <knob min='0' max=\"7\" label=\"Octave\" labels=\"-3,-2,-1,0,1,2,3\" val.two-way=\"osc.octave\" offset='222' preset.one-time=\"preset.octave\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s6 m6\" >\r\n            <knob min='0' max=\"100\" label=\"Detune\" val.two-way=\"osc.detune\" offset='222' preset.one-time=\"preset.detune\"></knob>\r\n         </div>\r\n       </div>\r\n     </template>\r\n     <template if.bind='type===\"Lfo\"'>\r\n       <div class=\"col s12 m12\">\r\n         <!-- <div class=\"input-field text-center col s6 m6\">\r\n           <knob min=\"0\" max=\"2\" labels=\"pitch, cutoff, bypass\" label=\"Mod Type\" val.two-way=\"modtype\" range=\"180\" offset=\"271\"></knob>\r\n         </div> -->\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min='0' max=\"20\" label=\"Frequency\"  val.two-way=\"osc.freq\" offset='222' preset.one-time=\"preset.freq\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min=\"0\" max=\"3\" label=\"Wave\" labels='sine, saw, sqr, tri' preset.one-time=\"preset.wave\" val.two-way=\"osc.wave\" offset='276' range=\"180\"></knob>\r\n         </div>\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min='0' max=\"100\" label=\"Osc1\"  val.two-way=\"osc.osc1\" offset='222' preset.one-time=\"preset.osc1\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\" >\r\n            <knob min='0' max=\"100\" label=\"Osc2\" val.two-way=\"osc.osc2\" offset='222' preset.one-time=\"preset.osc2\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\" >\r\n            <knob min='0' max=\"100\" label=\"Osc2\" val.two-way=\"osc.osc2\" offset='222' preset.one-time=\"preset.osc3\"></knob>\r\n         </div>\r\n       </div>\r\n     </template>\r\n  </div>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/sequencer/sequencer.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"./styles/sequencer.css\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/slider\"></require>\r\n  <div class=\"au-animate col s12\" style=\"padding-top:0.75rem;\">\r\n    <div class=\"row\">\r\n      <form class=\"col s12 b-radius-card z-depth-1\" style=\"margin-bottom:20px;\" id='sequencer-controller'>\r\n        <div class=\"row canvas-as-bg  b-radius-card blue\" >\r\n          <a class=\"waves-effect waves-${!muted?'green accent-3':'red'} btn-flat center-align\" style=\"padding:0;margin-right:10px;\" click.delegate='handlePlay()'>\r\n            <template if.bind='!playing'>\r\n              <i class=\"material-icons green-text text-accent-3\" style=\"vertical-align:sub;font-size:2.3rem\">play_arrow</i>\r\n            </template>\r\n            <template if.bind='playing'>\r\n              <i class=\"material-icons red-text\" style=\"vertical-align:sub;font-size:2.3rem\" >stop</i>\r\n            </template>\r\n          </a>\r\n          <a class=\"waves-effect waves-${!mixer?'green accent-3':'white'} btn-flat center-align\" style=\"padding:0;\" click.delegate='toggleMixer()'>\r\n            <i class=\"material-icons ${!mixer?'green':'white'}-text text-accent-3\" style=\"vertical-align:sub;font-size:2.3rem\">equalizer</i>\r\n          </a>\r\n          <slider min=\"0\" max=\"220\" label=\"Tempo\" val.two-way=\"tempo\" noslider.one-time=\"true\" channel='tempo' inline.one-time=\"true\" preset=\"120\"></slider>\r\n          <div class=\"input-field inline\" style=\"margin-top:0;\" if.bind=\"isOpen===1\">\r\n            <knob min=\"0\" max=\"100\" label=\"Volume\" canvas.bind=\"true\" preset.one-time=\"volume\" val.two-way=\"volume\"></knob>\r\n          </div>\r\n        </div>\r\n      </form>\r\n    </div>\r\n    <table class=\" striped\"  id='sequencer-notes'>\r\n      <thead style=\"border-bottom:0;\">\r\n        <tr>\r\n          <td style=\"width:5.88%;\"></td>\r\n          <td repeat.for=\"i of 16\" style=\"width:5.88%;\">\r\n            <div class=\"${notePlaying-1==i?'blue':'grey'} lighten-2\" style=\"height:5px;\"></div>\r\n          </td>\r\n        </tr>\r\n      </thead>\r\n      <tbody if.bind=\"!mixer\">\r\n          <tr repeat.for=\"drum of drums\" >\r\n            <td style=\"width:5.88%;cursor:pointer;height:36px;\" class=\"blue-text \" click.delegate=\"playSample(drum.sound)\">${drum.name}</td>\r\n            <td class=\"waves-effect waves-light  ${scheduled[$parent.$index][i]==true?'blue':'green accent-3'}\" repeat.for=\"i of 16\" style=\"width:5.88%;border-left:1px solid #fff;border-bottom:1px solid #fff;min-height:36px;\" click.delegate=\"addNote($event, $parent.$index, i)\">\r\n            </td>\r\n          </tr>\r\n      </tbody>\r\n    </table>\r\n    <table class=\"striped\" if.bind=\"mixer\" id='sequencer-mixer'>\r\n      <tbody>\r\n        <tr repeat.for=\"drum of drums\">\r\n          <td style=\"width:5.88%;cursor:pointer\" class=\"blue-text\" click.delegate=\"playSample(drum.sound)\">${drum.name}</td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"80\" label=\"Volume\" preset.one-time=\"drum.volume\" val.two-way=\"drum.volume\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"80\" label=\"Pitch\" preset.one-time=\"drum.volume\" val.two-way=\"drum.pitch\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"80\" label=\"High\" preset.one-time=\"drum.high\" val.two-way=\"drum.high\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min.one-time=\"drum.range.high[0]\" max.one-time=\"drum.range.high[1]\" label=\"High Freq\" preset.one-time=\"drum.highFreq\" val.two-way=\"drum.highFreq\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"80\" label=\"Mid\" preset.one-time=\"drum.mid\" val.two-way=\"drum.mid\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min.one-time=\"drum.range.mid[0]\" max.one-time=\"drum.range.mid[1]\" label=\"Mid Freq\" preset.one-time=\"drum.midFreq\" val.two-way=\"drum.midFreq\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"80\" label=\"Low\" preset.one-time=\"drum.low\" val.two-way=\"drum.low\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min.one-time=\"drum.range.low[0]\" max.one-time=\"drum.range.low[1]\" label=\"Low Freq\" preset.one-time=\"drum.lowFreq\" val.two-way=\"drum.lowFreq\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"200\" label=\"Cutoff\" preset.one-time=\"drum.cutoff\" val.two-way=\"drum.cutoff\"></knob>\r\n            </div>\r\n          </td>\r\n          <td >\r\n            <div class=\"input-field inline\" style=\"margin-top:0;\">\r\n              <knob min=\"0\" max=\"20\" label=\"Q\" preset.one-time=\"drum.Q\" val.two-way=\"drum.Q\"></knob>\r\n            </div>\r\n          </td>\r\n          <td>\r\n            <div class=\"input-field inline\" style=\"\">\r\n              <label for=\"\" style=\"position:relative;top:0;\">Filter Type</label>\r\n              <select name=\"\" id=\"\" class=\"browser-default\" value.bind=\"drum.filterType\">\r\n                <option value=\"lowpass\">lowpass</option>\r\n                <option value=\"highpass\">highpass</option>\r\n                <option value=\"bandpass\">bandpass</option>\r\n                <option value=\"lowshelf\">lowshelf</option>\r\n                <option value=\"highshelf\">highshelf</option>\r\n                <option value=\"peaking\">peaking</option>\r\n                <option value=\"notch\">notch</option>\r\n                <option value=\"allpass\">allpass</option>\r\n              </select>\r\n            </div>\r\n          </td></tr>\r\n      </tbody>\r\n    </table>\r\n  </div>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/synth/piano.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from=\"./components/piano-key\"></require>\r\n  <require from=\"../components/sound-wave\"></require>\r\n  <require from=\"../components/mute-button\"></require>\r\n  <require from=\"../components/knob\"></require>\r\n  <require from=\"./styles/synth.css\"></require>\r\n  <require from='./components/oscillator'></require>\r\n  <require from=\"../effects/compressor\"></require>\r\n  <require from=\"../effects/delay\"></require>\r\n  <require from=\"../effects/equalizer\"></require>\r\n  <div class=\"au-animate col s12\" style=\"padding-top:0.75rem;\">\r\n    <div class=\"row\" >\r\n      <form class=\"col m3 s12\">\r\n        <oscillator type='Lfo' osc.two-way=\"lfoData\" preset.one-time=\"lfoData\"></oscillator>\r\n      </form>\r\n      <form class=\"col m3 s12\" repeat.for=\"osc of oscillators\">\r\n        <oscillator osc.two-way=\"osc\" index.bind=\"$index\" type='Oscillator' preset.one-time=\"oscPresets[$index]\"></oscillator>\r\n      </form>\r\n    </div>\r\n    <div class=\"row\">\r\n      <form class=\"col m6 s12\">\r\n        <div id=\"filter\" class=\"row grey lighten-3 z-depth-1 b-radius-card\">\r\n          <p>Filter</p>\r\n          <div class=\"row\">\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"200\" label=\"Cutoff\" val.two-way=\"lpfCutoff\" preset.one-time=\"lpfCutoff\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"20\" label=\"Q\" val.two-way=\"lpfQ\" preset.one-time=\"lpfQ\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Mod\" val.two-way=\"lpfMod\" preset.one-time=\"lpfMod\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Env\" val.two-way=\"lpfEnv\" preset.one-time=\"lpfEnv\"></knob>\r\n            </div>\r\n          </div>\r\n          <p>Envelope</p>\r\n          <div class=\"row\">\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Attack\" val.two-way=\"lpfA\" preset.one-time=\"lpfA\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Decay\" val.two-way=\"lpfD\" preset.one-time=\"lpfD\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Sustain\" val.two-way=\"lpfS\" preset.one-time=\"lpfS\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Release\" val.two-way=\"lpfR\" preset.one-time=\"lpfR\"></knob>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </form>\r\n      <form class=\"col m6 s12 b-radius-card z-depth-1\" id=\"synth\">\r\n        <div id=\"synthfilter\" class=\"row canvas-as-bg  b-radius-card\">\r\n          <p>Synth</p>\r\n          <div class=\"row\">\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Drive\" val.two-way=\"lpfA\" canvas.bind=\"true\" preset.one-time=\"lpfA\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Reverb\" val.two-way=\"lpfD\" canvas.bind=\"true\" preset.one-time=\"lpfA\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\" >\r\n              <knob id=\"soundwave\" min=\"0\" max=\"100\" label=\"Volume\" canvas.bind=\"true\" val.two-way=\"masterVol\" preset.one-time=\"masterVol\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n            </div>\r\n          </div>\r\n          <p>Envelope</p>\r\n          <div class=\"row\">\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Attack\" canvas.bind=\"true\" val.two-way=\"envA\" preset.one-time=\"envA\" ></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Decay\" canvas.bind=\"true\" val.two-way=\"envD\" preset.one-time=\"envD\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Sustain\" canvas.bind=\"true\" val.two-way=\"envS\" preset.one-time=\"envS\"></knob>\r\n            </div>\r\n            <div class=\"col m3 s6\">\r\n              <knob min=\"0\" max=\"100\" label=\"Release\" canvas.bind=\"true\" val.two-way=\"envR\" preset.one-time=\"envR\"></knob>\r\n            </div>\r\n          </div>\r\n        </div>\r\n        <sound-wave ab.bind='ab' canvas-id='synth' if.bind=\"isOpen===0\"></sound-wave>\r\n      </form>\r\n    </div>\r\n    <div class=\"row\">\r\n      <form class=\"col m4 s12\">\r\n        <div class=\"row grey lighten-3 z-depth-1  b-radius-card\">\r\n          <equalizer></equalizer>\r\n        </div>\r\n      </form>\r\n      <form class=\"col m3 s12\">\r\n        <div class=\"row grey lighten-3 z-depth-1  b-radius-card\">\r\n          <delay></delay>\r\n        </div>\r\n      </form>\r\n      <form class=\"col m5 s12\">\r\n        <div class=\"row grey lighten-3 z-depth-1  b-radius-card\" style=\"min-height:267.5px;\">\r\n          <compressor></compressor>\r\n        </div>\r\n      </form>\r\n    </div>\r\n    <div class=\"row\" style=\"\">\r\n      <div class=\"col s12\" id='right' style=\"padding:0;\">\r\n        <piano-key class=\"${note.color?'white'+$index:'black'+$index}\" repeat.for=\"note of notes\" playing.bind=\"note.isPlaying\" index.bind=\"$index\"  assigned.bind=\"note.assigned\" key.bind=\"note\" containerLess></piano-key>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
+define('text!showcases/beatmaker/synth/components/oscillator.html', ['module'], function(module) { module.exports = "<template>\r\n  <require from='../../components/knob'></require>\r\n  <require from='../../components/mute-button'></require>\r\n  <div class=\"grey lighten-3 z-depth-1 b-radius-card row\">\r\n    <p>${type==='Lfo' ? type : type + ' ' + (index+1)}</p>\r\n     <template if.bind='type!==\"Lfo\"'>\r\n       <div class=\"col s12 m12\">\r\n         <div class=\"input-field text-center col s6 m6\">\r\n           <knob min=\"0\" max=\"100\" label=\"Mix\" val.two-way=\"osc.volume\" offset=\"222\" preset.one-time=\"preset.volume\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s6 m6\">\r\n           <knob min=\"0\" max=\"3\" label=\"Wave\" labels='sine, saw, sqr, tri' val.two-way=\"osc.wave\" offset='276' range=\"180\" preset.one-time=\"preset.wave\"></knob>\r\n         </div>\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s6 m6\">\r\n           <knob min='0' max=\"7\" label=\"Octave\" labels=\"-3,-2,-1,0,1,2,3\" val.two-way=\"osc.octave\" offset='222' preset.one-time=\"preset.octave\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s6 m6\" >\r\n            <knob min='0' max=\"100\" label=\"Detune\" val.two-way=\"osc.detune\" offset='222' preset.one-time=\"preset.detune\"></knob>\r\n         </div>\r\n       </div>\r\n     </template>\r\n     <template if.bind='type===\"Lfo\"'>\r\n       <div class=\"col s12 m12\">\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min='0' max=\"20\" label=\"Frequency\"  val.two-way=\"osc.freq\" offset='222' preset.one-time=\"preset.freq\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min=\"0\" max=\"3\" label=\"Wave\" labels='sine, saw, sqr, tri' preset.one-time=\"preset.wave\" val.two-way=\"osc.wave\" offset='276' range=\"180\"></knob>\r\n         </div>\r\n       </div>\r\n       <div class=\"input-field col s12 m12\">\r\n         <div class=\"input-field col s4 m4\">\r\n           <knob min='0' max=\"100\" label=\"Osc1\"  val.two-way=\"osc.osc1\" offset='222' preset.one-time=\"preset.osc1\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\" >\r\n            <knob min='0' max=\"100\" label=\"Osc2\" val.two-way=\"osc.osc2\" offset='222' preset.one-time=\"preset.osc2\"></knob>\r\n         </div>\r\n         <div class=\"input-field col s4 m4\" >\r\n            <knob min='0' max=\"100\" label=\"Osc2\" val.two-way=\"osc.osc2\" offset='222' preset.one-time=\"preset.osc3\"></knob>\r\n         </div>\r\n       </div>\r\n     </template>\r\n  </div>\r\n</template>\r\n"; });
 define('text!showcases/beatmaker/synth/components/piano-key.html', ['module'], function(module) { module.exports = "<template>\r\n  <div class=\"col s1 key ${key.color===true?'white':'black-key'} \" tabindex=\"0\" mousedown.trigger=\"play()\" mouseup.delegate=\"stop()\" touchstart.trigger=\"play()\" touchend.delegate=\"stop()\">\r\n    <div class=\"${playing?'play z-depth-1':'z-depth-2'} waves-effect waves-blue\"  >\r\n      <h1 class=\"hide-on-med-and-down\">${key.key}</h1>\r\n      <h1 class=\"hide-on-large-only\">${key.note}</h1>\r\n    </div>\r\n  </div>\r\n</template>\r\n"; });
 //# sourceMappingURL=app-bundle.js.map

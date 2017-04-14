@@ -1,9 +1,10 @@
-import {inject} from "aurelia-framework";
+import {inject, bindable} from "aurelia-framework";
 import {HttpClient} from "aurelia-fetch-client";
 import {AudioBus} from '../components/audio-bus';
 import {EventAggregator} from 'aurelia-event-aggregator';
 @inject(HttpClient, AudioBus, EventAggregator)
 export class SequencerCustomElement{
+  @bindable isOpen
     constructor(http, ab, ea){
       this.http=http;
       this.ea=ea;
@@ -32,7 +33,6 @@ export class SequencerCustomElement{
       this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
       this.scriptNode.onaudioprocess=(e)=>{
         this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
-        //console.log(Math.pow(10, this.ab.compressor.reduction/20));
       }
       for(var i=0; i<14; i++){
         this.scheduled[i]=new Array(16);
@@ -127,7 +127,12 @@ export class SequencerCustomElement{
           range:this.eqFreqs[this.samples[i].type+'Range'],
           Q:10,
           cutoff:200,
-          filterType:'lowpass'
+          filterType:'lowpass',
+          eq120:this.audio.createBiquadFilter(),
+          eq600:this.audio.createBiquadFilter(),
+          eq5k:this.audio.createBiquadFilter(),
+          filter1 : this.ab.audio.createBiquadFilter(),
+          filter2 : this.ab.audio.createBiquadFilter()
         }
         if(obj.type==='kick'){
           obj.lowmid=this.eqFreqs[this.samples[i].type][3];
@@ -154,62 +159,51 @@ export class SequencerCustomElement{
     playSound(buffer, time, name, i){
       var src=this.audio.createBufferSource();
       src.buffer=buffer;
-      src.disconnect();
 
-      var eq120=this.audio.createBiquadFilter();
-      eq120.frequency.value=this.drums[i].lowFreq;
-      eq120.type="lowshelf";
-      eq120.gain.value=this.drums[i].low-40;
+      this.drums[i].eq120.frequency.value=this.drums[i].lowFreq;
+      this.drums[i].eq120.type="lowshelf";
+      this.drums[i].eq120.gain.value=this.drums[i].low-40;
 
-      var eq600=this.audio.createBiquadFilter();
-      eq600.frequency.value=this.drums[i].midFreq;
-      eq600.type="peaking";
-      eq600.gain.value=this.drums[i].mid-40;
+      this.drums[i].eq600.frequency.value=this.drums[i].midFreq;
+      this.drums[i].eq600.type="peaking";
+      this.drums[i].eq600.gain.value=this.drums[i].mid-40;
 
-      var eq5k=this.audio.createBiquadFilter();
-      eq5k.frequency.value=this.drums[i].highFreq;
-      eq5k.type="highshelf";
-      eq5k.gain.value=this.drums[i].high-40;
+      this.drums[i].eq5k.frequency.value=this.drums[i].highFreq;
+      this.drums[i].eq5k.type="highshelf";
+      this.drums[i].eq5k.gain.value=this.drums[i].high-40;
 
-      var filter1 = this.ab.audio.createBiquadFilter();
-      filter1.type = this.drums[i].filterType;
-      filter1.Q.value = this.drums[i].Q;
-      filter1.frequency.value = this.drums[i].cutoff*100;
+      this.drums[i].filter1.type = this.drums[i].filterType;
+      this.drums[i].filter1.Q.value = this.drums[i].Q;
+      this.drums[i].filter1.frequency.value = this.drums[i].cutoff*100;
 
-      var filter2 = this.ab.audio.createBiquadFilter();
-      filter2.type = this.drums[i].filterType;
-      filter2.Q.value = this.drums[i].Q;
-      filter2.frequency.value = this.drums[i].cutoff*100;
+      this.drums[i].filter2.type = this.drums[i].filterType;
+      this.drums[i].filter2.Q.value = this.drums[i].Q;
+      this.drums[i].filter2.frequency.value = this.drums[i].cutoff*100;
 
-      src.connect(eq120);
-      eq120.connect(eq600);
-      eq600.connect(eq5k);
-      eq5k.connect(filter1);
-      filter1.connect(filter2);
+      src.connect(this.drums[i].eq120);
+      this.drums[i].eq120.connect(this.drums[i].eq600);
+      this.drums[i].eq600.connect(this.drums[i].eq5k);
+      this.drums[i].eq5k.connect(this.drums[i].filter1);
+      this.drums[i].filter1.connect(this.drums[i].filter2);
+
       if(name==='kick' && this.ab.compressionOn){
         this.ea.publish('sidechain', time);
         this.scriptNode.disconnect();
-        //this.gain.disconnect();
-        filter2.connect(this.sideChainGain);
-
+        this.drums[i].filter2.connect(this.sideChainGain);
         this.scriptNode=this.audio.createScriptProcessor(4096,1,1);
         this.scriptNode.onaudioprocess=(e)=>{
           this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
-          //console.log(Math.pow(10, this.ab.compressor.reduction/20));
         }
         this.sideChainGain.connect(this.ab.compressor);
         this.scriptNode.connect(this.ab.compressor);
         this.sideChainGain.connect(this.ab.drumsIn)
       }else if(name === 'kick' && !this.ab.compressionOn){
-        filter2.connect(this.sideChainGain);
         this.scriptNode.disconnect();
-        //this.gain.disconnect();
+        this.drums[i].filter2.connect(this.gain);
         this.gain.connect(this.ab.drumsIn);
       }
       if(name!=='kick'){
-        filter2.connect(this.gain);
-        //this.scriptNode.disconnect();
-        //this.gain.disconnect();
+        this.drums[i].filter2.connect(this.gain);
         this.gain.connect(this.ab.drumsIn);
       }
       this.gain.gain.value=this.volume/50;
