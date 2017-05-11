@@ -16,6 +16,6 @@ export class Delay{
     this.active=!this.active;
   }
   attached(){
-    this.toggleEffect();
+    
   }
 }

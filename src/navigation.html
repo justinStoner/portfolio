@@ -8,7 +8,7 @@
 
       <div class="mdl-layout-spacer"></div>
 
-      <nav class="mdl-navigation" if.bind="appRouter.beatmakerSet">
+      <nav class="mdl-navigation" if.bind="appRouter.beatmakerSet && appRouter.router.currentInstruction.config.title==='Showcase'">
         <a class="mdl-navigation__link ${row.isActive?'nav-active':''}" repeat.for="row of appRouter.beatMaker" href="${row.href}">
           ${row.title}
         </a>

@@ -6,7 +6,7 @@ export class Switch{
     this.element=element;
   }
   attached(){
-    if(this.switched){
+    if(this.switched===true){
       this.element.children[0].children[0].children[0].checked=true;
     }
   }
