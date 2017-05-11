@@ -3,7 +3,7 @@ var server=require('http').createServer(app);
 var express=require('express');
 var compression = require('compression');
 var http = require('http')
-var port=5000;
+var port=80;
 app.use(compression());
 var cacheTime = 86400000*7;
 app.use(express.static(__dirname, { maxAge: cacheTime }))
