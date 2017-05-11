@@ -23,6 +23,7 @@ export class DrumService{
     this.notePlaying=-1;
     this.playing=false;
     this.hasPlayed=false;
+    this.loaded=false;
     this.samples=[
       {name:'kick',sample:'Roland_TR-33_Kick', type:'kick'},
       {name:'snare',sample:'Roland_TR-33_Snare', type:'snare'},
@@ -72,72 +73,74 @@ export class DrumService{
 
   }
   loadInit(){
+    if(!this.loaded){
+      for(var i=0;i<this.samples.length;i++){
+        var obj={
+          name:this.samples[i].name,
+          sound:this.loadSample(this.samples[i].sample, i),
+          type:this.samples[i].type,
+          scheduled:[],
+          volume:50,
+          pitch:0,
+          high:40,
+          highFreq:this.eqFreqs[this.samples[i].type][2],
+          mid:40,
+          midFreq:this.eqFreqs[this.samples[i].type][1],
+          low:40,
+          lowFreq:this.eqFreqs[this.samples[i].type][0],
+          range:this.eqFreqs[this.samples[i].type+'Range'],
+          Q:10,
+          cutoff:200,
+          filterType:'lowpass',
+          eq120:this.ab.audio.createBiquadFilter(),
+          eq600:this.ab.audio.createBiquadFilter(),
+          eq5k:this.ab.audio.createBiquadFilter(),
+          filter1 : this.ab.audio.createBiquadFilter(),
+          filter2 : this.ab.audio.createBiquadFilter()
+        }
+        if(obj.type==='kick'){
+          obj.lowmid=this.eqFreqs[this.samples[i].type][3];
+        }
+        this.drums.push(obj);
+      }
+      this.gain=this.ab.audio.createGain();
+      this.sideChainGain=this.ab.audio.createGain();
+      this.gain.value=1.0;
 
-    for(var i=0;i<this.samples.length;i++){
-      var obj={
-        name:this.samples[i].name,
-        sound:this.loadSample(this.samples[i].sample, i),
-        type:this.samples[i].type,
-        scheduled:[],
-        volume:50,
-        pitch:0,
-        high:40,
-        highFreq:this.eqFreqs[this.samples[i].type][2],
-        mid:40,
-        midFreq:this.eqFreqs[this.samples[i].type][1],
-        low:40,
-        lowFreq:this.eqFreqs[this.samples[i].type][0],
-        range:this.eqFreqs[this.samples[i].type+'Range'],
-        Q:10,
-        cutoff:200,
-        filterType:'lowpass',
-        eq120:this.ab.audio.createBiquadFilter(),
-        eq600:this.ab.audio.createBiquadFilter(),
-        eq5k:this.ab.audio.createBiquadFilter(),
-        filter1 : this.ab.audio.createBiquadFilter(),
-        filter2 : this.ab.audio.createBiquadFilter()
+      for(var i=0; i<14; i++){
+        this.scheduled[i]=new Array(16);
+        for(var ii=0; ii<16; ii++){
+          this.scheduled[i][ii]=false;
+        }
       }
-      if(obj.type==='kick'){
-        obj.lowmid=this.eqFreqs[this.samples[i].type][3];
+      for(var i=0; i<14; i++){
+        if(i==0){
+          this.scheduled[i][0]=true;
+          this.scheduled[i][4]=true;
+          this.scheduled[i][8]=true;
+          this.scheduled[i][12]=true;
+          this.scheduled[i][14]=true;
+        }else if(i==1){
+          this.scheduled[i][4]=true;
+          this.scheduled[i][12]=true;
+        }else if (i==2) {
+          this.scheduled[i][2]=true;
+        }else if(i==3){
+          this.scheduled[i][6]=true;
+          this.scheduled[i][10]=true;
+          this.scheduled[i][14]=true;
+        }else if (i==10) {
+          this.scheduled[i][4]=true;
+          this.scheduled[i][6]=true;
+          this.scheduled[i][12]=true;
+        }
       }
-      this.drums.push(obj);
+      this.scriptNode=this.ab.audio.createScriptProcessor(4096,1,1);
+      this.scriptNode.onaudioprocess=(e)=>{
+        this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
+      };
+      this.loaded=true;
     }
-    this.gain=this.ab.audio.createGain();
-    this.sideChainGain=this.ab.audio.createGain();
-    this.gain.value=1.0;
-
-    for(var i=0; i<14; i++){
-      this.scheduled[i]=new Array(16);
-      for(var ii=0; ii<16; ii++){
-        this.scheduled[i][ii]=false;
-      }
-    }
-    for(var i=0; i<14; i++){
-      if(i==0){
-        this.scheduled[i][0]=true;
-        this.scheduled[i][4]=true;
-        this.scheduled[i][8]=true;
-        this.scheduled[i][12]=true;
-        this.scheduled[i][14]=true;
-      }else if(i==1){
-        this.scheduled[i][4]=true;
-        this.scheduled[i][12]=true;
-      }else if (i==2) {
-        this.scheduled[i][2]=true;
-      }else if(i==3){
-        this.scheduled[i][6]=true;
-        this.scheduled[i][10]=true;
-        this.scheduled[i][14]=true;
-      }else if (i==10) {
-        this.scheduled[i][4]=true;
-        this.scheduled[i][6]=true;
-        this.scheduled[i][12]=true;
-      }
-    }
-    this.scriptNode=this.ab.audio.createScriptProcessor(4096,1,1);
-    this.scriptNode.onaudioprocess=(e)=>{
-      this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
-    };
   }
   loadSample(type, i){
     this.http.fetch("audio/roland-tr-33/"+type+".wav")
