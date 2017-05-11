@@ -1,0 +1,39 @@
+<template>
+  <require from="./styles/sidenav.css"></require>
+  <require from="../../../showcases/beatmaker/components/sound-wave"></require>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title"></span>
+    <div class="header" id="profile-header">
+
+      <p class="profile">
+        <img src="images/me.jpg" width="64" height="64" style="border-radius:50px" alt="">
+        <a class="mdl-navigation__link right" id="settings" style="color:#fff; cursor:pointer">
+          <i class="material-icons" style="font-size:32px;margin-right:0px;">info</i>
+        </a>
+
+        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect top-menu"
+            data-mdl-for="settings">
+          <li class="mdl-menu__item" ><a href="https://www.linkedin.com/in/justin-stoner-95160487" target="_blank">LinkedIn</a></li>
+          <li class="mdl-menu__item"><a href="justin-stoner-resume.pdf">Resume</a></li>
+          <li class="mdl-menu__item" ><a href="mailto:justin@heyjust.in">Contact</a></li>
+        </ul>
+      </p>
+      <a class="mdl-navigation__link right" id="play" style="color:#fff; cursor:pointer;z-index:3;position:relative" if.bind="ds.hasPlayed" click.trigger='ds.handlePlay()'>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:0px;">
+          <template if.bind='!ds.playing'>
+            <i class="material-icons mdl-color-text--green-A400" >play_arrow</i>
+          </template>
+          <template if.bind='ds.playing'>
+            <i class="material-icons mdl-color-text--red-500">stop</i>
+          </template>
+        </button>
+      </a>
+      <p class="name">${user.name}</p>
+      <p class="email">${user.email}</p>
+      <sound-wave canvas-id="profile-header" as-header="true"></sound-wave>
+    </div>
+    <nav class="mdl-navigation">
+      <a class="mdl-navigation__link ${row.isActive?'active':''}" repeat.for="row of appRouter.navigation" href="${row.href}"><i class="material-icons">${row.settings.icon}</i>${row.title}</a>
+    </nav>
+  </div>
+</template>

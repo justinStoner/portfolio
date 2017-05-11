@@ -1,0 +1,19 @@
+@import '../../../../styles/mixins';
+table.full-list{
+
+
+}
+@media screen and (max-width: 600px) {
+  table.full-list{
+    display: none;
+  }
+  ul.list-mobile{
+    display: initial;
+  }
+}
+@media screen and (min-width: 601px) {
+
+  ul.list-mobile{
+    display: none !important;
+  }
+}

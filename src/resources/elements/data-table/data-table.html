@@ -1,0 +1,50 @@
+<template>
+  <require from="./styles/data-table.css"></require>
+  <require from="mdl-selectfield/mdl-selectfield.css"></require>
+
+  <div class="data-table-container mdl-shadow--2dp">
+
+    <template if.bind="filter || add">
+      <div class="dt-header">
+        <button class="mdl-button mdl-js-button mdl-button--primary" if.bind="add" click.delegate="createItem()">
+          add
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--icon right"  click.delegate="applyFilters()">
+          <i class="material-icons">filter_lists</i>
+        </button>
+      </div>
+      <div class="mdl-layout-spacer"></div>
+
+    </template>
+    <div class="spinner" if.bind="loading">
+      <div class="mdl-spinner mdl-js-spinner is-active" ></div>
+    </div>
+    <template if.bind="!loading">
+      <!-- oassed in table goes here  -->
+      <compose  view-model="../tables/${model}-table" model.bind="{service:service, fullList:fullList}" containerless></compose>
+    </template>
+    <template if.bind="paginate">
+      <div class="dt-footer">
+        Rows per page:
+        <button id="demo-menu-top-right" class="mdl-button mdl-js-button">
+          ${rows}
+        </button>
+
+        <ul class="mdl-menu mdl-menu--top-right mdl-js-menu mdl-js-ripple-effect"
+            data-mdl-for="demo-menu-top-right">
+          <li class="mdl-menu__item" click.trigger="setRows(5)">5</li>
+          <li class="mdl-menu__item" click.trigger="setRows(10)">10</li>
+          <li class="mdl-menu__item" click.trigger="setRows(15)">15</li>
+          <li class="mdl-menu__item" click.trigger="setRows(20)">20</li>
+        </ul>
+        ${currentIndex+1} - ${currentIndex+service.data.items.length} of ${service.data.totalRecords}
+        <button class="mdl-button mdl-js-button mdl-button--icon" disabled.bind="currentIndex===0" click.delegate="loadItems(currentIndex-rows)">
+          <i class="material-icons">chevron_left</i>
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--icon" disabled.bind="currentIndex+rows>=service.data.totalRecords"click.delegate="loadItems(currentIndex+rows)">
+          <i class="material-icons">chevron_right</i>
+        </button>
+      </div>
+    </template>
+  </div>
+</template>

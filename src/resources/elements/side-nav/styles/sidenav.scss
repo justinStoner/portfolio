@@ -1,0 +1,42 @@
+@import '../../../../styles/variables';
+.header{
+  position: relative;
+  padding: 16px 16px 0;
+
+  background: #ee0979;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  color:#fff;
+  .profile{
+    margin-bottom: 0px;
+    height: 64px;
+    i{
+      font-size: 64px;
+    }
+  }
+  .name{
+    margin-top: 16px;
+    font-weight: 500;
+    margin-bottom: 0px;
+  }
+  .email{
+    padding-bottom: 16px;
+    font-weight: 400;
+    margin-bottom: 0px;
+  }
+}
+.top-menu a{
+  text-decoration: none;
+  color:#2196f3;
+}
+.mdl-navigation__link{
+  padding-left: 16px !important;
+  transition: 0.2s all ease;
+  i{
+    margin-right: 32px;
+  }
+}
+.active{
+  color: #2196f3 !important;
+}

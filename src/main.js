@@ -1,22 +1,20 @@
 import environment from './environment';
-//Configure Bluebird Promises.
-Promise.config({
-  longStackTraces: environment.debug,
-  warnings: {
-    wForgottenReturn: false
-  }
-});
 
+//this file bootstraps the application
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
+    .feature('resources')
     .plugin('aurelia-dialog', config => {
       config.useDefaults();
-      config.settings.lock = false;
+      config.settings.lock = true;
       config.settings.centerHorizontalOnly = false;
-      config.settings.startingZIndex = 1031;
+      config.settings.startingZIndex = 997;
+      config.settings.keyboard = true;
     })
-    .feature('resources');
+    .plugin('aurelia-mdl-plugin', mdl => {
+          mdl.addClasses('mdl-js-selectfield');
+      });
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

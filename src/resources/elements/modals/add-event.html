@@ -1,0 +1,79 @@
+<template>
+  <!-- If I had more time, I would have cleaned up this screen. Right now it just looks like a long list of form inputs -->
+  <require from="material-datetime-picker/material-datetime-picker.css"></require>
+  <require from="../../attributes/date-picker"></require>
+  <require from="../../attributes/time-picker"></require>
+  <div class="mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+       <h2 class="mdl-card__title-text">Create Event</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="name" value.bind="event.name">
+            <label class="mdl-textfield__label" for="name">Name</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" type="text" id="company" value.bind="event.company">
+            <label class="mdl-textfield__label" for="company">Company</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label" for="reg-status">Status</label>
+            <select id="reg-status" class="mdl-textfield__input" value.bind='event.status'>
+              <option value=""></option>
+              <option value="Registration Open">Registration Open</option>
+              <option value="Registration Closed">Registration Closed</option>
+            </select>
+
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <label class="mdl-textfield__label" for="type">Type</label>
+            <select id="type" class="mdl-textfield__input" value.bind='event.type'>
+              <option value=""></option>
+              <option value="Workshop">Workshop</option>
+              <option value="Job Fair">Job Fair</option>
+              <option value="Interview">Interview</option>
+            </select>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet">
+          <div class="mdl-textfield ">
+            <input class="mdl-textfield__input" type="text" id="date-input" value.bind="event.date" date-picker="val.two-way:event.date"/>
+            <label class="mdl-textfield__label" if.bind="event.date.length===0" for="date">Date</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input mdl-timepicker" type="text" value.bind="event.startTime" id="time-start" time-picker/>
+            <label class="mdl-textfield__label" for="start">Start Time</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input mdl-timepicker" type="text" value.bind="event.endTime" id="time-end" time-picker/>
+            <label class="mdl-textfield__label" for="end">End Time</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" id="city" type="text" value.bind="event.city" />
+            <label class="mdl-textfield__label" for="city">city</label>
+          </div>
+          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <input class="mdl-textfield__input" id="street" type="text" value.bind="event.street" />
+            <label class="mdl-textfield__label" for="street">Street</label>
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col">
+          <div class="mdl-textfield mdl-js-textfield">
+            <textarea class="mdl-textfield__input" type="text" rows= "3" id="about" value.bind="event.about"></textarea>
+            <label class="mdl-textfield__label" for="about">About</label>
+          </div>
+        </div>
+      </div>
+      <div class="mdl-card__actions text-right">
+         <button type="button" class='mdl-button mdl-js-button' click.trigger="controller.cancel()">Cancel</button>
+         <!-- OK passes event onto caller, so far that would be data-table.js  -->
+         <button type="button" class='mdl-button mdl-js-button mdl-button--primary' click.trigger="controller.ok(event)">Ok</button>
+      </div>
+    </div>
+
+
+
+  </div>
+</template>

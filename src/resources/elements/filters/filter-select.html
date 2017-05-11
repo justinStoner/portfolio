@@ -1,0 +1,9 @@
+<template>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <label class="mdl-textfield__label" for="reg-status">${model.name}</label>
+    <select id="reg-status" class="mdl-textfield__input" value.bind="model.value">
+      <option value=""></option>
+      <option value.bind="label" repeat.for="label of model.labels">${label}</option>
+    </select>
+  </div>
+</template>

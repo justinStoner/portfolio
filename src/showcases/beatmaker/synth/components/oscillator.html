@@ -1,46 +1,45 @@
 <template>
   <require from='../../components/knob'></require>
   <require from='../../components/mute-button'></require>
-  <div class="grey lighten-3 z-depth-1 b-radius-card row">
-    <p>${type==='Lfo' ? type : type + ' ' + (index+1)}</p>
+  <div class="mdl-shadow--2dp b-radius-card ${type==='Lfo'?'mdl-color--deep-orange-400':'mdl-color--blue-grey-100'}">
      <template if.bind='type!=="Lfo"'>
-       <div class="col s12 m12">
-         <div class="input-field text-center col s6 m6">
+       <div class="mdl-grid">
+         <div class="mdl-cell mdl-cell--12-col">
+           <p>${type + ' ' + (index+1)}</p>
+         </div>
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
            <knob min="0" max="100" label="Mix" val.two-way="osc.volume" offset="222" preset.one-time="preset.volume"></knob>
          </div>
-         <div class="input-field col s6 m6">
-           <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' val.two-way="osc.wave" offset='276' range="180" preset.one-time="preset.wave"></knob>
-         </div>
-       </div>
-       <div class="input-field col s12 m12">
-         <div class="input-field col s6 m6">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
            <knob min='0' max="7" label="Octave" labels="-3,-2,-1,0,1,2,3" val.two-way="osc.octave" offset='222' preset.one-time="preset.octave"></knob>
          </div>
-         <div class="input-field col s6 m6" >
-            <knob min='0' max="100" label="Detune" val.two-way="osc.detune" offset='222' preset.one-time="preset.detune"></knob>
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+           <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' val.two-way="osc.wave" offset='276' range="180" preset.one-time="preset.wave"></knob>
+         </div>
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+           <knob min='0' max="100" label="Detune" val.two-way="osc.detune" offset='222' preset.one-time="preset.detune"></knob>
          </div>
        </div>
      </template>
      <template if.bind='type==="Lfo"'>
-       <div class="col s12 m12">
-       </div>
-       <div class="input-field col s12 m12">
-         <div class="input-field col s4 m4">
+       <div class="mdl-grid">
+         <div class="mdl-cell mdl-cell--12-col">
+           <p>Lfo</p>
+         </div>
+         <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
            <knob min='0' max="20" label="Frequency"  val.two-way="osc.freq" offset='222' preset.one-time="preset.freq"></knob>
          </div>
-         <div class="input-field col s4 m4">
+         <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
            <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' preset.one-time="preset.wave" val.two-way="osc.wave" offset='276' range="180"></knob>
          </div>
-       </div>
-       <div class="input-field col s12 m12">
-         <div class="input-field col s4 m4">
+         <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
            <knob min='0' max="100" label="Osc1"  val.two-way="osc.osc1" offset='222' preset.one-time="preset.osc1"></knob>
          </div>
-         <div class="input-field col s4 m4" >
-            <knob min='0' max="100" label="Osc2" val.two-way="osc.osc2" offset='222' preset.one-time="preset.osc2"></knob>
+         <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+           <knob min='0' max="100" label="Osc2" val.two-way="osc.osc2" offset='222' preset.one-time="preset.osc2"></knob>
          </div>
-         <div class="input-field col s4 m4" >
-            <knob min='0' max="100" label="Osc2" val.two-way="osc.osc2" offset='222' preset.one-time="preset.osc3"></knob>
+         <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+           <knob min='0' max="100" label="Osc3" val.two-way="osc.osc3" offset='222' preset.one-time="preset.osc3"></knob>
          </div>
        </div>
      </template>

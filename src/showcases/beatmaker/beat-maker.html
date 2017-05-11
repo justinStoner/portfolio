@@ -1,23 +1,5 @@
 <template>
-  <require from="./synth/piano"></require>
-  <require from="./sequencer/sequencer"></require>
-  <require from="./components/sound-wave"></require>
-  <require from="./styles/main.css"></require>
-
-  <ul class="tabs showcase-tabs z-depth-1" style="overflow-x:hidden;z-index:998;position:fixed">
-    <li class="tab col s4"><a class="active blue-text" href="#synthtab" click.delegate="tab=0">Synth</a></li>
-    <li class="tab col s4"><a class="blue-text" href="#drumtab" click.delegate="tab=1">Sequencer</a></li>
-  </ul>
-  <div style="margin-top:50px;" id='beatmaker'>
-    <div class="row" style="margin-bottom:15px;">
-      <div id="synthtab" class="col s12" style="padding:0;">
-        <piano is-open.bind="tab"></piano>
-      </div>
-      <div id="drumtab" class="col s12" style="padding:0;">
-        <sequencer is-open.bind="tab"></sequencer>
-      </div>
-    </div>
-  </div>
+  <router-view></router-view>
   <svg style="position:absolute;top:-9999px;">
     <filter id="dropshadow" height="150%" width="150%">
   		<feGaussianBlur in="SourceAlpha" stdDeviation="2"/>

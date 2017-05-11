@@ -1,11 +1,12 @@
 {
-  "name": "portfolio",
+  "name": "12twenty",
   "type": "project:application",
   "platform": {
     "id": "web",
     "displayName": "Web",
     "output": "scripts",
-    "index": "index.html"
+    "index": "index.html",
+    "baseDir": "."
   },
   "transpiler": {
     "id": "babel",
@@ -19,8 +20,8 @@
     "source": "src/**/*.js"
   },
   "markupProcessor": {
-    "id": "none",
-    "displayName": "None",
+    "id": "maximum",
+    "displayName": "Maximum Minification",
     "fileExtension": ".html",
     "source": "src/**/*.html"
   },
@@ -41,11 +42,11 @@
   },
   "paths": {
     "root": "src",
-    "resources": "src/resources",
-    "elements": "src/resources/elements",
-    "attributes": "src/resources/attributes",
-    "valueConverters": "src/resources/value-converters",
-    "bindingBehaviors": "src/resources/binding-behaviors"
+    "resources": "resources",
+    "elements": "resources/elements",
+    "attributes": "resources/attributes",
+    "valueConverters": "resources/value-converters",
+    "bindingBehaviors": "resources/binding-behaviors"
   },
   "testFramework": {
     "id": "jasmine",
@@ -57,7 +58,8 @@
         "id": "web",
         "displayName": "Web",
         "output": "scripts",
-        "index": "index.html"
+        "index": "index.html",
+        "baseDir": "."
       }
     ],
     "loader": {
@@ -71,7 +73,7 @@
             ".html",
             ".css"
           ],
-          "stub": false
+          "stub": true
         }
       ]
     },
@@ -87,11 +89,11 @@
           "**/*.{css,html}"
         ]
       },
-
       {
         "name": "vendor-bundle.js",
         "prepend": [
           "node_modules/bluebird/js/browser/bluebird.core.js",
+          "node_modules/aurelia-cli/lib/resources/scripts/configure-bluebird.js",
           "node_modules/requirejs/require.js",
           "node_modules/whatwg-fetch/fetch.js"
         ],
@@ -99,14 +101,9 @@
           "aurelia-binding",
           "aurelia-bootstrapper",
           "aurelia-dependency-injection",
-          {
-            "name": "aurelia-dialog",
-            "path": "../node_modules/aurelia-dialog/dist/amd",
-            "main": "aurelia-dialog"
-          },
+          "aurelia-fetch-client",
           "aurelia-event-aggregator",
           "aurelia-framework",
-          "aurelia-fetch-client",
           "aurelia-history",
           "aurelia-history-browser",
           "aurelia-loader",
@@ -123,6 +120,9 @@
           "aurelia-task-queue",
           "aurelia-templating",
           "aurelia-templating-binding",
+          "moment",
+          "jquery",
+          "text",
           {
             "name": "chartjs",
             "path": "../node_modules/chart.js/",
@@ -132,15 +132,6 @@
             "name": "jquery-knob",
             "path": "../node_modules/jim-knopf/dist/",
             "main": "knob-min"
-          },
-          "text",
-          {
-            "name": "materialize-css",
-            "path": "../node_modules/materialize-css/dist/css",
-            "resources":[
-              "materialize.min.css"
-            ],
-            "exports": "mtJQ"
           },
           {
             "name": "aurelia-templating-resources",
@@ -157,6 +148,65 @@
             "path": "../node_modules/aurelia-testing/dist/amd",
             "main": "aurelia-testing",
             "env": "dev"
+          },
+          {
+            "name": "aurelia-dialog",
+            "path": "../node_modules/aurelia-dialog/dist/amd",
+            "main": "aurelia-dialog"
+          },
+          {
+            "name": "material-design-lite",
+            "path": "../node_modules/material-design-lite/dist",
+            "main": "material.min",
+            "resources": [
+                "material.blue-amber.min.css"
+            ]
+          },
+          {
+            "name": "aurelia-mdl-plugin",
+            "path": "../node_modules/aurelia-mdl-plugin/dist/amd",
+            "main": "index"
+          },
+          {
+            "name": "mdl-selectfield",
+            "path": "../node_modules/mdl-selectfield/dist",
+            "main": "mdl-selectfield",
+            "resources": [
+                "mdl-selectfield.css"
+            ]
+          },
+          {
+            "name": "rome",
+            "path": "../node_modules/rome/dist",
+            "main": "rome",
+            "resources": [
+              "rome.css"
+            ]
+          },
+          {
+            "name": "material-datetime-picker",
+            "path": "../node_modules/material-datetime-picker/dist",
+            "main": "material-datetime-picker",
+            "resources": [
+              "material-datetime-picker.css"
+            ]
+          },
+          {
+            "name": "material-pickers-time",
+            "path": "../node_modules/material-pickers-time/dist",
+            "main": "js/timepicker",
+            "resources": [
+              "css/timepicker.css"
+            ]
+          },
+          {
+            "name": "mdl-datepicker",
+            "path": "../node_modules/ugosansh-mdl-datepicker/dist",
+            "main": "datepicker.min",
+            "deps" : ["moment"],
+            "resources":[
+              "datepicker.min.css"
+            ]
           }
         ]
       }

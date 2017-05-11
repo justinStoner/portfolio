@@ -1,19 +1,24 @@
 <template>
-  <div class="blue white-text center-align b-radius" css="margin-bottom:15px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}">
-    <p class="center-align" css="${inline===true?'margin-bottom:8px;':''}">${label}</p>
-    <div class="right">
-      <div class="btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3" click.delegate="add()" style="float:none;display:block;height:1.5rem;line-height:1;">
-        <i class="material-icons" style="line-height:1;">add</i>
-      </div>
-      <div class="btn btn-flat btn-sm waves-effect waves-green green-text text-accent-3" click.delegate="minus()" style="float:none;display:block;height:1.5rem;line-height:1;">
-        <i class="material-icons" style="line-height:1;">remove</i>
+  <div class="mdl-color--blue-500 mdl-color-text--white center-align b-radius" css="margin-bottom:12px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}padding:8px 16px 8px 16px;">
+
+    <div class="">
+      <p class="text-left" css="margin-bottom:0;display:${!inline?'inline-block':'block'};width:33%;">
+        ${label}
+      </p>
+      <input class="mdl-textfield__input text-center" type="number" value.bind="val" style="width:auto;display:inline-block;width:30px;border-bottom:1px solid #fff;">
+
+      <div class="${!inline?'right':''}">
+        <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
+          <i class="material-icons">remove</i>
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--icon" style="" click.delegate="add()">
+          <i class="material-icons">add</i>
+        </button>
       </div>
     </div>
-    <div class="file-field input-field" >
-      <div class="file-path-wrapper" style="padding:0;">
-        <input type="text" class="center-align" style="margin:0;border:none;" value.bind="val" change.delegate="change()">
-      </div>
-    </div>
+
   </div>
-  <div class="ui-range" if.bind="noslider!==true"></div>
+  <p  style="margin-bottom:0px;" if.bind="noSlider">
+    <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="${min}" max="${max}" value.bind="val" step="1">
+  </p>
 </template>

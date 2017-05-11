@@ -7,6 +7,15 @@ form.col.s12{
   }
 
 }
+#sequencer-controller{
+  p{
+    color:#fff;
+  }
+}
+#sequencer-mixer,
+#sequencer-notes{
+  width:100%;
+}
 @media only screen and (max-width: 600px){
   tr>td{
     padding: 5px 1px;

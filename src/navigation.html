@@ -1,0 +1,26 @@
+<template>
+  <require from="./resources/elements/side-nav/side-nav"></require>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-drawer">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+
+      <span class="mdl-layout-title">${appRouter.router.currentInstruction.config.title}</span>
+
+      <div class="mdl-layout-spacer"></div>
+
+      <nav class="mdl-navigation" if.bind="appRouter.beatmakerSet">
+        <a class="mdl-navigation__link ${row.isActive?'nav-active':''}" repeat.for="row of appRouter.beatMaker" href="${row.href}">
+          ${row.title}
+        </a>
+
+      </nav>
+    </div>
+  </header>
+  <side-nav containerless></side-nav>
+  <main class="mdl-layout__content" style="background:#e0e0e0;">
+    <div class="page-content">
+      <slot></slot>
+    </div>
+  </main>
+</div>
+</template>

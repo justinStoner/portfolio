@@ -1,97 +1,148 @@
 <template>
-  <div class="row topimg light-blue" style="">
-    <div class="col s12 center-align" style="">
-      <div>
-        <h1 style="margin-bottom:5px;">All Things Front End</h1>
-        <p style="margin-top:5px;color:#bdbdbd" >(And More)</p>
-        <h4 style="margin-bottom:5px;">Hey, I'm Justin, a Front End Developer.</h4>
-        <h4 style="margin-bottom:10px;">And this is my website about making websites.</h4>
+  <!-- <div class="mdl-grid" style="padding:0px;">
+    <div class="topimg" style="">
+      <div class="text-center" style="">
+          <h1 style="margin-bottom:5px;">All Things Front End</h1>
+          <p style="margin-top:5px;color:#bdbdbd" >(And More)</p>
+          <h4 style="margin-bottom:5px;">Hey, I'm Justin, a Front End Developer.</h4>
+          <h4 style="margin-bottom:10px;">And this is my website about making websites.</h4>
+      </div>
 
+    </div>
+  </div> -->
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col">
+      <div class="topimg mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title mdl-card--expand text-center">
+          <div class="text-center" style="margin:0 auto;color:#fff;">
+              <h1 style="margin-bottom:5px;">All Things Front End</h1>
+              <p style="margin-top:5px;" >(And More)</p>
+              <h4 style="margin-bottom:5px;">Hey, I'm Justin, a Front End Developer.</h4>
+              <h4 style="margin-bottom:10px;">And this is my website about making websites.</h4>
+          </div>
+        </div>
+        <div class="mdl-card__actions">
+          <span class="demo-card-image__filename"></span>
+        </div>
       </div>
     </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      <div class="mdl-card mdl-shadow--2dp" style="width:100%">
+        <div class="mdl-card__title" id="who-am-i">
+          <h2 class="mdl-card__title-text">Who am I?</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          I'm a front end developer at AlterMedia, where we make the worlds leading Studio Management Software. I studied computer science at College of the Canyons.
+          <p class="mdl-color-text--grey" style="margin-top:5px;">Please be aware this website is very new and still a work in progress. Suggestions? &nbsp;<a class="" href="mailto:justin@heyjust.in">Email me</a></p>
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <!-- Tab Bars -->
+            <div class="mdl-tabs__tab-bar">
+                <a href="#exp-panel" class="mdl-tabs__tab is-active">Experience</a>
+                <a href="#edu-panel" class="mdl-tabs__tab">Education</a>
+            </div>
+
+            <!-- MDL tab panels, is-active to denote currently active -->
+            <div class="mdl-tabs__panel is-active" id="exp-panel">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col">
+                  <h5 class="text-center">WebGlancer</h5>
+                  In the last 5 years at AlterMedia, I've converted the front end of a jQuery/PHP system back from the old days of web development over to Angular 1.5 and created a REST api for it in PHP.
+                   Later, around the time Angular 2 came out, we decided to switch the front end to Aurelia instead and are very happy with it. I am now finishing up migrating the backend over to Node and Express.
+                   I also designed much of the interface and maintained multiple versions of the product.
+                </div>
+                <div class="mdl-cell mdl-cell--6-col text-center" >
+                  <h5 class="text-center">WordPress</h5>
+                  I maintain the companies website at &nbsp;<a href="https://studiosuite.com">studiosuite.com</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- MDL Tab panel 2 -->
+            <div class="mdl-tabs__panel" id="edu-panel">
+              <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--6-col">
+                  <h5 class="text-center">College of the Canyons</h5>
+                  I've finished computer science at College of the Canyons, but I have a few math classes to take before I can transfer.
+                </div>
+                <div class="mdl-cell mdl-cell--6-col text-center" >
+                  <h5 class="text-center">ACM Club</h5>
+                  Founding member of an ACM club chaper at COC
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="mdl-card__menu">
+
+        </div>
+      </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      <div class="mdl-card mdl-shadow--2dp" style="width:100%">
+        <div class="mdl-card__title" id="skills" style="padding:0px 16px;">
+          <canvas id="skills-container"  width="200" height="200"></canvas>
+          <h2 class="mdl-card__title-text">Skills</h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+          <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <!-- Tab Bars -->
+            <div class="mdl-tabs__tab-bar">
+                <a href="${'#skill'+$index}" class="mdl-tabs__tab ${skillIndex===$index?'is-active':''}" click.delegate="changeSkill(skill, $index)" repeat.for="skill of skills">${skill.name}</a>
+                <!-- <a href="#html-panel" class="mdl-tabs__tab">Html</a>
+                <a href="#css-panel" class="mdl-tabs__tab ">Css</a>
+                <a href="#aur-panel" class="mdl-tabs__tab">Aurelia</a>
+                <a href="#ang-panel" class="mdl-tabs__tab ">Angular</a>
+                <a href="#rct-panel" class="mdl-tabs__tab">React</a>
+                <a href="#node-panel" class="mdl-tabs__tab ">Node</a>
+                <a href="#exp-panel" class="mdl-tabs__tab">Express</a>
+                <a href="#php-panel" class="mdl-tabs__tab ">Php</a> -->
+            </div>
+            <div class="mdl-grid">
+
+
+                <div class="mdl-cell mdl-cell--6-col text-left" repeat.for="skill of activeSkill.skills">
+                  <h5>${skill.name}</h5>
+                  <p>${skill.description}</p>
+                </div>
+
+            </div>
+            <!-- MDL tab panels, is-active to denote currently active -->
+
+            <!-- MDL Tab panel 2 -->
+            <div class="mdl-tabs__panel" id="skill0">
+            </div>
+            <div class="mdl-tabs__panel" id="skill1">
+            </div>
+            <div class="mdl-tabs__panel" id="skill2">
+            </div>
+            <div class="mdl-tabs__panel" id="skill3">
+            </div>
+            <div class="mdl-tabs__panel" id="skill4">
+            </div>
+            <div class="mdl-tabs__panel" id="skill5">
+            </div>
+            <div class="mdl-tabs__panel" id="skill6">
+            </div>
+            <div class="mdl-tabs__panel" id="skill7">
+            </div>
+
+          </div>
+        </div>
+        <div class="mdl-card__menu">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-grid pane1">
 
   </div>
-  <div class="row z-depth-1 pane1" style="">
-    <div class="col s12">
-      <div class="card">
-        <div class="card-image green accent-3" style="padding:15px;">
-          <div class="row" style="margin:0">
-            <div class="fixed-action-btn horizontal" style="position:absolute;display:inline-block;">
-              <a class="btn-floating btn-large blue">
-                <i class="large material-icons">chat_bubble</i>
-              </a>
-              <ul>
 
-                <li title="Linked In"><a class="btn-floating yellow darken-1" href="https://www.linkedin.com/in/justin-stoner-95160487"><i class="material-icons">account_circle</i></a></li>
-                <li title="Download Resume"><a class="btn-floating green" href="justin-stoner-resume.pdf"><i class="material-icons">insert_drive_file</i></a></li>
-                <li title="Email"><a class="btn-floating blue" href="mailto:justin@heyjust.in"><i class="material-icons">mail</i></a></li>
-              </ul>
-            </div>
-            <div class="me-img left"></div>
-            <p style="color:#fff;font-size:24px;margin:0;padding:18px;">Who Am I?
+  <!-- <div class="row z-depth-1 pane1" style="">
 
-            </p>
-          </div>
-
-        </div>
-        <div class="card-content">
-          I'm a front end developer at AlterMedia, where we make the worlds leading Studio Management Software. I studied computer science at College of the Canyons.
-          <p class="grey-text" style="margin-top:5px;">Please be aware this website is very new and still a work in progress. Suggestions? <a class="" href="mailto:justin@heyjust.in">Email me</a></p>
-        </div>
-        <div class="card-tabs">
-          <ul class="tabs">
-            <li class="tab tabs-fixed-width"><a class="${skillIndex===$index?'active ':''}blue-text" href="#exp">Experience</a></li>
-            <li class="tab tabs-fixed-width"><a class="${skillIndex===$index?'active ':''}blue-text" href="#edu">Education</a></li>
-          </ul>
-        </div>
-        <div class="card-content grey lighten-2">
-          <div id="exp">
-            <div class="row">
-              <div class="col s12 l6 center-align" style="padding:0 5px 0 0">
-                <h5 class="center-align">WebGlancer</h5>
-                In the last 5 years at AlterMedia, I've converted the front end of a jQuery/PHP system back from the old days of web development over to Angular 1.5 and created a REST api for it in PHP.
-                 Later, around the time Angular 2 came out, we decided to switch the front end to Aurelia instead and are very happy with it. I am now finishing up migrating the backend over to Node and Express.
-                 I also designed much of the interface and maintained multiple versions of the product.
-              </div>
-              <div class="col s12 l6 center-align" style="padding:0">
-                <h5 class="center-align">WordPress</h5>
-                I maintain the companies website at <a href="https://studiosuite.com">studiosuite.com</a>
-              </div>
-            </div>
-          </div>
-          <div id="edu">
-            I've finished computer science at College of the Canyons, but I have a few math classes to take before I can transfer.
-          </div>
-
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content blue white-text">
-          <p>Skills </p>
-        </div>
-        <div class="card-tabs">
-          <ul class="tabs blue">
-            <li class="tab tabs-fixed-width" repeat.for="skill of skills" click.delegate="changeSkill(skill, $index)"><a class="${skillIndex===$index?'active':''} white-text" href="${'#skill'+$index}">${skill.name}</a></li>
-          </ul>
-        </div>
-        <div class="card-content">
-          <div class="row">
-            <div class="left">
-              <canvas id="skills-container"  width="200" height="200"></canvas>
-            </div>
-            <div class="" style="">
-              <p style="margin-bottom:5px;">${activeSkill.name+': '}${activeSkill.value}/100</p>
-              <p class="skill-descripion">${activeSkill.description}</p>
-            </div>
-          </div>
-          <div id="skill0"></div>
-
-        </div>
-      </div>
-    </div>
-    </div>
     <div class="row grey darken-2 pane2">
       <p style="color:#fff;">Contact: justin@heyjust.in | <a href="https://www.linkedin.com/in/justin-stoner-95160487">Linked In</a></p>
     </div>
-  </div>
+  </div> -->
 </template>

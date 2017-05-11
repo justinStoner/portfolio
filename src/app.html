@@ -1,17 +1,11 @@
 <template>
-  <require from="materialize-css/materialize.min.css"></require>
+  <require from="material-design-lite/material.blue-amber.min.css"></require>
+  <require from="material-pickers-time/css/timepicker.css"></require>
+  <require from="mdl-datepicker/datepicker.min.css"></require>
   <require from="./styles/main.css"></require>
-  <div class="navbar-fixed ">
-    <nav>
-      <div class="nav-wrapper blue">
-        <a href="#/" class="brand-logo"><span>Justin Stoner</span></a>
-        <ul class="right">
-          <li repeat.for="row of router.navigation" class="${row.isActive?'active':''} waves-effect waves-light"><a href="${row.href}">${row.title}</a></li>
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div style="overflow:auto;">
+  <require from="./navigation"></require>
+  <navigation>
+    <!-- where aurelia puts the routed views -->
     <router-view></router-view>
-  </div>
+  </navigation>
 </template>

@@ -1,6 +1,6 @@
-export class Showcase{
-  constructor(){
-
+export class Showcase {
+  constructor() {
+    this.message = 'Hello world';
   }
   configureRouter(config, router){
     config.map([

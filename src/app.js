@@ -1,18 +1,13 @@
-import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject} from 'aurelia-framework';
-@inject(EventAggregator)
+import {EventAggregator} from 'aurelia-event-aggregator';
+import {AppRouter} from './app-router';
+@inject(EventAggregator, AppRouter)
 export class App {
-  constructor(ea) {
+  constructor(ea, appRouter) {
     this.ea=ea;
+    this.appRouter=appRouter;
   }
-  activate(){
 
-  }
-  attached(){
-    window.addEventListener('resize', ()=>{
-      this.ea.publish('resize');
-    });
-  }
   configureRouter(config, router){
     console.log('1');
     config.title="Justin Stoner";
@@ -21,6 +16,12 @@ export class App {
       // { route: 'work',  name: 'work',      moduleId: 'work',      nav: true, title:'Work', auth:false, href:'#/work'},
       { route: 'showcase',  name: 'showcase',      moduleId: 'showcase',      nav: true, title:'Showcase', auth:false }
     ]);
-    this.router=router;
+    this.appRouter.setRouter(router);
+    console.log(this.appRouter);
+  }
+  attached(){
+    window.addEventListener('resize', ()=>{
+      this.ea.publish('resize');
+    });
   }
 }
