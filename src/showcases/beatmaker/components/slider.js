@@ -54,22 +54,26 @@ export class Slider{
     //   })
     // }
   }
-  change(slider=true){
-    if(slider){
-      this.range.noUiSlider.set(this.val);
-    }
+  change(){
+
     if(this.channel){
       this.ea.publish(this.channel, this.val);
     }
   }
   add(){
     this.val++;
+    if(this.channel){
+      this.ea.publish(this.channel, this.val);
+    }
 
   }
   minus(){
     this.val--;
     if(this.val<0){
       this.val=0;
+    }
+    if(this.channel){
+      this.ea.publish(this.channel, this.val);
     }
   }
 

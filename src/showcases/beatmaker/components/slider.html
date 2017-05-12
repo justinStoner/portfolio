@@ -5,7 +5,7 @@
       <p class="text-left" css="margin-bottom:0;display:${!inline?'inline-block':'block'};width:33%;">
         ${label}
       </p>
-      <input class="mdl-textfield__input text-center" type="number" value.bind="val" style="width:auto;display:inline-block;width:30px;border-bottom:1px solid #fff;">
+      <input class="mdl-textfield__input text-center" type="number" change.delegate="change()" value.bind="val" style="width:auto;display:inline-block;width:30px;border-bottom:1px solid #fff;">
 
       <div class="${!inline?'right':''}">
         <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
