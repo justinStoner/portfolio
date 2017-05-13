@@ -22,16 +22,16 @@
             <p>Filter</p>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-            <knob min="0" max="200" label="Cutoff" val.two-way="synth.lpfCutoff" preset.one-time="synth.lpfCutoff" channel='lpfCutoff'></knob>
+            <knob min="0" max="200" label="Cutoff" preset.one-time="synth.lpfCutoff" channel='lpfCutoff'></knob>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-            <knob min="0" max="20" label="Q" val.two-way="synth.lpfQ" preset.one-time="synth.lpfQ"></knob>
+            <knob min="0" max="20" label="Q" channel='lpfQ' preset.one-time="synth.lpfQ"></knob>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-            <knob min="0" max="100" label="Mod" val.two-way="synth.lpfMod" preset.one-time="synth.lpfMod"></knob>
+            <knob min="0" max="100" label="Mod" channel='lpfMod' preset.one-time="synth.lpfMod"></knob>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-            <knob min="0" max="100" label="Env" val.two-way="synth.lpfEnv" preset.one-time="synth.lpfEnv"></knob>
+            <knob min="0" max="100" label="Env"  channel='lpfEnv' preset.one-time="synth.lpfEnv"></knob>
           </div>
           <div class="mdl-cell mdl-cell--12-col">
             <p>Envelope</p>
@@ -64,10 +64,15 @@
             <knob min="0" max="100" label="Reverb" val.two-way="synth.lpfD" canvas.bind="true" preset.one-time="synth.lpfA"></knob>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-            <knob id="soundwave" min="0" max="100" label="Volume" canvas.bind="true" val.two-way="synth.masterVol" preset.one-time="synth.masterVol"></knob>
+            <knob id="soundwave" min="0" max="100" label="Volume" canvas.bind="true" channel='synthvol' preset.one-time="synth.masterVol"></knob>
           </div>
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-phone mdl-cell--2-col-tablet text-center" style="padding-top:28px;">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${ab.showVisualizer?'mdl-color-text--green-A400 mdl-color--white':'mdl-color--green-A400 mdl-color-text--white'}" click.trigger="ab.showVisualizer=!ab.showVisualizer" id='visualizer'>
+              <i class="material-icons">graphic_eq</i>
+            </button>
+            <div class="mdl-tooltip mdl-tooltip--large" data-mdl-for="visualizer">
+              ${ab.showVisualizer?'Hide visualizer':'Show visualizer'}
+              </div>
           </div>
           <div class="mdl-cell mdl-cell--12-col">
             <p>Envelope</p>
@@ -86,7 +91,7 @@
           </div>
         </div>
       </div>
-      <sound-wave ab.bind='ab' canvas-id='synthfilter'></sound-wave>
+      <sound-wave ab.bind='ab' canvas-id='synthfilter' if.bind="ab.showVisualizer"></sound-wave>
     </div>
     <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--3-col-tablet">
       <equalizer></equalizer>

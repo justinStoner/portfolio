@@ -12,6 +12,7 @@ export class AudioBus{
     this.dataArray = new Uint8Array(this.bufferLength);
     this.synthOut=this.audio.createGain();
     this.synthOut.gain.value=0.6;
+    this.showVisualizer=false;
     this.input=this.audio.createGain();
     this.output=this.audio.createGain();
     this.synthIn=this.audio.createGain();

@@ -30,7 +30,7 @@
       </a>
       <p class="name">Justin Stoner</p>
       <p class="email">justin@heyjust.in</p>
-      <sound-wave canvas-id="profile-header" as-header="true"></sound-wave>
+      <sound-wave canvas-id="profile-header" as-header="true" if.bind="ab.showVisualizer"></sound-wave>
     </div>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link ${row.isActive?'active':''}" repeat.for="row of appRouter.navigation" href="${row.href}"><i class="material-icons">${row.settings.icon}</i>${row.title}</a>
