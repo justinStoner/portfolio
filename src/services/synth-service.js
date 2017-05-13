@@ -100,32 +100,31 @@ export class SynthService{
       this.stopKey(msg.index);
     });
     this.ea.subscribe('lpfCutoff', msg=>{
+      this.lpfCutoff=msg;
       for(var i=0;i<this.notes.length;i++){
         this.notes[i]['f1'].frequency.value = msg*100;
         this.notes[i]['f2'].frequency.value = msg*100;
       }
     })
     this.ea.subscribe('lpfQ', msg=>{
+      this.lpfQ=msg
       for(var i=0;i<this.notes.length;i++){
-        this.notes[i]['f1'].Q.value = this.lpfQ;
-        this.notes[i]['f2'].Q.value = this.lpfQ;
+        this.notes[i]['f1'].Q.value = msg;
+        this.notes[i]['f2'].Q.value = msg;
       }
     })
     this.ea.subscribe('lpfMod', msg=>{
+      this.lpfMod=msg;
       for(var i=0;i<this.notes.length;i++){
         this.notes[i].modfilterGain.gain.value=msg*24;
       }
     })
-    this.ea.subscribe('lpfEnv', msg=>{
-      for(var i=0;i<this.notes.length;i++){
-        this.notes[i]['f1'].frequency.value = msg*100;
-        this.notes[i]['f2'].frequency.value = msg*100;
-      }
-    })
+
     this.ea.subscribe('synthvol', msg=>{
       this.master.gain.value=msg/50;
     })
     this.ea.subscribe('lfofreq', msg=>{
+      this.lfoData.freq=msg;
       for(var i=0;i<this.notes.length;i++){
         this.notes[i].lfo.frequency.value=msg;
       }
