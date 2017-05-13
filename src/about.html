@@ -98,14 +98,11 @@
                 <a href="#exp-panel" class="mdl-tabs__tab">Express</a>
                 <a href="#php-panel" class="mdl-tabs__tab ">Php</a> -->
             </div>
-            <div class="mdl-grid" style="min-height:332px;">
-
-
-                <div class="mdl-cell mdl-cell--6-col text-left" repeat.for="skill of activeSkill.skills">
-                  <h5>${skill.name}</h5>
-                  <p>${skill.description}</p>
-                </div>
-
+            <div class="mdl-grid" style="min-height:364px;">
+              <div class="mdl-cell mdl-cell--6-col text-left" repeat.for="skill of activeSkill.skills">
+                <h5>${skill.name}</h5>
+                <p>${skill.description}</p>
+              </div>
             </div>
             <!-- MDL tab panels, is-active to denote currently active -->
 

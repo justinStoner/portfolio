@@ -18,7 +18,7 @@ export class AudioBus{
     this.drumsIn=this.audio.createGain();
     this.createEq();
     this.createDelay();
-    this.createCompressor();
+    this.compressor=this.createCompressor();
     this.connect();
     this.compressionOn=true;
     this.delayOn=true;
@@ -184,12 +184,13 @@ export class AudioBus{
   }
 
   createCompressor(){
-    this.compressor = this.audio.createDynamicsCompressor();
-    this.compressor.threshold.value = -55;
-    this.compressor.knee.value = 28;
-    this.compressor.ratio.value = 4;
-    this.compressor.attack.value = 0.1;
-    this.compressor.release.value = 0.1;
+    var compressor = this.audio.createDynamicsCompressor();
+    compressor.threshold.value = -55;
+    compressor.knee.value = 28;
+    compressor.ratio.value = 4;
+    compressor.attack.value = 0.1;
+    compressor.release.value = 0.1;
+    return compressor;
   }
 
 }

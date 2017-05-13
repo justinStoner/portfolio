@@ -53,22 +53,22 @@ export class About{
           {
             name:'CSS',
             value:90,
-            description:'5 years of designing responsive web apps using bootstrap as well as CSS preprocessors such as Sass. I found out about Materialize Css about a year ago and now I use that for all new projects. This site is using Materialize.'
+            description:'5 years of designing responsive web apps using bootstrap as well as CSS preprocessors such as Sass.'
           },
           {
             name:'Bootstrap',
             value:90,
-            description:''
+            description:'The OG CSS framework'
           },
           {
             name:'Materialize-css',
             value:80,
-            description:''
+            description:'I loved Materialize-css until I discovered Material-design-lite'
           },
           {
             name:'Material-design-lite',
             value:70,
-            description:'Im new to this library, but so far its my favorite over bootstrap and the others'
+            description:'Im new to this framework, but so far it\'s my favorite over bootstrap and the others. This site is using Material-design-lite'
           }
         ]
       },
@@ -170,15 +170,16 @@ export class About{
 
 
 }
-  changeSkill(i,ii){
-    this.activeSkill=i;
-    this.skillIndex=ii;
+  changeSkill(skill, index){
+    this.activeSkill=skill;
+    this.skillIndex=index;
     var ctx = document.getElementById("skills-container").getContext('2d');
     var datasets=[];
-    for(var i=0; i<this.activeSkill.skills.length;i++){
+    var arr=skill.skills;
+    for(var i=0; i<arr.length;i++){
       datasets.push({
-        label:this.activeSkill.skills[i].name,
-        data:[this.activeSkill.skills[i].value],
+        label:arr[i].name,
+        data:[arr[i].value],
         backgroundColor:this.colors[i]
       });
     }

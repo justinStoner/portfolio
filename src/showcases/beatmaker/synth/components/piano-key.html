@@ -1,6 +1,6 @@
 <template>
   <div class="col s1 key ${key.color===true?'white':'black-key'}" tabindex="0" mousedown.trigger="play()" mouseup.delegate="stop()" touchstart.trigger="play()" touchend.delegate="stop()">
-    <div class="${playing?' mdl-shadow--2dp':' mdl-shadow--4dp'}"  >
+    <div class="${playing?' mdl-shadow--2dp mdl-color--grey':' mdl-shadow--4dp'}"  >
       <h1 class="mdl-cell--hide-phone mdl-cell--hide-tablet">${key.key}</h1>
       <h1 class="mdl-cell--hide-desktop">${key.note}</h1>
     </div>
