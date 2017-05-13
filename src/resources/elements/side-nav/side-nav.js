@@ -7,9 +7,5 @@ export class SideNav {
   constructor(appRouter, ds) {
     this.appRouter=appRouter;
     this.ds=ds;
-    this.user={
-      name:'Justin Stoner',
-      email:'justin@heyjust.in'
-    }
   }
 }

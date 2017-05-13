@@ -77,7 +77,6 @@ export class SoundWave{
     this.canvasCtx.beginPath();
     this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
     this.x = 0;
-    var y,v;
     for(var i = 0; i < this.ab.bufferLength; i++) {
       this.v = this.ab.dataArray[i] / 128.0;
       this.y = this.v * this.canvas.height/2;
