@@ -1,16 +1,15 @@
 import {inject} from 'aurelia-framework';
 import {bindable} from 'aurelia-framework';
-import {Piano} from '../piano';
 import {EventAggregator} from 'aurelia-event-aggregator';
 
-@inject(Element, Piano, EventAggregator)
+@inject(Element, EventAggregator)
 export class PianoKeyCustomElement{
   @bindable key;
   @bindable assigned;
   @bindable playing
   @bindable index;
 
-  constructor(element, piano, ea){
+  constructor(element, ea){
     this.element=element;
     this.ea=ea;
   }

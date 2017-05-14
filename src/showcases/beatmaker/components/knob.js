@@ -113,14 +113,17 @@ Ui.Scale.prototype.createElement = function(parentEl) {
   if (this.options.drawScale) {
     if(!this.options.labels){
       var step = this.options.anglerange / this.options.steps;
-      var end = this.options.steps + (this.options.anglerange == 360 ? 0 : 1);
+      var end = this.options.steps + 1;
+      var width = this.width/2;
+      var height = this.height/2;
       this.ticks = [];
       var Shape = this.options.type;
+      var rect;
       for (var i = 0; i < end; i++) {
-        var rect = new Shape(this.options.tickWidth, this.options.tickHeight, this.width / 2, -2);
+        rect = new Shape(this.options.tickWidth, this.options.tickHeight, width, -2);
         rect.node.setAttribute('rx', 1);
         rect.node.setAttribute('ry', 1);
-        rect.rotate(this.startAngle + i * step, this.width / 2, this.height / 2);
+        rect.rotate(this.startAngle + i * step, width, height);
         this.el.append(rect);
         this.ticks.push(rect);
       }

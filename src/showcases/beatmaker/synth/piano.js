@@ -1,18 +1,15 @@
 import {AudioBus} from '../components/audio-bus';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject, bindable} from 'aurelia-framework';
-import {DialogService} from 'aurelia-dialog';
-import {EditEffects} from '../components/edit-effects';
 import {SynthService} from '../../../services/synth-service';
-@inject(AudioBus, EventAggregator, DialogService, SynthService)
+@inject(AudioBus, EventAggregator, SynthService)
 export class Piano{
   @bindable isOpen
-  constructor(ab, ea, dialog, synth){
+  constructor(ab, ea, synth){
     this.ab=ab;
     this.ea=ea;
     this.audio=this.ab.audio;
     this.synth=synth;
-    this.dialog=dialog;
 
     /*
     Working towards midi support
@@ -48,15 +45,6 @@ export class Piano{
 
 
   }
-  openEffects(){
-    this.dialog.open({
-      viewModel:EditEffects,
-      lock:false,
-      model:'effects'
-    }).then(res=>{
-      console.log(res);
-    })
-  }
   activate(a,b,c){
 
   }
@@ -68,10 +56,4 @@ export class Piano{
 
   }
 
-}
-
-export class UpperValueConverter {
-  toView(value){
-    return value && value.toUpperCase();
-  }
 }

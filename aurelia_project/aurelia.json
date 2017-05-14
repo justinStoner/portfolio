@@ -150,11 +150,6 @@
             "env": "dev"
           },
           {
-            "name": "aurelia-dialog",
-            "path": "../node_modules/aurelia-dialog/dist/amd",
-            "main": "aurelia-dialog"
-          },
-          {
             "name": "material-design-lite",
             "path": "../node_modules/material-design-lite/dist",
             "main": "material.min",
@@ -173,39 +168,6 @@
             "main": "mdl-selectfield",
             "resources": [
                 "mdl-selectfield.css"
-            ]
-          },
-          {
-            "name": "rome",
-            "path": "../node_modules/rome/dist",
-            "main": "rome",
-            "resources": [
-              "rome.css"
-            ]
-          },
-          {
-            "name": "material-datetime-picker",
-            "path": "../node_modules/material-datetime-picker/dist",
-            "main": "material-datetime-picker",
-            "resources": [
-              "material-datetime-picker.css"
-            ]
-          },
-          {
-            "name": "material-pickers-time",
-            "path": "../node_modules/material-pickers-time/dist",
-            "main": "js/timepicker",
-            "resources": [
-              "css/timepicker.css"
-            ]
-          },
-          {
-            "name": "mdl-datepicker",
-            "path": "../node_modules/ugosansh-mdl-datepicker/dist",
-            "main": "datepicker.min",
-            "deps" : ["moment"],
-            "resources":[
-              "datepicker.min.css"
             ]
           }
         ]
