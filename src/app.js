@@ -12,9 +12,9 @@ export class App {
     console.log('1');
     config.title="Justin Stoner";
     config.map([
-      { route: ['', 'about'],  name: 'about', moduleId: 'about', href:'#/about', nav: true, title:'About' },
+      { route: ['', 'about'],  name: 'about', moduleId: 'about', href:'#/about', nav: true, title:'About', settings:{icon:'person'}},
       // { route: 'work',  name: 'work',      moduleId: 'work',      nav: true, title:'Work', auth:false, href:'#/work'},
-      { route: 'showcase',  name: 'showcase',      moduleId: 'showcase',      nav: true, title:'Showcase', auth:false }
+      { route: 'showcase',  name: 'showcase',      moduleId: 'showcase',      nav: true, title:'Showcase', settings:{icon:'whatshot'} }
     ]);
     this.appRouter.setRouter(router);
     console.log(this.appRouter);
