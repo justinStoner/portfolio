@@ -276,8 +276,11 @@ export class DrumService{
       this.rhythmIndex++;
       if (this.rhythmIndex == this.loopLength) {
           this.rhythmIndex = 0;
+          this.notePlaying++;
+      }else{
+        this.notePlaying=this.rhythmIndex;
       }
-      this.notePlaying=this.rhythmIndex;
+
       this.noteTime += 0.25 * (60.0 / this.tempo);
   }
 }

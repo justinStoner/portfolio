@@ -44,9 +44,18 @@ export class SynthService{
     this.modMult=10;
     this.master = this.ab.audio.createGain();
     this.master.gain.value=this.masterVol/50;
-
     this.master.connect(this.ab.synthIn);
-
+    this.effectsIn = this.ab.audio.createGain();
+    this.effectsIn.gain.value=1;
+    this.effectsOut = this.ab.audio.createGain();
+    this.effectsOut.gain.value=1;
+    this.createEq();
+    this.createDelay();
+    this.compressor=this.ab.createCompressor();
+    this.connect();
+    this.compressionOn=true;
+    this.delayOn=true;
+    this.eqOn=true;
     this.lpfCutoff = 10;
     this.lpfQ = 10.0;
     this.lpfMod = 13;
@@ -91,44 +100,7 @@ export class SynthService{
     window.addEventListener('keydown', this.play.bind(this));
     window.addEventListener('keyup', this.stop.bind(this));
 
-    this.ea.subscribe('play-key', msg=>{
-      console.log(msg);
-      this.playKey(msg.index);
-    });
-
-    this.ea.subscribe('stop-key', msg=>{
-      this.stopKey(msg.index);
-    });
-    this.ea.subscribe('lpfCutoff', msg=>{
-      this.lpfCutoff=msg;
-      for(var i=0;i<this.notes.length;i++){
-        this.notes[i]['f1'].frequency.value = msg*100;
-        this.notes[i]['f2'].frequency.value = msg*100;
-      }
-    })
-    this.ea.subscribe('lpfQ', msg=>{
-      this.lpfQ=msg
-      for(var i=0;i<this.notes.length;i++){
-        this.notes[i]['f1'].Q.value = msg;
-        this.notes[i]['f2'].Q.value = msg;
-      }
-    })
-    this.ea.subscribe('lpfMod', msg=>{
-      this.lpfMod=msg;
-      for(var i=0;i<this.notes.length;i++){
-        this.notes[i].modfilterGain.gain.value=msg*24;
-      }
-    })
-
-    this.ea.subscribe('synthvol', msg=>{
-      this.master.gain.value=msg/50;
-    })
-    this.ea.subscribe('lfofreq', msg=>{
-      this.lfoData.freq=msg;
-      for(var i=0;i<this.notes.length;i++){
-        this.notes[i].lfo.frequency.value=msg;
-      }
-    })
+    this.createSubs()
   }
   play(e){
     let s=e.key;
@@ -217,8 +189,7 @@ export class SynthService{
        this.notes[i]['f1'].connect( this.notes[i]['f2'] );
        this.notes[i]['e']=this.ab.audio.createGain();
        this.notes[i]['f2'].connect(this.notes[i]['e']);
-       this.notes[i]['e'].connect(this.master);
-
+       this.notes[i]['e'].connect(this.effectsIn);
        var now = this.ab.audio.currentTime;
        var atkEnd=now + (this.envA/100.0);
        this.notes[i]['e'].gain.value = 0.0;
@@ -271,6 +242,416 @@ export class SynthService{
       this.notes[i].lfo.stop(now+(this.envR/30.0))
       this.notes[i].isPlaying=false;
     }
+  }
+  createEq(){
+    this.eq80=this.ab.audio.createBiquadFilter();
+    this.eq350=this.ab.audio.createBiquadFilter();
+    this.eq720=this.ab.audio.createBiquadFilter();
+    this.eq16k=this.ab.audio.createBiquadFilter();
+    this.eq5k=this.ab.audio.createBiquadFilter();
+    this.eq10k=this.ab.audio.createBiquadFilter();
+    this.eq80.frequency.value=80;
+    this.eq80.type="lowshelf";
+    this.eq80.gain.value=0;
+    this.eq350.frequency.value=350;
+    this.eq350.type="peaking";
+    this.eq350.gain.value=4;
+    this.eq720.frequency.value=720;
+    this.eq720.type="peaking";
+    this.eq720.gain.value=-5;
+    this.eq16k.frequency.value=1600;
+    this.eq16k.type="peaking";
+    this.eq16k.gain.value=-5;
+    this.eq5k.frequency.value=5000;
+    this.eq5k.type="peaking";
+    this.eq5k.gain.value=-10;
+    this.eq10k.frequency.value=10000;
+    this.eq10k.type="highshelf";
+    this.eq10k.gain.value=0;
+  }
+
+  createDelay(){
+    this.dInput=this.ab.audio.createGain();
+    this.dOutput=this.ab.audio.createGain();
+    this.delay = this.ab.audio.createDelay(5.0);
+    this.feedback = this.ab.audio.createGain();
+    this.wetLevel = this.ab.audio.createGain();
+    this.delay.delayTime.value = 0.50;
+    this.feedback.gain.value = 0.15;
+    this.wetLevel.gain.value = 0.25;
+  }
+  connect(){
+    this.effectsIn.connect(this.eq80);
+    this.eq80.connect(this.eq350);
+    this.eq350.connect(this.eq720);
+    this.eq720.connect(this.eq16k);
+    this.eq16k.connect(this.eq5k);
+    this.eq5k.connect(this.eq10k);
+    this.eq10k.connect(this.dInput);
+
+    this.dInput.connect(this.delay);
+    this.dInput.connect(this.dOutput);
+    this.delay.connect(this.feedback);
+    this.delay.connect(this.wetLevel);
+    this.feedback.connect(this.delay);
+    this.wetLevel.connect(this.dOutput);
+    this.dOutput.connect(this.compressor);
+    this.compressor.connect(this.effectsOut);
+    this.effectsOut.connect(this.master);
+  }
+  createSubs(){
+    this.ea.subscribe('play-key', msg=>{
+      console.log(msg);
+      this.playKey(msg.index);
+    });
+
+    this.ea.subscribe('stop-key', msg=>{
+      this.stopKey(msg.index);
+    });
+    this.ea.subscribe('lpfCutoff', msg=>{
+      this.lpfCutoff=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i]['f1'].frequency.value = msg*100;
+          this.notes[i]['f2'].frequency.value = msg*100;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('lpfQ', msg=>{
+      this.lpfQ=msg
+      for(var i=0;i<this.notes.length;i++){
+        this.notes[i]['f1'].Q.value = msg;
+        this.notes[i]['f2'].Q.value = msg;
+      }
+    })
+    this.ea.subscribe('lpfMod', msg=>{
+      this.lpfMod=msg;
+      for(var i=0;i<this.notes.length;i++){
+        this.notes[i].modfilterGain.gain.value=msg*24;
+      }
+    })
+
+    this.ea.subscribe('synthvol', msg=>{
+      this.master.gain.value=msg/50;
+    })
+    this.ea.subscribe('lfofreq', msg=>{
+      this.lfoData.freq=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].lfo.frequency.value=msg;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('lfowave', msg=>{
+      this.lfoData.wave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-vol1', msg=>{
+      this.oscillators[0].volume=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].g0.gain.value=0.0005*msg;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-wave1', msg=>{
+      this.oscillators[0].wave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i]['o0'].type=this.waves[msg];
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-oct1', msg=>{
+      this.oscillators[0].octave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          if(msg-3==0){
+            this.notes[i].o0.frequency.value=this.notes[i].hz;
+          }else if (msg-3>0){
+            this.notes[i].o0.frequency.value=this.notes[i].hz * 2*(msg-3);
+          }else{
+            this.notes[i].o0.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
+          }
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-det1', msg=>{
+      this.oscillators[0].detune=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].o0.detune.value=msg-50
+        } catch (e) {
+
+        }
+      }
+    })
+
+    this.ea.subscribe('osc-vol2', msg=>{
+      this.oscillators[1].volume=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].g1.gain.value=0.0005*msg;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-wave2', msg=>{
+      this.oscillators[1].wave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].o1.type=this.waves[msg];
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-oct2', msg=>{
+      this.oscillators[1].octave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          if(msg-3==0){
+            this.notes[i].o1.frequency.value=this.notes[i].hz;
+          }else if (msg-3>0){
+            this.notes[i].o1.frequency.value=this.notes[i].hz * 2*(msg-3);
+          }else{
+            this.notes[i].o1.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
+          }
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-det2', msg=>{
+      this.oscillators[1].detune=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].o1.detune.value=msg-50;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-vol3', msg=>{
+      this.oscillators[2].volume=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].g2.gain.value=0.0005*msg;
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-wave3', msg=>{
+      this.oscillators[2].wave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].o2.type=this.waves[msg];
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-oct3', msg=>{
+      this.oscillators[2].octave=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          if(msg-3==0){
+            this.notes[i].o2.frequency.value=this.notes[i].hz;
+          }else if (msg-3>0){
+            this.notes[i].o2.frequency.value=this.notes[i].hz * 2*(msg-3);
+          }else{
+            this.notes[i].o2.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
+          }
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('osc-det3', msg=>{
+      this.oscillators[2].detune=msg;
+      for(var i=0;i<this.notes.length;i++){
+        try {
+          this.notes[i].o2.detune.value=msg-50
+        } catch (e) {
+
+        }
+      }
+    })
+    this.ea.subscribe('compAttack:synth', msg=>{
+      this.compressor.attack.value=msg/100;
+    });
+    this.ea.subscribe('compRelease:synth', msg=>{
+      this.compressor.release.value=msg/100;
+    });
+    this.ea.subscribe('compThresh:synth', msg=>{
+      this.compressor.threshold.value=msg-100;
+    });
+    this.ea.subscribe('compKnee:synth', msg=>{
+      this.compressor.knee.value=msg;
+    });
+    this.ea.subscribe('compRatio:synth', msg=>{
+      this.compressor.ratio.value=msg;
+    });
+    this.ea.subscribe('eq1', msg=>{
+      this.eq80.gain.value=msg-40;
+    });
+    this.ea.subscribe('eq2', msg=>{
+      this.eq350.gain.value=msg-40;
+    });
+    this.ea.subscribe('eq3', msg=>{
+      this.eq720.gain.value=msg-40;
+    });
+    this.ea.subscribe('eq4', msg=>{
+      this.eq16k.gain.value=msg-40;
+    });
+    this.ea.subscribe('eq5', msg=>{
+      this.eq5k.gain.value=msg-40;
+    });
+    this.ea.subscribe('eq6', msg=>{
+      this.eq10k.gain.value=msg-40;
+    });
+    this.ea.subscribe('delayTime', msg=>{
+      this.delay.delayTime.value=msg/100
+    });
+    this.ea.subscribe('delayFeedback', msg=>{
+      this.feedback.gain.value=msg/100;
+    });
+    this.ea.subscribe('delayWet', msg=>{
+      this.wetLevel.gain.value=msg/100;
+    });
+    this.ea.subscribe('toggleCompressor:synth', msg=>{
+      this.compressionOn=!this.compressionOn;
+      if(this.compressionOn){
+        if(this.delayOn){
+          this.dOutput.disconnect();
+          this.dOutput.connect(this.compressor);
+        }else if(this.eqOn){
+          this.eq10k.disconnect();
+          this.eq10k.connect(this.compressor);
+        }else{
+          this.effectsIn.disconnect();
+          this.effectsIn.connec(this.compressor)
+        }
+        this.compressor.connect(this.effectsOut);
+      }else{
+        this.compressor.disconnect();
+        if(this.delayOn){
+          this.dOutput.disconnect();
+          this.dOutput.connect(this.effectsOut);
+        }else if(this.eqOn){
+          this.eq10k.disconnect();
+          this.eq10k.connect(this.effectsOut);
+        }else{
+          this.effectsIn.disconnect();
+          this.effectsIn.connec(this.effectsOut)
+        }
+      }
+    })
+    //effectsIn -> eq -> delay -> compressor ->effectsOut
+    this.ea.subscribe('toggleDelay', msg=>{
+      this.delayOn=!this.delayOn;
+      console.log(this.delayOn);
+      if (this.delayOn) {
+        if (this.eqOn) {
+          this.eq10k.disconnect();
+          this.eq10k.connect(this.dInput);
+          if(this.compressionOn){
+            this.dOutput.connect(this.compressor);
+          }else{
+            this.dOutput.connect(this.effectsOut)
+          }
+        }else if(this.compressionOn) {
+          this.effectsIn.connect(this.dInput);
+          this.dOutput.connect(this.compressor)
+        }else{
+          this.effectsIn.connect(this.dInput);
+          this.dOutput.connect(this.effectsOut)
+        }
+      } else {
+        //this.dInput.disconnect();
+        this.dOutput.disconnect();
+        if (this.eqOn) {
+          this.eq10k.disconnect();
+          if(this.compressionOn){
+            this.eq10k.connect(this.compressor);
+          }else{
+            this.eq10k.connect(this.effectsOut);
+          }
+        }else if(this.compressionOn) {
+          this.effectsIn.connect(this.compressor);
+        }else{
+          this.effectsIn.connect(this.effectsOut);
+        }
+      }
+      // if(this.delayOn){
+      //   this.dOutput.disconnect();
+      //   if(this.eqOn){
+      //     this.eq10k.disconnect();
+      //     this.eq10k.connect(this.effectsOut)
+      //   }else{
+      //     this.effectsIn.disconnect();
+      //     this.effectsIn.connect(this.effectsOut);
+      //   }
+      //   this.delayOn=false;
+      // }else{
+      //   if(this.eqOn){
+      //     this.eq10k.disconnect();
+      //     this.eq10k.connect(this.dInput);
+      //   }else{
+      //     this.effectsIn.disconnect();
+      //     this.effectsIn.connect(this.dInput);
+      //   }
+      //   this.dOutput.connect(this.effectsOut);
+      //   this.delayOn=true;
+      // }
+    })
+    this.ea.subscribe('toggleEQ', msg=>{
+      this.eqOn=!this.eqOn;
+      console.log(this.eqOn);
+      if (this.eqOn) {
+        this.effectsIn.disconnect();
+        this.effectsIn.connect(this.eq80);
+        if (this.delayOn) {
+          this.eq10k.connect(this.dInput);
+        }else if(this.compressionOn) {
+          this.eq10k.connect(this.compressor);
+        }else{
+          this.eq10k.connect(this.effectsOut);
+        }
+      } else {
+        this.effectsIn.disconnect()
+        if (this.delayOn) {
+          this.effectsIn.connect(this.dInput);
+          if(this.compressionOn){
+            this.dOutput.connect(this.compressor);
+          }else{
+            this.dOutput.connect(this.effectsOut);
+          }
+        }else if(this.compressionOn) {
+          this.effectsIn.connect(this.compressor);
+        }else{
+          this.effectsIn.connect(this.effectsOut);
+        }
+      }
+    })
   }
 }
 function createVoices(){

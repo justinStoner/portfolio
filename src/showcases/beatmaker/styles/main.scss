@@ -45,9 +45,7 @@ sound-wave{
   border-radius: 2px;
   overflow: hidden;
   z-index: 0;
-  // height: 100%;
-  // width: 100%;
-  // top:0;
+
   canvas{
     height:100%;
     width:100%
@@ -58,12 +56,7 @@ sound-wave{
     color: #fff !important
   }
 }
-// #synth{
-//   background: -webkit-canvas(synthbg) no-repeat 50% 50%;
-// }
-// #synth{
-//   background: -webkit-canvas(seqbg) no-repeat 50% 50%;
-// }
+
  .p2 .active ~rect {
     fill: #bdbdbd;
 }

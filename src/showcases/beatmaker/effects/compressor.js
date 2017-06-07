@@ -1,9 +1,12 @@
 import {AudioBus} from '../components/audio-bus';
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-@inject(AudioBus, EventAggregator)
+import {CompService} from '../../../services/comp-service';
+@inject(AudioBus, EventAggregator, CompService)
 export class Compressor{
-  constructor(ab, ea){
+  @bindable mode
+  constructor(ab, ea, comp){
+    this.comp=comp
     this.ab=ab;
     this.ea=ea;
     this.attack=0.1;
@@ -14,7 +17,7 @@ export class Compressor{
     this.active=true;
   }
   toggleEffect(){
-    this.ea.publish('toggleCompressor');
+    this.ea.publish(`toggleCompressor${':'+this.mode}`);
     this.active=!this.active;
   }
 }

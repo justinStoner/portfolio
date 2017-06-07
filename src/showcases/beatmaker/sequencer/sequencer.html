@@ -8,7 +8,7 @@
     <div class="mdl-cell mdl-cell--12-col">
       <div class="b-radius-card mdl-color--blue-500 mdl-shadow--2dp" id="sequencer-controller">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--1-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" style="padding-top:27px;">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" style="padding-top:27px;">
 
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:15px;" click.delegate='handlePlay()'>
               <template if.bind='!ds.playing'>
@@ -23,17 +23,17 @@
               <i class="material-icons">equalizer</i>
             </button>
           </div>
-          <div class="mdl-cell mdl-cell--1-col mdl-cell--2-col-tablet">
+          <div class="mdl-cell mdl-cell--1-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
             <knob min="0" max="100" label="Volume" canvas.bind="true" preset.one-time="volume" val.two-way="ds.volume"></knob>
           </div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet">
-            <slider min="0" max="220" label="Tempo" val.two-way="ds.tempo" inline="true" no-slider="true"  channel='tempo' preset="120"></slider>
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--1-col-phone">
+            <slider min="0" max="220" label="Tempo" val.two-way="ds.tempo" inline.bind="true" no-slider="true"  channel='tempo' preset="120"></slider>
           </div>
 
         </div>
       </div>
     </div>
-    <div class="mdl-cell mdl-cell--12-col">
+    <div class="mdl-cell mdl-cell--12-col ">
       <table class=" striped"  id='sequencer-notes'>
         <thead style="border-bottom:0;">
           <tr>

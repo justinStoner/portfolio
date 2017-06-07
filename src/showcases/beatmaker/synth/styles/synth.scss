@@ -28,6 +28,50 @@ equalizer{
     color:#fff;
   }
 }
+.synth-container{
+  // display: flex;
+  //  height: 91vh;
+  // flex-direction: column;
+  overflow: hidden;
+  // align-items: stretch;
+}
+.effects-container{
+  // flex: 0 0 75%;
+  // height: 75vh;
+  overflow: auto;
+  position: absolute;
+  height: 81%;
+  // order:0;
+}
+.effects-container>div{
+  overflow-y: auto;
+  height: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+.key-container{
+  // height: 20vh;
+  // flex:0 0 24%;
+  position: absolute;
+  height: 15%;
+  left: 0px;
+  right:0px;
+  bottom:16px;
+  padding: 0px 16px;
+  // order:1;
+  .key.white{
+    height: 100%;
+    h1{
+    }
+  }
+  .key.black-key{
+    height: 50%;
+    h1{
+      position: relative;
+      top: 30%;
+    }
+  }
+}
 .key{
   box-sizing: border-box;
   width:9.090% !important;
@@ -63,7 +107,8 @@ equalizer{
   position: relative;
   h1{
    color:#000;
-   padding-top: 11rem;
+   position: relative;
+   top: 60%;
  }
  div{
    background-color: #fff;
@@ -93,7 +138,6 @@ equalizer{
     }
   h1{
     color:#fff;
-    padding-top: 6rem
   }
 
 
@@ -141,7 +185,26 @@ form.col.m6.s12{
   }
 
 }
-
+@media (max-height:420px) and (orientation: landscape) {
+  .effects-container{
+    height: 79%;
+  }
+  .key-container{
+    height: 19% !important;
+  }
+  .key-container{
+    bottom:5px;
+  }
+  .key h1{
+    font-size:1.7rem;
+  }
+  .key.black-key h1{
+    top:-16% !important;
+  }
+  .key.white h1{
+    top:32%;
+  }
+}
 @media only screen and (max-width: 600px){
 
   .key{

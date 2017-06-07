@@ -1,30 +1,21 @@
 <template>
-  <div class="mdl-color--blue-500 mdl-color-text--white center-align b-radius" css="margin-bottom:12px;${inline===true?'display:inline-block;vertical-align:middle;margin-right:15px;':''}padding:8px 16px 8px 16px;">
+  <div class="mdl-color--blue-500 mdl-color-text--white center-align b-radius-card" css="margin-bottom:12px;display:inline-block;vertical-align:middle;padding:0px;text-align:center;padding-left:5px;${channel==='tempo'?'':'width:100%;'}">
 
-    <div class="">
-      <p class="text-left" css="margin-bottom:0;display:${!inline?'inline-block':'block'};width:33%;">
+    <div class="" style="float:left;">
+      <p class="" style="margin-bottom:0;">
         ${label}
       </p>
-      <input class="mdl-textfield__input text-center" type="number" change.delegate="change()" value.bind="val" css="${inline?'float:left;margin-top:13px;margin-right:10px;':''}width:auto;display:inline-block;width:30px;border-bottom:1px solid #fff;">
+      <input class="mdl-textfield__input text-center" type="number" change.delegate="change()" value.bind="val" style="margin-top:6px;margin-bottom:6px;margin-right:auto;margin-left:auto;display:block;width:30px;border-bottom:1px solid #fff;">
 
-      <div class="${!inline?'right':''}" css="${inline?'display:inline-block':''}">
-        <template if.bind="inline">
-          <button class="mdl-button mdl-js-button mdl-button--icon" style="display:block" click.delegate="add()">
-            <i class="material-icons">add</i>
-          </button>
-          <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
-            <i class="material-icons">remove</i>
-          </button>
-        </template>
-        <template if.bind="!inline">
-          <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
-            <i class="material-icons">remove</i>
-          </button>
-          <button class="mdl-button mdl-js-button mdl-button--icon" style="" click.delegate="add()">
-            <i class="material-icons">add</i>
-          </button>
-        </template>
-      </div>
+    </div>
+    <div style="float:right">
+      <button class="mdl-button mdl-js-button mdl-button--icon" style="display:block;" click.delegate="add()">
+        <i class="material-icons">add</i>
+      </button>
+      <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
+        <i class="material-icons">remove</i>
+      </button>
+
     </div>
 
   </div>

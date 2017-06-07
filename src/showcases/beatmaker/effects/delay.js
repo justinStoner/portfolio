@@ -1,21 +1,20 @@
 import {AudioBus} from '../components/audio-bus';
-import {inject} from 'aurelia-framework';
-import {EventAggregator} from 'aurelia-event-aggregator'
-@inject(AudioBus, EventAggregator)
+import {inject, bindable} from 'aurelia-framework';
+import {EventAggregator} from 'aurelia-event-aggregator';
+import {DelayService} from '../../../services/delay-service';
+@inject(AudioBus, EventAggregator, DelayService)
 export class Delay{
-  constructor(ab, ea){
+  @bindable mode;
+  constructor(ab, ea, ds){
     this.ab=ab;
     this.ea=ea;
-    this.dTime=75;
-    this.dFeed=50;
-    this.dWet=50;
-    this.active=true;
+    this.ds=ds
   }
   toggleEffect(){
     this.ea.publish('toggleDelay');
-    this.active=!this.active;
+    this.ds[this.mode].active=!this.ds[this.mode].active;
   }
   attached(){
-    
+
   }
 }

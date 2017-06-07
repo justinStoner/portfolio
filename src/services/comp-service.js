@@ -1,0 +1,28 @@
+export class CompService{
+  constructor(){
+    this.synth={
+      attack:1,
+      release:1,
+      threshold:55,
+      knee:20,
+      ratio:10,
+      active:true
+    }
+    this.sidechain={
+      attack:0.1,
+      release:0.1,
+      threshold:55,
+      knee:28,
+      ratio:4,
+      active:true
+    }
+    this.drums={
+      attack:0.1,
+      release:0.1,
+      threshold:55,
+      knee:28,
+      ratio:4,
+      active:true
+    }
+  }
+}
