@@ -4,6 +4,14 @@ section{
 .tabs .indicator{
   background-color: #2196f3;
 }
+#filter{
+  height: 100%;
+}
+.synth-octave{
+  color:#fff;
+  float: right;
+  line-height: 24px;
+}
 knob{
   p{
     text-align: center;
@@ -126,7 +134,7 @@ equalizer{
   h1{
    color:#000;
    position: relative;
-   top: 48%;
+   top: 55%;
  }
  div{
    background-color: #fff;
@@ -219,7 +227,7 @@ form.col.m6.s12{
     font-size:1.7rem;
   }
   .key.black-key h1{
-    top:-16% !important;
+    top:5% !important;
   }
   .key.white h1{
     top:32%;

@@ -7,22 +7,22 @@
       <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
         <p class="no-bottom-margin">${mode=='sidechain'?'Sidechain ':''}Compressor <switch class="right" switched.two-way="comp[mode].active" click.delegate="toggleEffect()"></switch></p>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
         <slider min="0" max="100" label="Attack" val.two-way="comp[mode].attack" inline.bind="true" channel='compAttack:${mode}' preset.one-time="comp[mode].attack"></slider>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
         <slider min="0" max="100" label="Thrsh." val.two-way="comp[mode].threshold" inline.bind="true" channel='compThresh:${mode}' preset.one-time="comp[mode].threshold"></slider>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
         <slider min="1" max="20" label="Ratio" val.two-way="comp[mode].ratio" inline.bind="true" channel='compRatio:${mode}' preset.one-time="comp[mode].ratio"></slider>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
         <slider min="0" max="100" label="Rls." val.two-way="comp[mode].release" inline.bind="true" channel='compRelease:${mode}' preset.one-time="comp[mode].release"></slider>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
         <slider min="0" max="40" label="Knee" val.two-way="comp[mode].knee" inline.bind="true" channel='compKnee:${mode}' preset.one-time="comp[mode].knee"></slider>
       </div>
-      <div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-phone mdl-cell--4-col-tablet" if.bind="mode==='sidechain'">
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--3-col-phone mdl-cell--2-col-tablet" if.bind="mode==='sidechain'">
         <label for="" style="position:relative;top:0;">Source</label>
         <select name="" id="" class="mdl-textfield__input" disabled style="background:transparent;">
           <option value="kick" selected="">kick</option>

@@ -12,10 +12,10 @@
     <div class="effects-container">
       <div>
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--2-col-tablet">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <oscillator type='Lfo' osc.two-way="synth.lfoData" preset.one-time="synth.lfoData"></oscillator>
           </div>
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--2-col-tablet" repeat.for="osc of synth.oscillators">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--8-col-tablet" repeat.for="osc of synth.oscillators">
             <oscillator osc.two-way="osc" index.bind="$index" type='Oscillator' preset.one-time="synth.oscPresets[$index]"></oscillator>
           </div>
           <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--4-col-tablet">
@@ -58,7 +58,16 @@
             <div id="synthfilter" class="mdl-shadow--2dp b-radius-card">
               <div class="mdl-grid">
                 <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
-                  <p class="no-bottom-margin">Synth</p>
+                  <p class="no-bottom-margin" style="float:left">Synth</p>
+                  <div class="synth-octave">
+                    Octave: ${synth.synthOctave}
+                    <button class="mdl-button mdl-js-button mdl-button--icon" style="" click.delegate="synth.changeSynthOctave('up')">
+                      <i class="material-icons">add</i>
+                    </button>
+                    <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="synth.changeSynthOctave('down')">
+                      <i class="material-icons">remove</i>
+                    </button>
+                  </div>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
                   <knob min="0" max="100" label="Drive" val.two-way="synth.lpfA" canvas.bind="true" preset.one-time="synth.lpfA"></knob>
@@ -94,16 +103,16 @@
             </div>
             <sound-wave ab.bind='ab' canvas-id='synthfilter' if.bind="ab.showVisualizer"></sound-wave>
           </div>
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--3-col-tablet">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <equalizer mode="synth"></equalizer>
           </div>
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--2-col-tablet">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <delay mode="synth"></delay>
           </div>
-          <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--3-col-tablet">
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <compressor mode="synth"></compressor>
           </div>
-          <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--3-col-tablet">
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <compressor mode="sidechain"></compressor>
           </div>
           <!-- <div class="mdl-cell mdl-cell--12-col" if.bind="!ab.isMobile">

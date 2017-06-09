@@ -9,7 +9,7 @@ export class SynthService{
     this.octaves=[-3,-2,-1,0,1,2,3];
     this.waves=['sine', 'sawtooth', 'square', 'triangle'];
     this.A4=440;
-    this.oscillators=createVoices();
+    this.synthOctave=0;
     this.lfoData={
       wave:0.1,
       detune:50,
@@ -24,7 +24,7 @@ export class SynthService{
       {
         wave:0.1,
         detune:45,
-        octave:-3,
+        octave:2,
         volume:100,
       },
       {
@@ -36,10 +36,11 @@ export class SynthService{
       {
         wave:1,
         detune:55,
-        octave:4,
+        octave:5,
         volume:100,
       }
-    ]
+    ];
+    this.oscillators=this.createVoices();
     this.masterVol=85;
     this.modMult=10;
     this.master = this.ab.audio.createGain();
@@ -72,35 +73,62 @@ export class SynthService{
     this.lpfR = 50;
 
     this.notes=[
-      {note:'c' ,hz:261.626 ,color:true, key:'a', isPlaying:false},
-      {note:'c#' ,hz:277.183 ,color:false, key:'w', isPlaying:false},
-      {note:'d' ,hz:293.66 ,color:true, key:'s', isPlaying:false},
-      {note:'d#' ,hz:311.127 ,color:false, key:'e', isPlaying:false},
-      {note:'e' ,hz:329.628 ,color:true, key:'d', isPlaying:false},
-      {note:'f' ,hz:349.228 ,color:true, key:'f', isPlaying:false},
-      {note:'f#' ,hz:369.994 ,color:false, key:'t', isPlaying:false},
-      {note:'g' ,hz:391.995 ,color:true, key:'g', isPlaying:false},
-      {note:'g#' ,hz:415.305 ,color:false, key:'y', isPlaying:false},
-      {note:'a' ,hz:440 ,color:true, key:'h', isPlaying:false},
-      {note:'a#' ,hz:466.164 ,color:false, key:'u', isPlaying:false},
-      {note:'b' ,hz:493.883 ,color:true, key:'j', isPlaying:false},
-      {note:'c' ,hz:523.252 ,color:true, key:'k', isPlaying:false},
-      {note:'c#' ,hz:554.366 ,color:false, key:'o', isPlaying:false},
-      {note:'d' ,hz:587.33 ,color:true, key:'l', isPlaying:false},
-      {note:'d#' ,hz:622.254 ,color:false, key:'p', isPlaying:false},
-      {note:'e' ,hz:659.256 ,color:true, key:';', isPlaying:false},
-      {note:'f' ,hz:698.456 ,color:true, key:"'", isPlaying:false}
+      {note:'c' ,hz:60, color:true, key:'a', isPlaying:false},
+      {note:'c#' ,hz:61, color:false, key:'w', isPlaying:false},
+      {note:'d' ,hz:62, color:true, key:'s', isPlaying:false},
+      {note:'d#' ,hz:63, color:false, key:'e', isPlaying:false},
+      {note:'e' ,hz:64, color:true, key:'d', isPlaying:false},
+      {note:'f' ,hz:65, color:true, key:'f', isPlaying:false},
+      {note:'f#' ,hz:66 ,color:false, key:'t', isPlaying:false},
+      {note:'g' ,hz:67 ,color:true, key:'g', isPlaying:false},
+      {note:'g#' ,hz:68 ,color:false, key:'y', isPlaying:false},
+      {note:'a' ,hz:69 ,color:true, key:'h', isPlaying:false},
+      {note:'a#' ,hz:70 ,color:false, key:'u', isPlaying:false},
+      {note:'b' ,hz:71 ,color:true, key:'j', isPlaying:false},
+      {note:'c' ,hz:72 ,color:true, key:'k', isPlaying:false},
+      {note:'c#' ,hz:73 ,color:false, key:'o', isPlaying:false},
+      {note:'d' ,hz:74 ,color:true, key:'l', isPlaying:false},
+      {note:'d#' ,hz:75 ,color:false, key:'p', isPlaying:false},
+      {note:'e' ,hz:76 ,color:true, key:';', isPlaying:false},
+      {note:'f' ,hz:77 ,color:true, key:"'", isPlaying:false}
     ];
-    this.x=0;
-    this.y=0;
-    for(let i in this.notes){
-      this.notes[i].element;
-    }
+    // for(let i in this.notes){
+    //   this.notes[i].element;
+    // }
 
     window.addEventListener('keydown', this.play.bind(this));
     window.addEventListener('keyup', this.stop.bind(this));
 
     this.createSubs()
+  }
+  changeSynthOctave(dir){
+    if(dir==='up'){
+      this.synthOctave++;
+    }else{
+      this.synthOctave--;
+    }
+    for(var i=0;i<this.notes.length;i++){
+      try{
+        this.notes[i].o0.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[0].octave-3)
+        this.notes[i].o1.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[1].octave-3)
+        this.notes[i].o2.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[2].octave-3)
+      }catch(e){
+        
+      }
+    }
+  }
+  frequency(note, octave){
+    var freq;
+    if(this.synthOctave!=0){
+      note=note+(this.synthOctave*12);
+    }
+    if(octave===0){
+      freq = this.A4*Math.pow(2,(note-69)/12);
+    }else{
+      note=note+(octave*12)
+      freq = this.A4*Math.pow(2,(note-69)/12);
+    }
+    return freq//(freq*Math.pow(2, octave));
   }
   play(e){
     let s=e.key;
@@ -158,13 +186,14 @@ export class SynthService{
          //create oscillator
          this.notes[i]['o'+ii]=this.ab.audio.createOscillator();
          this.notes[i]['o'+ii].detune.value=this.oscillators[ii].detune-50;
-         if(this.oscillators[ii].octave-3==0){
-           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
-         }else if (this.oscillators[ii].octave-3>0){
-           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2*(this.oscillators[ii].octave-3);
-         }else{
-           this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2/Math.abs(this.oscillators[ii].octave-3);
-         }
+         this.notes[i]['o'+ii].frequency.value=this.frequency(this.notes[i].hz, this.oscillators[ii].octave-3)
+        //  if(this.oscillators[ii].octave-3==0){
+        //    this.notes[i]['o'+ii].frequency.value=this.notes[i].hz;
+        //  }else if (this.oscillators[ii].octave-3>0){
+        //    this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2*(this.oscillators[ii].octave-3);
+        //  }else{
+        //    this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2/Math.abs(this.oscillators[ii].octave-3);
+        //  }
          this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
 
          //connect lfo gain to osc frequency
@@ -299,6 +328,21 @@ export class SynthService{
     this.compressor.connect(this.effectsOut);
     this.effectsOut.connect(this.master);
   }
+  createVoices(){
+    var arr=[];
+    var voice;
+    for(var i=0;i<3;i++){
+      voice={
+        volume:50,
+        wave:1,
+        octave:this.oscPresets[i].octave,
+        type:'Oscillator',
+        detune:this.oscPresets[i].detune
+      }
+      arr.push(voice);
+    }
+    return arr;
+  }
   createSubs(){
     this.ea.subscribe('play-key', msg=>{
       console.log(msg);
@@ -380,13 +424,7 @@ export class SynthService{
       this.oscillators[0].octave=msg;
       for(var i=0;i<this.notes.length;i++){
         try {
-          if(msg-3==0){
-            this.notes[i].o0.frequency.value=this.notes[i].hz;
-          }else if (msg-3>0){
-            this.notes[i].o0.frequency.value=this.notes[i].hz * 2*(msg-3);
-          }else{
-            this.notes[i].o0.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
-          }
+          this.notes[i].o0.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[0].octave-3)
         } catch (e) {
 
         }
@@ -427,13 +465,7 @@ export class SynthService{
       this.oscillators[1].octave=msg;
       for(var i=0;i<this.notes.length;i++){
         try {
-          if(msg-3==0){
-            this.notes[i].o1.frequency.value=this.notes[i].hz;
-          }else if (msg-3>0){
-            this.notes[i].o1.frequency.value=this.notes[i].hz * 2*(msg-3);
-          }else{
-            this.notes[i].o1.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
-          }
+          this.notes[i].o1.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[1].octave-3)
         } catch (e) {
 
         }
@@ -473,13 +505,7 @@ export class SynthService{
       this.oscillators[2].octave=msg;
       for(var i=0;i<this.notes.length;i++){
         try {
-          if(msg-3==0){
-            this.notes[i].o2.frequency.value=this.notes[i].hz;
-          }else if (msg-3>0){
-            this.notes[i].o2.frequency.value=this.notes[i].hz * 2*(msg-3);
-          }else{
-            this.notes[i].o2.frequency.value=this.notes[i].hz * 2/Math.abs(msg-3);
-          }
+          this.notes[i].o2.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[2].octave-3)
         } catch (e) {
 
         }
@@ -653,20 +679,4 @@ export class SynthService{
       }
     })
   }
-}
-function createVoices(){
-  var arr=[];
-  for(var i=0;i<3;i++){
-    arr.push(function(){
-      var voice={
-        volume:50,
-        wave:1,
-        octave:0,
-        type:'Oscillator',
-        detune:50
-      }
-      return voice
-    });
-  }
-  return arr;
 }
