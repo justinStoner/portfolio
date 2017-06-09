@@ -7,16 +7,16 @@
          <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
            <p class="no-bottom-margin">${type + ' ' + (index+1)}</p>
          </div>
-         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
            <knob min="0" max="100" label="Mix" val.two-way="osc.volume" offset="222" channel="osc-vol${index+1}" preset.one-time="preset.volume"></knob>
          </div>
-         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
            <knob min='0' max="7" label="Octave" labels="-3,-2,-1,0,1,2,3" val.two-way="osc.octave" channel="osc-oct${index+1}" offset='222' preset.one-time="preset.octave"></knob>
          </div>
-         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
            <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' val.two-way="osc.wave" channel="osc-wave${index+1}" offset='276' range="180" preset.one-time="preset.wave"></knob>
          </div>
-         <div class="mdl-cell mdl-cell--6-col mdl-cell--2-col-phone mdl-cell--4-col-tablet">
+         <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--4-col-tablet">
            <knob min='0' max="100" label="Detune" val.two-way="osc.detune" offset='222' channel="osc-det${index+1}" preset.one-time="preset.detune"></knob>
          </div>
        </div>
