@@ -1,45 +1,45 @@
 <template>
   <require from='../../components/knob'></require>
-  <require from='../../components/mute-button'></require>
+  <require from='../../components/slider'></require>
   <div class="mdl-shadow--2dp b-radius-card ${type==='Lfo'?'mdl-color--deep-orange-400':'mdl-color--blue-grey-100'}">
      <template if.bind='type!=="Lfo"'>
        <div class="mdl-grid">
-         <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
+         <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
            <p class="no-bottom-margin">${type + ' ' + (index+1)}</p>
          </div>
          <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-           <knob min="0" max="100" label="Mix" val.two-way="osc.volume" offset="222" channel="osc-vol${index+1}" preset.one-time="preset.volume"></knob>
+           <slider min="0" max="100" label="Mix" val.two-way="osc.volume" offset="222" channel="osc-vol${index+1}" preset.one-time="preset.volume"></slider>
          </div>
          <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-           <knob min='0' max="7" label="Octave" labels="-3,-2,-1,0,1,2,3" val.two-way="osc.octave" channel="osc-oct${index+1}" offset='222' preset.one-time="osc.octave"></knob>
+           <slider min='0' max="7" label="Octave" val.two-way="osc.octave"  channel="osc-oct${index+1}" preset.one-time="osc.octave"></slider>
          </div>
          <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-           <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' val.two-way="osc.wave" channel="osc-wave${index+1}" offset='276' range="180" preset.one-time="preset.wave"></knob>
+           <slider min='0' max="3" label="Wave" val.two-way="osc.wave" channel="osc-wave${index+1}" preset.one-time="preset.wave"></slider>
          </div>
          <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-           <knob min='0' max="100" label="Detune" val.two-way="osc.detune" offset='222' channel="osc-det${index+1}" preset.one-time="preset.detune"></knob>
+           <slider min='0' max="100" label="Detune" val.two-way="osc.detune" offset='222' channel="osc-det${index+1}" preset.one-time="preset.detune"></slider>
          </div>
        </div>
      </template>
      <template if.bind='type==="Lfo"'>
        <div class="mdl-grid">
-         <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
+         <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
            <p class="no-bottom-margin">Lfo</p>
          </div>
          <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-           <knob min='0' max="20" label="Frequency"  offset='222' preset.one-time="preset.freq" channel="lfofreq"></knob>
+           <slider min='0' max="20" label="Frequency"  val.two-way="osc.freq" offset='222' preset.one-time="preset.freq" channel="lfofreq"></slider>
          </div>
          <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--2-col-tablet">
-           <knob min="0" max="3" label="Wave" labels='sine, saw, sqr, tri' preset.one-time="preset.wave" channel='lfowave' offset='276' range="180"></knob>
+           <slider min='0' max="3" label="Wave" val.two-way="osc.wave" channel="lfowave" preset.one-time="preset.wave"></slider>
          </div>
          <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-           <knob min='0' max="100" label="Osc1"  val.two-way="osc.osc1" offset='222' preset.one-time="preset.osc1"></knob>
+           <slider min='0' max="100" label="Osc1"  val.two-way="osc.osc1" offset='222' preset.one-time="preset.osc1"></slider>
          </div>
          <div class="mdl-cell mdl-cell--4-col mdl-cell--2-col-phone mdl-cell--1-col-tablet">
-           <knob min='0' max="100" label="Osc2" val.two-way="osc.osc2" offset='222' preset.one-time="preset.osc2"></knob>
+           <slider min='0' max="100" label="Osc2" val.two-way="osc.osc2" offset='222' preset.one-time="preset.osc2"></slider>
          </div>
          <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-           <knob min='0' max="100" label="Osc3" val.two-way="osc.osc3" offset='222' preset.one-time="preset.osc3"></knob>
+           <slider min='0' max="100" label="Osc3" val.two-way="osc.osc3" offset='222' preset.one-time="preset.osc3"></slider>
          </div>
        </div>
      </template>

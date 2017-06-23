@@ -163,6 +163,14 @@
             "main": "index"
           },
           {
+            "name": "nouislider",
+            "path": "../node_modules/nouislider/distribute",
+            "main": "nouislider.js",
+            "resources": [
+                "nouislider.css"
+            ]
+          },
+          {
             "name": "mdl-selectfield",
             "path": "../node_modules/mdl-selectfield/dist",
             "main": "mdl-selectfield",

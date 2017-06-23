@@ -1,19 +1,19 @@
 <template>
-  <require from="../components/knob"></require>
+  <require from="../components/slider"></require>
   <require from="../components/switch"></require>
   <div class="mdl-shadow--2dp b-radius-card mdl-color--lime-400">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
+      <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
         <p class="no-bottom-margin">Delay <switch class="right" switched.two-way="ds[mode].active" click.delegate="toggleEffect()"></switch></p>
       </div>
       <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-        <knob min="0" max="100" label="Time" val.two-way="ds[mode].dTime" channel='delayTime' preset.one-time="ds[mode].dTime"></knob>
+        <slider min="0" max="100" label="Time" val.two-way="ds[mode].dTime" channel='delayTime' preset.one-time="ds[mode].dTime"></slider>
       </div>
       <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-        <knob min="0" max="100" label="Feedback" val.two-way="ds[mode].dFeed" channel='delayFeedback' preset.one-time="ds[mode].dFeed"></knob>
+        <slider min="0" max="100" label="Feedback" val.two-way="ds[mode].dFeed" channel='delayFeedback' preset.one-time="ds[mode].dFeed"></slider>
       </div>
       <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-        <knob min="0" max="100" label="Wet/Dry" val.two-way="ds[mode].dWet" channel="delayWet" preset.one-time="ds[mode].dWet"></knob>
+        <slider min="0" max="100" label="Wet/Dry" val.two-way="ds[mode].dWet" channel="delayWet" preset.one-time="ds[mode].dWet"></slider>
       </div>
       <div class="mdl-cell mdl-cell--6-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
 

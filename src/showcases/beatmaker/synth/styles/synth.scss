@@ -29,10 +29,7 @@ equalizer, compressor, delay{
     height: 100%;
   }
 }
-.slider-label{
-  max-width: 32px;
-  margin-bottom:0;
-}
+
 
 equalizer{
   p{
@@ -69,7 +66,7 @@ equalizer{
 .key-container>div{
   height: 100%;
   position: relative;
-  padding-top:8px;
+  padding-top:0px;
 }
 .key-container{
   // height: 20vh;
@@ -85,7 +82,7 @@ equalizer{
   margin-right: 4px;
   // order:1;
   .key.white{
-    height: 88%;
+    height: 95%;
     h1{
     }
   }
@@ -112,7 +109,7 @@ equalizer{
     font-size: 2.2rem;
   }
   div{
-    margin: 0 0.5rem 0 0;
+    margin: 0 0.3rem 0 0;
     height: 100%;
     border-radius: 0px 0px 5px 5px;
     display: block;
@@ -219,6 +216,9 @@ form.col.m6.s12{
   }
   .key-container{
     height: 19% !important;
+    padding:0px;
+    margin-left: 0px;
+    margin-right: 0px;
   }
   .key-container{
     bottom:5px;
@@ -234,7 +234,11 @@ form.col.m6.s12{
   }
 }
 @media only screen and (max-width: 600px){
-
+  .key-container{
+    padding:0px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
   .key{
     div{
       margin:0 0.05rem;

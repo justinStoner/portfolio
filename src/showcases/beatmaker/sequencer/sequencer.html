@@ -8,7 +8,7 @@
     <div class="mdl-cell mdl-cell--12-col">
       <div class="b-radius-card mdl-color--blue-500 mdl-shadow--2dp" id="sequencer-controller">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" style="padding-top:27px;">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" style="padding-top:13px;">
 
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:15px;" click.delegate='handlePlay()'>
               <template if.bind='!ds.playing'>
@@ -24,10 +24,10 @@
             </button>
           </div>
           <div class="mdl-cell mdl-cell--1-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <knob min="0" max="100" label="Volume" canvas.bind="true" preset.one-time="volume" val.two-way="ds.volume"></knob>
+            <slider min="0" max="100" label="Volume" val.two-way="ds.volume" canvas.bind="true"  preset.one-time="volume"></slider>
           </div>
           <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--1-col-phone">
-            <slider min="0" max="220" label="Tempo" val.two-way="ds.tempo" inline.bind="true" no-slider="true"  channel='tempo' preset="120"></slider>
+            <slider min="0" max="220" label="Tempo" val.two-way="ds.tempo" canvas.bind="true" channel='tempo' preset="120"></slider>
           </div>
 
         </div>
@@ -51,61 +51,61 @@
             </tr>
         </tbody>
       </table>
-      <table class="striped" if.bind="mixer" id='sequencer-mixer'>
-        <tbody>
-          <tr repeat.for="drum of ds.drums">
-            <td style="width:5.88%;cursor:pointer" class="blue-text" click.trigger="playSample(drum.sound)">${drum.name}</td>
-            <td >
+      <div class="drum-mixer" if.bind="mixer" id='sequencer-mixer'>
+        <ul>
+          <li repeat.for="drum of ds.drums">
+            <div style="cursor:pointer;height:81px;text-align:center;" class="mdl-color-text--blue-500" click.trigger="playSample(drum.sound)">${drum.name}</div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="80" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></knob>
+                <slider min="0" max="80" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="80" label="Pitch" preset.one-time="drum.volume" val.two-way="drum.pitch"></knob>
+                <slider min="0" max="80" label="Pitch" preset.one-time="drum.pitch" val.two-way="drum.pitch"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="80" label="High" preset.one-time="drum.high" val.two-way="drum.high"></knob>
+                <slider min="0" max="80" label="High" preset.one-time="drum.high" val.two-way="drum.high"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min.one-time="drum.range.high[0]" max.one-time="drum.range.high[1]" label="High Freq" preset.one-time="drum.highFreq" val.two-way="drum.highFreq"></knob>
+                <slider min.one-time="drum.range.high[0]" max.one-time="drum.range.high[1]" label="High Freq" preset.one-time="drum.highFreq" val.two-way="drum.highFreq"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="80" label="Mid" preset.one-time="drum.mid" val.two-way="drum.mid"></knob>
+                <slider min="0" max="80" label="Mid" preset.one-time="drum.mid" val.two-way="drum.mid"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min.one-time="drum.range.mid[0]" max.one-time="drum.range.mid[1]" label="Mid Freq" preset.one-time="drum.midFreq" val.two-way="drum.midFreq"></knob>
+                <slider min.one-time="drum.range.mid[0]" max.one-time="drum.range.mid[1]" label="Mid Freq" preset.one-time="drum.midFreq" val.two-way="drum.midFreq"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="80" label="Low" preset.one-time="drum.low" val.two-way="drum.low"></knob>
+                <slider min="0" max="80" label="Low" preset.one-time="drum.low" val.two-way="drum.low"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min.one-time="drum.range.low[0]" max.one-time="drum.range.low[1]" label="Low Freq" preset.one-time="drum.lowFreq" val.two-way="drum.lowFreq"></knob>
+                <slider min.one-time="drum.range.low[0]" max.one-time="drum.range.low[1]" label="Low Freq" preset.one-time="drum.lowFreq" val.two-way="drum.lowFreq"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="200" label="Cutoff" preset.one-time="drum.cutoff" val.two-way="drum.cutoff"></knob>
+                <slider min="0" max="200" label="Cutoff" preset.one-time="drum.cutoff" val.two-way="drum.cutoff"></slider>
               </div>
-            </td>
-            <td >
+            </div>
+            <div >
               <div class="input-field inline" style="margin-top:0;">
-                <knob min="0" max="20" label="Q" preset.one-time="drum.Q" val.two-way="drum.Q"></knob>
+                <slider min="0" max="20" label="Q" preset.one-time="drum.Q" val.two-way="drum.Q"></slider>
               </div>
-            </td>
-            <td>
+            </div>
+            <div>
               <div class="input-field inline" style="">
                 <label for="" style="position:relative;top:0;">Filter Type</label>
                 <select name="" id="" class="browser-default" value.bind="drum.filterType">
@@ -119,9 +119,9 @@
                   <option value="allpass">allpass</option>
                 </select>
               </div>
-            </td></tr>
-        </tbody>
-      </table>
+            </div>
+          </li>
+      </ul>
     </div>
   </div>
 

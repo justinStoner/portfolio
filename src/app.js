@@ -1,6 +1,7 @@
 import {inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {AppRouter} from './app-router';
+
 @inject(EventAggregator, AppRouter)
 export class App {
   constructor(ea, appRouter) {

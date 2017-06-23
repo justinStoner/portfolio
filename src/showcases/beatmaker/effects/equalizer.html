@@ -1,29 +1,29 @@
 <template>
-  <require from="../components/knob"></require>
+  <require from="../components/slider"></require>
   <require from="../components/switch"></require>
   <div class="mdl-shadow--2dp b-radius-card mdl-color--red-300">
 
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col no-bottom-margin">
+      <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
         <p class="no-bottom-margin">Equalizer <switch class="right" switched.two-way="eq[mode].active" click.delegate="toggleEffect()"></switch></p>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet" >
-        <knob min="0" max="80" label="80hz" val.two-way="eq[mode].eq1" channel='eq1' preset.one-time="eq[mode].eq1"></knob>
+        <slider min="0" max="80" label="80hz" val.two-way="eq[mode].eq1" channel='eq1' preset.one-time="eq[mode].eq1"></slider>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-        <knob min="0" max="80" label="350hz" val.two-way="eq[mode].eq2" channel='eq2' preset.one-time="eq[mode].eq2"></knob>
+        <slider min="0" max="80" label="350hz" val.two-way="eq[mode].eq2" channel='eq2' preset.one-time="eq[mode].eq2"></slider>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-        <knob min="0" max="80" label="720hz" val.two-way="eq[mode].eq3" channel='eq3' preset.one-time="eq[mode].eq3"></knob>
+        <slider min="0" max="80" label="720hz" val.two-way="eq[mode].eq3" channel='eq3' preset.one-time="eq[mode].eq3"></slider>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-        <knob min="0" max="80" label="1.6khz" val.two-way="eq[mode].eq4" channel='eq4' preset.one-time="eq[mode].eq4"></knob>
+        <slider min="0" max="80" label="1.6khz" val.two-way="eq[mode].eq4" channel='eq4' preset.one-time="eq[mode].eq4"></slider>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-        <knob min="0" max="80" label="5khz" val.two-way="eq[mode].eq5" channel='eq5' preset.one-time="eq[mode].eq5"></knob>
+        <slider min="0" max="80" label="5khz" val.two-way="eq[mode].eq5" channel='eq5' preset.one-time="eq[mode].eq5"></slider>
       </div>
       <div class="mdl-cell mdl-cell--4-col mdl-cell--1-col-phone mdl-cell--1-col-tablet">
-        <knob min="0" max="80" label="10khz" val.two-way="eq[mode].eq6" channel='eq6'preset.one-time="eq[mode].eq6"></knob>
+        <slider min="0" max="80" label="10khz" val.two-way="eq[mode].eq6" channel='eq6'preset.one-time="eq[mode].eq6"></slider>
       </div>
     </div>
   </div>

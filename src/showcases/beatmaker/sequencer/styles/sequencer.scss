@@ -24,3 +24,16 @@ form.col.s12{
     padding: 5px;
   }
 }
+.drum-mixer{
+  ul{
+    list-style: none;
+    li{
+      list-style: none;
+      margin-bottom: 15px;
+    }
+  }
+}
+.drum-mixer>ul>li>div{
+  display: inline-block;
+  width: 75px;
+}

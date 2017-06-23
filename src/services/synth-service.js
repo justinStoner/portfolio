@@ -11,7 +11,7 @@ export class SynthService{
     this.A4=440;
     this.synthOctave=0;
     this.lfoData={
-      wave:0.1,
+      wave:0,
       detune:50,
       osc1:4,
       osc2:8,
@@ -22,7 +22,7 @@ export class SynthService{
     }
     this.oscPresets=[
       {
-        wave:0.1,
+        wave:0,
         detune:45,
         octave:2,
         volume:100,
@@ -113,7 +113,7 @@ export class SynthService{
         this.notes[i].o1.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[1].octave-3)
         this.notes[i].o2.frequency.value=this.frequency(this.notes[i].hz, this.oscillators[2].octave-3)
       }catch(e){
-        
+
       }
     }
   }
@@ -163,7 +163,7 @@ export class SynthService{
      if(this.notes[i].isPlaying===false){
        //create lfo
        this.notes[i].lfo=this.ab.audio.createOscillator();
-       this.notes[i].lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
+       this.notes[i].lfo.type=this.waves[this.lfoData.wave | 0];
        this.notes[i].lfo.frequency.value=this.lfoData.freq;
        this.notes[i].lfo.detune.value=this.lfoData.detune;
 
@@ -194,7 +194,7 @@ export class SynthService{
         //  }else{
         //    this.notes[i]['o'+ii].frequency.value=this.notes[i].hz * 2/Math.abs(this.oscillators[ii].octave-3);
         //  }
-         this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave];
+         this.notes[i]['o'+ii].type=this.waves[this.oscillators[ii].wave | 0];
 
          //connect lfo gain to osc frequency
          this.notes[i]['lfoOscGain'+ii].connect(this.notes[i]['o'+ii].frequency);
@@ -391,10 +391,10 @@ export class SynthService{
       }
     })
     this.ea.subscribe('lfowave', msg=>{
-      this.lfoData.wave=msg;
+      this.lfoData.wave=msg | 0;
       for(var i=0;i<this.notes.length;i++){
         try {
-          this.notes[i].lfo.type=this.waves[this.lfoData.wave===0.1?0:this.lfoData.wave];
+          this.notes[i].lfo.type=this.waves[this.lfoData.wave];
         } catch (e) {
 
         }
@@ -411,10 +411,10 @@ export class SynthService{
       }
     })
     this.ea.subscribe('osc-wave1', msg=>{
-      this.oscillators[0].wave=msg;
+      this.oscillators[0].wave=msg | 0;
       for(var i=0;i<this.notes.length;i++){
         try {
-          this.notes[i]['o0'].type=this.waves[msg];
+          this.notes[i]['o0'].type=this.waves[msg | 0];
         } catch (e) {
 
         }
@@ -452,10 +452,10 @@ export class SynthService{
       }
     })
     this.ea.subscribe('osc-wave2', msg=>{
-      this.oscillators[1].wave=msg;
+      this.oscillators[1].wave=msg | 0;
       for(var i=0;i<this.notes.length;i++){
         try {
-          this.notes[i].o1.type=this.waves[msg];
+          this.notes[i].o1.type=this.waves[msg | 0];
         } catch (e) {
 
         }
@@ -492,10 +492,11 @@ export class SynthService{
       }
     })
     this.ea.subscribe('osc-wave3', msg=>{
-      this.oscillators[2].wave=msg;
+      this.oscillators[2].wave=msg | 0;
+      console.log(msg);
       for(var i=0;i<this.notes.length;i++){
         try {
-          this.notes[i].o2.type=this.waves[msg];
+          this.notes[i].o2.type=this.waves[msg | 0];
         } catch (e) {
 
         }
@@ -574,7 +575,7 @@ export class SynthService{
           this.eq10k.connect(this.compressor);
         }else{
           this.effectsIn.disconnect();
-          this.effectsIn.connec(this.compressor)
+          this.effectsIn.connect(this.compressor)
         }
         this.compressor.connect(this.effectsOut);
       }else{
@@ -587,7 +588,7 @@ export class SynthService{
           this.eq10k.connect(this.effectsOut);
         }else{
           this.effectsIn.disconnect();
-          this.effectsIn.connec(this.effectsOut)
+          this.effectsIn.connect(this.effectsOut)
         }
       }
     })

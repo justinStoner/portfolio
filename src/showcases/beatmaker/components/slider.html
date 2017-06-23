@@ -1,25 +1,27 @@
 <template>
-  <div class="mdl-color--blue-500 mdl-color-text--white center-align b-radius-card" css="margin-bottom:12px;display:inline-block;vertical-align:middle;padding:0px;text-align:center;${channel==='tempo'?'':'width:100%;padding-left:5px;'}">
+  <p class="slider-label" >
+    ${label}
+  </p>
+  <div class="slider-knob mdl-shadow--2dp ${canvas?'mdl-color--green-A400':'mdl-color--blue-500'}" style="" click.trigger="toggleSlider($event)">
+    <span style="margin-top:8px;display:inline-block">
+      <span if.bind="label!='Wave' && label !='Octave'">${val}</span>
+      <template if.bind="label==='Wave'">
+        <span>${waves[val]}</span>
+      </template>
+      <template if.bind="label==='Octave'"><span>${val-3}</span></template>
+    </span>
+  </div>
+  <!-- <div class=" mdl-color-text--white center-align" css="margin-bottom:12px;display:inline-block;vertical-align:middle;padding:0px;text-align:center;${channel==='tempo'?'':'width:100%;padding-left:5px;'}">
 
     <div class="" style="float:left;">
-      <p class="slider-label" >
-        ${label}
-      </p>
+
       <input class="mdl-textfield__input text-center" type="number" change.delegate="change()" value.bind="val" style="margin-top:6px;margin-bottom:6px;margin-right:auto;margin-left:auto;display:block;width:30px;border-bottom:1px solid #fff;">
 
     </div>
-    <div style="float:right">
-      <button class="mdl-button mdl-js-button mdl-button--icon" style="display:block;" click.delegate="add()">
-        <i class="material-icons">add</i>
-      </button>
-      <button class="mdl-button mdl-js-button mdl-button--icon" click.delegate="minus()">
-        <i class="material-icons">remove</i>
-      </button>
 
-    </div>
 
-  </div>
-  <p  style="margin-bottom:0px;" if.bind="noSlider">
-    <input class="mdl-slider mdl-js-slider" type="range" id="s1" min="${min}" max="${max}" value.bind="val" step="1">
-  </p>
+  </div> -->
+
+  <div class="slider ${canvas?'green-handle':''}"></div>
+  <div class="slider-overlay ${isOpen?'open':''}" click.trigger="toggleSlider($event)"></div>
 </template>

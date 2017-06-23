@@ -25,6 +25,7 @@
     "material-pickers-time": "^0.2.2",
     "mdl-selectfield": "^1.0.4",
     "moment": "^2.18.1",
+    "nouislider": "^10.0.0",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest",
     "ugosansh-mdl-datepicker": "^1.5.0",
