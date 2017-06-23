@@ -373,7 +373,11 @@ export class SynthService{
     this.ea.subscribe('lpfMod', msg=>{
       this.lpfMod=msg;
       for(var i=0;i<this.notes.length;i++){
-        this.notes[i].modfilterGain.gain.value=msg*24;
+        try{
+          this.notes[i].modfilterGain.gain.value=msg*24;
+        }catch(e){
+          
+        }
       }
     })
 
