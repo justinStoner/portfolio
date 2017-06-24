@@ -3,8 +3,13 @@
 //     font-family: "Roboto", sans-serif;
 // }
 .crypto-holder{
+  font-size: 8px;
+  color:#757575;
+  position: absolute;
+  bottom: 0px;
+  padding: 0px 5px 10px 5px;
   polygon, g{
-    fill:#00e676;
+    fill:#757575;
   }
   i{
     font-style: normal;
