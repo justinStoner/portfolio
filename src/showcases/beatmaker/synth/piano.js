@@ -48,11 +48,12 @@ export class Piano{
   activate(a,b,c){
 
   }
-
-  canDeactivate() {
+  attached(){
 
   }
-  attached(){
+  
+
+  canDeactivate() {
 
   }
 

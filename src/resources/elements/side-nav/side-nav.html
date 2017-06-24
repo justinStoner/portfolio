@@ -1,6 +1,6 @@
 <template>
   <require from="./styles/sidenav.css"></require>
-  <require from="../../../showcases/beatmaker/components/sound-wave"></require>
+  <require from="../../../showcases/beatmaker/components/mini-spectrum"></require>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title"></span>
     <div class="header" id="profile-header">
@@ -30,7 +30,7 @@
       </a>
       <p class="name">Justin Stoner</p>
       <p class="email">justin@heyjust.in</p>
-      <sound-wave canvas-id="profile-header" as-header="true" if.bind="ab.showVisualizer"></sound-wave>
+      <mini-spectrum canvas-id="profile-header" if.bind="ab.showVisualizer"></mini-spectrum>
     </div>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link ${row.isActive?'active':''}" repeat.for="row of appRouter.navigation" href="${row.href}" click.delegate="closeDrawer(row.href)"><i class="material-icons">${row.settings.icon}</i>${row.title}</a>
