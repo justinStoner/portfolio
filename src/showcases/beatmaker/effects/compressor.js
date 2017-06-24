@@ -9,11 +9,6 @@ export class Compressor{
     this.comp=comp
     this.ab=ab;
     this.ea=ea;
-    this.attack=0.1;
-    this.release=0.1;
-    this.threshold=55;
-    this.knee=28;
-    this.ratio=4;
     this.active=true;
   }
   toggleEffect(){

@@ -3,7 +3,7 @@ export class CompService{
     this.synth={
       attack:1,
       release:1,
-      threshold:40,
+      threshold:80,
       knee:20,
       ratio:10,
       active:true
@@ -17,7 +17,7 @@ export class CompService{
       active:true
     }
     this.drums={
-      attack:3,
+      attack:1,
       release:1,
       threshold:90,
       knee:40,

@@ -62,7 +62,7 @@ export class SynthService{
     this.effectsOut.gain.value=1;
     this.createEq();
     this.createDelay();
-    this.compressor=this.ab.createCompressor();
+    this.compressor=this.ab.createCompressor('synth');
     this.connect();
     this.compressionOn=true;
     this.delayOn=true;

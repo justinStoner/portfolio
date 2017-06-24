@@ -1,9 +1,11 @@
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {inject} from "aurelia-framework";
-@inject(EventAggregator)
+import {CompService} from '../../../services/comp-service';
+@inject(EventAggregator, CompService)
 export class AudioBus{
-  constructor(ea){
+  constructor(ea, comp){
     this.ea=ea;
+    this.compServ=comp;
     this.audio = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser=this.audio.createAnalyser();
     this.analyser.connect(this.audio.destination);
@@ -17,7 +19,7 @@ export class AudioBus{
     this.output=this.audio.createGain();
     this.synthIn=this.audio.createGain();
     this.drumsIn=this.audio.createGain();
-    this.compressor=this.createCompressor();
+    this.compressor=this.createCompressor('sidechain');
     this.connect();
     this.compressionOn=true;
     this.delayOn=true;
@@ -48,7 +50,7 @@ export class AudioBus{
     this.ea.subscribe('toggleCompressor:sidechain', msg=>{
       this.compressionOn=!this.compressionOn;
     })
-    
+
 
   }
   connect(){
@@ -61,13 +63,15 @@ export class AudioBus{
 
 
 
-  createCompressor(){
+  createCompressor(mode){
+    var comp=this.compServ[mode];
     var compressor = this.audio.createDynamicsCompressor();
-    compressor.threshold.value = -55;
-    compressor.knee.value = 28;
-    compressor.ratio.value = 4;
-    compressor.attack.value = 0.1;
-    compressor.release.value = 0.1;
+    console.log(comp);
+    compressor.threshold.value = comp.threshold-100;
+    compressor.knee.value = comp.knee;
+    compressor.ratio.value = comp.ratio;
+    compressor.attack.value = comp.attack;
+    compressor.release.value = comp.release;
     return compressor;
   }
 

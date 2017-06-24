@@ -79,7 +79,7 @@ export class DrumService{
         high:[5000, 7000]
       }
     };
-    this.compressor=this.ab.createCompressor();
+    this.compressor=this.ab.createCompressor('drums');
     this.compressionOn=true;
     this.ea.subscribe('compAttack:drums', msg=>{
       this.compressor.attack.value=msg/100;
