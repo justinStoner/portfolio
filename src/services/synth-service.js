@@ -1,11 +1,21 @@
 import {inject} from 'aurelia-framework';
 import {AudioBus} from '../showcases/beatmaker/components/audio-bus';
 import {EventAggregator} from 'aurelia-event-aggregator';
-@inject(AudioBus, EventAggregator)
+import {HttpClient} from "aurelia-fetch-client";
+@inject(AudioBus, EventAggregator, HttpClient)
 export class SynthService{
-  constructor(ab, ea){
+  constructor(ab, ea, http){
     this.ab=ab;
     this.ea=ea;
+    http.configure(config=>{
+      config.useStandardConfiguration()
+      .withDefaults({
+        headers:{
+          "Content-Type":"audio/mpeg"
+        }
+      });
+    });
+    this.http=http;
     this.octaves=[-3,-2,-1,0,1,2,3];
     this.waves=['sine', 'sawtooth', 'square', 'triangle'];
     this.A4=440;
@@ -72,6 +82,27 @@ export class SynthService{
     this.lpfS = 30;
     this.lpfR = 50;
 
+    this.reverbLevel=32;
+    if(!isMobile){
+      this.reverbNode=this.ab.audio.createConvolver();
+    }else{
+      this.reverbNode=this.ab.audio.createConvolver();
+    }
+    this.reverbGain=this.ab.audio.createGain();
+    this.reverbBypassGain=this.ab.audio.createGain();
+
+    this.reverbNode.connect(this.reverbGain);
+    this.reverbGain.connect(this.effectsIn);
+    this.reverbBypassGain.connect(this.effectsIn)
+    this.http.fetch("audio/reverb/room.wav")
+    .then(res=>res.arrayBuffer())
+    .then(res=>{
+      this.ab.audio.decodeAudioData(res, (buffer)=>{
+        if(this.reverbNode){
+          this.reverbNode.buffer=buffer;
+        }
+      })
+    })
     this.notes=[
       {note:'c' ,hz:60, color:true, key:'a', isPlaying:false},
       {note:'c#' ,hz:61, color:false, key:'w', isPlaying:false},
@@ -100,6 +131,13 @@ export class SynthService{
     window.addEventListener('keyup', this.stop.bind(this));
 
     this.createSubs()
+  }
+  updateReverb(val){
+    val=val/100;
+    var gain1 = Math.cos(val * 0.5*Math.PI);
+	  var gain2 = Math.cos((1.0-val) * 0.5*Math.PI);
+    this.reverbGain.gain.value=gain2;
+    this.reverbBypassGain.gain.value=gain1;
   }
   changeSynthOctave(dir){
     if(dir==='up'){
@@ -218,7 +256,8 @@ export class SynthService{
        this.notes[i]['f1'].connect( this.notes[i]['f2'] );
        this.notes[i]['e']=this.ab.audio.createGain();
        this.notes[i]['f2'].connect(this.notes[i]['e']);
-       this.notes[i]['e'].connect(this.effectsIn);
+       this.notes[i]['e'].connect(this.reverbNode);
+       this.notes[i]['e'].connect(this.reverbBypassGain);
        var now = this.ab.audio.currentTime;
        var atkEnd=now + (this.envA/100.0);
        this.notes[i]['e'].gain.value = 0.0;
@@ -366,8 +405,12 @@ export class SynthService{
     this.ea.subscribe('lpfQ', msg=>{
       this.lpfQ=msg
       for(var i=0;i<this.notes.length;i++){
-        this.notes[i]['f1'].Q.value = msg;
-        this.notes[i]['f2'].Q.value = msg;
+        try {
+          this.notes[i]['f1'].Q.value = msg;
+          this.notes[i]['f2'].Q.value = msg;
+        } catch (e) {
+
+        }
       }
     })
     this.ea.subscribe('lpfMod', msg=>{
@@ -376,13 +419,16 @@ export class SynthService{
         try{
           this.notes[i].modfilterGain.gain.value=msg*24;
         }catch(e){
-          
+
         }
       }
     })
 
     this.ea.subscribe('synthvol', msg=>{
       this.master.gain.value=msg/50;
+    })
+    this.ea.subscribe('synthreverb', msg=>{
+      this.updateReverb(msg);
     })
     this.ea.subscribe('lfofreq', msg=>{
       this.lfoData.freq=msg;

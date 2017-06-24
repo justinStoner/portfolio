@@ -4,6 +4,7 @@
   <require from="../components/knob"></require>
   <require from="../components/sound-wave"></require>
   <require from="../components/slider"></require>
+  <require from="../effects/compressor"></require>
   <div class="mdl-grid">
     <div class="mdl-cell mdl-cell--12-col">
       <div class="b-radius-card mdl-color--blue-500 mdl-shadow--2dp" id="sequencer-controller">
@@ -57,12 +58,12 @@
             <div style="cursor:pointer;height:81px;text-align:center;" class="mdl-color-text--blue-500" click.trigger="playSample(drum.sound)">${drum.name}</div>
             <div >
               <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="80" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></slider>
+                <slider min="0" max="100" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></slider>
               </div>
             </div>
-            <div >
+            <div if.bind="!isMobile">
               <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="80" label="Pitch" preset.one-time="drum.pitch" val.two-way="drum.pitch"></slider>
+                <slider min="0" max="200" label="Pitch" preset.one-time="drum.pitch" val.two-way="drum.pitch" display-offset="-100"></slider>
               </div>
             </div>
             <div >
@@ -95,6 +96,11 @@
                 <slider min.one-time="drum.range.low[0]" max.one-time="drum.range.low[1]" label="Low Freq" preset.one-time="drum.lowFreq" val.two-way="drum.lowFreq"></slider>
               </div>
             </div>
+            <div if.bind="!isMobile">
+              <div class="input-field inline" style="margin-top:0;">
+                <slider min="0" max="100" label="Reverb" preset.one-time="drum.reverbLevel" val.two-way="drum.reverbLevel"></slider>
+              </div>
+            </div>
             <div >
               <div class="input-field inline" style="margin-top:0;">
                 <slider min="0" max="200" label="Cutoff" preset.one-time="drum.cutoff" val.two-way="drum.cutoff"></slider>
@@ -123,6 +129,61 @@
           </li>
       </ul>
     </div>
-  </div>
 
+  </div>
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+    <compressor mode="drums"></compressor>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+    <div class="mdl-shadow--2dp b-radius-card mdl-color--blue-500" style="color:#fff; padding:10px;">
+      <p>Please be aware, the sound will differ slightly in different browsers due to each vendor's implementation of the web audio API</p>
+      <div class="crypto-holder">
+        <div style="margin-bottom:10px;">
+          <i>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             width="25px" height="25px" viewBox="0 0 226.777 226.777" enable-background="new 0 0 226.777 226.777"
+             xml:space="preserve">
+            <g>
+              <polygon fill="#000000" points="112.553,157 112.553,86.977 44.158,116.937 	"/>
+              <polygon fill="#000000" points="112.553,82.163 112.553,-0.056 46.362,111.156 	"/>
+              <polygon fill="#000000" points="116.962,-0.09 116.962,82.163 184.083,111.566 	"/>
+              <polygon fill="#000000" points="116.962,86.977 116.962,157.002 185.405,116.957 	"/>
+              <polygon fill="#000000" points="112.553,227.406 112.553,171.085 44.618,131.31 	"/>
+              <polygon fill="#000000" points="116.962,227.406 184.897,131.31 116.962,171.085 	"/>
+            </g>
+            </svg>
+            ETH: &nbsp;
+          </i>
+          0x0D7E1502ca05adb3D9E0932fd6db88743ca1127b
+        </div>
+        <div>
+          <i>
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="25px" height="25px" viewBox="0 0 226.777 226.777" enable-background="new 0 0 226.777 226.777"
+               xml:space="preserve" style="margin-right:5px;">
+            <g id="BTC_2_">
+              <path d="M135.715,122.244c-2.614-1.31-8.437-3.074-15.368-3.533c-6.934-0.458-15.828,0-15.828,0v30.02c0,0,9.287,0.198,15.503-0.26
+                c6.21-0.458,12.621-2.027,15.826-3.795c3.203-1.766,7.063-4.513,7.063-11.379C142.911,126.428,138.332,123.552,135.715,122.244z"/>
+              <path d="M116.16,104.779c5.104-0.197,10.532-1.373,14.453-3.532c3.925-2.158,6.148-5.557,6.02-10.66
+                c-0.134-5.102-3.532-9.418-9.287-11.186c-5.757-1.766-9.613-1.897-13.998-1.962c-4.382-0.064-8.83,0.328-8.83,0.328v27.012
+                C104.519,104.779,111.059,104.976,116.16,104.779z"/>
+              <path d="M113.413,0C50.777,0,0,50.776,0,113.413c0,62.636,50.777,113.413,113.413,113.413s113.411-50.777,113.411-113.413
+                C226.824,50.776,176.049,0,113.413,0z M159.591,156.777c-8.44,5.887-17.465,6.935-21.455,7.456
+                c-1.969,0.259-5.342,0.532-8.959,0.744v22.738h-13.998v-22.37c-2.615,0-6.361,0-10.66,0v22.37H90.522v-22.37
+                c-13.852,0-27.535,0-27.535,0l2.877-16.812c0,0,5.559,0,8.371,0c2.814,0,3.989-0.261,5.166-1.372
+                c1.177-1.113,1.439-2.812,1.439-4.188c0-1.373,0-54.286,0-57.916c0-3.628-0.295-4.61-1.963-6.473
+                c-1.668-1.867-5.591-2.112-7.8-2.112c-2.207,0-8.091,0-8.091,0V61.939c0,0,13.246,0,27.535,0V39.505h13.996v22.434
+                c3.889,0,7.537,0,10.66,0V39.505h13.998v22.703c10.435,0.647,18.203,2.635,24.983,7.645c8.766,6.475,8.306,17.724,8.11,20.406
+                c-0.195,2.682-1.372,7.85-3.729,11.183c-2.352,3.337-8.108,6.673-8.108,6.673s6.801,1.438,11.578,5.036
+                c4.771,3.598,8.307,9.941,8.106,19.229C169.923,141.668,168.027,150.891,159.591,156.777z"/>
+            </g>
+            </svg>
+            BTC: &nbsp;
+          </i>
+          16svniBM2MjFSswNT3A38e2PToNmCLwvpq
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </template>

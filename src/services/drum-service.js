@@ -1,10 +1,12 @@
 import {inject} from 'aurelia-framework';
 import {AudioBus} from '../showcases/beatmaker/components/audio-bus';
 import {HttpClient} from "aurelia-fetch-client";
-@inject(AudioBus, HttpClient)
+import {EventAggregator} from 'aurelia-event-aggregator';
+@inject(AudioBus, HttpClient, EventAggregator)
 export class DrumService{
-  constructor(ab, http){
+  constructor(ab, http, ea){
     this.ab=ab;
+    this.ea=ea;
     http.configure(config=>{
       config.useStandardConfiguration()
       .withDefaults({
@@ -14,6 +16,14 @@ export class DrumService{
       });
     });
     this.http=http;
+    this.http.fetch("audio/reverb/room.wav")
+    .then(res=>res.arrayBuffer())
+    .then(res=>{
+      this.ab.audio.decodeAudioData(res, (buffer)=>{
+        this.reverbBuffer=buffer;
+      })
+    })
+
     this.drums=[];
     this.scheduled=new Array(14);
     this.loopLength=16;
@@ -69,8 +79,35 @@ export class DrumService{
         high:[5000, 7000]
       }
     };
-
-
+    this.compressor=this.ab.createCompressor();
+    this.compressionOn=true;
+    this.ea.subscribe('compAttack:drums', msg=>{
+      this.compressor.attack.value=msg/100;
+    });
+    this.ea.subscribe('compRelease:drums', msg=>{
+      this.compressor.release.value=msg/100;
+    });
+    this.ea.subscribe('compThresh:drums', msg=>{
+      this.compressor.threshold.value=msg-100;
+    });
+    this.ea.subscribe('compKnee:drums', msg=>{
+      this.compressor.knee.value=msg;
+    });
+    this.ea.subscribe('compRatio:drums', msg=>{
+      this.compressor.ratio.value=msg;
+    });
+    this.ea.subscribe('toggleCompressor:drums', msg=>{
+      this.compressionOn=!this.compressionOn;
+      if(this.compressionOn){
+        this.effectsIn.disconnect();
+        this.effectsIn.connect(this.compressor);
+        this.compressor.connect(this.ab.drumsIn);
+      }else{
+        this.compressor.disconnect();
+        this.effectsIn.disconnect();
+        this.effectsIn.connect(this.ab.drumsIn);
+      }
+    })
   }
   loadInit(){
     if(!this.loaded){
@@ -81,7 +118,7 @@ export class DrumService{
           type:this.samples[i].type,
           scheduled:[],
           volume:50,
-          pitch:0,
+          pitch:100,
           high:40,
           highFreq:this.eqFreqs[this.samples[i].type][2],
           mid:40,
@@ -92,6 +129,11 @@ export class DrumService{
           Q:10,
           cutoff:200,
           filterType:'lowpass',
+          gain:this.ab.audio.createGain(),
+          reverbLevel:32,
+          revNode:this.ab.audio.createConvolver(),
+          revGain:this.ab.audio.createGain(),
+          revBypassGain:this.ab.audio.createGain(),
           eq120:this.ab.audio.createBiquadFilter(),
           eq600:this.ab.audio.createBiquadFilter(),
           eq5k:this.ab.audio.createBiquadFilter(),
@@ -105,8 +147,16 @@ export class DrumService{
       }
       this.gain=this.ab.audio.createGain();
       this.sideChainGain=this.ab.audio.createGain();
+      this.effectsIn=this.ab.audio.createGain();
       this.gain.value=1.0;
-
+      if(this.compressionOn){
+        this.gain.connect(this.compressor);
+        this.sideChainGain.connect(this.compressor);
+        this.compressor.connect(this.ab.drumsIn);
+      }else{
+        this.gain.connect(this.ab.drumsIn);
+        this.sideChainGain.connect(this.ab.drumsIn);
+      }
       for(var i=0; i<14; i++){
         this.scheduled[i]=new Array(16);
         for(var ii=0; ii<16; ii++){
@@ -152,9 +202,23 @@ export class DrumService{
     })
   }
   playSound(buffer, time, name, i){
+    this.updateReverb(i);
     var src=this.ab.audio.createBufferSource();
     src.buffer=buffer;
 
+
+    if(!isMobile){
+      src.detune.value=this.drums[i].pitch-100;
+      this.drums[i].revNode.buffer=this.reverbBuffer;
+      this.drums[i].revNode.connect(this.drums[i].revGain);
+      this.drums[i].revGain.connect(this.drums[i].eq120);
+      this.drums[i].revBypassGain.connect(this.drums[i].eq120);
+
+      src.connect(this.drums[i].revNode);
+      src.connect(this.drums[i].revBypassGain);
+    }else{
+      src.connect(this.drums[i].eq120);
+    }
     this.drums[i].eq120.frequency.value=this.drums[i].lowFreq;
     this.drums[i].eq120.type="lowshelf";
     this.drums[i].eq120.gain.value=this.drums[i].low-40;
@@ -175,34 +239,44 @@ export class DrumService{
     this.drums[i].filter2.Q.value = this.drums[i].Q;
     this.drums[i].filter2.frequency.value = this.drums[i].cutoff*100;
 
-    src.connect(this.drums[i].eq120);
     this.drums[i].eq120.connect(this.drums[i].eq600);
     this.drums[i].eq600.connect(this.drums[i].eq5k);
     this.drums[i].eq5k.connect(this.drums[i].filter1);
     this.drums[i].filter1.connect(this.drums[i].filter2);
-
+    this.drums[i].filter2.connect(this.drums[i].gain);
+    this.drums[i].gain.gain.value=this.drums[i].volume/50;
     if(name==='kick' && this.ab.compressionOn){
       this.scriptNode.disconnect();
-      this.drums[i].filter2.connect(this.sideChainGain);
+      this.drums[i].gain.connect(this.sideChainGain);
       this.scriptNode=this.ab.audio.createScriptProcessor(4096,1,1);
       this.scriptNode.onaudioprocess=(e)=>{
         this.ab.synthOut.gain.value=Math.pow(10, this.ab.compressor.reduction/20);
       }
       this.sideChainGain.connect(this.ab.compressor);
       this.scriptNode.connect(this.ab.compressor);
-      this.sideChainGain.connect(this.ab.drumsIn)
+      this.sideChainGain.connect(this.effectsIn);
     }else if(name === 'kick' && !this.ab.compressionOn){
       this.scriptNode.disconnect();
-      this.drums[i].filter2.connect(this.gain);
-      this.gain.connect(this.ab.drumsIn);
+      this.drums[i].filter2.connect(this.drums[i].gain);
+      this.drums[i].gain.connect(this.gain);
+      this.gain.connect(this.effectsIn);
     }
     if(name!=='kick'){
-      this.drums[i].filter2.connect(this.gain);
-      this.gain.connect(this.ab.drumsIn);
+      this.drums[i].filter2.connect(this.drums[i].gain);
+      this.drums[i].gain.connect(this.gain);
+      this.gain.connect(this.effectsIn);
+
     }
     this.gain.gain.value=this.volume/50;
     this.sideChainGain.gain.value=this.volume/50;
     src.start(time);
+  }
+  updateReverb(i){
+    var val=this.drums[i].reverbLevel/100;
+    var gain1 = Math.cos(val * 0.5*Math.PI);
+	  var gain2 = Math.cos((1.0-val) * 0.5*Math.PI);
+    this.drums[i].revGain.gain.value=gain2;
+    this.drums[i].revBypassGain.gain.value=gain1;
   }
   playSample(buffer){
     var src=this.ab.audio.createBufferSource();

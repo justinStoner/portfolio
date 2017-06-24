@@ -17,11 +17,11 @@ export class CompService{
       active:true
     }
     this.drums={
-      attack:0.1,
-      release:0.1,
-      threshold:55,
-      knee:28,
-      ratio:4,
+      attack:3,
+      release:1,
+      threshold:90,
+      knee:40,
+      ratio:2,
       active:true
     }
   }

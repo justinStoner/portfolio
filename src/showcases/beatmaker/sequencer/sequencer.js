@@ -15,7 +15,7 @@ export class SequencerCustomElement{
       this.audio=this.ab.audio;
 
       this.mixer=false;
-
+      this.isMobile=isMobile;
 
     }
     attached(){

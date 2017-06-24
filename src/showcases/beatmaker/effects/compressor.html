@@ -2,7 +2,7 @@
   <require from="../components/knob"></require>
   <require from="../components/slider"></require>
   <require from="../components/switch"></require>
-  <div class="mdl-shadow--2dp b-radius-card mdl-color--blue-grey-100">
+  <div class="mdl-shadow--2dp b-radius-card mdl-color--blue-grey-100" css="${mode=='drums'?'height:auto;':''}">
     <div class="mdl-grid">
       <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
         <p class="no-bottom-margin">${mode=='sidechain'?'Sidechain ':''}Compressor <switch class="right" switched.two-way="comp[mode].active" click.delegate="toggleEffect()"></switch></p>

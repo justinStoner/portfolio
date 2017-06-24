@@ -34,7 +34,6 @@ export class Slider{
 
   }
   toggleSlider(e){
-    console.log(e);
     if(this.isOpen){
       this.range.noUiSlider.destroy();
       this.numInput.style.display='none';

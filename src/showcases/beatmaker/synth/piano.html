@@ -36,9 +36,9 @@
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
                   <slider min="0" max="100" label="Env" val.two-way="synth.lpfEnv" preset.one-time="synth.lpfEnv"></slider>
                 </div>
-                <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
+                <!-- <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
                   <p class="no-bottom-margin no-bottom-margin">Envelope</p>
-                </div>
+                </div> -->
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
                   <slider min="0" max="100" label="Attack" val.two-way="synth.lpfA" preset.one-time="synth.lpfA"></slider>
                 </div>
@@ -73,7 +73,7 @@
                   <slider min="0" max="100" label="Drive" val.two-way="synth.lpfA" canvas.bind="true" preset.one-time="synth.lpfA"></slider>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
-                  <slider min="0" max="100" label="Reverb" val.two-way="synth.lpfD" canvas.bind="true" preset.one-time="synth.lpfD"></slider>
+                  <slider min="0" max="100" label="Reverb" val.two-way="synth.reverbLevel" canvas.bind="true" preset.one-time="synth.reverbLevel" channel="synthreverb"></slider>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
                   <!-- <knob id="soundwave" min="0" max="100" label="Volume" canvas.bind="true" channel='synthvol' preset.one-time="synth.masterVol"></knob> -->
@@ -85,9 +85,9 @@
                     <i class="material-icons">graphic_eq</i>
                   </button>
                 </div>
-                <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
+                <!-- <div class="mdl-cell mdl-cell--12-col no-bottom-margin card-title">
                   <p class="no-bottom-margin">Envelope</p>
-                </div>
+                </div> -->
                 <div class="mdl-cell mdl-cell--3-col mdl-cell--1-col-phone mdl-cell--2-col-tablet">
                   <slider min="0" max="100" label="Attack" val.two-way="synth.envA" canvas.bind="true" preset.one-time="synth.envA"></slider>
                 </div>
@@ -115,6 +115,10 @@
           </div>
           <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
             <compressor mode="sidechain"></compressor>
+          </div>
+          <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone mdl-cell--8-col-tablet">
+            
+
           </div>
           <!-- <div class="mdl-cell mdl-cell--12-col" if.bind="!ab.isMobile">
             <piano-key class="${note.color?'white'+$index:'black'+$index}" repeat.for="note of synth.notes" playing.bind="note.isPlaying" index.bind="$index"  assigned.bind="note.assigned" key.bind="note" containerLess></piano-key>
