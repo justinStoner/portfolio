@@ -372,8 +372,8 @@ export class SynthService{
     var voice;
     for(var i=0;i<3;i++){
       voice={
-        volume:50,
-        wave:1,
+        volume:this.oscPresets[i].volume,
+        wave:this.oscPresets[i].wave,
         octave:this.oscPresets[i].octave,
         type:'Oscillator',
         detune:this.oscPresets[i].detune
