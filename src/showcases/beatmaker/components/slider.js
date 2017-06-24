@@ -12,6 +12,7 @@ export class Slider{
   @bindable preset;
   @bindable channel;
   @bindable canvas;
+  @bindable displayOffset;
   constructor(element, ea){
     this.element=element;
     this.ea=ea;
@@ -21,15 +22,22 @@ export class Slider{
     this.waves=['sine', 'saw', 'sqr', 'tri'];
   }
   attached(){
+      this.temp=this.val;
       this.range=this.element.children[2];
+      this.numInput=this.element.children[3];
       this.range.style.margin = '0 2px 15px 2px';
-
+      if(!this.displayOffset){
+        this.displayOffset=0;
+      }else{
+        this.displayOffset=parseInt(this.displayOffset);
+      }
 
   }
   toggleSlider(e){
     console.log(e);
     if(this.isOpen){
       this.range.noUiSlider.destroy();
+      this.numInput.style.display='none';
     }else{
       noUiSlider.create(this.range, {
        start: this.val,
@@ -48,16 +56,22 @@ export class Slider{
       //  },
        tooltips:false,
        range: {
-         'min': parseInt(this.min),
-         'max': parseInt(this.max)
+         'min': parseFloat(this.min),
+         'max': parseFloat(this.max)
        }
       });
       this.range.noUiSlider.on('slide', val=>{
-        this.val=val[0];
-        this.change(false);
+        this.val=parseFloat(val[0]);
+        this.temp=parseFloat(val[0]);
+        this.change();
       })
       this.range.style.left=this.element.children[1].offsetLeft+50+'px';
       this.range.style.top=this.element.children[1].offsetTop-40+'px';
+      if(this.label!='Wave'){
+        this.numInput.style.display='initial';
+        this.numInput.style.left=this.element.children[1].offsetLeft-20+'px';
+        this.numInput.style.top=this.element.children[1].offsetTop+50+'px';
+      }
     }
     this.isOpen=!this.isOpen;
   }
@@ -83,10 +97,26 @@ export class Slider{
       this.ea.publish(this.channel, this.val);
     }
   }
+  updateFromField(){
+    if(!isNaN(this.temp)){
+      this.val=this.temp;
+      this.range.noUiSlider.set(this.val);
+      if(this.channel){
+        this.ea.publish(this.channel, this.val);
+      }
+    }else{
+      this.temp=this.val;
+    }
+  }
 
   // valChanged(newval, oldval){
   //   console.log(val);
   //   this.range.UiSlider.set(newval);
   //   this.change();
   // }
+}
+export class OffsetValueConverter{
+  toView(val, offset){
+    return parseFloat(val) + parseInt(offset);
+  }
 }

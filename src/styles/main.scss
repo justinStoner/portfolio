@@ -45,6 +45,12 @@ slider p, slider slider-knob{
 
 
 }
+.slider-num{
+  width:50px;
+  position: absolute;
+  display: none;
+  z-index: 6;
+}
 .noUi-base{
   background: #fff;
   height: 100px;
@@ -56,6 +62,10 @@ slider p, slider slider-knob{
   background: #2196f3;
   border:0px;
 }
+.noUi-handle:before{
+  background: transparent;
+}
+
 .green-handle .noUi-handle{
   background: #00e676;
 }
