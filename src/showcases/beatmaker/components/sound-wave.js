@@ -4,12 +4,10 @@ import {AudioBus} from './audio-bus'
 import 'jquery';
 @inject(EventAggregator, Element, AudioBus)
 export class SoundWave{
-
-  @bindable ab;
   @bindable canvasId;
   @bindable background;
   @bindable asHeader;
-
+  @bindable mode;
   constructor(ea, element, audiobus){
     this.ea=ea;
     this.element=element;
@@ -17,7 +15,7 @@ export class SoundWave{
     this.y;
     this.v;
     this.animId;
-    this.audiobus=audiobus
+    this.ab=audiobus;
     this.ea.subscribe('resize', ()=>{
       var height, width;
       width=$(this.bgEl).width();
@@ -39,7 +37,6 @@ export class SoundWave{
   attached(){
     this.bgColor="#2196f3";
     this.fgColor="#69f0ae";
-    console.log(this.canvasId);
     this.canvas=this.element.children[0];
 
     this.canvasCtx = this.canvas.getContext('2d');
@@ -57,15 +54,19 @@ export class SoundWave{
     }
 
     this.element.style.marginTop=height * -1 + 'px';
-    console.log(this.element.style);
     this.canvas.width=width;
     this.canvas.height=height;
     this.sliceWidth = this.canvas.width * 1.0 / this.ab.bufferLength;
+    if(this.mode==='synth'){
+      this.analyser=this.ab.synthAnalyser;
+    }else if(this.mode==='drums'){
+      this.analyser=this.ab.drumAnalyser;
+    }
     this.draw();
   }
 
   draw(){
-    this.ab.analyser.getByteTimeDomainData(this.ab.dataArray);
+    this.analyser.getByteTimeDomainData(this.ab.dataArray);
     this.canvasCtx.fillStyle = this.bgColor;
     if(this.asHeader){
       this.canvasCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);

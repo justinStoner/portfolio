@@ -9,6 +9,13 @@ export class AudioBus{
     this.audio = new (window.AudioContext || window.webkitAudioContext)();
     this.analyser=this.audio.createAnalyser();
     this.analyser.connect(this.audio.destination);
+
+    this.synthAnalyser=this.audio.createAnalyser();
+    this.synthAnalyser.connect(this.audio.destination);
+
+    this.drumAnalyser=this.audio.createAnalyser();
+    this.drumAnalyser.connect(this.audio.destination);
+
     this.analyser.fftSize=2048;
     this.bufferLength = this.analyser.fftSize;
     this.dataArray = new Uint8Array(this.bufferLength);
@@ -24,10 +31,17 @@ export class AudioBus{
     this.compressionOn=true;
     this.delayOn=true;
     this.eqOn=true;
+
     this.drumsIn.connect(this.input);
+    this.drumsIn.connect(this.drumAnalyser);
+
     this.input.connect(this.output);
+
     this.synthOut.connect(this.output)
+    this.synthOut.connect(this.synthAnalyser);
+
     this.output.connect(this.analyser);
+
     var testExp = new RegExp('Android|webOS|iPhone|iPad|' + 'BlackBerry|Windows Phone|'  + 'Opera Mini|IEMobile|Mobile' , 'i');
     this.isMobile=testExp.test(navigator.userAgent);
     console.log(this.isMobile);

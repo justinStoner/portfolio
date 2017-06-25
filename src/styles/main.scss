@@ -251,9 +251,10 @@ p switch{
  }
 }
 #synth,
-#sequencer-controller{
+#sequencer{
  background: #2196f3;
- #synthfilter{
+ #synthfilter,
+ #sequencer-controller{
    z-index: 1;
    position: relative;
  }

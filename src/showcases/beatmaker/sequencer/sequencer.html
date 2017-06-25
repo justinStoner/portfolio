@@ -2,14 +2,13 @@
   <require from="../components/sound-wave"></require>
   <require from="./styles/sequencer.css"></require>
   <require from="../components/knob"></require>
-  <require from="../components/sound-wave"></require>
   <require from="../components/slider"></require>
   <require from="../effects/compressor"></require>
   <div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--12-col">
-      <div class="b-radius-card mdl-color--blue-500 mdl-shadow--2dp" id="sequencer-controller">
+    <div class="mdl-cell mdl-cell--12-col" id="sequencer">
+      <div class="b-radius-card mdl-shadow--2dp" id="sequencer-controller">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--2-col-phone" style="padding-top:13px;">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone" style="padding-top:13px;">
 
             <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:15px;" click.delegate='handlePlay()'>
               <template if.bind='!ds.playing'>
@@ -27,12 +26,20 @@
           <div class="mdl-cell mdl-cell--1-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
             <slider min="0" max="100" label="Volume" val.two-way="ds.volume" canvas.bind="true"  preset.one-time="volume"></slider>
           </div>
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--1-col-phone">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
             <slider min="0" max="220" label="Tempo" val.two-way="ds.tempo" canvas.bind="true" channel='tempo' preset="120"></slider>
+          </div>
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone text-center">
+            <p style="margin-bottom:0px;">Visualizer</p>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${ab.showVisualizer?'mdl-color-text--green-A400 mdl-color--white':'mdl-color--green-A400 mdl-color-text--white'}" css="width:42px;height:42px;min-width:42px;border:3px solid ${ab.showVisualizer?'#00e676;':'#fff;'}" click.trigger="ab.showVisualizer=!ab.showVisualizer" id='visualizer'>
+              <i class="material-icons">graphic_eq</i>
+            </button>
           </div>
 
         </div>
+
       </div>
+      <sound-wave ab.bind='ab' canvas-id='sequencer-controller' mode='drums' if.bind="ab.showVisualizer"></sound-wave>
     </div>
     <div class="mdl-cell mdl-cell--12-col ">
       <table class=" striped"  id='sequencer-notes'>
