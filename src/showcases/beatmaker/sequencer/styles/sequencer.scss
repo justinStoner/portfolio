@@ -27,9 +27,13 @@ form.col.s12{
 .drum-mixer{
   ul{
     list-style: none;
+    padding-left: 0;
     li{
       list-style: none;
       margin-bottom: 15px;
+    }
+    li:nth-child(odd){
+      background: #fff;
     }
   }
 }

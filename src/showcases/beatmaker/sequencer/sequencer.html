@@ -8,9 +8,9 @@
     <div class="mdl-cell mdl-cell--12-col" id="sequencer">
       <div class="b-radius-card mdl-shadow--2dp" id="sequencer-controller">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone" style="padding-top:13px;">
+          <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone" style="padding-top:24px;">
 
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:15px;" click.delegate='handlePlay()'>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-color--grey-200 alt-button" css="margin-right:15px;border:3px solid ${!ds.playing?'#00e676;':'#f44336;'}" click.delegate='handlePlay()'>
               <template if.bind='!ds.playing'>
                 <i class="material-icons mdl-color-text--green-A400" >play_arrow</i>
               </template>
@@ -19,7 +19,7 @@
               </template>
             </button>
 
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--grey-400':'mdl-color-text--green-A400'} mdl-color--grey-200" click.delegate='toggleMixer()'>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${mixer?'mdl-color-text--green-A400 mdl-color--white':'mdl-color--green-A400 mdl-color-text--white'} alt-button" css="border:3px solid ${mixer?'#00e676;':'#fff;'}" click.delegate='toggleMixer()'>
               <i class="material-icons">equalizer</i>
             </button>
           </div>
@@ -31,7 +31,7 @@
           </div>
           <div class="mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--1-col-phone text-center">
             <p style="margin-bottom:0px;">Visualizer</p>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${ab.showVisualizer?'mdl-color-text--green-A400 mdl-color--white':'mdl-color--green-A400 mdl-color-text--white'}" css="width:42px;height:42px;min-width:42px;border:3px solid ${ab.showVisualizer?'#00e676;':'#fff;'}" click.trigger="ab.showVisualizer=!ab.showVisualizer" id='visualizer'>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${ab.showVisualizer?'mdl-color-text--green-A400 mdl-color--white':'mdl-color--green-A400 mdl-color-text--white'} alt-button" css="border:3px solid ${ab.showVisualizer?'#00e676;':'#fff;'}" click.trigger="ab.showVisualizer=!ab.showVisualizer" id='visualizer'>
               <i class="material-icons">graphic_eq</i>
             </button>
           </div>
@@ -59,86 +59,89 @@
             </tr>
         </tbody>
       </table>
-      <div class="drum-mixer" if.bind="mixer" id='sequencer-mixer'>
-        <ul>
-          <li repeat.for="drum of ds.drums">
-            <div style="cursor:pointer;height:81px;text-align:center;" class="mdl-color-text--blue-500" click.trigger="playSample(drum.sound)">${drum.name}</div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="100" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></slider>
-              </div>
-            </div>
-            <div if.bind="!isMobile">
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="200" label="Pitch" preset.one-time="drum.pitch" val.two-way="drum.pitch" display-offset="-100"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="80" label="High" preset.one-time="drum.high" val.two-way="drum.high"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min.one-time="drum.range.high[0]" max.one-time="drum.range.high[1]" label="High Freq" preset.one-time="drum.highFreq" val.two-way="drum.highFreq"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="80" label="Mid" preset.one-time="drum.mid" val.two-way="drum.mid"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min.one-time="drum.range.mid[0]" max.one-time="drum.range.mid[1]" label="Mid Freq" preset.one-time="drum.midFreq" val.two-way="drum.midFreq"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="80" label="Low" preset.one-time="drum.low" val.two-way="drum.low"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min.one-time="drum.range.low[0]" max.one-time="drum.range.low[1]" label="Low Freq" preset.one-time="drum.lowFreq" val.two-way="drum.lowFreq"></slider>
-              </div>
-            </div>
-            <div if.bind="!isMobile">
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="100" label="Reverb" preset.one-time="drum.reverbLevel" val.two-way="drum.reverbLevel"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="200" label="Cutoff" preset.one-time="drum.cutoff" val.two-way="drum.cutoff"></slider>
-              </div>
-            </div>
-            <div >
-              <div class="input-field inline" style="margin-top:0;">
-                <slider min="0" max="20" label="Q" preset.one-time="drum.Q" val.two-way="drum.Q"></slider>
-              </div>
-            </div>
-            <div>
-              <div class="input-field inline" style="">
-                <label for="" style="position:relative;top:0;">Filter Type</label>
-                <select name="" id="" class="browser-default" value.bind="drum.filterType">
-                  <option value="lowpass">lowpass</option>
-                  <option value="highpass">highpass</option>
-                  <option value="bandpass">bandpass</option>
-                  <option value="lowshelf">lowshelf</option>
-                  <option value="highshelf">highshelf</option>
-                  <option value="peaking">peaking</option>
-                  <option value="notch">notch</option>
-                  <option value="allpass">allpass</option>
-                </select>
-              </div>
-            </div>
-          </li>
-      </ul>
-    </div>
+
 
   </div>
-  <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+  <div class="mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet" if.bind="mixer">
+    <div class="drum-mixer"  id='sequencer-mixer'>
+      <ul>
+        <li repeat.for="drum of ds.drums">
+          <div style="cursor:pointer;text-align:center;" class="mdl-color-text--blue-500" click.trigger="playSample(drum.sound)">${drum.name}</div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="100" label="Volume" preset.one-time="drum.volume" val.two-way="drum.volume"></slider>
+            </div>
+          </div>
+          <div if.bind="!isMobile">
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="200" label="Pitch" preset.one-time="drum.pitch" val.two-way="drum.pitch" display-offset="-100"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="80" label="High" preset.one-time="drum.high" val.two-way="drum.high"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min.one-time="drum.range.high[0]" max.one-time="drum.range.high[1]" label="High Freq" preset.one-time="drum.highFreq" val.two-way="drum.highFreq"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="80" label="Mid" preset.one-time="drum.mid" val.two-way="drum.mid"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min.one-time="drum.range.mid[0]" max.one-time="drum.range.mid[1]" label="Mid Freq" preset.one-time="drum.midFreq" val.two-way="drum.midFreq"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="80" label="Low" preset.one-time="drum.low" val.two-way="drum.low"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min.one-time="drum.range.low[0]" max.one-time="drum.range.low[1]" label="Low Freq" preset.one-time="drum.lowFreq" val.two-way="drum.lowFreq"></slider>
+            </div>
+          </div>
+          <div if.bind="!isMobile">
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="100" label="Reverb" preset.one-time="drum.reverbLevel" val.two-way="drum.reverbLevel"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="200" label="Cutoff" preset.one-time="drum.cutoff" val.two-way="drum.cutoff"></slider>
+            </div>
+          </div>
+          <div >
+            <div class="input-field inline" style="margin-top:0;">
+              <slider min="0" max="20" label="Q" preset.one-time="drum.Q" val.two-way="drum.Q"></slider>
+            </div>
+          </div>
+          <div>
+            <div class="input-field inline" style="">
+              <label for="" style="position:relative;top:0;">Filter Type</label>
+              <select name="" id="" class="browser-default" value.bind="drum.filterType">
+                <option value="lowpass">lowpass</option>
+                <option value="highpass">highpass</option>
+                <option value="bandpass">bandpass</option>
+                <option value="lowshelf">lowshelf</option>
+                <option value="highshelf">highshelf</option>
+                <option value="peaking">peaking</option>
+                <option value="notch">notch</option>
+                <option value="allpass">allpass</option>
+              </select>
+            </div>
+          </div>
+        </li>
+    </ul>
+  </div>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
     <compressor mode="drums"></compressor>
   </div>
 </div>

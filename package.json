@@ -26,8 +26,10 @@
     "mdl-selectfield": "^1.0.4",
     "moment": "^2.18.1",
     "nouislider": "^10.0.0",
+    "pizzicato": "^0.6.1",
     "requirejs": "^2.3.2",
     "text": "github:requirejs/text#latest",
+    "tunajs": "^1.0.0",
     "ugosansh-mdl-datepicker": "^1.5.0",
     "whatwg-fetch": "^2.0.3"
   },

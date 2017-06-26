@@ -19,7 +19,7 @@
         </ul>
       </p>
       <a class="mdl-navigation__link right" id="play" style="color:#fff; cursor:pointer;z-index:3;position:relative" if.bind="ds.hasPlayed" click.trigger='ds.handlePlay()'>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" style="margin-right:0px;">
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect ${!mixer?'mdl-color-text--white':'mdl-color-text--green-A400'} mdl-color--grey-200" css="margin-right:0px; border:3px solid ${!ds.playing?'#00e676;':'#f44336;'}">
           <template if.bind='!ds.playing'>
             <i class="material-icons mdl-color-text--green-A400" >play_arrow</i>
           </template>

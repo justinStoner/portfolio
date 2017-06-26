@@ -16,14 +16,6 @@ export class DrumService{
       });
     });
     this.http=http;
-    this.http.fetch("audio/reverb/room.wav")
-    .then(res=>res.arrayBuffer())
-    .then(res=>{
-      this.ab.audio.decodeAudioData(res, (buffer)=>{
-        this.reverbBuffer=buffer;
-      })
-    })
-
     this.drums=[];
     this.scheduled=new Array(14);
     this.loopLength=16;
@@ -111,6 +103,13 @@ export class DrumService{
   }
   loadInit(){
     if(!this.loaded){
+      this.http.fetch("audio/reverb/room.wav")
+      .then(res=>res.arrayBuffer())
+      .then(res=>{
+        this.ab.audio.decodeAudioData(res, (buffer)=>{
+          this.reverbBuffer=buffer;
+        })
+      })
       for(var i=0;i<this.samples.length;i++){
         var obj={
           name:this.samples[i].name,

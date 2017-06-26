@@ -2,6 +2,7 @@ import {inject} from 'aurelia-framework';
 import {AudioBus} from '../showcases/beatmaker/components/audio-bus';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {HttpClient} from "aurelia-fetch-client";
+import * as Tuna from "tunajs";
 @inject(AudioBus, EventAggregator, HttpClient)
 export class SynthService{
   constructor(ab, ea, http){
@@ -20,6 +21,12 @@ export class SynthService{
     this.waves=['sine', 'sawtooth', 'square', 'triangle'];
     this.A4=440;
     this.synthOctave=0;
+    try{
+      this.tuna=new Tuna.default(this.ab.audio);
+    }catch(e){
+      console.log(Tuna);
+      console.log(e);
+    }
     this.lfoData={
       wave:0,
       detune:50,
@@ -53,13 +60,13 @@ export class SynthService{
     this.oscillators=this.createVoices();
     this.masterVol=85;
     this.modMult=10;
-    this.master = this.ab.audio.createGain();
-    this.master.gain.value=this.masterVol/50;
-    this.master.connect(this.ab.synthIn);
+    //this.master = this.ab.audio.createGain();
+  //  this.master.gain.value=this.masterVol/50;
+    //this.master.connect(this.ab.synthIn);
     this.effectsIn = this.ab.audio.createGain();
     this.effectsIn.gain.value=1;
     this.effectsOut = this.ab.audio.createGain();
-    this.effectsOut.gain.value=1;
+    this.effectsOut.gain.value=this.masterVol/50;
     this.createEq();
     this.createDelay();
     this.compressor=this.ab.createCompressor('synth');
@@ -83,6 +90,7 @@ export class SynthService{
     this.lpfR = 50;
 
     this.reverbLevel=32;
+    this.driveLevel=0;
     if(!isMobile){
       this.reverbNode=this.ab.audio.createConvolver();
     }else{
@@ -93,7 +101,16 @@ export class SynthService{
 
     this.reverbNode.connect(this.reverbGain);
     this.reverbGain.connect(this.effectsIn);
-    this.reverbBypassGain.connect(this.effectsIn)
+    this.reverbBypassGain.connect(this.effectsIn);
+    this.drive = new this.tuna.Overdrive({
+        outputGain: this.driveLevel/10,         //0 to 1+
+        drive: this.driveLevel/10,              //0 to 1
+        curveAmount: this.driveLevel/10,          //0 to 1
+        algorithmIndex: 0,       //0 to 5, selects one of our drive algorithms
+        bypass: true
+    });
+    this.drive.connect(this.reverbNode);
+    this.drive.connect(this.reverbBypassGain);
     this.http.fetch("audio/reverb/room.wav")
     .then(res=>res.arrayBuffer())
     .then(res=>{
@@ -172,11 +189,11 @@ export class SynthService{
     let s=e.key;
     for(let i in this.notes){
       if(!e.key){
-        if(String.fromCharCode(e.keyCode)==this.notes[i].key||String.fromCharCode(e.keyCode)==this.notes[i].key.toUpperCase()){
+        if(String.fromCharCode(e.keyCode)==this.notes[i].key){
           this.playKey(i);
         }
       }else{
-        if(s==this.notes[i].key){
+        if(s.toLowerCase()==this.notes[i].key){
           this.playKey(i);
         }
       }
@@ -190,7 +207,7 @@ export class SynthService{
           this.stopKey(i);
         }
       }else{
-        if(s==this.notes[i].key){
+        if(s.toLowerCase()==this.notes[i].key){
           this.stopKey(i);
         }
       }
@@ -256,8 +273,8 @@ export class SynthService{
        this.notes[i]['f1'].connect( this.notes[i]['f2'] );
        this.notes[i]['e']=this.ab.audio.createGain();
        this.notes[i]['f2'].connect(this.notes[i]['e']);
-       this.notes[i]['e'].connect(this.reverbNode);
-       this.notes[i]['e'].connect(this.reverbBypassGain);
+       this.notes[i]['e'].connect(this.drive);
+       //this.notes[i]['e'].connect(this.reverbBypassGain);
        var now = this.ab.audio.currentTime;
        var atkEnd=now + (this.envA/100.0);
        this.notes[i]['e'].gain.value = 0.0;
@@ -365,7 +382,7 @@ export class SynthService{
     this.wetLevel.connect(this.dOutput);
     this.dOutput.connect(this.compressor);
     this.compressor.connect(this.effectsOut);
-    this.effectsOut.connect(this.master);
+    this.effectsOut.connect(this.ab.synthIn);
   }
   createVoices(){
     var arr=[];
@@ -390,6 +407,19 @@ export class SynthService{
 
     this.ea.subscribe('stop-key', msg=>{
       this.stopKey(msg.index);
+    });
+    this.ea.subscribe('drivelevel', msg=>{
+      // this.drive.disconnect();
+
+      this.drive.outputGain = this.driveLevel/10;         //0 to 1+
+      this.drive.drive = this.driveLevel/10;         //0 to 1
+      this.drive.curveAmount = this.driveLevel/10;
+      console.log(this.drive);
+      if(msg===0){
+        this.drive.bypass=true;
+      }else{
+        this.drive.bypass=false;
+      }
     });
     this.ea.subscribe('lpfCutoff', msg=>{
       this.lpfCutoff=msg;
@@ -425,7 +455,7 @@ export class SynthService{
     })
 
     this.ea.subscribe('synthvol', msg=>{
-      this.master.gain.value=msg/50;
+      this.effectsOut.gain.value=msg/50;
     })
     this.ea.subscribe('synthreverb', msg=>{
       this.updateReverb(msg);

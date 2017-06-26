@@ -129,6 +129,11 @@
             "main": "./dist/Chart.bundle.min"
           },
           {
+            "name": "tunajs",
+            "path": "../node_modules/tunajs/",
+            "main": "tuna.js"
+          },
+          {
             "name": "jquery-knob",
             "path": "../node_modules/jim-knopf/dist/",
             "main": "knob-min"
